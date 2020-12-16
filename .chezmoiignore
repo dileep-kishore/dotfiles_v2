@@ -1,0 +1,7 @@
+# Ignore patterns for `chezmoi`
+
+# Repository README file
+README.md
+
+# Editconfig
+.editorconfig
