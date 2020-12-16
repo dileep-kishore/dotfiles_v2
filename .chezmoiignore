@@ -1,7 +1,16 @@
 # Ignore patterns for `chezmoi`
 
+# gitignore
+.gitignore
+
 # Repository README file
 README.md
 
 # Editconfig
 .editorconfig
+
+# Makefile
+Makefile
+
+# tags
+tags
