@@ -1,0 +1,32 @@
+[user]
+	email = k.dileep1994@gmail.com
+	name = Dileep Kishore
+[core]
+	editor = nvim
+[credential]
+	helper = cache --timeout=18000
+[merge]
+	tool = vimdiff
+[mergetool]
+	path = nvim
+[core]
+    pager = delta
+[delta]
+    plus-color = "#012800"
+    minus-color = "#340001"
+    line-numbers = true
+    side-by-side = true
+    plus-style = syntax "#003800"
+    minus-style = syntax "#3f0001"
+    syntax-theme = gruvbox
+    features = decorations
+    whitespace-error-style = 22 reverse
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = cyan box ul
+[interactive]
+    diffFilter = delta --color-only
+[diff]
+    colorMoved = default
