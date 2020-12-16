@@ -1,0 +1,177 @@
+# starship prompt configuration
+
+# Gruvbox colors (Source: https://github.com/morhetz/gruvbox)
+# Red: #cc241d
+# Green: #98971a
+# Yellow: #d79921
+# Blue: #458588
+# Purple: #b16286
+# Aqua: #689d6a
+# Gray: #a89984
+# Orange: #fe9019
+# White: #fbf1c7
+
+format = """
+[┏](bold #fbf1c7)[🌸 ](bold #458588)\
+$username\
+$hostname\
+$shlvl\
+$kubernetes\
+$status\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$cmake\
+$dart\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$helm\
+$java\
+$julia\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$purescript\
+$python\
+$ruby\
+$rust\
+$swift\
+$terraform\
+$zig\
+$nix_shell\
+$conda\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$env_var\
+$crystal\
+$custom\
+$cmd_duration\
+$lua\
+$jobs\
+$battery\
+$time\
+$line_break\
+$character"""
+
+add_newline = false
+
+[aws]
+disabled = true
+
+[character]
+success_symbol = "[┗](bold #fbf1c7)[ ](bold #98971a)"
+error_symbol = "[┗](bold #fbf1c7)[ ](bold #cc241d)"
+vicmd_symbol = "[┗](bold #fbf1c7)[ ](bold #98971a)"
+
+[cmd_duration]
+format = "[took](italic) ⌛[$duration]($style) "
+min_time = 5_000
+style = "bold #d79921"
+
+[conda]
+format = "[via](italic) [$symbol$environment]($style) "
+style = "bold #98971a"
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style) "
+style = "bold #689d6a"
+read_only_style = "bold #cc241d"
+truncation_symbol = "…/"
+truncate_to_repo = true
+
+[env_var]
+format = "[with](italic) [$env_value]($style) "
+style = "bold dimmed #a89984"
+
+[git_branch]
+format = "[on](italic) [$symbol $branch]($style) "
+style = "bold #b16286"
+symbol = "🌱" # symbol = ""
+truncation_length = 25
+truncation_symbol = "…"
+
+[git_commit]
+format = "[\\($hash\\)]($style) [\\($tag\\)]($style) "
+only_detached = true
+style = "bold #fe9019"
+
+[git_status]
+# format = '([$all_status$ahead_behind]($style) )'
+format = '([❮ $all_status$ahead_behind❯]($style) )'
+conflicted = "${count}: "
+ahead = "${count}: "
+behind = "${count}: "
+diverged = " "
+untracked = "${count}: "
+stashed = "${count}:率 "
+modified = "${count}: "
+staged = "${count}: "
+renamed = "${count}: "
+deleted = "${count}: "
+style = "bold #fe9019"
+
+[hostname]
+format =  "[$hostname]($style) [in](italic) "
+style = "bold #458588"
+
+[jobs]
+format = "[jobs](italic) [$symbol $number]($style) "
+threshold = 0
+symbol = "⚙ "
+
+[julia]
+format = "[via](italic) [$symbol$version]($style) "
+style = "bold #b16286"
+
+[nodejs]
+format = "[via](italic) [$symbol$version]($style) "
+style = "bold #98971a"
+not_capable_style = "bold #cc241d"
+
+[package]
+format = "[via](italic) [$symbol$version]($style) "
+style = "bold #d79921"
+display_private = true
+
+[python]
+format = '[via](italic) [${symbol}${pyenv_prefix}${version} $virtualenv]($style) '
+style = "bold #d79921"
+
+[rust]
+format = "[via](italic) [$symbol$version]($style) "
+style = "bold #cc241d"
+
+[shlvl]
+disabled = false
+format = "[$symbol$shlvl]($style) "
+symbol = ""
+style = "bold dimmed #a89984"
+threshold = 3
+
+[status]
+disabled = false
+format = "[$status$symbol]($style) "
+symbol = " "
+style = "bold #cc241d"
+
+[username]
+format = "[$user]($style) [at](italic) "
+style_user = "bold #458588"
+style_root = "bold #cc241d"
+
+[terraform]
+disabled = true
+
+# TODO: Add a custom command for toggl (https://starship.rs/config/#custom-commands)
