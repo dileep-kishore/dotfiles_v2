@@ -42,6 +42,10 @@ export XDG_CACHE_HOME="${HOME}/.cache"
 export SEAGATE="/run/media/dileep/Seagate\ Expansion\ Drive/"
 export CRUCIAL="/run/media/dileep/Crucial"
 
+# fzf configuration
+export FZF_BASE="$HOME/.fzf"
+export FZF_DEFAULT_OPTS="--height 40% --reverse --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+
 ################################################################################
 # Zinit init                                                                   #
 ################################################################################
