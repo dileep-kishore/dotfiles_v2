@@ -1,0 +1,68 @@
+{
+    "coc.preferences.extensionUpdateCheck": "daily",
+    "coc.preferences.formatOnSaveFiletypes": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "css",
+        "markdown",
+        "python",
+        "julia"
+    ],
+    "languageserver": {
+        "dockerfile": {
+            "command": "docker-langserver",
+            "filetypes": ["dockerfile"],
+            "args": ["--stdio"]
+        },
+        "haskell": {
+            "command": "haskell-language-server-wrapper",
+            "args": ["--lsp"],
+            "rootPatterns": [
+                "*.cabal",
+                "stack.yaml",
+                "cabal.project",
+                "package.yaml",
+                "hie.yaml"
+            ],
+            "filetypes": ["haskell", "lhaskell"]
+        }
+    },
+    "diagnostic.errorSign": "﵃ ",
+    "diagnostic.warningSign": " ",
+    "diagnostic.infoSign": " ",
+    "diagnostic.hintSign": " ",
+    "diagnostic.virtualText": true,
+    "diagnostic.enableHighlightLineNumber": true,
+    "diagnostic.virtualTextCurrentLineOnly": true,
+    "diagnostic.virtualTextPrefix": " ",
+    "python.formatting.provider": "black",
+    "python.linting.enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.flake8Enabled": true,
+    "html.format.enable": true,
+    "prettier.formatterPriority": 1,
+    "explorer.icon.enableVimDevicons": true,
+    "explorer.file.column.indent.indentLine": true,
+    "git.branchCharacter": " ",
+    "git.enableGutters": true,
+    "git.realtimeGutters": true,
+    "git.changedSign.text": " ",
+    "git.addedSign.text": " ",
+    "git.removedSign.text": " ",
+    "git.topRemovedSign.text": " ",
+    "git.changeRemovedSign.text": " ",
+    "git.changedDecorator": " ",
+    "git.conflictedDecorator": " ",
+    "git.stagedDecorator": " ",
+    "git.untrackedDecorator": " ",
+    "snippets.ultisnips.enable": true,
+    "snippets.enableStatusItem": true,
+    "snippets.ultisnips.directories": [
+        "UltiSnips",
+        "~/.config/nvim/custom_snippets"
+    ],
+    "snippets.loadFromExtensions": true
+}
