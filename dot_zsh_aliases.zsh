@@ -37,9 +37,6 @@ alias lsa="lsd -lah --color always --icon always"
 # List only folders
 alias folders="find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn"
 
-# find alias
-alias find="fd"
-
 # disk aliases
 alias df="df -ahiT --total"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
