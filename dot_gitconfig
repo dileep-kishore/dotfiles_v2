@@ -12,12 +12,8 @@
 [core]
     pager = delta
 [delta]
-    plus-color = "#012800"
-    minus-color = "#340001"
     line-numbers = true
     side-by-side = true
-    plus-style = syntax "#003800"
-    minus-style = syntax "#3f0001"
     syntax-theme = gruvbox
     features = decorations
     whitespace-error-style = 22 reverse
