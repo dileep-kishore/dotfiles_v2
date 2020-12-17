@@ -14,3 +14,6 @@ Makefile
 
 # tags
 tags
+
+# bin
+bin/
