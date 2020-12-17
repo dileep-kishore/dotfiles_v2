@@ -1,0 +1,34 @@
+{
+  "settingsVersion": "1.66",
+  "exclusionRules": [
+    {
+      "pattern": "https?://mail.google.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://10fastfingers.com/typing-test/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https:?//app.clickup.com/*",
+      "passKeys": ""
+    }
+  ],
+  "filterLinkHints": false,
+  "waitForEnterForFilteredHints": true,
+  "hideHud": false,
+  "keyMappings": "# Insert your preferred key mappings here.",
+  "linkHintCharacters": "sadfjklewcmpgh",
+  "linkHintNumbers": "0123456789",
+  "newTabUrl": "about:newtab",
+  "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
+  "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<",
+  "regexFindMode": false,
+  "ignoreKeyboardLayout": false,
+  "scrollStepSize": 60,
+  "smoothScroll": true,
+  "grabBackFocus": true,
+  "searchEngines": "w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\ng: https://www.google.com/search?q=%s Google\nl: https://www.google.com/search?q=%s&btnI I'm feeling lucky...\ny: https://www.youtube.com/results?search_query=%s Youtube\ngm: https://www.google.com/maps?q=%s Google maps\nb: https://www.bing.com/search?q=%s Bing\nd: https://duckduckgo.com/?q=%s DuckDuckGo\naz: https://www.amazon.com/s/?field-keywords=%s Amazon\nqw: https://www.qwant.com/?q=%s Qwant",
+  "searchUrl": "https://searx.ninja/?preferences=eJxtVcmO2zAM_Zr6YkzR5dCTD0WLogUKzKDJ9CowMmOzlkSXkpNxv750vESZmYsDPT0uj6QYCwkbFsJYNRhQwBUOQjNAgxWGu8dd4diCmw4FDIkt-95hwqphbhwW5JVpeuGnsdrLgIXH1HJdPdzv9kWEI0YEsW31rkgteqw4WpBCMA4uRcPBBDybBIfqG7iIRc1k9JLdCaVi0ONblqa4WN3FNGoiPVNILRU1RTg4rA2GhoLmfwRhNmaR8ebDlzm05RrL6WMMJUUPFJryRDVyNGb-VRRsE3lQyqRnAsIIYMyR3OWEwmeqc-eTazphSTFH_54hpBzoSbTCBxiN8UMkq1DibuTEseUOwjXEiUEtI1sCV3qsCRT0_Aexyx0mFsGQ_l0NI2LdI8pryKavI9tBjNcsGmq0fBBvst1Ym11MIKmfepxrX4p1ZeG_AD6nvP_48dNTxpjLuQaHvis9ibAsTTkKeHB0ENwAxDLyMZ1BsKxJ0KrycbmdmCBjOcWLtx1Yc1trMUKo8SlnYGJ2NzYjtLeTszpZ86WgQoiHvDJHodAR2GxmlgnUkZ5O75-yqxY04-mzKHg2BFtXtNuJPMZ8WGcnmbNsqFaZW-dW4FmALe353Za9g7G8RL0Gt9bepVPGvUSf1GyaskJcawOZSZbahvnRo9fmlUkgRKf3Ny9pHo2NXQ81htcnfuNgGj0Hp8_-deJWzlwsnwjji5Gci1pguF0mQ4hqFdus6ouzF91Y8Js6LdiLNXOgdBhsh2npb54g9H3Wv_kml8c9BsGeV9J1A_Zu0KxjtalYgR26o_kRjiweEnGYHN-rG_PZWtRp-Xr_Q9ftWSih3vwmf-eoQ9Ny6nCcyN_3-4ddRrkYz9vbaPm7bYUfdEFG3Ti6yie7vYCqFPP466fStfQoimomFNSRiVbYTZp2lxU9ObHzH9FoIjp964XOL6qC__mGgCA=&q=%s",
+  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF785),\n  color-stop(100%,#FFC542));\nborder: 1px solid #E3BE23;\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\ncolor: black;\nfont-weight: bold;\nfont-size: 12px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}"
+}
