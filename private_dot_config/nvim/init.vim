@@ -50,7 +50,6 @@ Plug 'edkolev/tmuxline.vim'               " Tmux line sync with airline
 Plug 'tmux-plugins/vim-tmux-focus-events' " Restore focus autocommands in tmux session
 Plug 'christoomey/vim-tmux-navigator'     " Seamless navigation between vim and tmux
 Plug 'chrisbra/Colorizer'                 " Highlight colors in vim
-Plug 'KabbAmine/zeavim.vim'               " Search zeal docs from vim
 Plug 'machakann/vim-highlightedyank'      " Highlights yanked text briefly
 Plug 'tpope/vim-obsession'                " continuously update sessions (wrapper around :mksession)
 Plug 'tpope/vim-unimpaired'               " Useful `[` and `]` mappings
