@@ -1,0 +1,4 @@
+sourceDir = "/home/dileep/.dotfiles"
+[diff]
+  format = "git"
+  pager = "delta --syntax-theme gruvbox"
