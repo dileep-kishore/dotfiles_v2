@@ -4,7 +4,7 @@
 [core]
 	editor = nvim
 [credential]
-	helper = cache --timeout=18000
+	helper = cache --timeout 18000
 [merge]
 	tool = vimdiff
 [mergetool]
