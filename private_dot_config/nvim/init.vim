@@ -779,7 +779,7 @@ let g:firenvim_config = {
 \ }
 if exists('g:started_by_firenvim')
     set termguicolors
-    set guifont=VictorMono_Nerd_Font:h11
+    set guifont=VictorMono\ Nerd\ Font:h11
     set background=dark
     colorscheme NeoSolarized
     highlight Comment cterm=italic
@@ -797,6 +797,23 @@ if exists('g:started_by_firenvim')
     set expandtab
     au BufEnter github.com_*.txt set filetype=markdown
 endif
+
+let g:dont_write = v:false
+function! My_Write(timer) abort
+	let g:dont_write = v:false
+	write
+endfunction
+
+function! Delay_My_Write() abort
+    if g:dont_write
+        return
+    end
+    let g:dont_write = v:true
+    call timer_start(10000, 'My_Write')
+endfunction
+
+au TextChanged * ++nested call Delay_My_Write()
+au TextChangedI * ++nested call Delay_My_Write()
 
 " Rnvimr configuration
 " Make Ranger replace Netrw and be the file explorer
