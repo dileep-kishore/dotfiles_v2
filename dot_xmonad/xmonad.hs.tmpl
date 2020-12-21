@@ -118,7 +118,7 @@ myEditor :: String
 myEditor = myTerminal ++ " -e nvim "    -- Sets vim as editor
 
 myBorderWidth :: Dimension
-myBorderWidth = 2          -- Sets border width for windows
+myBorderWidth = 4          -- Sets border width for windows
 
 myNormColor :: String
 myNormColor   = myGray  -- Border color of normal windows
@@ -131,6 +131,15 @@ altMask = mod1Mask         -- Setting this for use in xprompts
 
 windowCount :: X (Maybe String)
 windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
+
+-- Whether focus follows the mouse pointer.
+myFocusFollowsMouse :: Bool
+myFocusFollowsMouse = False
+
+-- Whether clicking on a window to focus also passes the click to the window
+myClickJustFocuses :: Bool
+myClickJustFocuses = True
+
 
     -- Autostart
 myStartupHook :: X ()
@@ -351,14 +360,14 @@ floats   = renamed [Replace "floats"]
            $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
            $ limitWindows 20 simplestFloat
--- grid     = renamed [Replace "grid"]
---            $ windowNavigation
---            $ addTabs shrinkText myTabTheme
---            $ subLayout [] (smartBorders Simplest)
---            $ limitWindows 12
---            $ mySpacing 4
---            $ mkToggle (single MIRROR)
---            $ Grid (16/10)
+grid     = renamed [Replace "grid"]
+           $ windowNavigation
+           $ addTabs shrinkText myTabTheme
+           $ subLayout [] (smartBorders Simplest)
+           $ limitWindows 12
+           $ mySpacing 4
+           $ mkToggle (single MIRROR)
+           $ Grid (16/10)
 -- spirals  = renamed [Replace "spirals"]
 --            $ windowNavigation
 --            $ addTabs shrinkText myTabTheme
@@ -416,7 +425,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                                  ||| noBorders monocle
                                  ||| floats
                                  ||| noBorders tabs
-                                 -- ||| grid
+                                 ||| grid
                                  -- ||| spirals
                                  -- ||| threeCol
                                  -- ||| threeRow
@@ -586,18 +595,20 @@ main = do
         -- focus-up, focus-down, swap-up, swap-down, swap-master, sink, quit-wm. You can run
         -- "xmonadctl 0" to generate full list of commands written to ~/.xsession-errors.
         -- To compile xmonadctl: ghc -dynamic xmonadctl.hs
-        , handleEventHook    = serverModeEventHookCmd
+        , handleEventHook     = serverModeEventHookCmd
                                <+> serverModeEventHook
                                <+> serverModeEventHookF "XMONAD_PRINT" (io . putStrLn)
                                <+> docksEventHook
-        , modMask            = myModMask
-        , terminal           = myTerminal
-        , startupHook        = myStartupHook
-        , layoutHook         = showWName' myShowWNameTheme $ myLayoutHook
-        , workspaces         = myWorkspaces
-        , borderWidth        = myBorderWidth
-        , normalBorderColor  = myNormColor
-        , focusedBorderColor = myFocusColor
+        , modMask             = myModMask
+        , terminal            = myTerminal
+        , startupHook         = myStartupHook
+        , layoutHook          = showWName' myShowWNameTheme $ myLayoutHook
+        , workspaces          = myWorkspaces
+        , borderWidth         = myBorderWidth
+        , focusFollowsMouse = myFocusFollowsMouse
+        , clickJustFocuses  = myClickJustFocuses
+        , normalBorderColor   = myNormColor
+        , focusedBorderColor  = myFocusColor
         , logHook = workspaceHistoryHook <+> myLogHook <+> dynamicLogWithPP xmobarPP
                         { ppOutput = \x -> hPutStrLn xmproc0 x  >> hPutStrLn xmproc1 x
                         , ppCurrent = xmobarColor myOrange "" . wrap "[" "]" -- Current workspace in xmobar
