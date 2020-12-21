@@ -69,3 +69,10 @@ alias has="curl -sL https://git.io/_has | bash -s"
 
 # Anaconda path export alias
 alias exportconda="export PATH=$HOME/anaconda3/bin:$PATH"
+
+# Chezmoi aliases
+alias cz="chezmoi"
+alias cza="chezmoi add"
+alias cze="chezmoi edit"
+alias czy="chezmoi apply"
+alias czd="chezmoi diff"
