@@ -7,7 +7,7 @@ xrandr --output HDMI-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP
 {{- end }}
 nitrogen --restore &
 picom --experimental-backends &
-redshift -l 42.36989:-71.11211 &
+redshift -l geoclue2 &
 {{- if (eq .chezmoi.hostname "red-zen") }}
 udisksctl mount --block-device /dev/sda1 &
 {{- end }}
