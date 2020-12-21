@@ -1,6 +1,6 @@
 setName1=defaults
 sites1=4chan.org amazon.com buzzfeed.com cnn.com collegehumor.com ebay.com espn.com etsy.com facebook.com feedly.com funnyordie.com huffingtonpost.com hulu.com imgur.com instagram.com lifehacker.com medium.com netflix.com news.google.com news.ycombinator.com nytimes.com quora.com reddit.com renren.com slashdot.com stumbleupon.com tumblr.com twitter.com vimeo.com youtube.com
-times1=
+times1=0001-0400,2100-2359
 limitMins1=15
 limitPeriod1=43200
 limitOffset1=
