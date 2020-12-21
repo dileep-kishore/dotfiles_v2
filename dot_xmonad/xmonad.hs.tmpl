@@ -464,7 +464,7 @@ myManageHook = composeAll
     -- Loghook
 myLogHook :: X ()
 myLogHook = fadeInactiveLogHook fadeAmount
-    where fadeAmount = 0.95
+    where fadeAmount = 0.98
 
     -- Keybindings
 -- I am using the Xmonad.Util.EZConfig module which allows keybindings to be written in simpler, emacs-like format.
@@ -613,7 +613,7 @@ main = do
                         , ppHidden = xmobarColor myYellow "" . wrap "*" ""   -- Hidden workspaces in xmobar
                         , ppHiddenNoWindows = xmobarColor myGray ""        -- Hidden workspaces (no windows)
                         , ppTitle = xmobarColor myWhite "" . shorten 20     -- Title of active window in xmobar
-                        , ppSep =  "<fc=#666666> <fn=2>|</fn> </fc>"          -- Separators in xmobar
+                        , ppSep =  "<fc=#666666> | </fc>"          -- Separators in xmobar
                         , ppUrgent = xmobarColor myRed "" . wrap "!" "!"  -- Urgent workspace
                         , ppExtras  = [windowCount]                           -- # of windows current workspace
                         , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
