@@ -43,7 +43,7 @@ font:
     family: "VictorMono Nerd Font"
     style: SemiBold Italic
   # Point size of the font
-  size: 11.0
+  size: 10.5
 
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
 # and cursor.background colors, otherwise invert the colors of the cursor.
