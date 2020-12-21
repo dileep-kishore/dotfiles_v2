@@ -4,6 +4,6 @@
 
 xrandr --output HDMI-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-3 --primary --mode 1920x1080 --pos 0x0 --rotate normal &
 nitrogen --restore &
-blueman-manager &
+picom --experimental-backends &
 redshift -l 42.36989:-71.11211 &
 ~/.dotfiles/bin/killer.sh || shutdown -h now &
