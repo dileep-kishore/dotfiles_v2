@@ -88,7 +88,6 @@ import Text.Printf
 
    -- Utilities
 import XMonad.Util.EZConfig (additionalKeysP)
-import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce
 
@@ -314,20 +313,6 @@ searchList = [ ("a", archwiki)
              ]
 
 
-    -- Scratchpads
-myScratchPads :: [NamedScratchpad]
-myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm ]
-  where
-    spawnTerm  = myTerminal ++ " -n scratchpad"
-    findTerm   = resource =? "scratchpad"
-    manageTerm = customFloating $ W.RationalRect l t w h
-               where
-                 h = 0.9
-                 w = 0.9
-                 t = 0.95 -h
-                 l = 0.95 -w
-
-
     -- Layouts
 --Makes setting the spacingRaw simpler to write. The spacingRaw module adds a configurable amount of space around windows.
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
@@ -459,7 +444,8 @@ myManageHook = composeAll
        , className =? "Pavucontrol"    --> doFloat
        , className =? "Lxappearance"    --> doFloat
        , (className =? "brave-browser" <&&> resource =? "Dialog") --> doFloat  -- Float Brave Dialog
-     ] <+> namedScratchpadManageHook myScratchPads
+     ]
+
 
     -- Loghook
 myLogHook :: X ()
@@ -567,9 +553,6 @@ myKeys home =
         , ("M-C-/", withFocused (sendMessage . UnMergeAll))
         , ("M-C-.", onGroup W.focusUp')    -- Switch focus to next tab
         , ("M-C-,", onGroup W.focusDown')  -- Switch focus to prev tab
-
-    -- Scratchpads
-        , ("M-C-<Return>", namedScratchpadAction myScratchPads "terminal")
 
     -- Multimedia Keys
         -- , ("<XF86AudioPlay>", spawn (myTerminal ++ "mocp --play"))
