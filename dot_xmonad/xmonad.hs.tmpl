@@ -12,6 +12,16 @@
 -- Orange: #fe9019
 -- White: #fbf1c7
 
+-- Onedark colors (Source: https://github.com/joshdick/onedark.vim)
+-- Red: #e06c75
+-- Green: #98c379
+-- Yellow: #e5c07b
+-- Blue: #61afef
+-- Purple: #c678dd
+-- Cyan: #56b6c2
+-- Gray: #abb2bf
+-- Black: #282c24
+
    -- Base
 import XMonad
 import System.Directory
@@ -102,6 +112,16 @@ myGray = "#a89984"
 myOrange = "#fe9019"
 myWhite = "#fbf1c7"
 
+oneRed = "#e06c75"
+oneGreen = "#98c379"
+oneYellow = "#e5c07b"
+oneBlue = "#61afef"
+onePurple = "#c678dd"
+oneCyan = "#56b6c2"
+oneGray = "#abb2bf"
+oneBlack = "#282c24"
+
+
 myFont :: String
 myFont = "xft:VictorMono Nerd Font:regular:size=10:antialias=true:hinting=true"
 
@@ -121,10 +141,10 @@ myBorderWidth :: Dimension
 myBorderWidth = 4          -- Sets border width for windows
 
 myNormColor :: String
-myNormColor   = myGray  -- Border color of normal windows
+myNormColor   = oneGray  -- Border color of normal windows
 
 myFocusColor :: String
-myFocusColor  = myYellow  -- Border color of focused windows
+myFocusColor  = onePurple  -- Border color of focused windows
 
 altMask :: KeyMask
 altMask = mod1Mask         -- Setting this for use in xprompts
@@ -195,7 +215,7 @@ myAppGrid = [ ("Spotify", "spotify")
 myXPConfig :: XPConfig
 myXPConfig = def
       { font                = myFont
-      , bgColor             = "#282c34"
+      , bgColor             = oneBlack
       , fgColor             = myWhite
       , bgHLight            = myPurple
       , fgHLight            = myGray
@@ -614,13 +634,13 @@ main = do
         , focusedBorderColor  = myFocusColor
         , logHook = workspaceHistoryHook <+> myLogHook <+> dynamicLogWithPP xmobarPP
                         { ppOutput = \x -> hPutStrLn xmproc0 x  >> hPutStrLn xmproc1 x
-                        , ppCurrent = xmobarColor myOrange "" . wrap "[" "]" -- Current workspace in xmobar
-                        , ppVisible = xmobarColor myGreen ""                -- Visible but not current workspace
-                        , ppHidden = xmobarColor myYellow "" . wrap "*" ""   -- Hidden workspaces in xmobar
-                        , ppHiddenNoWindows = xmobarColor myGray ""        -- Hidden workspaces (no windows)
-                        , ppTitle = xmobarColor myWhite "" . shorten 20     -- Title of active window in xmobar
+                        , ppCurrent = xmobarColor onePurple "" . wrap "[" "]" -- Current workspace in xmobar
+                        , ppVisible = xmobarColor oneGreen ""           -- Visible but not current workspace
+                        , ppHidden = xmobarColor oneYellow "" . wrap "*" ""   -- Hidden workspaces in xmobar
+                        , ppHiddenNoWindows = xmobarColor oneGray ""        -- Hidden workspaces (no windows)
+                        , ppTitle = xmobarColor oneBlue "" . shorten 30     -- Title of active window in xmobar
                         , ppSep =  "<fc=#666666> | </fc>"          -- Separators in xmobar
-                        , ppUrgent = xmobarColor myRed "" . wrap "!" "!"  -- Urgent workspace
+                        , ppUrgent = xmobarColor oneRed "" . wrap "!" "!"  -- Urgent workspace
                         , ppExtras  = [windowCount]                           -- # of windows current workspace
                         , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
                         }
