@@ -192,8 +192,8 @@ myAppGrid = [ ("Spotify", "spotify")
 myXPConfig :: XPConfig
 myXPConfig = def
       { font                = myFont
-      , bgColor             = myGray
-      , fgColor             = myGreen
+      , bgColor             = "#282c34"
+      , fgColor             = myWhite
       , bgHLight            = myPurple
       , fgHLight            = myGray
       , borderColor         = myYellow
@@ -442,16 +442,16 @@ myManageHook = composeAll
      -- I'm doing it this way because otherwise I would have to write out the full
      -- name of my workspaces, and the names would very long if using clickable workspaces.
      [ className =? "brave-browser"     --> doShift " www "
-       , className =? "Barrier"     --> doShift " sync "
-       , className =? "Syncthing GTK"     --> doShift " sync "
-       , className =? "Skype"     --> doShift " comm "
-       , className =? "Discord"     --> doShift " comm "
-       , className =? "Spotify"     --> doShift " music "
-       , className =? "Obsidian"     --> doShift " note "
+       , className =? "barrier"     --> doShift " sync "
+       , className =? "syncthing GTK"     --> doShift " sync "
+       , className =? "skype"     --> doShift " comm "
+       , className =? "discord"     --> doShift " comm "
+       , className =? "spotify"     --> doShift " music "
+       , className =? "obsidian"     --> doShift " note "
        , className =? "mpv"     --> doShift " video "
        , className =? "vlc"     --> doShift " video "
-       , className =? "Pavucontrol"    --> doFloat
-       , className =? "Lxappearance"    --> doFloat
+       , className =? "pavucontrol"    --> doFloat
+       , className =? "lxappearance"    --> doFloat
        , (className =? "brave-browser" <&&> resource =? "Dialog") --> doFloat  -- Float Brave Dialog
      ]
 
