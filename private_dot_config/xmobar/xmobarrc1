@@ -32,5 +32,5 @@ Config { font    = "xft:FiraCode Nerd Font:weight=bold:pixelsize=12:antialias=tr
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{ <fc=#61afef>  %uname%</fc> <fc=#666666>|</fc> <fc=#c678dd>  %pacupdate%</fc><fc=#666666>|</fc> <fc=#98c379>%default:Master%</fc><fc=#666666>|</fc> <fc=#e5c07b>%KBOS%</fc> <fc=#666666>|</fc> <fc=#56b6c2>%date%</fc>   %trayerpad% "
+       , template = " %StdinReader% }{ <fc=#61afef>  %uname%</fc> <fc=#666666>⎨</fc> <fc=#c678dd>  %pacupdate%</fc><fc=#666666>⎨</fc> <fc=#98c379>%default:Master%</fc><fc=#666666>⎨</fc> <fc=#e5c07b>%KBOS%</fc> <fc=#666666>⎨</fc> <fc=#56b6c2>%date%</fc>   %trayerpad% "
 }

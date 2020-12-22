@@ -48,7 +48,7 @@ import Data.Tree
 import qualified Data.Map as M
 
     -- Hooks
-import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
+import XMonad.Hooks.DynamicLog (dynamicLogWithPP, pad, wrap, xmobarPP, xmobarColor, shorten, PP(..))
 import XMonad.Hooks.EwmhDesktops  -- for some fullscreen events, also for xcomposite in obs.
 import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.ManageDocks (avoidStruts, docksEventHook, manageDocks, ToggleStruts(..))
@@ -455,7 +455,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
 
 
     -- Workspaces
-myWorkspaces = [" www ", " term ", " dev ", " sync ", " comm ", " music ", " note ", " video ", " misc "]
+myWorkspaces = ["web","term","code","sync","comm","music","note","video","misc"]
 
 
     -- ManageHook
@@ -464,15 +464,15 @@ myManageHook = composeAll
      -- using 'doShift ( myWorkspaces !! 7)' sends program to workspace 8!
      -- I'm doing it this way because otherwise I would have to write out the full
      -- name of my workspaces, and the names would very long if using clickable workspaces.
-     [ className =? "brave-browser"     --> doShift " www "
-       , className =? "barrier"     --> doShift " sync "
-       , className =? "syncthing GTK"     --> doShift " sync "
-       , className =? "skype"     --> doShift " comm "
-       , className =? "discord"     --> doShift " comm "
-       , className =? "spotify"     --> doShift " music "
-       , className =? "obsidian"     --> doShift " note "
-       , className =? "mpv"     --> doShift " video "
-       , className =? "vlc"     --> doShift " video "
+     [ className =? "brave-browser"     --> doShift "web"
+       , className =? "barrier"     --> doShift "sync"
+       , className =? "syncthing GTK"     --> doShift "sync"
+       , className =? "skype"     --> doShift "comm"
+       , className =? "discord"     --> doShift "comm"
+       , className =? "spotify"     --> doShift "music"
+       , className =? "obsidian"     --> doShift "note"
+       , className =? "mpv"     --> doShift "video"
+       , className =? "vlc"     --> doShift "video"
        , className =? "pavucontrol"    --> doFloat
        , className =? "lxappearance"    --> doFloat
        , (className =? "brave-browser" <&&> resource =? "Dialog") --> doFloat  -- Float Brave Dialog
@@ -642,13 +642,13 @@ main = do
                         -- {{- else if (eq .chezmoi.hostname "dileep-xmonad") }}
                         { ppOutput = hPutStrLn xmproc2
                         -- {{- end }}
-                        , ppCurrent = xmobarColor onePurple "" . wrap "[" "]" -- Current workspace in xmobar
-                        , ppVisible = xmobarColor oneGreen ""           -- Visible but not current workspace
-                        , ppHidden = xmobarColor oneYellow "" . wrap "*" ""   -- Hidden workspaces in xmobar
-                        , ppHiddenNoWindows = xmobarColor oneGray ""        -- Hidden workspaces (no windows)
+                        , ppCurrent = xmobarColor onePurple "" . wrap "⌠ " " ⌡" -- Current workspace
+                        , ppVisible = xmobarColor oneGreen ""     -- Visible but not current workspace
+                        , ppHidden = xmobarColor oneYellow "" . wrap "◆" ""-- Hidden workspaces in xmobar
+                        , ppHiddenNoWindows = xmobarColor oneGray ""  -- Hidden workspaces (no windows)
                         , ppTitle = xmobarColor oneBlue "" . shorten 30     -- Title of active window in xmobar
-                        , ppSep =  "<fc=#666666> | </fc>"          -- Separators in xmobar
-                        , ppUrgent = xmobarColor oneRed "" . wrap "!" "!"  -- Urgent workspace
+                        , ppSep =  "<fc=#666666> ⎬ </fc>"          -- Separators in xmobar
+                        , ppUrgent = xmobarColor oneRed "" . wrap "⇉ " ""  -- Urgent workspace
                         , ppExtras  = [windowCount]                           -- # of windows current workspace
                         , ppOrder  = \(ws:l:t:ex) -> [ws,l]++ex++[t]
                         }
