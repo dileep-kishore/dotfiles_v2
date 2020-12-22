@@ -609,8 +609,12 @@ main :: IO ()
 main = do
     home <- getHomeDirectory
     -- Launching three instances of xmobar on their monitors.
+    -- Templating {{- if (eq .chezmoi.hostname "red-zen") }}
     xmproc0 <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc0"
     xmproc1 <- spawnPipe "xmobar -x 1 ~/.config/xmobar/xmobarrc1"
+    -- {{- else if (eq .chezmoi.hostname "dileep-xmonad") }}
+    xmproc2 <- spawnPipe "xmobar ~/.config/xmobar/xmobarrc2"
+    -- {{- end }}
     xmonad $ ewmh def
         { manageHook = ( isFullscreen --> doFullFloat ) <+> myManageHook <+> manageDocks
          -- Run xmonad commands from command line with "xmonadctl command". Commands include:
@@ -633,7 +637,11 @@ main = do
         , normalBorderColor   = myNormColor
         , focusedBorderColor  = myFocusColor
         , logHook = workspaceHistoryHook <+> myLogHook <+> dynamicLogWithPP xmobarPP
+                        -- Templating {{- if (eq .chezmoi.hostname "red-zen") }}
                         { ppOutput = \x -> hPutStrLn xmproc0 x  >> hPutStrLn xmproc1 x
+                        -- {{- else if (eq .chezmoi.hostname "dileep-xmonad") }}
+                        { ppOutput = hPutStrLn xmproc2
+                        -- {{- end }}
                         , ppCurrent = xmobarColor onePurple "" . wrap "[" "]" -- Current workspace in xmobar
                         , ppVisible = xmobarColor oneGreen ""           -- Visible but not current workspace
                         , ppHidden = xmobarColor oneYellow "" . wrap "*" ""   -- Hidden workspaces in xmobar
