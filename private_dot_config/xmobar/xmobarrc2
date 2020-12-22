@@ -18,7 +18,7 @@ Config { font    = "xft:FiraCode Nerd Font:weight=bold:pixelsize=12:antialias=tr
                       -- Time and date
                       Run Date " %m-%d-%y  %H:%M" "date" 50
                       -- Wireless
-                    , Run Wireless "wlan0" ["-t", "<ssid>"]
+                    , Run Wireless "wlan0" ["-t", "<ssid>"] 20
                       -- Network up and down
                     , Run Network "wlan0" ["-t", " <rx>  <tx>", "-S", "True"] 20
                       -- Cpu usage in percent
