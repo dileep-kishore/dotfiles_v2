@@ -106,7 +106,7 @@ yay -S --useask --batchinstall --cleanafter --removemake --nodiffmenu --noeditme
     dockerfile-language-server-bin \
     texlab \
     rust-analyzer \
-    hakell-language-server-bin
+    haskell-language-server-bin
 # Install julia and R language servers manually
 
 if [[ ! -d $HOME/.tmux/plugins/tpm ]]; then
