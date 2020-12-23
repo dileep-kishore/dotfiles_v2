@@ -1,0 +1,8 @@
+*.hs.tmpl text diff=haskell
+*.yml.tmpl text diff=yaml
+dot_bash_logout text diff=sh
+dot_bash_profile text diff=sh
+dot_bashrc text diff=sh
+dot_zshrc text diff=zsh
+dot_gitconfig text diff=.gitconfig
+dot_xinitrc.tmpl text diff=.xinitrc
