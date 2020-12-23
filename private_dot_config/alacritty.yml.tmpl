@@ -43,7 +43,11 @@ font:
     family: "VictorMono Nerd Font"
     style: SemiBold Italic
   # Point size of the font
+  # templating {{- if (eq .chezmoi.hostname "red-zen") }}
   size: 10.5
+  # {{- else if (eq .chezmoi.hostname "dileep-xmonad") }}
+  size: 7.5
+  # {{- end }}
 
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
 # and cursor.background colors, otherwise invert the colors of the cursor.
