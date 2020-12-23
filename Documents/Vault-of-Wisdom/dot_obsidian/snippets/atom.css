@@ -1,0 +1,115 @@
+/* Overall font family */
+
+.CodeMirror {
+    font-family: "VictorMono Nerd Font", "FiraCode Nerd Font", monospace;
+}
+
+.markdown-preview-view {
+    font-family: "VictorMono Nerd Font", "FiraCode Nerd Font", monospace;
+}
+
+/* Header styles */
+
+.cm-s-obsidian .cm-header {
+    color: #e06c75;
+}
+
+.markdown-preview-view h1,
+.markdown-preview-view h2,
+.markdown-preview-view h3,
+.markdown-preview-view h4,
+.markdown-preview-view h5,
+.markdown-preview-view h6 {
+    color: #e06c75;
+}
+
+/* Link styles */
+
+.cm-s-obsidian .cm-link,
+.cm-s-obsidian .cm-hmd-internal-link {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.markdown-preview-view .internal-link {
+    font-style: italic;
+    font-weight: bold;
+}
+
+/* Tag styles */
+
+.cm-s-obsidian .cm-hashtag {
+    font-style: italic;
+}
+
+.tag {
+    font-style: italic;
+}
+
+/* Bold styles */
+
+.cm-s-obsidian .cm-strong {
+    color: #c678dd;
+}
+
+strong {
+    color: #c678dd;
+}
+
+/* Italic styles */
+
+.cm-em .cm-list-1 {
+    color: #c678dd;
+}
+
+em {
+    color: #c678dd;
+}
+
+/* Quote styles */
+
+.cm-s-obsidian .cm-quote {
+    color: #98c379;
+}
+
+.markdown-preview-view blockquote {
+    color: #98c379;
+    border: 1px ridge #98c379;
+}
+
+.markdown-preview-view blockquote p::before {
+    content: open-quote;
+    font-size: xx-large;
+    font-family: "FiraCode Nerd Font";
+}
+
+/* Math and code styles */
+
+.cm-s-obsidian .cm-inline-code,
+.cm-s-obsidian .cm-math,
+.cm-s-obsidian .hmd-fold-math-placeholder {
+    font-family: "FiraCode Nerd Font";
+    color: #e5c07b;
+}
+
+.theme-dark .cm-s-obsidian .cm-hmd-frontmatter,
+.theme-dark .cm-s-obsidian pre.HyperMD-codeblock {
+    font-family: "VictorMono Nerd Font";
+}
+
+.cm-s-obsidian pre.HyperMD-codeblock .cm-formatting-code-block {
+    font-style: italic;
+}
+
+.theme-dark code[class*="language-"],
+.theme-dark pre[class*="language-"] {
+    font-family: "VictorMono Nerd Font";
+}
+
+.cm-s-obsidian pre.HyperMD-codeblock,
+.cm-s-obsidian span.cm-inline-code,
+.cm-s-obsidian
+    span.cm-math:not(.cm-formatting-math-begin):not(.cm-formatting-math-end),
+.markdown-preview-view code {
+    color: #d19a66;
+}
