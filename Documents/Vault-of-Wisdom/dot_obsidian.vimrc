@@ -1,3 +1,5 @@
+" Have jk work like the <Esc> key
+imap jk <Esc>
 " Have j and k navigate visual lines rather than logical ones
 nmap j gj
 nmap k gk
@@ -5,7 +7,7 @@ nmap k gk
 nmap H ^
 nmap L $
 " Quickly remove search highlights
-nmap <F9> :nohl
+nmap <silent> <Space>/ :nohl<CR>
 
 " Yank to system clipboard
 set clipboard=unnamed
