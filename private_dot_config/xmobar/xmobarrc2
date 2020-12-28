@@ -2,6 +2,8 @@
 -- install xmobar with these flags: --flags="with_alsa" --flags="with_mpd" --flags="with_xft"  OR --flags="all_extensions"
 -- you can find weather location codes here: http://weather.noaa.gov/index.html
 
+-- vim:ft=haskell
+
 Config { font    = "xft:FiraCode Nerd Font:weight=bold:pixelsize=12:antialias=true:hinting=true"
        , additionalFonts = [ "xft:Noto Color Emoji:pixelsize=12"
                            , "xft:FontAwesome:pixelsize=12"

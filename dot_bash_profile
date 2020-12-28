@@ -2,4 +2,6 @@
 # ~/.bash_profile
 #
 
+# vim:ft=sh
+
 [[ -f ~/.bashrc ]] && . ~/.bashrc
