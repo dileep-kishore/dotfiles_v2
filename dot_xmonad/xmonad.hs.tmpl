@@ -365,14 +365,18 @@ mySpacing' i = spacingRaw True (Border i i i i) True (Border i i i i) True
 tall     = renamed [Replace "tall"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
+           -- templating {{- if (eq .chezmoi.hostname "red-zen") }}
            $ subLayout [] (smartBorders Simplest)
+           -- {{- end }}
            $ limitWindows 12
            $ mySpacing 4
            $ ResizableTall 1 (3/100) (1/2) []
 magnify  = renamed [Replace "magnify"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
+           -- templating {{- if (eq .chezmoi.hostname "red-zen") }}
            $ subLayout [] (smartBorders Simplest)
+           -- {{- end }}
            $ magnifier
            $ limitWindows 12
            $ mySpacing 4
@@ -380,17 +384,23 @@ magnify  = renamed [Replace "magnify"]
 monocle  = renamed [Replace "monocle"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
+           -- templating {{- if (eq .chezmoi.hostname "red-zen") }}
            $ subLayout [] (smartBorders Simplest)
+           -- {{- end }}
            $ limitWindows 20 Full
 floats   = renamed [Replace "floats"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
+           -- templating {{- if (eq .chezmoi.hostname "red-zen") }}
            $ subLayout [] (smartBorders Simplest)
+           -- {{- end }}
            $ limitWindows 20 simplestFloat
 grid     = renamed [Replace "grid"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
+           -- templating {{- if (eq .chezmoi.hostname "red-zen") }}
            $ subLayout [] (smartBorders Simplest)
+           -- {{- end }}
            $ limitWindows 12
            $ mySpacing 4
            $ mkToggle (single MIRROR)
