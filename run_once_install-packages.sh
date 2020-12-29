@@ -21,6 +21,7 @@ sudo pacman -S --needed --noconfirm \
     trayer \
     volumeicon \
     cabal-install \
+    spotifyd \
     stack \
     libqalculate \
     pamixer \
