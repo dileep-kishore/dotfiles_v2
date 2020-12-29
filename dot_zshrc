@@ -222,6 +222,11 @@ zinit wait"1" as"program" lucid sbin"*cht.sh -> cht.sh" for "https://cht.sh/:cht
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# 1password
+export OP_SESSION_my="sRCcrR3P7_ye7JjROaSsF_FDkGhxfiFJaKOloioLkKs"
+# This command is meant to be used with your shell's eval function.
+# Use `op signin my` to sign in
+
 # Pyenv config
 eval "$(pyenv init -)"
 
