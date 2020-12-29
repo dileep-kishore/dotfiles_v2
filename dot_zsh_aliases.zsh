@@ -11,6 +11,9 @@ alias _="sudo "
 alias clear="clear -x"
 alias cls="clear"
 
+# rm alias
+alias rm="rm -i"
+
 # tmux aliases
 alias tnew="tmux new -s"
 alias tattach="tmux attach"
