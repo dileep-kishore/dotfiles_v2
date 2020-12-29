@@ -229,6 +229,7 @@ zinit wait"1" as"program" lucid sbin"*cht.sh -> cht.sh" for "https://cht.sh/:cht
 export OP_SESSION_my="sRCcrR3P7_ye7JjROaSsF_FDkGhxfiFJaKOloioLkKs"
 # This command is meant to be used with your shell's eval function.
 # Use `op signin my` to sign in
+eval "$(op completion zsh)"
 
 # Pyenv config
 eval "$(pyenv init -)"
