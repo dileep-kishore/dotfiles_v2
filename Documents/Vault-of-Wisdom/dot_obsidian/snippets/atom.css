@@ -2,10 +2,12 @@
 
 .CodeMirror {
     font-family: "VictorMono Nerd Font", "FiraCode Nerd Font", monospace;
+    font-size: smaller;
 }
 
 .markdown-preview-view {
     font-family: "VictorMono Nerd Font", "FiraCode Nerd Font", monospace;
+    font-size: smaller;
 }
 
 /* Header styles */
