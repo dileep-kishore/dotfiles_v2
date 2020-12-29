@@ -20,11 +20,11 @@ Config { font    = "xft:FiraCode Nerd Font:weight=bold:pixelsize=12:antialias=tr
                       -- Time and date
                       Run Date " %a %b %_d" "date" 50
                       -- Weather
-                    , Run Weather "KBOS" ["-t", " <tempF>"] 36000
+                    , Run Weather "KBOS" ["-t", " <tempF>"] 3600
                       -- Volume
                     , Run Volume "default" "Master" ["-t", "墳 <volume>% <status>"] 10
                       -- Runs custom script to check for pacman updates.
-                    , Run Com "/home/dileep/.dotfiles/bin/pacupdate.sh" [] "pacupdate" 36000
+                    , Run Com "/home/dileep/.dotfiles/bin/pacupdate.sh" [] "pacupdate" 3600
                       -- Runs a standard shell command 'uname -r' to get kernel version
                     , Run Com "uname" ["-r"] "" 3600
                       -- Script that dynamically adjusts xmobar padding depending on number of trayer icons.
@@ -34,5 +34,5 @@ Config { font    = "xft:FiraCode Nerd Font:weight=bold:pixelsize=12:antialias=tr
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{ <fc=#61afef>  %uname%</fc> <fc=#666666>⎨</fc> <fc=#c678dd>  %pacupdate%</fc><fc=#666666>⎨</fc> <fc=#98c379>%default:Master%</fc><fc=#666666>⎨</fc> <fc=#e5c07b>%KBOS%</fc> <fc=#666666>⎨</fc> <fc=#56b6c2>%date%</fc>   %trayerpad% "
+       , template = " %StdinReader% }{ <fc=#61afef>  %uname%</fc> <fc=#666666>⎨</fc> <fc=#c678dd>  %pacupdate%</fc><fc=#666666>⎨</fc> <fc=#98c379>%default:Master%</fc><fc=#666666>⎨</fc> <fc=#e5c07b>%KBOS%</fc> <fc=#666666>⎨</fc> <fc=#56b6c2>%date%</fc>        %trayerpad% "
 }
