@@ -178,7 +178,8 @@ zinit wait"2" lucid from"gh-r" as"null" for \
 zinit wait lucid as"completion" for \
     https://raw.githubusercontent.com/sharkdp/fd/master/contrib/completion/_fd \
     https://raw.githubusercontent.com/BurntSushi/ripgrep/master/complete/_rg \
-    https://github.com/ogham/exa/blob/master/completions/completions.zsh
+    https://github.com/ogham/exa/blob/master/completions/completions.zsh \
+    ~/.zfunc/_poetry
 
 # lsd
 zinit wait lucid from"gh-r" as"null" for \
