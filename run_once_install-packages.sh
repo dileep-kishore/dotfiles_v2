@@ -26,7 +26,9 @@ sudo pacman -S --needed --noconfirm \
     libqalculate \
     pamixer \
     ttf-font-awesome \
-    otf-font-awesome
+    otf-font-awesome \
+    adapta-gtk-theme \
+    papirus-icon-theme
 
 sudo pacman -S --needed --noconfirm \
     feh \
@@ -94,6 +96,7 @@ yay -S --useask --batchinstall --cleanafter --removemake --nodiffmenu --noeditme
     spotify \
     devour \
     nerd-fonts-complete \
+    layan-cursor-theme-git \
     alacritty-ligatures-git \
     kitty \
     noto-fonts-emoji \
