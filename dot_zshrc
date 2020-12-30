@@ -183,8 +183,8 @@ zinit wait lucid as"completion" for \
     https://raw.githubusercontent.com/BurntSushi/ripgrep/master/complete/_rg \
     https://github.com/ogham/exa/blob/master/completions/completions.zsh
 
-zinit wait lucid as"completion" for \
-    ~/.zfunc/_poetry
+zinit ice as"completion"
+zinit snippet /home/dileep/.zfunc/_poetry
 
 # lsd
 zinit wait lucid from"gh-r" as"null" for \
