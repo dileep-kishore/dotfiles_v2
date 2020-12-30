@@ -233,6 +233,10 @@ export OP_SESSION_my="sRCcrR3P7_ye7JjROaSsF_FDkGhxfiFJaKOloioLkKs"
 # Use `op signin my` to sign in
 eval "$(op completion zsh)"
 
+# virtualenv
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
+
 # Pyenv config
 eval "$(pyenv init -)"
 
