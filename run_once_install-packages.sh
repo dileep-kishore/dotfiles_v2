@@ -10,7 +10,8 @@ sudo pacman -S --needed --noconfirm \
     x11-ssh-askpass \
     git \
     subversion \
-    gparted
+    gparted \
+    dpkg
 
 sudo pacman -S --needed --noconfirm \
     lxappearance \
