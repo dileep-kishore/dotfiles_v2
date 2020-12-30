@@ -47,6 +47,9 @@ export CRUCIAL="/run/media/dileep/Crucial"
 export FZF_BASE="$HOME/.fzf"
 export FZF_DEFAULT_OPTS="--height 40% --reverse --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
+# poetry path
+export PATH="$HOME/.poetry/bin:$PATH"
+
 ################################################################################
 # Zinit init                                                                   #
 ################################################################################
