@@ -175,7 +175,9 @@ zinit wait"2" lucid from"gh-r" as"null" for \
      sbin"**/fd"        @sharkdp/fd \
      sbin"**/bat"       @sharkdp/bat \
      sbin"exa* -> exa"  ogham/exa \
-     sbin"noti"         variadico/noti
+     sbin"noti"         variadico/noti \
+     sbin"**/sad"       ms-jpq/sad \
+     sbin"sd* -> sd"    chmln/sd
 
 zinit wait lucid as"completion" for \
     https://raw.githubusercontent.com/sharkdp/fd/master/contrib/completion/_fd \
