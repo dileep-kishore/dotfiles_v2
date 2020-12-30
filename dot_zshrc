@@ -122,7 +122,6 @@ zinit wait lucid for \
     OMZP::pyenv \
     OMZP::python \
     OMZP::git-extras \
-    OMZP::virtualenvwrapper \
     OMZP::web-search
 
 zinit wait"2" lucid atload"bindkey '^R' fzf-history-widget" for OMZP::fzf
