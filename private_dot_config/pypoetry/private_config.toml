@@ -1,2 +1,2 @@
 [virtualenvs]
-path = "~/.virtualenvs"
+path = "/home/dileep/.virtualenvs"
