@@ -25,7 +25,7 @@ set -g status-right "\
 #[fg=#282828,bg=#d79921]  #H \
 "
 setw -g window-status-format "\
-#[fg=#32302f,bg=#32302f,nobold,nounderscore,noitalics]#[default] #I #W#[fg=#32302f,bg=#32302f,nobold,nounderscore,noitalics]\
+#[fg=#32302f,bg=#32302f,nobold,nounderscore,noitalics]#[fg=#32302f,bg=#fbf1c7] #I #W#[fg=#32302f,bg=#32302f,nobold,nounderscore,noitalics]\
 "
 setw -g window-status-current-format "\
 #[fg=#32302f,bg=#cc241d,BOLD,nounderscore,noitalics]#[fg=#fbf1c7,bg=#cc241d,BOLD] #I #W \
