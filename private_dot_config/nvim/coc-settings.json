@@ -1,4 +1,5 @@
 {
+    "refactor.saveToFile": false,
     "coc.preferences.extensionUpdateCheck": "daily",
     "coc.preferences.formatOnSaveFiletypes": [
         "javascript",
