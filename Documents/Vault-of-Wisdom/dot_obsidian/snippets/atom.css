@@ -2,12 +2,12 @@
 
 .CodeMirror {
     font-family: "VictorMono Nerd Font", "FiraCode Nerd Font", monospace;
-    font-size: smaller;
+    font-size: medium;
 }
 
 .markdown-preview-view {
     font-family: "VictorMono Nerd Font", "FiraCode Nerd Font", monospace;
-    font-size: smaller;
+    font-size: medium;
 }
 
 /* Header styles */
@@ -106,6 +106,7 @@ em {
 .theme-dark code[class*="language-"],
 .theme-dark pre[class*="language-"] {
     font-family: "VictorMono Nerd Font";
+    font-size: medium;
 }
 
 .cm-s-obsidian pre.HyperMD-codeblock,
