@@ -64,6 +64,7 @@ Plug 'bryanmylee/vim-colorscheme-icons'   " Colors for icons
 Plug 'kevinhwang91/rnvimr'                " Show ranger in a floating window
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } " Allows nvim to edit browser text areas
 Plug 'dbeniamine/cheat.sh-vim'            " Access cheat.sh from vim
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " Markdown preview
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Themes                                                                       "
