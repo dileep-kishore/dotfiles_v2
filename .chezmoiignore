@@ -3,8 +3,9 @@
 # gitignore
 .gitignore
 
-# Repository README file
+# Repository specific files
 README.md
+LICENSE
 
 # Editconfig
 .editorconfig
