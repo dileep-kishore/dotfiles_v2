@@ -6,6 +6,7 @@
 # Repository specific files
 README.md
 LICENSE
+assets/
 
 # Editconfig
 .editorconfig
