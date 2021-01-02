@@ -80,4 +80,5 @@ If you install the dependencies manually, then the `dotfiles` can be used in any
 
 ## Credits
 
--   DistroTube dotfiles
+-   Chezmoi
+-   Derek Taylor's [dotfiles](https://gitlab.com/dwt1/dotfiles) for `Xmonad` configuration
