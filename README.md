@@ -50,6 +50,9 @@ chezmoi init https://github.com/dileep-kishore/dotfiles
 The [dependency script](run_once_install-packages.sh) only supports `Arch Linux` and its derivatives.
 If you install the dependencies manually, then the `dotfiles` can be used in any `Linux` setup.
 
+> NOTE:
+> You might want to turn off the shutter scripts (killer.sh) in `.xprofile` and `xmonad.hs`
+
 ## Packages
 
 | Name      | Details                                         |
