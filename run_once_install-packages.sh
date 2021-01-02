@@ -62,7 +62,7 @@ sudo pacman -S --needed --noconfirm \
     inkscape \
     libreoffice-fresh
 
-if [[ ! -d $HOME/Downloads/yay ]]; then
+if [ ! -d $HOME/Downloads/yay ]; then
     MAINDIR=$PWD
     cd ~/Downloads
     git clone https://aur.archlinux.org/yay.git
@@ -79,15 +79,15 @@ sudo pacman -S --needed --noconfirm \
     python-ueberzug \
     ctags
 
-if [[ ! -d $HOME/npm-global/lib/node_modules/neovim ]]; then
+if [ ! -d $HOME/npm-global/lib/node_modules/neovim ]; then
     mkdir ~/npm-global
     npm install -g neovim
 fi
-if [[ ! -f "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim ]]; then
+if [ ! -f "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim ]; then
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 fi
-if [[ ! -d $HOME/.fzf ]]; then
+if [ ! -d $HOME/.fzf ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
 fi
@@ -114,6 +114,6 @@ yay -S --useask --batchinstall --cleanafter --removemake --nodiffmenu --noeditme
     haskell-language-server-bin
 # Install julia and R language servers manually
 
-if [[ ! -d $HOME/.tmux/plugins/tpm ]]; then
+if [ ! -d $HOME/.tmux/plugins/tpm ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
