@@ -93,6 +93,7 @@ if [ ! -d $HOME/.fzf ]; then
 fi
 
 yay -S --useask --batchinstall --cleanafter --removemake --nodiffmenu --noeditmenu \
+    betterlockscreen \
     brave \
     spotify \
     devour \

@@ -170,6 +170,7 @@ myStartupHook = do
           spawnOnce "volumeicon &"
           spawnOnce "blueman-applet &"
           spawnOnce "~/.dotfiles/bin/killer.sh || shutdown -h now &"
+          spawnOnce "betterlockscreen -u /home/dileep/Pictures/Wallpapers/Downloads/injuyasha.jpg -l dimblur --off 60"
           spawnOnce "aw-qt &"
           spawnOnce "barrier &"
           spawnOnce "syncthing -no-browser &"
@@ -507,6 +508,9 @@ myKeys home =
         [ ("M-C-r", spawn "xmonad --recompile") -- Recompiles xmonad
         , ("M-S-r", spawn "xmonad --restart")   -- Restarts xmonad
         , ("M-S-x", io exitSuccess)             -- Quits xmonad
+
+    -- Lockscreen
+        , ("M-C-l", spawn "betterlockscreen -u /home/dileep/Pictures/Wallpapers/Downloads/injuyasha.jpg -l dimblur")
 
     -- Run Prompt
         -- , ("M-S-<Return>", shellPrompt myXPConfig) -- Xmonad Shell Prompt
