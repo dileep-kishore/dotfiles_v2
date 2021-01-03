@@ -507,10 +507,10 @@ myKeys home =
     -- Xmonad
         [ ("M-C-r", spawn "xmonad --recompile") -- Recompiles xmonad
         , ("M-S-r", spawn "xmonad --restart")   -- Restarts xmonad
-        , ("M-S-x", io exitSuccess)             -- Quits xmonad
+        -- , ("M-S-x", io exitSuccess)             -- Quits xmonad
 
     -- Lockscreen
-        , ("M-C-l", spawn "betterlockscreen -u /home/dileep/Pictures/Wallpapers/Downloads/injuyasha.jpg -l dimblur")
+        , ("M-S-x", spawn "betterlockscreen -u /home/dileep/Pictures/Wallpapers/Downloads/injuyasha.jpg -l dimblur")
 
     -- Run Prompt
         -- , ("M-S-<Return>", shellPrompt myXPConfig) -- Xmonad Shell Prompt
