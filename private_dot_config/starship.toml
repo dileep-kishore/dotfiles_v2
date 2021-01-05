@@ -141,7 +141,7 @@ style = "bold #98971a"
 not_capable_style = "bold #cc241d"
 
 [package]
-format = "[via](italic) [$symbol$version]($style) "
+format = "[at](italic) [$symbol$version]($style) "
 style = "bold #d79921"
 display_private = true
 
