@@ -65,6 +65,7 @@ Plug 'kevinhwang91/rnvimr'                " Show ranger in a floating window
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } " Allows nvim to edit browser text areas
 Plug 'dbeniamine/cheat.sh-vim'            " Access cheat.sh from vim
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " Markdown preview
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }  " Documentation generator
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Themes                                                                       "
@@ -838,3 +839,6 @@ let g:qs_max_chars=120
 let g:qs_buftype_blacklist = ['terminal', 'nofile']
 let g:qs_lazy_highlight = 1
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" doge configuration
+let g:doge_doc_standard_python = 'numpy'
