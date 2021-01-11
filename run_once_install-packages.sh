@@ -23,6 +23,7 @@ sudo pacman -S --needed --noconfirm \
     volumeicon \
     cabal-install \
     spotifyd \
+    trash-cli \
     stack \
     libqalculate \
     pamixer \
@@ -34,11 +35,12 @@ sudo pacman -S --needed --noconfirm \
 sudo pacman -S --needed --noconfirm \
     feh \
     zathura \
+    sxiv \
+    renameutils \
     zathura-pdf-mupdf \
     featherpad \
     fontconfig \
     ranger \
-    nnn \
     tmux \
     python \
     pyenv \
@@ -92,8 +94,11 @@ if [ ! -d $HOME/.fzf ]; then
     ~/.fzf/install
 fi
 
+curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs | sh
+
 yay -S --useask --batchinstall --cleanafter --removemake --nodiffmenu --noeditmenu \
     betterlockscreen \
+    nnn-nerd \
     brave \
     spotify \
     devour \

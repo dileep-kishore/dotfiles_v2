@@ -79,3 +79,6 @@ alias cza="chezmoi add"
 alias cze="chezmoi edit"
 alias czy="chezmoi apply"
 alias czd="chezmoi diff"
+
+# nnn aliases
+alias N='sudo -E nnn -dH'
