@@ -94,7 +94,9 @@ if [ ! -d $HOME/.fzf ]; then
     ~/.fzf/install
 fi
 
-curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs | sh
+if [ ! -d $HOME/.config/nnn/plugins ]; then
+    curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs | sh
+fi
 
 yay -S --useask --batchinstall --cleanafter --removemake --nodiffmenu --noeditmenu \
     betterlockscreen \
