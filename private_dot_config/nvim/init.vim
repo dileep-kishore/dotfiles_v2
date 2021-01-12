@@ -61,11 +61,12 @@ Plug 'editorconfig/editorconfig-vim'      " Support for editorconfig
 Plug 'Asheq/close-buffers.vim'            " Useful functions to close buffers
 Plug 'ryanoasis/vim-devicons'             " Icon support
 Plug 'bryanmylee/vim-colorscheme-icons'   " Colors for icons
-Plug 'kevinhwang91/rnvimr'                " Show ranger in a floating window
+Plug 'mcchrish/nnn.vim'                " Show nnn in a floating window
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } " Allows nvim to edit browser text areas
 Plug 'dbeniamine/cheat.sh-vim'            " Access cheat.sh from vim
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " Markdown preview
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }  " Documentation generator
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] } " like spacemacs which key
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Themes                                                                       "
@@ -819,21 +820,6 @@ if exists('g:started_by_firenvim')
 
 endif
 
-" Rnvimr configuration
-" Make Ranger replace Netrw and be the file explorer
-let g:rnvimr_enable_ex = 1
-" Hide the files included in gitignore
-let g:rnvimr_hide_gitignore = 1
-" Make Neovim wipe the buffers corresponding to the files deleted by Ranger
-let g:rnvimr_enable_bw = 1
-" Add a shadow window, value is equal to 100 will disable shadow
-let g:rnvimr_shadow_winblend = 70
-" Draw border with both
-let g:rnvimr_ranger_cmd = 'ranger --cmd="set draw_borders both"'
-" Link CursorLine into RnvimrNormal highlight in the Floating window
-highlight link RnvimrNormal CursorLine
-nnoremap <silent> <M-o> :RnvimrToggle<CR>
-
 " quick-scope configuration
 let g:qs_max_chars=120
 let g:qs_buftype_blacklist = ['terminal', 'nofile']
@@ -842,3 +828,19 @@ let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " doge configuration
 let g:doge_doc_standard_python = 'numpy'
+
+" which key configuration
+let g:mapleader = "\<Space>"
+let g:maplocalleader = "\<Space>"
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey '<Space>'<CR>
+
+" nnn.vim configuration
+" Opens the nnn window in a split
+let g:nnn#layout = 'new' " or vnew, tabnew etc.
+let g:nnn#layout = { 'left': '~20%' } " or right, up, down
+let g:nnn#layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Debug' } }
+let g:nnn#action = {
+      \ '<c-t>': 'tab split',
+      \ '<c-s>': 'split',
+      \ '<c-v>': 'vsplit' }
