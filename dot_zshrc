@@ -52,6 +52,8 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 # nnn config
 export NNN_PLUG="b:bookmarks;c:fzcd;d:diffs;f:finder;i:imgview;m:mimelist;n:nuke;o:fzopen;p:preview-tui;r:renamer;u:getplugs;z:autojump"
+export NNN_ARCHIVE="\\.(7z|bz2|gz|tar|tgz|zip)$"
+export NNN_COLORS="#d79921"
 export NNN_TRASH=1
 export NNN_FIFO=/tmp/nnn.fifo
 
