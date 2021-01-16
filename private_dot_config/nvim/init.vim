@@ -6,14 +6,13 @@ Plug 'tpope/vim-fugitive'                 " Git wrapper
 Plug 'junegunn/gv.vim'                    " A git commit browser
 Plug 'tpope/vim-surround'                 " Surround text objects
 Plug 'tpope/vim-abolish'                  " Makes working with variants of a word easier
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  " fzf plugin
-Plug 'junegunn/fzf.vim'                   " fzf buffer
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' } " vim-clap finder and dispatcher
 Plug 'bling/vim-airline'                  " Vim status bar
 Plug 'tpope/vim-commentary'               " Key bindings for commenting
 Plug 'ludovicchabant/vim-gutentags'       " Automatic tag management
 Plug 'majutsushi/tagbar'                  " Ctags bar for exploring symbols
 Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Conqueror of Completion
-Plug 'antoinemadec/coc-fzf', {'branch': 'release'}  " fzf window for CoC
+Plug 'vn-ki/coc-clap'                     " vim-clap window for CoC
 Plug 'junegunn/vim-easy-align'            " Align text
 Plug 'sjl/gundo.vim'                      " Undo tree
 Plug 'terryma/vim-multiple-cursors'       " Multiple cursor support
@@ -100,8 +99,6 @@ let g:asyncrun_open = 6
 
 set encoding=utf-8
 set number
-"set numberwidth=3
-" Relative line numbering
 syntax enable
 set termguicolors
 set background=dark
@@ -169,8 +166,6 @@ set nojoinspaces
 " More natural splits
 set splitbelow
 set splitright
-" Toggle between normal and relative numbering
-nnoremap <leader>r :call NumberToggle()<CR>
 
 " Airline
 set laststatus=2
@@ -362,19 +357,19 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Main list
-nnoremap <silent><nowait> <space>ca  :<C-u>CocFzfList<cr>
+nnoremap <silent><nowait> <space>ca  :Clap coc_actions<cr>
 " Show diagnostics for current file
-nnoremap <silent><nowait> <space>cd  :<C-u>CocFzfList diagnostics --current-buf<cr>
+nnoremap <silent><nowait> <space>cd  :Clap coc_diagnostics --current-buf<cr>
 " Manage extensions
-nnoremap <silent><nowait> <space>ce  :<C-u>CocFzfList extensions<cr>
+nnoremap <silent><nowait> <space>ce  :Clap coc_extensions<cr>
 " Show commands
-nnoremap <silent><nowait> <space>cc  :<C-u>CocFzfList commands<cr>
+nnoremap <silent><nowait> <space>cc  :Clap coc_commands<cr>
 " Show location
-nnoremap <silent><nowait> <space>cl  :<C-u>CocFzfList location<cr>
+nnoremap <silent><nowait> <space>cl  :Clap coc_location<cr>
 " Find symbol of current document
-nnoremap <silent><nowait> <space>co  :<C-u>CocFzfList outline<cr>
+nnoremap <silent><nowait> <space>co  :Clap coc_outline<cr>
 " Search workspace symbols
-nnoremap <silent><nowait> <space>cs  :<C-u>CocFzfList symbols<cr>
+nnoremap <silent><nowait> <space>cs  :Clap coc_symbols<cr>
 " " Do default action for next item.
 " nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " " Do default action for previous item.
@@ -418,7 +413,6 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " coc-explorer config
 nmap <leader>\ :CocCommand explorer<CR>
-let g:indent_guides_exclude_filetypes = ['coc-explorer', 'startify']
 
 " coc-yank config
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<CR>
@@ -437,35 +431,6 @@ nnoremap <silent> <leader>hu :<C-u>CocCommand git.chunkUndo<CR>
 " Gutter and diagnostics settings
 set updatetime=200
 
-" fzf settings
-" [Buffers] Jump to the existing window if possible
-let g:fzf_buffers_jump = 1
-" Remapping
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit' }
-" Search git ls-files
-nnoremap <Leader>o :GFiles<CR>
-" Search all files
-nnoremap <Leader>ff :Files<CR>
-" Search recently used files
-nnoremap <Leader>fh :History<CR>
-" Search open buffers
-nnoremap <Leader>fb :Buffers<CR>
-" Search open windows
-nnoremap <Leader>fw :Windows<CR>
-" Search tags in buffer
-nnoremap <Leader>ft :Tags<CR>
-" Search commits
-nnoremap <Leader>fc :Commits<CR>
-" Search lines
-nnoremap <Leader>fl :Lines<CR>
-" Search using Ag
-nnoremap <Leader>fs :Ag<CR>
-" Search marks
-nnoremap <Leader>fm :Marks<CR>
-
 " Enabling Hardmode
 "autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 let g:hardtime_default_on = 1
@@ -483,19 +448,8 @@ set guifont=VictorMono\ Nerd\ Font:h13
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
             \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
             \,sm:block-blinkwait175-blinkoff150-blinkon175
-"Toggle relative numbering, and set to absolute on loss of focus or insert mode
+"Toggle relative numbering
 set rnu
-function! ToggleNumbersOn()
-    set nu!
-endfunction
-function! ToggleRelativeOn()
-    set rnu!
-    set nu
-endfunction
-"autocmd FocusLost * call ToggleRelativeOn()
-"autocmd FocusGained * call ToggleRelativeOn()
-autocmd InsertEnter * call ToggleRelativeOn()
-autocmd InsertLeave * call ToggleRelativeOn()
 " Make it obvious where 100 characters is
 set textwidth=0
 " set formatoptions=cq
@@ -525,6 +479,7 @@ nnoremap <F5> :GundoToggle<CR>
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
+let g:indent_guides_exclude_filetypes = ['coc-explorer', 'startify', 'clap_input']
 
 " Resizing using arrow keys
 nnoremap <left> :vertical resize +5<cr>
@@ -550,52 +505,6 @@ set t_ZR=[23m
 
 " Rainbow parentheses
 let g:rainbow_active = 1
-
-" Narrow ag results in vim using fzf
-function! s:ag_to_qf(line)
-  let parts = split(a:line, ':')
-  return {'filename': parts[0], 'lnum': parts[1], 'col': parts[2],
-        \ 'text': join(parts[3:], ':')}
-endfunction
-
-function! s:ag_handler(lines)
-  if len(a:lines) < 2 | return | endif
-
-  let cmd = get({'ctrl-x': 'split',
-               \ 'ctrl-v': 'vertical split',
-               \ 'ctrl-t': 'tabe'}, a:lines[0], 'e')
-  let list = map(a:lines[1:], 's:ag_to_qf(v:val)')
-
-  let first = list[0]
-  execute cmd escape(first.filename, ' %#\')
-  execute first.lnum
-  execute 'normal!' first.col.'|zz'
-
-  if len(list) > 1
-    call setqflist(list)
-    copen
-    wincmd p
-  endif
-endfunction
-
-command! -nargs=* Ag call fzf#run({
-\ 'source':  printf('ag --nogroup --column --color "%s"',
-\                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
-\ 'sink*':    function('<sid>ag_handler'),
-\ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
-\            '--multi --bind=ctrl-a:select-all,ctrl-d:deselect-all '.
-\            '--color hl:68,hl+:110',
-\ 'down':    '50%'
-\ })
-
-function! FzfSpellSink(word)
-  exe 'normal! "_ciw'.a:word
-endfunction
-function! FzfSpell()
-  let suggestions = spellsuggest(expand("<cword>"))
-  return fzf#run({'source': suggestions, 'sink': function("FzfSpellSink"), 'down': 10 })
-endfunction
-nnoremap z= :call FzfSpell()<CR>
 
 " Vim expand region
 vmap v <Plug>(expand_region_expand)
@@ -709,33 +618,6 @@ function! StartifyEntryFormat()
     return 'WebDevIconsGetFileTypeSymbol(absolute_path) ." ". entry_path'
 endfunction
 
-"   :Ag  - Start fzf with hidden preview window that can be enabled with '?' key
-"   :Ag! - Start fzf in fullscreen and display the preview window above
-command! -bang -nargs=* Ag
-    \ call fzf#vim#ag(<q-args>,
-    \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-    \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-    \                 <bang>0)
-
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-command! -bang -nargs=? GFiles
-    \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-" Sessions search using fzf.vim
-function! s:sessions()
-  call fzf#run({
-  \ 'source':  'ls -1 ~/.vim/session',
-  \ 'sink':    'SLoad',
-  \ 'options': '+m --prompt="Sessions> "',
-  \ 'down':    '40%'
-  \})
-endfunction
-command! Sessions call s:sessions()
-" Load saved sessions
-nnoremap <Leader>p :Sessions<CR>
-
 " Editorconfig plugin configuration
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
@@ -841,5 +723,48 @@ let g:nnn#command = 'nnn -de'
 let g:nnn#layout = { 'window': { 'width': 0.75, 'height': 0.6, 'highlight': 'Debug' } }
 let g:nnn#action = {
       \ '<c-t>': 'tab split',
-      \ '<c-s>': 'split',
+      \ '<c-x>': 'split',
       \ '<c-v>': 'vsplit' }
+
+" vim-clap settings
+let g:clap_layout = { 'relative': 'editor' }
+let g:clap_enable_background_shadow = v:false
+let g:clap_preview_size = { '*': 5, 'files': 10 }
+autocmd FileType clap_input inoremap <silent> <buffer> <C-n> <C-R>=clap#navigation#linewise('down')<CR>
+autocmd FileType clap_input inoremap <silent> <buffer> <C-p> <C-R>=clap#navigation#linewise('up')<CR>
+" Search git ls-files
+nnoremap <Leader>fo :Clap gfiles<CR>
+" Search all files
+nnoremap <Leader>ff :Clap files<CR>
+" Search recently used files
+nnoremap <Leader>fh :Clap history<CR>
+" Search open buffers
+nnoremap <Leader>fb :Clap buffers<CR>
+" Search open windows
+nnoremap <Leader>fw :Clap windows<CR>
+" Search tags in buffer
+nnoremap <Leader>ft :Clap tags<CR>
+" Search commits
+nnoremap <Leader>fc :Clap commits<CR>
+" Search lines
+nnoremap <Leader>fl :Clap lines<CR>
+" Search using Ag
+nnoremap <Leader>fs :Clap grep2<CR>
+" Search marks
+nnoremap <Leader>fm :Clap marks<CR>
+" Sessions search using vim-clap
+let g:clap_provider_sessions = {
+    \ 'source': 'ls -1 ~/.vim/session',
+    \ 'sink': 'SLoad',
+    \ 'description': 'Open vim sessions',
+  \ }
+nnoremap <Leader>fp :Clap sessions<CR>
+" Spelling suggestions using vim-clap
+function! ClapSpellSink(word)
+  exe 'normal! "_ciw'.a:word
+endfunction
+function! ClapSpell()
+  let suggestions = spellsuggest(expand("<cword>"))
+  return clap#run({'source': suggestions, 'sink': function("ClapSpellSink"), 'down': 10 })
+endfunction
+nnoremap <Leader>fz :call ClapSpell()<CR>
