@@ -81,4 +81,5 @@ alias czy="chezmoi apply"
 alias czd="chezmoi diff"
 
 # nnn aliases
-alias N='sudo -E nnn -dH'
+alias N="sudo -E nnn -dH"
+alias nnn="nnn -de"
