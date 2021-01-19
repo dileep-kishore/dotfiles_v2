@@ -735,7 +735,7 @@ autocmd FileType clap_input inoremap <silent> <buffer> <C-p> <C-R>=clap#navigati
 " Search git ls-files
 nnoremap <Leader>fo :Clap gfiles<CR>
 " Search all files
-nnoremap <Leader>ff :Clap files<CR>
+nnoremap <Leader>ff :Clap files --hidden<CR>
 " Search recently used files
 nnoremap <Leader>fh :Clap history<CR>
 " Search open buffers
