@@ -40,7 +40,6 @@ sudo pacman -S --needed --noconfirm \
     zathura-pdf-mupdf \
     featherpad \
     fontconfig \
-    ranger \
     tmux \
     python \
     pyenv \
