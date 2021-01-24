@@ -64,11 +64,11 @@ sudo pacman -S --needed --noconfirm \
     inkscape \
     libreoffice-fresh
 
-if [ ! -d $HOME/Downloads/yay ]; then
+if [ ! -d $HOME/Downloads/paru ]; then
     MAINDIR=$PWD
     cd ~/Downloads
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
+    git clone https://aur.archlinux.org/paru.git
+    cd paru
     makepkg -si
     cd $MAINDIR
 fi
@@ -98,7 +98,7 @@ if [ ! -d $HOME/.config/nnn/plugins ]; then
     curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs | sh
 fi
 
-yay -S --useask --batchinstall --cleanafter --removemake --nodiffmenu --noeditmenu \
+paru -S --useask --batchinstall --cleanafter --removemake --nodiffmenu --noeditmenu \
     betterlockscreen \
     nnn-nerd \
     brave \
@@ -113,7 +113,7 @@ yay -S --useask --batchinstall --cleanafter --removemake --nodiffmenu --noeditme
     zoom
 
 
-yay -S --useask --batchinstall --cleanafter --removemake --nodiffmenu --noeditmenu \
+paru -S --useask --batchinstall --cleanafter --removemake --nodiffmenu --noeditmenu \
     bash-language-server \
     neovim-coc-git \
     dockerfile-language-server-bin \
