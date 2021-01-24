@@ -18,7 +18,7 @@ Config { font    = "xft:FiraCode Nerd Font:weight=bold:pixelsize=12:antialias=tr
        , iconRoot = ".",
        , commands = [
                       -- Time and date
-                      Run Date " %m-%d-%y  %H:%M" "date" 50
+                      Run Date " %Y-%m-%d  %H:%M" "date" 50
                       -- Battery
                     , Run BatteryP ["BAT0", "BAT1"] ["-t", " <left>% [<acstatus>]"] 30
                       -- Wireless
