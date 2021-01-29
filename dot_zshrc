@@ -31,6 +31,7 @@ export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 export BROWSER=brave
 export GIT_PAGER="delta"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Set XDG directories.
 export XDG_CONFIG_HOME="${HOME}/.config"
