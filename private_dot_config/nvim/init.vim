@@ -66,6 +66,7 @@ Plug 'dbeniamine/cheat.sh-vim'            " Access cheat.sh from vim
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " Markdown preview
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }  " Documentation generator
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] } " like spacemacs which key
+Plug 'romgrk/todoist.nvim', { 'do': ':TodoistInstall' }  " todoist plugin for neovim
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Themes                                                                       "
@@ -768,3 +769,20 @@ function! ClapSpell()
   return clap#run({'source': suggestions, 'sink': function("ClapSpellSink"), 'down': 10 })
 endfunction
 nnoremap <Leader>fz :call ClapSpell()<CR>
+
+" Todoist configuration
+let todoist = {
+\ 'icons': {
+\   'unchecked': '  ',
+\   'checked':   '  ',
+\   'loading':   '  ',
+\   'error':     '  ',
+\ },
+\}
+" vim clap todoist config
+let clap_provider_todoist = {
+\ 'source': {-> Todoist__listProjects()},
+\ 'sink': 'Todoist',
+\}
+" keybinding
+nnoremap <Leader>t :Clap todoist<CR>
