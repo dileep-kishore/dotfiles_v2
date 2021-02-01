@@ -83,3 +83,6 @@ alias czd="chezmoi diff"
 # nnn aliases
 alias N="sudo -E nnn -dH"
 alias nnn="nnn -de"
+
+# todoist aliases
+alias todoist="todoist --color --namespace --indent --project-namespace"
