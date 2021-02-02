@@ -480,7 +480,7 @@ nnoremap <F5> :GundoToggle<CR>
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
-let g:indent_guides_exclude_filetypes = ['coc-explorer', 'startify', 'clap_input']
+let g:indent_guides_exclude_filetypes = ['coc-explorer', 'startify', 'clap_input', 'todoist']
 
 " Resizing using arrow keys
 nnoremap <left> :vertical resize +5<cr>
