@@ -86,3 +86,4 @@ alias nnn="nnn -de"
 
 # todoist aliases
 alias todoist="todoist --color --namespace --indent --project-namespace"
+alias exporttodoist="export TODOIST_API_KEY=$(pass TODOIST/API)"

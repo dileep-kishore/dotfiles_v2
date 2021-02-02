@@ -58,9 +58,6 @@ export NNN_COLORS="#d79921"
 export NNN_TRASH=1
 export NNN_FIFO=/tmp/nnn.fifo
 
-# todoist configuration
-export TODOIST_API_KEY="$(pass TODOIST/API)"
-
 ################################################################################
 # Zinit init                                                                   #
 ################################################################################
