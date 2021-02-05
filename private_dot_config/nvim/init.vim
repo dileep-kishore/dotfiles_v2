@@ -13,6 +13,7 @@ Plug 'ludovicchabant/vim-gutentags'       " Automatic tag management
 Plug 'majutsushi/tagbar'                  " Ctags bar for exploring symbols
 Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Conqueror of Completion
 Plug 'vn-ki/coc-clap'                     " vim-clap window for CoC
+Plug 'pechorin/any-jump.vim'              " jump through defintions
 Plug 'junegunn/vim-easy-align'            " Align text
 Plug 'sjl/gundo.vim'                      " Undo tree
 Plug 'terryma/vim-multiple-cursors'       " Multiple cursor support
@@ -786,3 +787,7 @@ let clap_provider_todoist = {
 \}
 " keybinding
 nnoremap <Leader>t :Clap todoist<CR>
+
+" any jump configuration
+" Show line numbers in search rusults
+let g:any_jump_list_numbers = 1
