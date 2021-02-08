@@ -9,7 +9,7 @@ xrandr --output HDMI-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP
 # {{- end }}
 nitrogen --restore &
 picom --experimental-backends &
-redshift -l geoclue2 &
+redshift -l 42.35765:-71.12889 &
 # templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dileep-xmonad")) }}
 ~/.dotfiles/bin/killer.sh || shutdown -h now &
 # {{- end }}
