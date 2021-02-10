@@ -11,7 +11,7 @@ setopt APPEND_HISTORY
 # unsetopt BG_NICE
 setopt CORRECT
 setopt EXTENDED_HISTORY
-setopt MENU_COMPLETE
+# setopt MENU_COMPLETE
 # setopt ALL_EXPORT
 setopt RM_STAR_WAIT
 
