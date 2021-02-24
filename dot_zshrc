@@ -222,6 +222,9 @@ zinit as"null" wait"2" lucid for \
     sbin  arzzen/git-quick-stats \
     make"PREFIX=$ZPFX" tj/git-extras
 
+zinit ice lucid wait"0" as"program" from"gh-r" pick"bit"
+zinit light "chriswalz/bit"
+
 zinit wait"1" as"program" lucid sbin"*cht.sh -> cht.sh" for "https://cht.sh/:cht.sh"
 
 
