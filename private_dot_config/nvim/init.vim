@@ -435,7 +435,7 @@ set updatetime=200
 
 " Enabling Hardmode
 "autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-let g:hardtime_default_on = 1
+let g:hardtime_default_on = 0
 
 " Tagbar toggle
 nmap <F8> :TagbarToggle<CR>
