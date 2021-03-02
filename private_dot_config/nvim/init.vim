@@ -559,7 +559,7 @@ let g:grepper.quickfix      = 0
 
 " Git fugitive configuration
 
-nnoremap <leader>gc :Gcommit --verbose<CR>
+nnoremap <leader>gc :Git commit --verbose<CR>
 vnoremap <leader>gs :diffput<CR>
 nnoremap <leader>ga :Gwrite<CR>
 nnoremap <leader>gd :Gdiff<CR>
