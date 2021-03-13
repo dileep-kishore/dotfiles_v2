@@ -562,7 +562,7 @@ let g:grepper.quickfix      = 0
 nnoremap <leader>gc :Git commit --verbose<CR>
 vnoremap <leader>gs :diffput<CR>
 nnoremap <leader>ga :Gwrite<CR>
-nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gd :Gdiffsplit<CR>
 nnoremap <leader>gp :Gpush<CR>
 nnoremap <leader>gs :Gstatus<CR>
 
