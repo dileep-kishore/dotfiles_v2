@@ -178,7 +178,7 @@ let g:airline#extensions#virtualenv#enabled = 0
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline_left_alt_sep = "\ue0b1"
 let g:airline_right_alt_sep = "\ue0b3"
-au VimEnter * let g:airline_section_x = airline#section#create_left(['filetype']) | :AirlineRefresh
+au VimEnter * let g:airline_section_x = airline#section#create_left(['filetype', 'vista']) | :AirlineRefresh
 function! AirlineLN()
     call airline#parts#define_raw('linenr', '%l')
     call airline#parts#define_accent('linenr', 'bold')
@@ -789,10 +789,7 @@ nnoremap <Leader>t :Clap todoist<CR>
 let g:any_jump_list_numbers = 1
 
 " vista configuration
-function! NearestMethodOrFunction() abort
-  return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
-set statusline+=%{NearestMethodOrFunction()}
+let g:airline#extensions#vista#enabled = 1
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista#renderer#enable_icon = 1
