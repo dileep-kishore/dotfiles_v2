@@ -9,8 +9,7 @@ Plug 'tpope/vim-abolish'                  " Makes working with variants of a wor
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' } " vim-clap finder and dispatcher
 Plug 'bling/vim-airline'                  " Vim status bar
 Plug 'tpope/vim-commentary'               " Key bindings for commenting
-Plug 'ludovicchabant/vim-gutentags'       " Automatic tag management
-Plug 'majutsushi/tagbar'                  " Ctags bar for exploring symbols
+Plug 'liuchengxu/vista.vim'               " Vim modern tag management
 Plug 'neoclide/coc.nvim', {'branch': 'release'}  " Conqueror of Completion
 Plug 'vn-ki/coc-clap'                     " vim-clap window for CoC
 Plug 'pechorin/any-jump.vim'              " jump through defintions
@@ -179,7 +178,7 @@ let g:airline#extensions#virtualenv#enabled = 0
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline_left_alt_sep = "\ue0b1"
 let g:airline_right_alt_sep = "\ue0b3"
-au VimEnter * let g:airline_section_x = airline#section#create_left(['tagbar', 'filetype']) | :AirlineRefresh
+au VimEnter * let g:airline_section_x = airline#section#create_left(['filetype']) | :AirlineRefresh
 function! AirlineLN()
     call airline#parts#define_raw('linenr', '%l')
     call airline#parts#define_accent('linenr', 'bold')
@@ -436,9 +435,6 @@ set updatetime=200
 " Enabling Hardmode
 "autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 let g:hardtime_default_on = 0
-
-" Tagbar toggle
-nmap <F8> :TagbarToggle<CR>
 
 " Colbycheeze settings
 " Autoload files
@@ -791,3 +787,12 @@ nnoremap <Leader>t :Clap todoist<CR>
 " any jump configuration
 " Show line numbers in search rusults
 let g:any_jump_list_numbers = 1
+
+" vista configuration
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+set statusline+=%{NearestMethodOrFunction()}
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista#renderer#enable_icon = 1
