@@ -26,6 +26,7 @@
       doom-unicode-font (font-spec :family "FiraCode Nerd Font" :size 15)
       doom-big-font (font-spec :family "VictorMono Nerd Font" :size 20))
 (custom-set-faces!
+  '(font-lock-preprocessor-face :weight bold)
   '(font-lock-comment-face :slant italic)
   '(font-lock-keyword-face :slant italic :weight bold))
 ;; '(font-lock-comment-face ((t (:inherit default :slant italic :family "Victor Mono"))))
