@@ -97,7 +97,10 @@ if [ ! -d $HOME/.config/nnn/plugins ]; then
     curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs | sh
 fi
 
-paru -S --useask --batchinstall --cleanafter --removemake --nodiffmenu --noeditmenu \
+paru -S --useask --batchinstall --cleanafter --removemake \
+    emacs-git \
+    mu \
+    mbsync-git \
     betterlockscreen \
     nnn-nerd \
     brave \
@@ -112,7 +115,7 @@ paru -S --useask --batchinstall --cleanafter --removemake --nodiffmenu --noeditm
     zoom
 
 
-paru -S --useask --batchinstall --cleanafter --removemake --nodiffmenu --noeditmenu \
+paru -S --useask --batchinstall --cleanafter --removemake \
     bash-language-server \
     neovim-coc-git \
     dockerfile-language-server-bin \
