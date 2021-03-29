@@ -10,22 +10,24 @@ Identify configuration for various functionality, e.g. *GPG* configuration, /ema
 
 * Useful functions/macros that are helpful for configuration
 
-- `load!' for loading external *.el files relative to this one
-- `use-package!' for configuring packages
-- `after!' for running code after a package has loaded
-- `add-load-path!' for adding directories to the `load-path', relative to
-this file. Emacs searches the `load-path' when you load packages with
-`require' or `use-package'.
-- `map!' for binding new keys
+- *load!* for loading external *.el files relative to this one
+- *use-package!* for configuring packages
+- *after!* for running code after a package has loaded
+- *add-load-path!* for adding directories to the *load-path*, relative to
+this file. Emacs searches the *load-path* when you load packages with
+*require* or *use-package*.
+- *map!* for binding new keys
 
 To get information about any of these functions/macros, move the cursor over
-the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
+the highlighted symbol at press =K= (non-evil users must press =C-c c k=).
 This will open documentation for it, including demos of how they are used.
 
-You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
+You can also try =gd= (or =C-c c d=) to jump to their definition and see how
 they are implemented.
 
-* Theme configuration
+* The looks
+
+** Theme configuration
 
 There are two ways to load a /theme/ in *Doom Emacs*, assuming that it is installed and available
 1. Set it using the =doom-theme= variable
@@ -35,7 +37,42 @@ There are two ways to load a /theme/ in *Doom Emacs*, assuming that it is instal
 (setq doom-theme 'doom-palenight)
 #+end_src
 
-* Font configuration
+Nicer name for the default fallback buffer
+#+begin_src elisp
+(setq doom-fallback-buffer-name "► Doom"
+      +doom-dashboard-name "► Doom")
+#+end_src
+
+Only show file-enconding when format is not =LF UTF-8= (source [[Credits][Tecosaur]])
+#+begin_src elisp
+(defun doom-modeline-conditional-buffer-encoding ()
+  "We expect the encoding to be LF UTF-8, so only show the modeline when this is not the case"
+  (setq-local doom-modeline-buffer-encoding
+              (unless (and (memq (plist-get (coding-system-plist buffer-file-coding-system) :category)
+                                 '(coding-category-undecided coding-category-utf-8))
+                           (not (memq (coding-system-eol-type buffer-file-coding-system) '(1 2))))
+                t)))
+
+(add-hook 'after-change-major-mode-hook #'doom-modeline-conditional-buffer-encoding)
+#+end_src
+
+Simpler window title that shows if a file was modified
+#+begin_src elisp
+(setq frame-title-format
+      '(""
+        (:eval
+         (if (s-contains-p org-roam-directory (or buffer-file-name ""))
+             (replace-regexp-in-string
+              ".*/[0-9]*-?" "☰ "
+              (subst-char-in-string ?_ ?  buffer-file-name))
+           "%b"))
+        (:eval
+         (let ((project-name (projectile-project-name)))
+           (unless (string= "-" project-name)
+             (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") project-name))))))
+#+end_src
+
+** Font configuration
 
 Doom exposes five (optional) variables for controlling fonts:
 - =doom-font=
@@ -45,9 +82,44 @@ Doom exposes five (optional) variables for controlling fonts:
 - =doom-big-font= - Used for =doom-big-font-mode= for presentations or streaming
 #+begin_src elisp
 (setq doom-font (font-spec :family "VictorMono Nerd Font" :size 15)
-      doom-variable-pitch-font (font-spec :family "Overpass Nerd Font") ; inherits `doom-font''s :size
+      doom-variable-pitch-font (font-spec :family "Overpass Nerd Font" :size 15)
       doom-unicode-font (font-spec :family "FiraCode Nerd Font" :size 15)
+      doom-serif-font (font-spec :family "BlexMono Nerd Font" :weight 'light :size 15)
       doom-big-font (font-spec :family "Overpass Nerd Font" :size 25))
+#+end_src
+
+Code snippet to check if we are missing our required font (from [[Credits][Tecosaur]])
+#+begin_src elisp
+(defvar required-fonts '("VictorMono Nerd Font" "Overpass Nerd Font" "FiraCode Nerd Font" "BlexMono Nerd Font"))
+
+(defvar available-fonts
+  (delete-dups (or (font-family-list)
+                   (split-string (shell-command-to-string "fc-list : family")
+                                 "[,\n]"))))
+
+(defvar missing-fonts
+  (delq nil (mapcar
+             (lambda (font)
+               (unless (delq nil (mapcar (lambda (f)
+                                           (string-match-p (format "^%s$" font) f))
+                                         available-fonts))
+                 font))
+             required-fonts)))
+
+(if missing-fonts
+    (pp-to-string
+     `(unless noninteractive
+        (add-hook! 'doom-init-ui-hook
+          (run-at-time nil nil
+                       (lambda ()
+                         (message "%s missing the following fonts: %s"
+                                  (propertize "Warning!" 'face '(bold warning))
+                                  (mapconcat (lambda (font)
+                                               (propertize font 'face 'font-lock-variable-name-face))
+                                             ',missing-fonts
+                                             ", "))
+                         (sleep-for 0.5))))))
+  ";; No missing fonts detected")
 #+end_src
 
 We can change the font used in the various faces across /Emacs/ using =custom-set-faces=.
@@ -74,6 +146,52 @@ There are several faces, some of them are:
 #+end_src
 
 
+
+* Simple settings
+
+- Delete files to trash
+- Take new window space from all other windows (not just current)
+- Strech cursor to glyph width (for variable-pitch-font)
+#+begin_src elisp
+(setq-default
+ delete-by-moving-to-trash t
+ window-combination-resize t
+ x-stretch-cursor t)
+#+end_src
+
+- Raise the undow limit to =80Mb=
+- Granular undos in insert mode!
+- Unicde ellipsis ( )
+#+begin_src elisp
+(setq undo-limit 80000000
+      evil-want-fine-undo t
+      truncate-string-ellipsis " ")
+#+end_src
+
+Being able to see which buffer to open after splitting windows
+1. First we will enter the new window
+    #+begin_src elisp
+    (setq evil-vsplit-window-right t
+        evil-split-window-below t)
+    #+end_src
+2. Then we will pull up =ivy=
+    #+begin_src elisp
+    (defadvice! prompt-for-buffer (&rest _)
+    :after '(evil-window-split evil-window-vsplit)
+    (+ivy/switch-buffer))
+    #+end_src
+3. Also, enable previews
+    #+begin_src elisp
+    (setq +ivy-buffer-preview t)
+    #+end_src
+
+Add keybinding to rotate the layout of all windows
+#+begin_src elisp
+(map! :map evil-window-map
+      "SPC" #'rotate-layout)
+#+end_src
+
+
 * Vim and Evil mode configuration
 
 This determines the style of the /line numbers/
@@ -89,3 +207,8 @@ Set up the default directories
 (setq org-directory "~/Documents/Org")
 (setq org-roam-directory "~/Documents/Org/Roam")
 #+end_src
+
+* Credits
+
+- [[https://tecosaur.github.io/emacs-config][Tecosaur's emacs config]]
+- [[https://www.youtube.com/playlist?list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj][Doomcasts by Zaiste Programming]]
