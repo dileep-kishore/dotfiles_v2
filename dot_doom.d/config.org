@@ -1,0 +1,91 @@
+#+title: Doom Emacs literate config
+
+* Configuring private settings
+
+Identify configuration for various functionality, e.g. *GPG* configuration, /email/, file templates and snippets
+#+begin_src elisp
+(setq user-full-name "Dileep Kishore"
+      user-mail-address "k.dileep1994@gmail.com")
+#+end_src
+
+* Useful functions/macros that are helpful for configuration
+
+- `load!' for loading external *.el files relative to this one
+- `use-package!' for configuring packages
+- `after!' for running code after a package has loaded
+- `add-load-path!' for adding directories to the `load-path', relative to
+this file. Emacs searches the `load-path' when you load packages with
+`require' or `use-package'.
+- `map!' for binding new keys
+
+To get information about any of these functions/macros, move the cursor over
+the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
+This will open documentation for it, including demos of how they are used.
+
+You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
+they are implemented.
+
+* Theme configuration
+
+There are two ways to load a /theme/ in *Doom Emacs*, assuming that it is installed and available
+1. Set it using the =doom-theme= variable
+2. Manually load it using the =load-theme= function
+
+#+begin_src elisp
+(setq doom-theme 'doom-palenight)
+#+end_src
+
+* Font configuration
+
+Doom exposes five (optional) variables for controlling fonts:
+- =doom-font=
+- =doom-serif-font= (not super sure about this one)
+- =doom-variable-pitch-font=
+- =doom-unicode-font=
+- =doom-big-font= - Used for =doom-big-font-mode= for presentations or streaming
+#+begin_src elisp
+(setq doom-font (font-spec :family "VictorMono Nerd Font" :size 15)
+      doom-variable-pitch-font (font-spec :family "Overpass Nerd Font") ; inherits `doom-font''s :size
+      doom-unicode-font (font-spec :family "FiraCode Nerd Font" :size 15)
+      doom-big-font (font-spec :family "Overpass Nerd Font" :size 25))
+#+end_src
+
+We can change the font used in the various faces across /Emacs/ using =custom-set-faces=.
+
+There are several faces, some of them are:
+- =font-lock-preprocessor-face=
+- =font-lock-comment-face=
+- =font-lock-keyword-face=
+- =font-lock-comment-face=
+- =font-lock-constant-face=
+- =font-lock-function-name-face=
+- =font-lock-keyword-face=
+- =font-lock-preprocessor-face=
+- =font-lock-string-face=
+- =hl-todo=
+- =info-colors-lisp-code-block=
+- =markdown-code-face=
+
+#+begin_src elisp
+(custom-set-faces!
+  '(font-lock-preprocessor-face :weight bold)
+  '(font-lock-comment-face :slant italic)
+  '(font-lock-keyword-face :slant italic :weight bold))
+#+end_src
+
+
+* Vim and Evil mode configuration
+
+This determines the style of the /line numbers/
+#+begin_src elisp
+(setq display-line-numbers-type 'relative)
+#+end_src
+
+
+* Org-mode and Org-roam configuration
+
+Set up the default directories
+#+begin_src elisp
+(setq org-directory "~/Documents/Org")
+(setq org-roam-directory "~/Documents/Org/Roam")
+#+end_src
