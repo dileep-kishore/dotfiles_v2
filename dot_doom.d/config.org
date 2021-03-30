@@ -166,7 +166,7 @@ Only show file-enconding when format is not =LF UTF-8= (source [[Credits][Tecosa
 (add-hook 'after-change-major-mode-hook #'doom-modeline-conditional-buffer-encoding)
 #+end_src
 
-Simpler window title that shows if a file was modified
+Simpler window title that shows if a file was modified:
 #+begin_src elisp
 (setq frame-title-format
       '(""
@@ -179,7 +179,7 @@ Simpler window title that shows if a file was modified
         (:eval
          (let ((project-name (projectile-project-name)))
            (unless (string= "-" project-name)
-             (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") project-name))))))
+             (format (if (buffer-modified-p)  " ◉ %s" " ● %s") project-name))))))
 #+end_src
 
 ** Font configuration
@@ -309,6 +309,38 @@ This determines the style of the /line numbers/
 (setq display-line-numbers-type 'relative)
 #+end_src
 
+* Email
+
+** Setting up =mu4e=
+
+I followed the instructions in the [[org:../../.emacs.d/modules/email/mu4e/README.org][mu4e documentation in Doom Emacs]].
+The default mail directory is assumed to be =~/.mail=
+
+This is the configuration for *Personal* email
+#+begin_src elisp
+(set-email-account! "Personal"
+                    '((mu4e-sent-folder       . "/Personal/Sent Mail")
+                      (mu4e-drafts-folder     . "/Personal/Drafts")
+                      (mu4e-trash-folder      . "/Personal/Trash")
+                      (mu4e-refile-folder     . "/Personal/All Mail")
+                      (smtpmail-smtp-user     . "kdileep1994@gmail.com")
+                      (user-mail-address      . "kdileep1994@gmail.com")    ;; only needed for mu < 1.4
+                      (mu4e-compose-signature . "---\nBest,\nDileep Kishore"))
+                    t)
+#+end_src
+
+This is the configuration for *Boston University* email
+#+begin_src elisp
+(set-email-account! "BU"
+                    '((mu4e-sent-folder       . "/BU/Sent Mail")
+                      (mu4e-drafts-folder     . "/BU/Drafts")
+                      (mu4e-trash-folder      . "/BU/Trash")
+                      (mu4e-refile-folder     . "/BU/All Mail")
+                      (smtpmail-smtp-user     . "dkishore@bu.edu")
+                      (user-mail-address      . "dkishore@bu.edu")    ;; only needed for mu < 1.4
+                      (mu4e-compose-signature . "---\nDileep Kishore\nPh.D. Student | Segrè Lab\nGraduate Program in Bioinformatics | Boston University"))
+                    t)
+#+end_src
 
 * Org-mode and Org-roam configuration
 

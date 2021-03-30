@@ -1,0 +1,148 @@
+########################################
+# Personal
+########################################
+IMAPAccount Personal
+Host imap.gmail.com
+User kdileep1994@gmail.com
+PassCmd "pass email/personal | head -n1"
+Port 993
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+# CertificateFile /usr/local/etc/openssl/cert.pem  # MacOS
+
+##
+# Remote
+IMAPStore Personal-remote
+Account Personal
+
+# Local
+MaildirStore Personal-local
+Path ~/.mail/Personal/
+Inbox ~/.mail/Personal/Inbox
+
+## Connections
+Channel Personal-all
+Far :Personal-remote:"[Gmail]/All Mail"
+Near :Personal-local:"All Mail"
+Create Near
+Expunge Both
+SyncState *
+
+Channel Personal-inbox
+Far :Personal-remote:"INBOX"
+Near :Personal-local:"Inbox"
+Create Near
+Expunge Both
+SyncState *
+
+Channel Personal-drafts
+Far :Personal-remote:"[Gmail]/Drafts"
+Near :Personal-local:"Drafts"
+Create Near
+Expunge Both
+SyncState *
+
+Channel Personal-sent
+Far :Personal-remote:"[Gmail]/Sent Mail"
+Near :Personal-local:"Sent Mail"
+Create Near
+Expunge Both
+SyncState *
+
+Channel Personal-trash
+Far :Personal-remote:"[Gmail]/Trash"
+Near :Personal-local:"Trash"
+Create Near
+Expunge Both
+SyncState *
+
+Channel Personal-starred
+Far :Personal-remote:"[Gmail]/Starred"
+Near :Personal-local:"Starred"
+Create Near
+Expunge Both
+SyncState *
+
+
+## Groups
+Group Personal
+Channel Personal-all
+Channel Personal-inbox
+Channel Personal-drafts
+Channel Personal-sent
+Channel Personal-trash
+Channel Personal-starred
+
+
+# ########################################
+# BU
+# ########################################
+IMAPAccount BU
+Host imap.gmail.com
+User dkishore@bu.edu
+PassCmd "pass email/bu | head -n1"
+Port 993
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+# CertificateFile /usr/local/etc/openssl/cert.pem  # MacOS
+
+IMAPStore BU-remote
+Account BU
+
+MaildirStore BU-local
+Path ~/.mail/BU/
+Inbox ~/.mail/BU/Inbox
+
+## Connections
+Channel BU-all
+Far :BU-remote:"[Gmail]/All Mail"
+Near :BU-local:"All Mail"
+Create Near
+Expunge Both
+SyncState *
+
+Channel BU-inbox
+Far :BU-remote:"INBOX"
+Near :BU-local:"Inbox"
+Create Near
+Expunge Both
+SyncState *
+
+Channel BU-drafts
+Far :BU-remote:"[Gmail]/Drafts"
+Near :BU-local:"Drafts"
+Create Near
+Expunge Both
+SyncState *
+
+Channel BU-sent
+Far :BU-remote:"[Gmail]/Sent Mail"
+Near :BU-local:"Sent Mail"
+Create Near
+Expunge Both
+SyncState *
+
+Channel BU-trash
+Far :BU-remote:"[Gmail]/Trash"
+Near :BU-local:"Trash"
+Create Near
+Expunge Both
+SyncState *
+
+Channel BU-starred
+Far :BU-remote:"[Gmail]/Starred"
+Near :BU-local:"Starred"
+Create Near
+Expunge Both
+SyncState *
+
+# ## Groups
+Group BU
+Channel BU-all
+Channel BU-inbox
+Channel BU-drafts
+Channel BU-sent
+Channel BU-trash
+Channel BU-starred
