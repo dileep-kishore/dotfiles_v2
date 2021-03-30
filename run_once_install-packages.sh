@@ -78,7 +78,7 @@ sudo pacman -S --needed --noconfirm \
     neovim \
     python-pynvim \
     python-ueberzug \
-    ctags
+    isync
 
 if [ ! -d $HOME/npm-global/lib/node_modules/neovim ]; then
     mkdir ~/npm-global
@@ -100,7 +100,6 @@ fi
 paru -S --useask --batchinstall --cleanafter --removemake \
     emacs-git \
     mu \
-    mbsync-git \
     betterlockscreen \
     nnn-nerd \
     brave \
