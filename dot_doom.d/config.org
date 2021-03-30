@@ -1,4 +1,25 @@
 #+title: Doom Emacs literate config
+#+description: My Doom Emacs configuration file
+#+author: Dileep Kishore
+
+Making this file run a little faster
+#+begin_src elisp
+;;; config.el -*- lexical-binding: t; -*-
+#+end_src
+
+* Table of Contents :TOC:
+- [[#configuring-private-settings][Configuring private settings]]
+  - [[#setting-up-email-with-mu4e][Setting up email with =mu4e=]]
+- [[#emacs-daemon][Emacs daemon]]
+- [[#useful-functionsmacros-that-are-helpful-for-configuration][Useful functions/macros that are helpful for configuration]]
+- [[#the-looks][The looks]]
+  - [[#theme-configuration][Theme configuration]]
+  - [[#font-configuration][Font configuration]]
+  - [[#whitespace][Whitespace]]
+- [[#simple-settings][Simple settings]]
+- [[#vim-and-evil-mode-configuration][Vim and Evil mode configuration]]
+- [[#org-mode-and-org-roam-configuration][Org-mode and Org-roam configuration]]
+- [[#credits][Credits]]
 
 * Configuring private settings
 
@@ -6,6 +27,37 @@ Identify configuration for various functionality, e.g. *GPG* configuration, /ema
 #+begin_src elisp
 (setq user-full-name "Dileep Kishore"
       user-mail-address "k.dileep1994@gmail.com")
+#+end_src
+
+** Setting up email with =mu4e=
+
+I followed the instructions in the [[org:../../.emacs.d/modules/email/mu4e/README.org][mu4e documentation in Doom Emacs]].
+The default mail directory is assumed to be =~/.mail=
+
+This is the configuration for *Personal* email
+#+begin_src elisp
+(set-email-account! "Personal"
+                    '((mu4e-sent-folder       . "/Personal/Sent Mail")
+                      (mu4e-drafts-folder     . "/Personal/Drafts")
+                      (mu4e-trash-folder      . "/Personal/Trash")
+                      (mu4e-refile-folder     . "/Personal/All Mail")
+                      (smtpmail-smtp-user     . "kdileep1994@gmail.com")
+                      (user-mail-address      . "kdileep1994@gmail.com")    ;; only needed for mu < 1.4
+                      (mu4e-compose-signature . "---\nBest,\nDileep Kishore"))
+                    t)
+#+end_src
+
+This is the configuration for *Boston University* email
+#+begin_src elisp
+(set-email-account! "BU"
+                    '((mu4e-sent-folder       . "/BU/Sent Mail")
+                      (mu4e-drafts-folder     . "/BU/Drafts")
+                      (mu4e-trash-folder      . "/BU/Trash")
+                      (mu4e-refile-folder     . "/BU/All Mail")
+                      (smtpmail-smtp-user     . "dkishore@bu.edu")
+                      (user-mail-address      . "dkishore@bu.edu")    ;; only needed for mu < 1.4
+                      (mu4e-compose-signature . "---\nDileep Kishore\nPh.D. Student | Segrè Lab\nGraduate Program in Bioinformatics | Boston University"))
+                    t)
 #+end_src
 * Emacs daemon
 
@@ -184,6 +236,8 @@ Simpler window title that shows if a file was modified:
 
 ** Font configuration
 
+*** Basic font configuration
+
 Doom exposes five (optional) variables for controlling fonts:
 - =doom-font=
 - =doom-serif-font= (not super sure about this one)
@@ -192,9 +246,9 @@ Doom exposes five (optional) variables for controlling fonts:
 - =doom-big-font= - Used for =doom-big-font-mode= for presentations or streaming
 #+begin_src elisp
 (setq doom-font (font-spec :family "VictorMono Nerd Font" :size 15)
-      doom-variable-pitch-font (font-spec :family "Overpass Nerd Font" :size 15)
+      doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font" :size 15)
       doom-unicode-font (font-spec :family "FiraCode Nerd Font" :size 15)
-      doom-serif-font (font-spec :family "BlexMono Nerd Font" :weight 'light :size 15)
+      doom-serif-font (font-spec :family "BlexMono Nerd Font" :size 15)
       doom-big-font (font-spec :family "Overpass Nerd Font" :size 25))
 #+end_src
 
@@ -255,7 +309,87 @@ There are several faces, some of them are:
   '(font-lock-keyword-face :slant italic :weight bold))
 #+end_src
 
+*** Org-mode look customization
 
+Hide emphasis markup, eg. *bold*, /italics/, +strikethrough+, ~highlight~
+#+begin_src elisp
+(setq org-hide-emphasis-markers t)
+#+end_src
+
+Change how the bullets look
+#+begin_src elisp
+(setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
+#+end_src
+
+Replace the default "-" marker for lists with ""
+#+begin_src elisp
+(font-lock-add-keywords 'org-mode
+                        '(("^ *\\([-]\\) "
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) ""))))))
+#+end_src
+
++Org-mode hook for pretty =unicode= header symbols and =mixed pitch font=+.
+- I think the =unicode= header symbols are automatically included with the =org +pretty= flag in ~init.el~, hence adding another hook for that is redundant.
+- I also do not didn't like the behavior of =mixed-pitch-font= (not sure where this function is even from), it kept defaulting to =Overpass= as the default font when I wanted =FiraCode=
+- Finally, we enable =visual-line-mode= and =org-appear-mode=
+#+begin_src elisp
+(add-hook! 'org-mode-hook 'mixed-pitch-mode 'visual-line-mode 'org-appear-mode)
+#+end_src
+
+Change header sizes in =org-mode=. ~Right now this doesn't work in mixed-pitch-mode~
+#+begin_src elisp
+(after! org
+  (set-face-attribute 'org-link nil
+                      :weight 'normal)
+  (set-face-attribute 'org-block nil)
+  (set-face-attribute 'org-code nil)
+  (set-face-attribute 'org-date nil
+                      :font "FiraCode Nerd Font")
+  (set-face-attribute 'org-level-1 nil
+                      :font "FiraCode Nerd Font"
+                      :height 1.7
+                      :weight 'bold)
+  (set-face-attribute 'org-level-2 nil
+                      :font "FiraCode Nerd Font"
+                      :height 1.5
+                      :weight 'bold)
+  (set-face-attribute 'org-level-3 nil
+                      :font "FiraCode Nerd Font"
+                      :height 1.25
+                      :weight 'bold)
+  (set-face-attribute 'org-level-4 nil
+                      :font "FiraCode Nerd Font"
+                      :height 1.15
+                      :weight 'bold)
+  (set-face-attribute 'org-level-5 nil
+                      :font "FiraCode Nerd Font"
+                      :weight 'bold)
+  (set-face-attribute 'org-level-6 nil
+                      :font "FiraCode Nerd Font"
+                      :weight 'bold)
+  (set-face-attribute 'org-document-title nil
+                      :font "FiraCode Nerd Font"
+                      :height 1.9
+                      :weight 'bold)
+  (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")))
+#+end_src
+
+#+begin_src elisp
+(after! mixed-pitch
+  (set-face-attribute 'org-document-title nil
+                      :font "FiraCode Nerd Font"
+                      :height 1.9
+                      :weight 'bold))
+#+end_src
+** Whitespace
+
+Set =global whitespace mode=
+#+begin_src elisp
+(setq
+ global-whitespace-mode t
+ whitespace-style '(face tabs tab-mark trailing newline newline-mark indentation))
+(global-whitespace-mode +1)
+#+end_src
 
 * Simple settings
 
@@ -309,40 +443,16 @@ This determines the style of the /line numbers/
 (setq display-line-numbers-type 'relative)
 #+end_src
 
-* Email
 
-** Setting up =mu4e=
-
-I followed the instructions in the [[org:../../.emacs.d/modules/email/mu4e/README.org][mu4e documentation in Doom Emacs]].
-The default mail directory is assumed to be =~/.mail=
-
-This is the configuration for *Personal* email
-#+begin_src elisp
-(set-email-account! "Personal"
-                    '((mu4e-sent-folder       . "/Personal/Sent Mail")
-                      (mu4e-drafts-folder     . "/Personal/Drafts")
-                      (mu4e-trash-folder      . "/Personal/Trash")
-                      (mu4e-refile-folder     . "/Personal/All Mail")
-                      (smtpmail-smtp-user     . "kdileep1994@gmail.com")
-                      (user-mail-address      . "kdileep1994@gmail.com")    ;; only needed for mu < 1.4
-                      (mu4e-compose-signature . "---\nBest,\nDileep Kishore"))
-                    t)
-#+end_src
-
-This is the configuration for *Boston University* email
-#+begin_src elisp
-(set-email-account! "BU"
-                    '((mu4e-sent-folder       . "/BU/Sent Mail")
-                      (mu4e-drafts-folder     . "/BU/Drafts")
-                      (mu4e-trash-folder      . "/BU/Trash")
-                      (mu4e-refile-folder     . "/BU/All Mail")
-                      (smtpmail-smtp-user     . "dkishore@bu.edu")
-                      (user-mail-address      . "dkishore@bu.edu")    ;; only needed for mu < 1.4
-                      (mu4e-compose-signature . "---\nDileep Kishore\nPh.D. Student | Segrè Lab\nGraduate Program in Bioinformatics | Boston University"))
-                    t)
-#+end_src
 
 * Org-mode and Org-roam configuration
+
+Enable logging of done tasks, and log stuff into LOGBOOK drawer by default
+#+begin_src elisp
+(after! org
+  (setq org-log-done t)
+  (setq org-log-into-drawer t))
+#+end_src
 
 Set up the default directories
 #+begin_src elisp

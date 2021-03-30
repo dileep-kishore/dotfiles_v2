@@ -50,5 +50,6 @@
 ;(unpin! t)
 
 (package! org-super-agenda)
-(package! org-fancy-priorities)
 (package! wakatime-mode)
+(package! org-appear)
+(package! org-auto-tangle)
