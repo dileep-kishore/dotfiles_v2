@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
-#+description: My Doom Emacs configuration file
 #+author: Dileep Kishore
+#+description: My Doom Emacs configuration file
 
 Making this file run a little faster
 #+begin_src elisp
@@ -458,6 +458,27 @@ Set up the default directories
 #+begin_src elisp
 (setq org-directory "~/Documents/Org")
 (setq org-roam-directory "~/Documents/Org/Roam")
+#+end_src
+
+Using =deft= to navigate =org-roam= files
+#+begin_src elisp
+(use-package deft
+  :after org
+  :bind
+  ("C-c n d" . deft)
+  :custom
+  (deft-recursive t)
+  (deft-use-filter-string-for-filename t)
+  (deft-default-extension "org")
+  (deft-directory "~/Documents/Org/Roam"))
+#+end_src
+
+Org roam dailies
+#+begin_src elisp
+(setq org-roam-dailies-directory "dailies")
+(setq org-roam-dailies-capture-templates
+      '(("d" "daily" entry #'org-roam-capture--get-point
+         "* %?\n")))
 #+end_src
 
 * Credits
