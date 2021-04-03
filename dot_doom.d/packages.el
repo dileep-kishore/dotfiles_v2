@@ -53,3 +53,4 @@
 (package! wakatime-mode)
 (package! org-appear)
 (package! org-auto-tangle)
+(unpin! org-roam company-org-roam)

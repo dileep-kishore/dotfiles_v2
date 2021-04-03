@@ -20,6 +20,8 @@ Making this file run a little faster
 - [[#autocompletions-and-related][Autocompletions and related]]
 - [[#vim-and-evil-mode-configuration][Vim and Evil mode configuration]]
 - [[#org-mode-and-org-roam-configuration][Org-mode and Org-roam configuration]]
+  - [[#org-mode-tasks-and-agenda][Org-mode tasks and agenda]]
+  - [[#org-roam][Org-roam]]
 - [[#credits][Credits]]
 
 * Configuring private settings
@@ -110,18 +112,18 @@ stdin_mode=""
 args=()
 
 while :; do
-    case "$1" in
-        -t | -nw | --tty)
-            force_tty=true
-            shift ;;
-        -w | --wait)
-            force_wait=true
-            shift ;;
-        -m | --mode)
-            stdin_mode=" ($2-mode)"
-            shift 2 ;;
-        -h | --help)
-            echo -e "\033[1mUsage: e [-t] [-m MODE] [OPTIONS] FILE [-]\033[0m
+case "$1" in
+-t | -nw | --tty)
+force_tty=true
+shift ;;
+-w | --wait)
+force_wait=true
+shift ;;
+-m | --mode)
+stdin_mode=" ($2-mode)"
+shift 2 ;;
+-h | --help)
+echo -e "\033[1mUsage: e [-t] [-m MODE] [OPTIONS] FILE [-]\033[0m
 
 Emacs client convenience wrapper.
 
@@ -133,41 +135,41 @@ Emacs client convenience wrapper.
 \033[0;34m-m MODE, --mode MODE\033[0m  Mode to open \033[0;33mstdin\033[0m with
 
 Run \033[0;32memacsclient --help\033[0m to see help for the emacsclient."
-            exit 0 ;;
-        --*=*)
-            set -- "$@" "${1%%=*}" "${1#*=}"
-            shift ;;
-        *)
-            if [ "$#" = 0 ]; then
-                break; fi
-            args+=("$1")
-            shift ;;
-    esac
+exit 0 ;;
+--*=*)
+set -- "$@" "${1%%=*}" "${1#*=}"
+shift ;;
+*)
+if [ "$#" = 0 ]; then
+break; fi
+args+=("$1")
+shift ;;
+esac
 done
 
 if [ ! "${#args[*]}" = 0 ] && [ "${args[-1]}" = "-" ]; then
-    unset 'args[-1]'
-    TMP="$(mktemp /tmp/emacsstdin-XXX)"
-    cat > "$TMP"
-    args+=(--eval "(let ((b (generate-new-buffer \"*stdin*\"))) (switch-to-buffer b) (insert-file-contents \"$TMP\") (delete-file \"$TMP\")${stdin_mode})")
+unset 'args[-1]'
+TMP="$(mktemp /tmp/emacsstdin-XXX)"
+cat > "$TMP"
+args+=(--eval "(let ((b (generate-new-buffer \"*stdin*\"))) (switch-to-buffer b) (insert-file-contents \"$TMP\") (delete-file \"$TMP\")${stdin_mode})")
 fi
 
 if [ -z "$DISPLAY" ] || $force_tty; then
-    # detect terminals with sneaky 24-bit support
-    if { [ "$COLORTERM" = truecolor ] || [ "$COLORTERM" = 24bit ]; } \
-        && [ "$(tput colors 2>/dev/null)" -lt 257 ]; then
-        if echo "$TERM" | grep -q "^\w\+-[0-9]"; then
-            termstub="${TERM%%-*}"; else
-            termstub="${TERM#*-}"; fi
-        if infocmp "$termstub-direct" >/dev/null 2>&1; then
-            TERM="$termstub-direct"; else
-            TERM="xterm-direct"; fi # should be fairly safe
-    fi
-    emacsclient --tty -create-frame --alternate-editor="" "${args[@]}"
+# detect terminals with sneaky 24-bit support
+if { [ "$COLORTERM" = truecolor ] || [ "$COLORTERM" = 24bit ]; } \
+&& [ "$(tput colors 2>/dev/null)" -lt 257 ]; then
+if echo "$TERM" | grep -q "^\w\+-[0-9]"; then
+termstub="${TERM%%-*}"; else
+termstub="${TERM#*-}"; fi
+if infocmp "$termstub-direct" >/dev/null 2>&1; then
+TERM="$termstub-direct"; else
+TERM="xterm-direct"; fi # should be fairly safe
+fi
+emacsclient --tty -create-frame --alternate-editor="" "${args[@]}"
 else
-    if ! $force_wait; then
-        args+=(--no-wait); fi
-    emacsclient -create-frame --alternate-editor="" "${args[@]}"
+if ! $force_wait; then
+args+=(--no-wait); fi
+emacsclient -create-frame --alternate-editor="" "${args[@]}"
 fi
 #+end_src
 
@@ -380,7 +382,10 @@ Change header sizes in =org-mode=. ~Right now this doesn't work in mixed-pitch-m
   (set-face-attribute 'org-document-title nil
                       :font "FiraCode Nerd Font"
                       :height 1.9
-                      :weight 'bold))
+                      :weight 'bold)
+  (set-face-attribute 'italic nil
+                      :font "VictorMono Nerd Font"
+                      :slant 'italic))
 #+end_src
 ** Whitespace
 
@@ -415,20 +420,20 @@ Set =global whitespace mode=
 
 Being able to see which buffer to open after splitting windows
 1. First we will enter the new window
-    #+begin_src elisp
-    (setq evil-vsplit-window-right t
-        evil-split-window-below t)
-    #+end_src
+#+begin_src elisp
+(setq evil-vsplit-window-right t
+      evil-split-window-below t)
+#+end_src
 2. Then we will pull up =ivy=
-    #+begin_src elisp
-    (defadvice! prompt-for-buffer (&rest _)
-    :after '(evil-window-split evil-window-vsplit)
-    (+ivy/switch-buffer))
-    #+end_src
+#+begin_src elisp
+(defadvice! prompt-for-buffer (&rest _)
+  :after '(evil-window-split evil-window-vsplit)
+  (+ivy/switch-buffer))
+#+end_src
 3. Also, enable previews
-    #+begin_src elisp
-    (setq +ivy-buffer-preview t)
-    #+end_src
+#+begin_src elisp
+(setq +ivy-buffer-preview t)
+#+end_src
 
 Add keybinding to rotate the layout of all windows
 #+begin_src elisp
@@ -476,6 +481,8 @@ This determines the style of the /line numbers/
 
 * Org-mode and Org-roam configuration
 
+** Org-mode tasks and agenda
+
 Enable logging of done tasks, and log stuff into LOGBOOK drawer by default
 #+begin_src elisp
 (after! org
@@ -483,31 +490,89 @@ Enable logging of done tasks, and log stuff into LOGBOOK drawer by default
   (setq org-log-into-drawer t))
 #+end_src
 
+** Org-roam
+
+You might want to refer to the [[https://www.orgroam.com/manual.html#The-Templating-System][templating system documentation]] for details.
+
 Set up the default directories
 #+begin_src elisp
 (setq org-directory "~/Documents/Org")
-(setq org-roam-directory "~/Documents/Org/Roam")
+(after! org-roam
+  (setq org-roam-directory "~/Documents/Org/Roam"))
 #+end_src
+
+*** Org-roam dailies
+
+#+begin_src elisp
+(setq org-roam-dailies-directory "dailies/")
+
+(defun get-string-from-file (filePath)
+  "Return filePath's file content."
+  (with-temp-buffer
+    (insert-file-contents filePath)
+    (buffer-string)))
+
+(setq org-roam-dailies-capture-templates
+      (let ((head (get-string-from-file "~/Documents/Org/Roam/_templates/dailies-template.org")))
+        `(("j" "journaling" item
+           #'org-roam-capture--get-point
+           "- %?"
+           :empty-lines-before 1
+           :file-name "dailies/%<%Y-%m-%d>"
+           :head ,head
+           :olp ("Journaling"))
+          ("p" "plan" item
+           #'org-roam-capture--get-point
+           "- %<%H:%M> %?"
+           :file-name "dailies/%<%Y-%m-%d>"
+           :head ,head
+           :empty-lines-before 1
+           :olp ("Day Planner"))
+          ("t" "thoughts" item
+           #'org-roam-capture--get-point
+           "- %<%H:%M> %?"
+           :file-name "dailies/%<%Y-%m-%d>"
+           :head ,head
+           :empty-lines-before 1
+           :olp ("Thoughts")))))
+#+end_src
+
+#+RESULTS:
+| j | journaling | item | #'org-roam-capture--get-point | - %? | :empty-lines-before | 1 | :file-name | dailies/%<%Y-%m-%d> | :head | #+title: %<%A, %d %B %Y> |
+
+*** Org-roam-protocol
+
+Registering the =roam-protocol=
+#+begin_src config :tangle no
+[Desktop Entry]
+Name=Org-Protocol
+Exec=emacsclient %u
+Icon=emacs-icon
+Type=Application
+Terminal=false
+MimeType=x-scheme-handler/org-protocol
+#+end_src
+
+Associate =org-protocol://= links with the desktop file:
+#+begin_src shell :tangle no
+xdg-mime default org-protocol.desktop x-scheme-handler/org-protocol
+#+end_src
+
+TODO Customize graph view for =org-protocol=
+
+*** Searching and indexing files
 
 Using =deft= to navigate =org-roam= files
 #+begin_src elisp
-(use-package deft
-  :after org
-  :bind
-  ("C-c n d" . deft)
-  :custom
-  (deft-recursive t)
-  (deft-use-filter-string-for-filename t)
-  (deft-default-extension "org")
-  (deft-directory "~/Documents/Org/Roam"))
-#+end_src
-
-Org roam dailies
-#+begin_src elisp
-(setq org-roam-dailies-directory "dailies")
-(setq org-roam-dailies-capture-templates
-      '(("d" "daily" entry #'org-roam-capture--get-point
-         "* %?\n")))
+(use-packge deft
+            :after org
+            :bind
+            ("C-c n d" . deft)
+            :custom
+            (deft-recursive t)
+            (deft-use-filter-string-for-filename t)
+            (deft-default-extension "org")
+            (deft-directory "~/Documents/Org/Roam"))
 #+end_src
 
 * Credits
