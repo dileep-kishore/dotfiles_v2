@@ -17,6 +17,7 @@ Making this file run a little faster
   - [[#font-configuration][Font configuration]]
   - [[#whitespace][Whitespace]]
 - [[#simple-settings][Simple settings]]
+- [[#autocompletions-and-related][Autocompletions and related]]
 - [[#vim-and-evil-mode-configuration][Vim and Evil mode configuration]]
 - [[#org-mode-and-org-roam-configuration][Org-mode and Org-roam configuration]]
 - [[#credits][Credits]]
@@ -435,6 +436,34 @@ Add keybinding to rotate the layout of all windows
       "SPC" #'rotate-layout)
 #+end_src
 
+* Autocompletions and related
+
+Decrease =company-mode= completion delay and other nice things 🤣 (also I just figured out how to insert emoji).
+#+begin_src elisp
+(after! company
+  (setq company-idle-delay 0.2
+        company-minimum-prefix-length 2)
+  (setq company-show-numbers t)
+  (add-hook 'evil-normal-state-entry-hook #'company-abort)) ;; make aborting less annoying.
+#+end_src
+
+Improve =prescient= usage by increasing history
+#+begin_src elisp
+(setq-default history-length 1000)
+(setq-default prescient-history-length 1000)
+#+end_src
+
+Having =ispell= enabled in =text=, =markdown= and =GFM=
+#+begin_src elisp
+(set-company-backend!
+  '(text-mode
+    markdown-mode
+    gfm-mode)
+  '(:seperate
+    company-ispell
+    company-files
+    company-yasnippet))
+#+end_src
 
 * Vim and Evil mode configuration
 

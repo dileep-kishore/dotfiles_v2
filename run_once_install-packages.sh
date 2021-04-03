@@ -14,6 +14,7 @@ sudo pacman -S --needed --noconfirm \
     dpkg
 
 sudo pacman -S --needed --noconfirm \
+    ispell \
     lxappearance \
     picom \
     nitrogen \
