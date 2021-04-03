@@ -469,7 +469,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
 
 
     -- Workspaces
-myWorkspaces = ["web","term","code","sync","comm","music","note","video","misc"]
+myWorkspaces = ["web","term","code","sync","comm","music","note","tasks","misc"]
 
 
     -- ManageHook
@@ -485,8 +485,10 @@ myManageHook = composeAll
        , className =? "discord"     --> doShift "comm"
        , className =? "spotify"     --> doShift "music"
        , className =? "obsidian"     --> doShift "note"
-       , className =? "mpv"     --> doShift "video"
-       , className =? "vlc"     --> doShift "video"
+       , className =? "clickup desktop"     --> doShift "tasks"
+       , className =? "mpv"     --> doShift "music"
+       , className =? "vlc"     --> doShift "music"
+       , className =? "Zotero"     --> doShift "misc"
        , className =? "pavucontrol"    --> doFloat
        , className =? "lxappearance"    --> doFloat
        , (className =? "brave-browser" <&&> resource =? "Dialog") --> doFloat  -- Float Brave Dialog
