@@ -342,6 +342,13 @@ Replace the default "-" marker for lists with ""
 Change header sizes in =org-mode=. ~Right now this doesn't work in mixed-pitch-mode~
 #+begin_src elisp
 (after! org
+  (setq
+   org-todo-keyword-faces
+   '(("TODO" :foreground "#7c7c75" :weight normal :underline t)
+     ("WAITING" :foreground "#9f7efe" :weight normal :underline t)
+     ("INPROGRESS" :foreground "#0098dd" :weight normal :underline t)
+     ("DONE" :foreground "#50a14f" :weight normal :underline t)
+     ("CANCELLED" :foreground "#ff6480" :weight normal :underline t)))
   (set-face-attribute 'org-link nil
                       :weight 'normal)
   (set-face-attribute 'org-block nil)
@@ -373,7 +380,12 @@ Change header sizes in =org-mode=. ~Right now this doesn't work in mixed-pitch-m
   (set-face-attribute 'org-document-title nil
                       :font "FiraCode Nerd Font"
                       :height 1.9
-                      :weight 'bold)
+                      :weight 'bold))
+(use-package! org-fancy-priorities
+  :ensure t
+  :hook
+  (org-mode . org-fancy-priorities-mode)
+  :config
   (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")))
 #+end_src
 
