@@ -54,5 +54,7 @@
 (package! org-appear)
 (package! org-auto-tangle)
 (package! org-roam-server)
+(package! org-ref)
+(package! org-roam-bibtex)
 
 (unpin! org-roam company-org-roam)

@@ -734,8 +734,106 @@ Using =deft= to navigate =org-roam= files
             (deft-default-extension "org")
             (deft-directory "~/Documents/Org/Roam"))
 #+end_src
+*** Org-noter and org-roam-bibtex configuration
+
+#+begin_quote
+The following configuration was taken from [[https://www.ianjones.us/org-roam-bibtex][Ian Jones's org-roam-bibtex workflow]]
+#+end_quote
+
+Define some variables
+#+begin_src elisp
+(setq
+ lit_notes "~/Documents/Org/Roam/literature"
+ zot_bib "~/Documents/Org/library.bib")
+#+end_src
+
+Configuration for =org-noter= (this is already installed in ~Doom Emacs~)
+#+begin_src elisp
+(use-package! org-noter
+  :after (:any org pdf-view)
+  :config
+  (setq
+   ;; The WM can handle splits
+   org-noter-notes-window-location 'other-frame
+   ;; Please stop opening frames
+   org-noter-always-create-frame nil
+   ;; I want to see the whole file
+   org-noter-hide-other nil
+   ;; Everything is relative to the main notes file
+   org-noter-notes-search-path (list lit_notes)
+   )
+  )
+#+end_src
+
+You might want to run =M-x pdf-tools-install= to view pdfs. Then set up the =org-pdftools= and =org-noter-pdftools= packages
+#+begin_src elisp
+(use-package org-pdftools
+  :hook (org-load . org-pdftools-setup-link))
+(use-package org-noter-pdftools
+  :after org-noter
+  :config
+  (with-eval-after-load 'pdf-annot
+    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+#+end_src
+
+Configuration for =helm-bibtex=
+#+begin_src elisp
+(setq
+ bibtex-completion-notes-path lit_notes
+ bibtex-completion-bibliography zot_bib
+ bibtex-completion-pdf-field "file")
+#+end_src
+
+Set up =org-ref= to manage ~cite:~  links
+#+begin_src elisp
+(use-package! org-ref
+  :config
+  (setq
+   ;; org-ref-completion-library 'org-ref-ivy-cite
+   org-ref-completion-library 'org-ref-helm-insert-cite-link
+   org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
+   org-ref-default-bibliography (list zot_bib)
+   org-ref-bibliography-notes (concat lit_notes "/bibnotes.org")
+   org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
+   org-ref-notes-directory lit_notes
+   org-ref-notes-function 'orb-edit-notes
+   ))
+#+end_src
+
+#+begin_quote
+Note:
+=org-ref= template options are not the same as =org-roam= template options
+#+end_quote
+
+Finally, we configure =org-roam-bibtex=
+#+begin_src elisp
+(use-package org-roam-bibtex
+  :after (org-roam)
+  :hook (org-roam-mode . org-roam-bibtex-mode)
+  :config
+  (setq orb-preformat-keywords
+        '(("citekey" . "=key=") "title" "url" "file" "author-or-editor" "keywords"))
+  (setq orb-templates
+        '(("r" "ref" plain (function org-roam-capture--get-point)
+           ""
+           :file-name "${slug}"
+           :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n#+roam_alias:\n#+roam_tags: literature\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U
+- tags ::
+- keywords :: ${keywords}
+\n* ${title}
+:PROPERTIES:
+:Custom_ID: ${citekey}
+:URL: ${url}
+:AUTHOR: ${author-or-editor}
+:NOTER_DOCUMENT: ${file}
+:NOTER_PAGE:
+:END:\n\n"
+           :unnarrowed t))))
+#+end_src
+
 
 * Credits
 
 - [[https://tecosaur.github.io/emacs-config][Tecosaur's emacs config]]
 - [[https://www.youtube.com/playlist?list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj][Doomcasts by Zaiste Programming]]
+- [[https://www.ianjones.us/about-me][Ian Jones's blog]]
