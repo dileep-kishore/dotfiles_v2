@@ -17,6 +17,11 @@ Making this file run a little faster
   - [[#font-configuration][Font configuration]]
   - [[#whitespace][Whitespace]]
 - [[#simple-settings][Simple settings]]
+  - [[#deleting-files-undo-limits-etc][Deleting files, undo limits, etc.]]
+  - [[#select-buffer-after-splitting][Select buffer after splitting]]
+  - [[#rotate-layouts][Rotate layouts]]
+  - [[#wakatime-mode][Wakatime-mode]]
+  - [[#chezmoi-keybindings][Chezmoi keybindings]]
 - [[#buffers-and-windows][Buffers and windows]]
 - [[#autocompletions-and-related][Autocompletions and related]]
 - [[#vim-and-evil-mode-configuration][Vim and Evil mode configuration]]
@@ -411,9 +416,11 @@ Set =global whitespace mode=
 
 * Simple settings
 
+** Deleting files, undo limits, etc.
+
 - Delete files to trash
 - Take new window space from all other windows (not just current)
-- Strech cursor to glyph width (for variable-pitch-font)
+- Stretch cursor to glyph width (for variable-pitch-font)
 #+begin_src elisp
 (setq-default
  delete-by-moving-to-trash t
@@ -430,22 +437,28 @@ Set =global whitespace mode=
       truncate-string-ellipsis " ")
 #+end_src
 
+** Select buffer after splitting
+
 Being able to see which buffer to open after splitting windows
 1. First we will enter the new window
 #+begin_src elisp
 (setq evil-vsplit-window-right t
       evil-split-window-below t)
 #+end_src
+
 2. Then we will pull up =ivy=
 #+begin_src elisp
 (defadvice! prompt-for-buffer (&rest _)
   :after '(evil-window-split evil-window-vsplit)
   (+ivy/switch-buffer))
 #+end_src
+
 3. Also, enable previews
 #+begin_src elisp
 (setq +ivy-buffer-preview t)
 #+end_src
+
+** Rotate layouts
 
 Add keybinding to rotate the layout of all windows
 #+begin_src elisp
@@ -453,9 +466,25 @@ Add keybinding to rotate the layout of all windows
       "SPC" #'rotate-layout)
 #+end_src
 
+** Wakatime-mode
+
 Enable =wakatime-mode= by default
 #+begin_src elisp
 (global-wakatime-mode)
+#+end_src
+
+** Chezmoi keybindings
+
+Keybinding to sync dotfiles using chezmoi
+#+begin_src elisp
+(defun czy ()
+  " Apply changes to files using chezmoi "
+  (interactive)
+  (shell-command "chezmoi apply"))
+
+(map! :leader
+      :prefix "z"
+      :desc "chezmoi apply" "y" #'czy)
 #+end_src
 
 * Buffers and windows
