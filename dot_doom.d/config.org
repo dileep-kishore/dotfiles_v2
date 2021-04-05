@@ -17,6 +17,7 @@ Making this file run a little faster
   - [[#font-configuration][Font configuration]]
   - [[#whitespace][Whitespace]]
 - [[#simple-settings][Simple settings]]
+- [[#buffers-and-windows][Buffers and windows]]
 - [[#autocompletions-and-related][Autocompletions and related]]
 - [[#vim-and-evil-mode-configuration][Vim and Evil mode configuration]]
 - [[#org-mode-and-org-roam-configuration][Org-mode and Org-roam configuration]]
@@ -308,7 +309,6 @@ There are several faces, some of them are:
 #+begin_src elisp
 (custom-set-faces!
   '(font-lock-preprocessor-face :weight bold)
-  '(font-lock-comment-face :slant italic)
   '(font-lock-keyword-face :slant italic :weight bold))
 #+end_src
 
@@ -440,6 +440,44 @@ Add keybinding to rotate the layout of all windows
 (map! :map evil-window-map
       "SPC" #'rotate-layout)
 #+end_src
+* Buffers and windows
+
+Make =ivy= open buffers in /horizontal/ and /vertical/ splits using ~M-o |~ and ~M-o %~
+TODO These don't work yet. The problem is going from filename to file location and jumping to it
+
+#+begin_src elisp :tangle no
+(defun find-file-right (filename)
+  (interactive)
+  (split-window-right)
+  (other-window 1)
+  (find-file filename))
+
+(defun find-file-below (filename)
+  (interactive)
+  (split-window-below)
+  (other-window 1)
+  (find-file filename))
+
+(ivy-set-actions
+ 'counsel-find-file
+ '(("|" find-file-right "open right")
+   ("%" find-file-below "open below")))
+
+(ivy-set-actions
+ 'counsel-recentf
+ '(("|" find-file-right "open right")
+   ("%" find-file-below "open below")))
+
+(ivy-set-actions
+ 'counsel-buffer-or-recentf
+ '(("|" find-file-right "open right")
+   ("%" find-file-below "open below")))
+
+(ivy-set-actions
+ 'ivy-switch-buffer
+ '(("|" find-file-right "open right")
+   ("%" find-file-below "open below")))
+#+end_src
 
 * Autocompletions and related
 
@@ -504,41 +542,97 @@ Set up the default directories
 *** Org-roam dailies
 
 #+begin_src elisp
-(setq org-roam-dailies-directory "dailies/")
+(after! org-roam
+  (setq org-roam-dailies-directory "dailies/")
 
-(defun get-string-from-file (filePath)
-  "Return filePath's file content."
-  (with-temp-buffer
-    (insert-file-contents filePath)
-    (buffer-string)))
+  (defun get-string-from-file (filePath)
+    "Return filePath's file content."
+    (with-temp-buffer
+      (insert-file-contents filePath)
+      (buffer-string)))
 
-(setq org-roam-dailies-capture-templates
-      (let ((head (get-string-from-file "~/Documents/Org/Roam/_templates/dailies-template.org")))
-        `(("j" "journaling" item
-           #'org-roam-capture--get-point
-           "- %?"
-           :empty-lines-before 1
-           :file-name "dailies/%<%Y-%m-%d>"
-           :head ,head
-           :olp ("Journaling"))
-          ("p" "plan" item
-           #'org-roam-capture--get-point
-           "- %<%H:%M> %?"
-           :file-name "dailies/%<%Y-%m-%d>"
-           :head ,head
-           :empty-lines-before 1
-           :olp ("Day Planner"))
-          ("t" "thoughts" item
-           #'org-roam-capture--get-point
-           "- %<%H:%M> %?"
-           :file-name "dailies/%<%Y-%m-%d>"
-           :head ,head
-           :empty-lines-before 1
-           :olp ("Thoughts")))))
+  (setq org-roam-dailies-capture-templates
+        (let
+            ((day_template (get-string-from-file "~/Documents/Org/Roam/_templates/dailies-template.org"))
+             (week_template (get-string-from-file "~/Documents/Org/Roam/_templates/weekly-template.org")))
+          `(("j" "journaling" item
+             #'org-roam-capture--get-point
+             "- %?"
+             :empty-lines-before 1
+             :file-name "dailies/%<%Y-%m-%d>"
+             :head ,day_template
+             :olp ("Journaling"))
+            ("p" "plan" item
+             #'org-roam-capture--get-point
+             "- [ ] %<%H:%M> %?"
+             :file-name "dailies/%<%Y-%m-%d>"
+             :head ,day_template
+             :empty-lines-before 1
+             :olp ("Day Planner"))
+            ("t" "thoughts" item
+             #'org-roam-capture--get-point
+             "- %<%H:%M> %?"
+             :file-name "dailies/%<%Y-%m-%d>"
+             :head ,day_template
+             :empty-lines-before 1
+             :olp ("Thoughts"))
+            ("w" "weekly" item
+             #'org-roam-capture--get-point
+             "%?"
+             :file-name "dailies/%<%Y-%U>"
+             :head ,week_template
+             :empty-lines-before 1
+             :olp ("How was your week? General thoughts")))))
+  )
 #+end_src
 
-#+RESULTS:
-| j | journaling | item | #'org-roam-capture--get-point | - %? | :empty-lines-before | 1 | :file-name | dailies/%<%Y-%m-%d> | :head | #+title: %<%A, %d %B %Y> |
+*** Org-roam capture templates
+
+Templates for general notes
+#+begin_src elisp
+(after! org-roam
+
+  (setq org-roam-capture-templates
+        '(("d" "default" plain (function org-roam-capture--get-point)
+           "%?"
+           :file-name "%<%Y%m%d%H%M>-${slug}"
+           :head "#+TITLE: ${title}\n#+roam_alias: \n#+roam_tags: \n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+           :unnarrowed t)
+          ("l" "literature" plain (function org-roam-capture--get-point)
+           "%?"
+           :file-name "literature/%<%Y%m%d%H%M>-${slug}"
+           :head "#+TITLE: ${title}\n#+roam_alias: \n#+roam_tags: literature %^{roam_tags}\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+           :unnarrowed t)
+          ("f" "fleeting" plain (function org-roam-capture--get-point)
+           "%?"
+           :file-name "fleeting/%<%Y%m%d%H%M>-${slug}"
+           :head "#+TITLE: ${title}\n#+roam_alias: \n#+roam_tags: fleeting\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+           :unnarrowed t)
+          ("p" "Permanent (prompt folder)" plain (function org-roam-capture--get-point)
+           "%?"
+           :file-name "%(read-directory-name \"directory: \" org-directory)/%<%Y%m%d%H%M>-${slug}"
+           :head "#+TITLE: ${title}\n#+roam_alias: \n#+roam_tags: permanent\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+           :unnarrowed t)))
+  )
+#+end_src
+
+Templates for capturing references from the web using =org-protocol=
+#+begin_src elisp
+(after! org-roam
+  (setq org-roam-capture-ref-templates
+        '(("r" "ref" plain (function org-roam-capture--get-point)
+           "%?"
+           :file-name "websites/${slug}"
+           :head "#+TITLE: ${title}\n#+roam_alias: \n#+ROAM_KEY: ${ref}\n#+roam_tags: websites\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n- source :: ${ref}\n\n"
+           :unnarrowed t)
+          ("i" "incremental" plain
+           (function org-roam-capture--get-point)
+           "* %?"
+           :file-name "websites/${slug}"
+           :head "#+TITLE: ${title}\n#+roam_alias: \n#+ROAM_KEY: ${ref}\n#+roam_tags: websites\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n- source :: ${ref}\n\n"
+           :unnarrowed t
+           :empty-lines-before 1))))
+#+end_src
 
 *** Org-roam-protocol
 
@@ -564,7 +658,7 @@ TODO Customize graph view for =org-protocol=
 
 Using =deft= to navigate =org-roam= files
 #+begin_src elisp
-(use-packge deft
+(use-package deft
             :after org
             :bind
             ("C-c n d" . deft)
