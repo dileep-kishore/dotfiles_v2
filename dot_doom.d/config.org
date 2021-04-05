@@ -440,6 +440,12 @@ Add keybinding to rotate the layout of all windows
 (map! :map evil-window-map
       "SPC" #'rotate-layout)
 #+end_src
+
+Enable =wakatime-mode= by default
+#+begin_src elisp
+(global-wakatime-mode)
+#+end_src
+
 * Buffers and windows
 
 Make =ivy= open buffers in /horizontal/ and /vertical/ splits using ~M-o |~ and ~M-o %~
@@ -596,22 +602,22 @@ Templates for general notes
         '(("d" "default" plain (function org-roam-capture--get-point)
            "%?"
            :file-name "%<%Y%m%d%H%M>-${slug}"
-           :head "#+TITLE: ${title}\n#+roam_alias: \n#+roam_tags: \n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+           :head "#+TITLE: ${title}\n#+roam_alias:\n#+roam_tags:\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
            :unnarrowed t)
           ("l" "literature" plain (function org-roam-capture--get-point)
            "%?"
            :file-name "literature/%<%Y%m%d%H%M>-${slug}"
-           :head "#+TITLE: ${title}\n#+roam_alias: \n#+roam_tags: literature %^{roam_tags}\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+           :head "#+TITLE: ${title}\n#+roam_alias:\n#+roam_tags: literature %^{roam_tags}\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
            :unnarrowed t)
           ("f" "fleeting" plain (function org-roam-capture--get-point)
            "%?"
            :file-name "fleeting/%<%Y%m%d%H%M>-${slug}"
-           :head "#+TITLE: ${title}\n#+roam_alias: \n#+roam_tags: fleeting\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+           :head "#+TITLE: ${title}\n#+roam_alias:\n#+roam_tags:fleeting\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
            :unnarrowed t)
           ("p" "Permanent (prompt folder)" plain (function org-roam-capture--get-point)
            "%?"
            :file-name "%(read-directory-name \"directory: \" org-directory)/%<%Y%m%d%H%M>-${slug}"
-           :head "#+TITLE: ${title}\n#+roam_alias: \n#+roam_tags: permanent\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+           :head "#+TITLE: ${title}\n#+roam_alias:\n#+roam_tags: permanent\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
            :unnarrowed t)))
   )
 #+end_src
@@ -623,13 +629,13 @@ Templates for capturing references from the web using =org-protocol=
         '(("r" "ref" plain (function org-roam-capture--get-point)
            "%?"
            :file-name "websites/${slug}"
-           :head "#+TITLE: ${title}\n#+roam_alias: \n#+ROAM_KEY: ${ref}\n#+roam_tags: websites\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n- source :: ${ref}\n\n"
+           :head "#+TITLE: ${title}\n#+roam_alias:\n#+ROAM_KEY: ${ref}\n#+roam_tags: websites\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n- source :: ${ref}\n\n"
            :unnarrowed t)
           ("i" "incremental" plain
            (function org-roam-capture--get-point)
            "* %?"
            :file-name "websites/${slug}"
-           :head "#+TITLE: ${title}\n#+roam_alias: \n#+ROAM_KEY: ${ref}\n#+roam_tags: websites\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n- source :: ${ref}\n\n"
+           :head "#+TITLE: ${title}\n#+roam_alias:\n#+ROAM_KEY: ${ref}\n#+roam_tags: websites\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n- source :: ${ref}\n\n"
            :unnarrowed t
            :empty-lines-before 1))))
 #+end_src
@@ -653,6 +659,25 @@ xdg-mime default org-protocol.desktop x-scheme-handler/org-protocol
 #+end_src
 
 TODO Customize graph view for =org-protocol=
+
+*** Org-roam-server
+
+Settings for the =org-roam-server=
+#+begin_src elisp
+(use-package! org-roam-server
+  :config
+  (setq org-roam-server-host "127.0.0.1"
+        org-roam-server-port 8080
+        org-roam-server-authenticate nil
+        org-roam-server-export-inline-images t
+        org-roam-server-serve-files nil
+        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+        org-roam-server-network-poll t
+        org-roam-server-network-arrows nil
+        org-roam-server-network-label-truncate t
+        org-roam-server-network-label-truncate-length 60
+        org-roam-server-network-label-wrap-length 20))
+#+end_src
 
 *** Searching and indexing files
 

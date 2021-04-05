@@ -53,4 +53,6 @@
 (package! wakatime-mode)
 (package! org-appear)
 (package! org-auto-tangle)
+(package! org-roam-server)
+
 (unpin! org-roam company-org-roam)
