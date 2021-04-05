@@ -56,5 +56,6 @@
 (package! org-roam-server)
 (package! org-ref)
 (package! org-roam-bibtex)
+(package! org-noter-pdftools)
 
 (unpin! org-roam company-org-roam)

@@ -754,7 +754,7 @@ Configuration for =org-noter= (this is already installed in ~Doom Emacs~)
   :config
   (setq
    ;; The WM can handle splits
-   org-noter-notes-window-location 'other-frame
+   org-noter-notes-window-location 'vertical-split
    ;; Please stop opening frames
    org-noter-always-create-frame nil
    ;; I want to see the whole file
@@ -787,10 +787,11 @@ Configuration for =helm-bibtex=
 Set up =org-ref= to manage ~cite:~  links
 #+begin_src elisp
 (use-package! org-ref
+  :after org
   :config
   (setq
-   ;; org-ref-completion-library 'org-ref-ivy-cite
-   org-ref-completion-library 'org-ref-helm-insert-cite-link
+   org-ref-completion-library 'org-ref-ivy-cite
+   ;; org-ref-completion-library 'org-ref-helm-insert-cite-link
    org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
    org-ref-default-bibliography (list zot_bib)
    org-ref-bibliography-notes (concat lit_notes "/bibnotes.org")
@@ -807,8 +808,9 @@ Note:
 
 Finally, we configure =org-roam-bibtex=
 #+begin_src elisp
-(use-package org-roam-bibtex
+(use-package! org-roam-bibtex
   :after (org-roam)
+  :load-path zot_bib
   :hook (org-roam-mode . org-roam-bibtex-mode)
   :config
   (setq orb-preformat-keywords
@@ -816,7 +818,7 @@ Finally, we configure =org-roam-bibtex=
   (setq orb-templates
         '(("r" "ref" plain (function org-roam-capture--get-point)
            ""
-           :file-name "${slug}"
+           :file-name "literature/${slug}"
            :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n#+roam_alias:\n#+roam_tags: literature\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U
 - tags ::
 - keywords :: ${keywords}
