@@ -29,7 +29,8 @@
 -   `Arch Linux` (any other Arch based distribution should also work)
 -   `Xmonad` desktop environment with `Xmobar` status bar
 -   `Zsh` as the default shell with `Zinit` as the plugin manager and `Starship` for the prompt
--   `Neovim` as the default text edtior managed with `vim-plug`
+-   `Emacs` as the default text editor using the `Doom Emacs` distribution
+-   `Neovim` as the terminal text editor managed with `vim-plug`
 -   Current theme: `Gruvbox`
 -   Current terminals: `Alacritty` and `Kitty` (default for now because I love my ligatures) with `tmux`
 
@@ -39,7 +40,8 @@
 | --------- | ------------------------- |
 | Desktop   | ![](assets/desktop.png)   |
 | Terminals | ![](assets/terminals.png) |
-| Editor    | ![](assets/editor.png)    |
+| Neovim    | ![](assets/neovim.png)    |
+| Doom Emacs    | ![](assets/emacs.png)    |
 
 ## Installation
 
@@ -75,11 +77,6 @@ If you install the dependencies manually, then the `dotfiles` can be used in any
 | ripgrep   | A better alternative to grep                    |
 | delta     | A git pager                                     |
 | zoxide    | Jump between directories in zsh                 |
-
-## TODO
-
--   Migrate `init.vim` -> `init.lua`
--   Use `1password` cli for secret management
 
 ## Credits
 
