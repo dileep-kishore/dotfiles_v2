@@ -326,14 +326,16 @@ Hide emphasis markup, eg. *bold*, /italics/, +strikethrough+, ~highlight~
 
 Change how the bullets look
 #+begin_src elisp
-(setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
+;; (setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
+(setq org-superstar-headline-bullets-list '("⁜" "⁘" "⁖" "⁚" "◉" "○" "✸" "✿"))
+(setq org-ellipsis "  ")
 #+end_src
 
-Replace the default "-" marker for lists with ""
+Replace the default "-" marker for lists with "➤"
 #+begin_src elisp
 (font-lock-add-keywords 'org-mode
                         '(("^ *\\([-]\\) "
-                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) ""))))))
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "➤"))))))
 #+end_src
 
 +Org-mode hook for pretty =unicode= header symbols and =mixed pitch font=+.
