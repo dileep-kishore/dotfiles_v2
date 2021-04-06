@@ -27,6 +27,7 @@ Making this file run a little faster
 - [[#vim-and-evil-mode-configuration][Vim and Evil mode configuration]]
 - [[#org-mode-and-org-roam-configuration][Org-mode and Org-roam configuration]]
   - [[#org-mode-tasks-and-agenda][Org-mode tasks and agenda]]
+  - [[#support-lsp-in-src-blocks][Support =lsp= in =src= blocks]]
   - [[#org-roam][Org-roam]]
 - [[#credits][Credits]]
 
@@ -535,8 +536,7 @@ Decrease =company-mode= completion delay and other nice things 🤣 (also I just
 (after! company
   (setq company-idle-delay 0.2
         company-minimum-prefix-length 2)
-  (setq company-show-numbers t)
-  (add-hook 'evil-normal-state-entry-hook #'company-abort)) ;; make aborting less annoying.
+  (setq company-show-numbers t))
 #+end_src
 
 Improve =prescient= usage by increasing history
@@ -547,6 +547,7 @@ Improve =prescient= usage by increasing history
 
 Having =ispell= enabled in =text=, =markdown= and =GFM=
 #+begin_src elisp
+(setq ispell-dictionary "en")
 (set-company-backend!
   '(text-mode
     markdown-mode
@@ -575,6 +576,38 @@ Enable logging of done tasks, and log stuff into LOGBOOK drawer by default
 (after! org
   (setq org-log-done t)
   (setq org-log-into-drawer t))
+#+end_src
+** Support =lsp= in =src= blocks
+
+#+begin_src elisp
+(cl-defmacro lsp-org-babel-enable (lang)
+  "Support LANG in org source code block."
+  (setq centaur-lsp 'lsp-mode)
+  (cl-check-type lang stringp)
+  (let* ((edit-pre (intern (format "org-babel-edit-prep:%s" lang)))
+         (intern-pre (intern (format "lsp--%s" (symbol-name edit-pre)))))
+    `(progn
+       (defun ,intern-pre (info)
+         (let ((file-name (->> info caddr (alist-get :file))))
+           (unless file-name
+             (setq file-name (make-temp-file "babel-lsp-")))
+           (setq buffer-file-name file-name)
+           (lsp-deferred)))
+       (put ',intern-pre 'function-documentation
+            (format "Enable lsp-mode in the buffer of org source block (%s)."
+                    (upcase ,lang)))
+       (if (fboundp ',edit-pre)
+           (advice-add ',edit-pre :after ',intern-pre)
+         (progn
+           (defun ,edit-pre (info)
+             (,intern-pre info))
+           (put ',edit-pre 'function-documentation
+                (format "Prepare local buffer environment for org source block (%s)."
+                        (upcase ,lang))))))))
+(defvar org-babel-lang-list
+  '("go" "python" "ipython" "bash" "sh"))
+(dolist (lang org-babel-lang-list)
+  (eval `(lsp-org-babel-enable ,lang)))
 #+end_src
 
 ** Org-roam
