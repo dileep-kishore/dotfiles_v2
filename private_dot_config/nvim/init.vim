@@ -103,14 +103,10 @@ set number
 syntax enable
 set termguicolors
 set background=dark
-let g:gruvbox_material_background = 'medium'
-let g:gruvbox_material_enable_italic = 1
-let g:gruvbox_material_disable_italic_comment = 0
-let g:gruvbox_material_enable_bold = 1
-let g:gruvbox_material_palette = 'material'
 highlight Comment cterm=italic
 highlight Comment gui=italic
-colorscheme gruvbox-material
+let g:palenight_terminal_italics=1
+colorscheme palenight
 set autoindent
 set copyindent
 set showmatch
@@ -173,7 +169,7 @@ set laststatus=2
 " set t_Co=256
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='gruvbox_material' " old: base16_google
+let g:airline_theme='palenight' " old: base16_google
 let g:airline#extensions#virtualenv#enabled = 0
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline_left_alt_sep = "\ue0b1"
