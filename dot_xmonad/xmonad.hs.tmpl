@@ -1,7 +1,8 @@
+-- -*- mode: haskell -*-
+-- vim:ft=haskell
 -- XMonad configuration file
 -- Source: https://gitlab.com/dwt1/dotfiles/-/tree/master/.xmonad
 
--- vim:ft=haskell
 
 -- Gruvbox colors (Source: https://github.com/morhetz/gruvbox)
 -- Red: #cc241d
@@ -138,6 +139,9 @@ myBrowser = "brave "               -- Sets qutebrowser as browser for tree selec
 
 myEditor :: String
 myEditor = myTerminal ++ " -e nvim "    -- Sets vim as editor
+
+emacsClient :: String
+emacsClient = "/home/dileep/.dotfiles/bin/emacs-cli.sh"
 
 myBorderWidth :: Dimension
 myBorderWidth = 4          -- Sets border width for windows
@@ -531,7 +535,8 @@ myKeys home =
         , ("M-p z", scrotPrompt home False)        -- scrotPrompt False
 
     -- Useful programs to have a keybinding for launch
-        , ("M-<Return>", spawn myTerminal)
+        , ("M-<Return>", spawn myTerminal)  -- spawn alacritty terminal
+        , ("M-e", spawn emacsClient)  -- spawn emacsclient
 
     -- Kill windows
         , ("M-S-q", kill1)     -- Kill the currently focused client

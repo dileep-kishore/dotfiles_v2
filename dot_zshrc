@@ -120,7 +120,8 @@ zinit lucid for \
     OMZL::spectrum.zsh
 
 # important plugins
-zinit lucid for OMZP::vi-mode
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
 
 zinit wait lucid for \
     OMZP::asdf \

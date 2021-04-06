@@ -86,6 +86,3 @@ alias nnn="nnn -de"
 
 # todoist aliases
 alias todoist="todoist --color --namespace --indent --project-namespace"
-
-# emacs aliases
-alias emacs-cli="/home/dileep/.dotfiles/bin/emacs-cli.sh"
