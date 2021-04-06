@@ -23,7 +23,9 @@ Making this file run a little faster
   - [[#wakatime-mode][Wakatime-mode]]
   - [[#chezmoi-keybindings][Chezmoi keybindings]]
 - [[#buffers-and-windows][Buffers and windows]]
-- [[#autocompletions-and-related][Autocompletions and related]]
+- [[#autocompletions-and-snippets][Autocompletions and snippets]]
+  - [[#autocompletions][Autocompletions]]
+  - [[#snippets][Snippets]]
 - [[#vim-and-evil-mode-configuration][Vim and Evil mode configuration]]
 - [[#org-mode-and-org-roam-configuration][Org-mode and Org-roam configuration]]
   - [[#org-mode-tasks-and-agenda][Org-mode tasks and agenda]]
@@ -390,7 +392,6 @@ Change header sizes in =org-mode=. ~Right now this doesn't work in mixed-pitch-m
                       :height 1.9
                       :weight 'bold))
 (use-package! org-fancy-priorities
-  :ensure t
   :hook
   (org-mode . org-fancy-priorities-mode)
   :config
@@ -529,7 +530,9 @@ TODO These don't work yet. The problem is going from filename to file location a
    ("%" find-file-below "open below")))
 #+end_src
 
-* Autocompletions and related
+* Autocompletions and snippets
+
+** Autocompletions
 
 Decrease =company-mode= completion delay and other nice things 🤣 (also I just figured out how to insert emoji).
 #+begin_src elisp
@@ -556,6 +559,16 @@ Having =ispell= enabled in =text=, =markdown= and =GFM=
     company-ispell
     company-files
     company-yasnippet))
+#+end_src
+
+** Snippets
+
+#+begin_src elisp
+(use-package numpydoc
+  :bind (:map python-mode-map
+         ("C-c C-n" . numpydoc-generate)))
+(setq numpydoc-insertion-style 'yas)
+(setq numpydoc-insert-examples-block nil)
 #+end_src
 
 * Vim and Evil mode configuration

@@ -57,5 +57,6 @@
 (package! org-ref)
 (package! org-roam-bibtex)
 (package! org-noter-pdftools)
+(package! numpydoc)
 
 (unpin! org-roam company-org-roam)
