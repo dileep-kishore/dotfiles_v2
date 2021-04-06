@@ -23,6 +23,10 @@ Making this file run a little faster
   - [[#wakatime-mode][Wakatime-mode]]
   - [[#chezmoi-keybindings][Chezmoi keybindings]]
 - [[#buffers-and-windows][Buffers and windows]]
+  - [[#ivy-buffers][Ivy Buffers]]
+  - [[#registers][Registers]]
+- [[#dired][dired]]
+  - [[#keybindings][Keybindings]]
 - [[#autocompletions-and-snippets][Autocompletions and snippets]]
   - [[#autocompletions][Autocompletions]]
   - [[#snippets][Snippets]]
@@ -330,7 +334,7 @@ Hide emphasis markup, eg. *bold*, /italics/, +strikethrough+, ~highlight~
 Change how the bullets look
 #+begin_src elisp
 ;; (setq org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿"))
-(setq org-superstar-headline-bullets-list '("⁜" "⁘" "⁖" "⁚" "◉" "○" "✸" "✿"))
+(setq org-superstar-headline-bullets-list '("⁙" "⁘" "⁖" "⁚" "◉" "○" "✸" "✿"))
 (setq org-ellipsis "  ")
 #+end_src
 
@@ -493,6 +497,8 @@ Keybinding to sync dotfiles using chezmoi
 
 * Buffers and windows
 
+** Ivy Buffers
+
 Make =ivy= open buffers in /horizontal/ and /vertical/ splits using ~M-o |~ and ~M-o %~
 TODO These don't work yet. The problem is going from filename to file location and jumping to it
 
@@ -528,6 +534,43 @@ TODO These don't work yet. The problem is going from filename to file location a
  'ivy-switch-buffer
  '(("|" find-file-right "open right")
    ("%" find-file-below "open below")))
+#+end_src
+** Registers
+
+By default ~Doom Emacs~ uses =C-x r= for register, we want to use =SPC r=
+#+begin_src elisp
+(map! :leader
+      (:prefix ("r" . "registers")
+       :desc "Copy to register" "c" #'copy-to-register
+       :desc "Frameset to register" "f" #'frameset-to-register
+       :desc "Insert contents of register" "i" #'insert-register
+       :desc "Jump to register" "j" #'jump-to-register
+       :desc "List registers" "l" #'list-registers
+       :desc "Number to register" "n" #'number-to-register
+       :desc "Interactively choose a register" "r" #'counsel-register
+       :desc "View a register" "v" #'view-register
+       :desc "Window configuration to register" "w" #'window-configuration-to-register
+       :desc "Increment register" "+" #'increment-register
+       :desc "Point to register" "SPC" #'point-to-register))
+#+end_src
+
+* dired
+
+** Keybindings
+
+We will be using =SPC d= for all =dired= keybindings (since ~Doom Emacs~) doesn't use that for anything else
+#+begin_src elisp
+(map! :leader
+      (:prefix ("d" . "dired")
+       :desc "Open dired" "d" #'dired
+       :desc "Dired jump to current" "j" #'dired-jump))
+;; Make 'h' and 'l' go back and forward in dired. Much faster to navigate the directory structure!
+(evil-define-key 'normal dired-mode-map
+  (kbd "h") 'dired-up-directory
+  (kbd "l") 'dired-find-file) ; use dired-find-file instead if not using dired-open package
+;; If peep-dired is enabled, you will get image previews as you go up/down with 'j' and 'k'
+;; Get file icons in dired
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 #+end_src
 
 * Autocompletions and snippets
@@ -577,8 +620,6 @@ This determines the style of the /line numbers/
 #+begin_src elisp
 (setq display-line-numbers-type 'relative)
 #+end_src
-
-
 
 * Org-mode and Org-roam configuration
 
@@ -887,3 +928,4 @@ Finally, we configure =org-roam-bibtex=
 - [[https://tecosaur.github.io/emacs-config][Tecosaur's emacs config]]
 - [[https://www.youtube.com/playlist?list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj][Doomcasts by Zaiste Programming]]
 - [[https://www.ianjones.us/about-me][Ian Jones's blog]]
+- [[https://gitlab.com/dwt1/dotfiles][Distrotube Derek Taylor's dotfiles]]
