@@ -606,6 +606,16 @@ Having =ispell= enabled in =text=, =markdown= and =GFM=
 
 ** Snippets
 
+*** Basic configuration
+
+Change the default snippets directory
+#+begin_src elisp
+(setq +snippets-dir "/home/dileep/.dotfiles/dot_doom.d/snippets")
+#+end_src
+
+*** Documentation snippets
+
+=Numpydoc= documentation snippet plugin
 #+begin_src elisp
 (use-package numpydoc
   :bind (:map python-mode-map
