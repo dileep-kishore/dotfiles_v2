@@ -700,7 +700,7 @@ Set up the default directories
              :olp ("Journaling"))
             ("p" "plan" item
              #'org-roam-capture--get-point
-             "- [ ] %<%H:%M> %?"
+             "** %<%H:%M> TODO %?"
              :file-name "dailies/%<%Y-%m-%d>"
              :head ,day_template
              :empty-lines-before 1
