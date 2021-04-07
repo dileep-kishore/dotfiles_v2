@@ -628,7 +628,7 @@ Change the default snippets directory
 
 This determines the style of the /line numbers/
 #+begin_src elisp
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type 'visual)
 #+end_src
 
 * Org-mode and Org-roam configuration
