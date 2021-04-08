@@ -1,8 +1,8 @@
 # Zsh aliases
 # To be sourced in .zshrc
 
-# Use bat with gruvbox theme
-alias bat="bat --theme gruvbox"
+# Use bat with dracule theme
+alias bat="bat --theme Dracula"
 
 # super user alias
 alias _="sudo "
