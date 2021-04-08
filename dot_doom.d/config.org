@@ -353,9 +353,9 @@ Replace the default "-" marker for lists with "➤"
 (add-hook! 'org-mode-hook 'mixed-pitch-mode 'visual-line-mode 'org-appear-mode)
 #+end_src
 
-Enable =org-appear-autolinks=
+Disable =org-appear-autolinks=
 #+begin_src elisp
-(setq org-appear-autolinks t)
+(setq org-appear-autolinks nil)
 #+end_src
 
 Change header sizes in =org-mode=. ~Right now this doesn't work in mixed-pitch-mode~
