@@ -261,10 +261,10 @@ Doom exposes five (optional) variables for controlling fonts:
 - =doom-unicode-font=
 - =doom-big-font= - Used for =doom-big-font-mode= for presentations or streaming
 #+begin_src elisp
-(setq doom-font (font-spec :family "VictorMono Nerd Font" :size 15)
-      doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font" :size 15)
-      doom-unicode-font (font-spec :family "FiraCode Nerd Font" :size 15)
-      doom-serif-font (font-spec :family "BlexMono Nerd Font" :size 15)
+(setq doom-font (font-spec :family "VictorMono Nerd Font" :size 16)
+      doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font" :size 16)
+      doom-unicode-font (font-spec :family "FiraCode Nerd Font" :size 16)
+      doom-serif-font (font-spec :family "BlexMono Nerd Font" :size 16)
       doom-big-font (font-spec :family "Overpass Nerd Font" :size 25))
 #+end_src
 
