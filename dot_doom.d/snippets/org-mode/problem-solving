@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: problem solving
+# uuid: problem solving
+# key: trigger-key
+# condition: t
+# --
+** {$1:Question}?
+*** Pros
+    - {$2:pros}
+*** Cons
+    - {$3:cons}
+*** Solutions
+    - {$4:solutions}
