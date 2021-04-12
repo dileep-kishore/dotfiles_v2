@@ -40,6 +40,7 @@ Making this file run a little faster
   - [[#org-agenda-and-org-super-agenda-configuration][Org-agenda and org-super-agenda configuration]]
   - [[#support-lsp-in-src-blocks][Support =lsp= in =src= blocks]]
   - [[#org-roam][Org-roam]]
+  - [[#org-mode-addons][Org-mode addons]]
 - [[#language-specific-configuration][Language specific configuration]]
   - [[#julia][Julia]]
 - [[#credits][Credits]]
@@ -1149,6 +1150,26 @@ Finally, we configure =org-roam-bibtex=
 
 *** TODO org-roam-graph configuration
 - source ::  https://www.tquelch.com/posts/emacs-config/#roam
+** Org-mode addons
+
+*** Org-download
+
+#+begin_src elisp
+(use-package org-download
+  :after org
+  :bind
+  (:map org-mode-map
+   (("s-Y" . org-download-screenshot)
+    ("s-y" . org-download-yank))))
+#+end_src
+
+*** TODO =mathpix.el=
+
+#+begin_quote
+Right now I think that this is unnecessary as I can just use the desktop app
+#+end_quote
+
+
 * Language specific configuration
 
 ** Julia

@@ -59,5 +59,6 @@
 (package! org-noter-pdftools)
 (package! numpydoc)
 (package! systemd)
+(package! org-download)
 
 (unpin! org-roam company-org-roam)
