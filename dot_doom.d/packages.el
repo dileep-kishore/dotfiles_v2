@@ -58,5 +58,6 @@
 (package! org-roam-bibtex)
 (package! org-noter-pdftools)
 (package! numpydoc)
+(package! systemd)
 
 (unpin! org-roam company-org-roam)
