@@ -25,7 +25,7 @@ man() {
       LESS_TERMCAP_us=$(printf "\e[1;36m") \
       man "$@"
 }
-export MANPAGER="sh -c 'col -bx | bat --theme gruvbox -l man -p'"
+export MANPAGER="sh -c 'col -bx | bat --theme Dracula -l man -p'"
 
 # Custom launch function
 launch() {
