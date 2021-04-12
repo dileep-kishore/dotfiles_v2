@@ -28,6 +28,6 @@ setw -g window-status-format "\
 #[fg=#333747,bg=#333747,nobold,nounderscore,noitalics]#[bg=#333747,fg=#bfc7d5] #I #W#[fg=#333747,bg=#333747,nobold,nounderscore,noitalics]\
 "
 setw -g window-status-current-format "\
-#[fg=#333747,bg=#cc241d,BOLD,nounderscore,noitalics]#[fg=#bfc7d5,bg=#cc241d,BOLD] #I #W \
-#F #[fg=#cc241d,bg=#333747,BOLD,nounderscore,noitalics]\
+#[fg=#333747,bg=#c792ea,BOLD,nounderscore,noitalics]#[fg=#292d3e,bg=#c792ea,BOLD] #I #W \
+#F #[fg=#c792ea,bg=#333747,BOLD,nounderscore,noitalics]\
 "
