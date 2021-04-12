@@ -371,18 +371,19 @@ Replace the default "-" marker for lists with "➤"
 (appendq! +ligatures-extra-symbols
           `(:src_block     "»"
             :src_block_end "«"
+            :alias         "₳"
             :created:      "ᗫ"
             :last_modified:"∂"
-            :tags          "ⓣ"
+            :tags          "τ"
             :checkbox      "☐"
-            :pending       "◼"
-            :checkedbox    "☑"
+            :pending       "■"
+            :checkedbox    "🗹"
             :list_property "∷"
             :em_dash       "—"
             :ellipses      "…"
             :arrow_right   "→"
             :arrow_left    "←"
-            :title         "Ŧ"
+            :title         "干"
             :subtitle      "𝙩"
             :author        "Ꭿ"
             :date          "𝘿"
@@ -410,6 +411,7 @@ Replace the default "-" marker for lists with "➤"
 (set-ligatures! 'org-mode
   :merge t
   :tags          "#+roam_tags:"
+  :alias         "#+roam_alias:"
   :created:      "#+created:"
   :last_modified:"#+last_modified:"
   :checkbox      "[ ]"
@@ -870,7 +872,7 @@ Keybindings
             ("w" "weekly" item
              #'org-roam-capture--get-point
              "%?"
-             :file-name "dailies/%<%Y-%U>"
+             :file-name "dailies/%<%Y-w%U>"
              :head ,week_template
              :empty-lines-before 1
              :olp ("How was your week? General thoughts")))))
