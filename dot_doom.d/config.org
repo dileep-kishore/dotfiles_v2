@@ -256,7 +256,7 @@ Simpler window title that shows if a file was modified:
 (setq frame-title-format
       '(""
         (:eval
-         (if (s-contains-p org-roam-directory (or buffer-file-name ""))
+         (if (s-contains-p org-directory (or buffer-file-name ""))
              (replace-regexp-in-string
               ".*/[0-9]*-?" "☰ "
               (subst-char-in-string ?_ ?  buffer-file-name))
@@ -278,16 +278,16 @@ Doom exposes five (optional) variables for controlling fonts:
 - =doom-unicode-font=
 - =doom-big-font= - Used for =doom-big-font-mode= for presentations or streaming
 #+begin_src elisp
-(setq doom-font (font-spec :family "VictorMono Nerd Font" :size 16)
-      doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font" :size 16)
-      doom-unicode-font (font-spec :family "FiraCode Nerd Font" :size 16)
-      doom-serif-font (font-spec :family "BlexMono Nerd Font" :size 16)
-      doom-big-font (font-spec :family "Overpass Nerd Font" :size 25))
+(setq doom-font (font-spec :family "VictorMono Nerd Font" :size 16 :height 1.0)
+      doom-variable-pitch-font (font-spec :family "Alegreya" :size 19 :height 1.2)
+      doom-unicode-font (font-spec :family "FiraCode Nerd Font" :size 16 :height 1.0)
+      doom-serif-font (font-spec :family "BlexMono Nerd Font" :weight 'light :size 16 :height 1.0)
+      doom-big-font (font-spec :family "FiraCode Nerd Font" :size 25 :height 1.0))
 #+end_src
 
 Code snippet to check if we are missing our required font (from [[Credits][Tecosaur]])
 #+begin_src elisp
-(defvar required-fonts '("VictorMono Nerd Font" "Overpass Nerd Font" "FiraCode Nerd Font" "BlexMono Nerd Font"))
+(defvar required-fonts '("VictorMono Nerd Font" "Overpass Nerd Font" "Alegreya" "FiraCode Nerd Font" "BlexMono Nerd Font"))
 
 (defvar available-fonts
   (delete-dups (or (font-family-list)
@@ -468,15 +468,56 @@ Replace the default "-" marker for lists with "➤"
 
 +Org-mode hook for pretty =unicode= header symbols and =mixed pitch font=+.
 - I think the =unicode= header symbols are automatically included with the =org +pretty= flag in ~init.el~, hence adding another hook for that is redundant.
-- I also do not didn't like the behavior of =mixed-pitch-font= (not sure where this function is even from), it kept defaulting to =Overpass= as the default font when I wanted =FiraCode=
 - Finally, we enable =visual-line-mode= and =org-appear-mode=
 #+begin_src elisp
-(add-hook! 'org-mode-hook 'mixed-pitch-mode 'visual-line-mode 'org-appear-mode)
+(add-hook! 'org-mode-hook #'+org-pretty-mode #'mixed-pitch-mode #'visual-line-mode)
+(add-hook! (gfm-mode markdown-mode) #'mixed-pitch-mode #'visual-line-mode)
 #+end_src
 
 Disable =org-appear-autolinks=
 #+begin_src elisp
-(setq org-appear-autolinks nil)
+(use-package! org-appear
+  :hook (org-mode . org-appear-mode)
+  :config
+  (setq org-appear-autoemphasis t
+        org-appear-autosubmarkers t
+        org-appear-autolinks nil)
+  ;; for proper first-time setup, `org-appear--set-elements'
+  ;; needs to be run after other hooks have acted.
+  (run-at-time nil nil #'org-appear--set-elements))
+#+end_src
+
+Adjust the height of =mixed-pitch= font
+#+begin_src elisp
+(use-package! mixed-pitch
+  :hook (org-mode . mixed-pitch-mode)
+  :config
+  (setq mixed-pitch-set-heigth t)
+  (set-face-attribute 'org-document-title nil
+                      :height 1.9
+                      :weight 'bold)
+  (set-face-attribute 'fixed-pitch nil :height 1.2)
+  (set-face-attribute 'variable-pitch nil :height 1.2))
+#+end_src
+
+Use ~Alegreya~ font as =variable-pitch-serif-font=
+#+begin_src elisp
+(autoload #'mixed-pitch-serif-mode "mixed-pitch"
+  "Change the default face of the current buffer to a serifed variable pitch, while keeping some faces fixed pitch." t)
+
+(after! mixed-pitch
+  (defface variable-pitch-serif
+    '((t (:family "serif")))
+    "A variable-pitch face with serifs."
+    :group 'basic-faces)
+  (setq mixed-pitch-set-height t)
+  (setq variable-pitch-serif-font (font-spec :family "Alegreya" :size 21))
+  (set-face-attribute 'variable-pitch-serif nil :font variable-pitch-serif-font)
+  (defun mixed-pitch-serif-mode (&optional arg)
+    "Change the default face of the current buffer to a serifed variable pitch, while keeping some faces fixed pitch."
+    (interactive)
+    (let ((mixed-pitch-face 'variable-pitch-serif))
+      (mixed-pitch-mode (or arg 'toggle)))))
 #+end_src
 
 Change header sizes in =org-mode=. ~Right now this doesn't work in mixed-pitch-mode~
@@ -494,32 +535,24 @@ Change header sizes in =org-mode=. ~Right now this doesn't work in mixed-pitch-m
                       :weight 'normal)
   (set-face-attribute 'org-block nil)
   (set-face-attribute 'org-code nil)
-  (set-face-attribute 'org-date nil
-                      :font "FiraCode Nerd Font")
+  (set-face-attribute 'org-date nil)
   (set-face-attribute 'org-level-1 nil
-                      :font "FiraCode Nerd Font"
                       :height 1.7
                       :weight 'bold)
   (set-face-attribute 'org-level-2 nil
-                      :font "FiraCode Nerd Font"
                       :height 1.5
                       :weight 'bold)
   (set-face-attribute 'org-level-3 nil
-                      :font "FiraCode Nerd Font"
                       :height 1.25
                       :weight 'bold)
   (set-face-attribute 'org-level-4 nil
-                      :font "FiraCode Nerd Font"
                       :height 1.15
                       :weight 'bold)
   (set-face-attribute 'org-level-5 nil
-                      :font "FiraCode Nerd Font"
                       :weight 'bold)
   (set-face-attribute 'org-level-6 nil
-                      :font "FiraCode Nerd Font"
                       :weight 'bold)
   (set-face-attribute 'org-document-title nil
-                      :font "FiraCode Nerd Font"
                       :height 1.9
                       :weight 'bold))
 (use-package! org-fancy-priorities
@@ -529,15 +562,17 @@ Change header sizes in =org-mode=. ~Right now this doesn't work in mixed-pitch-m
   (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")))
 #+end_src
 
+=org-pretty-table= configuration
 #+begin_src elisp
+(use-package! org-pretty-table
+  :commands (org-pretty-table-mode global-org-pretty-table-mode))
+#+end_src
+
+#+begin_src elisp :tangle no
 (after! mixed-pitch
   (set-face-attribute 'org-document-title nil
-                      :font "FiraCode Nerd Font"
                       :height 1.9
-                      :weight 'bold)
-  (set-face-attribute 'italic nil
-                      :font "VictorMono Nerd Font"
-                      :slant 'italic))
+                      :weight 'bold))
 #+end_src
 ** Whitespace
 
@@ -548,11 +583,47 @@ Set =global whitespace mode=
  whitespace-style '(face tabs tab-mark trailing newline newline-mark indentation))
 (global-whitespace-mode +1)
 #+end_src
-** TODO Writeroom configuration
+** Writeroom configuration
 - source :: https://tecosaur.github.io/emacs-config/config.html#writeroom
 
 #+begin_src elisp
 (setq +zen-text-scale 0.8)
+(defvar +zen-serif-p t
+  "Whether to use a serifed font with `mixed-pitch-mode'.")
+(after! writeroom-mode
+  (defvar-local +zen--original-org-indent-mode-p nil)
+  (defvar-local +zen--original-mixed-pitch-mode-p nil)
+  (defvar-local +zen--original-solaire-mode-p nil)
+  (defvar-local +zen--original-org-pretty-table-mode-p nil)
+  (defun +zen-enable-mixed-pitch-mode-h ()
+    "Enable `mixed-pitch-mode' when in `+zen-mixed-pitch-modes'."
+    (when (apply #'derived-mode-p +zen-mixed-pitch-modes)
+      (if writeroom-mode
+          (progn
+            (setq +zen--original-solaire-mode-p solaire-mode)
+            (solaire-mode -1)
+            (setq +zen--original-mixed-pitch-mode-p mixed-pitch-mode)
+            (funcall (if +zen-serif-p #'mixed-pitch-serif-mode #'mixed-pitch-mode) 1))
+        (funcall #'mixed-pitch-mode (if +zen--original-mixed-pitch-mode-p 1 -1))
+        (when +zen--original-solaire-mode-p (solaire-mode 1)))))
+  (pushnew! writeroom--local-variables
+            'visual-fill-column-width)
+  (add-hook 'writeroom-mode-enable-hook
+            (defun +zen-prose-org-h ()
+              "Reformat the current Org buffer appearance for prose."
+              (whitespace-mode -1)
+              (when (eq major-mode 'org-mode)
+                visual-fill-column-width 100
+                (setq
+                 +zen--original-org-pretty-table-mode-p (bound-and-true-p org-pretty-table-mode))
+                (org-pretty-table-mode 1))))
+  (add-hook 'writeroom-mode-disable-hook
+            (defun +zen-nonprose-org-h ()
+              "Reverse the effect of `+zen-prose-org'."
+              (whitespace-mode +1)
+              (when (eq major-mode 'org-mode)
+                ;; (unless +zen--original-org-pretty-table-mode-p (org-pretty-table-mode -1))
+                ))))
 #+end_src
 
 * Simple settings

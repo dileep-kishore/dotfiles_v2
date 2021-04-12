@@ -111,6 +111,8 @@ paru -S --useask --batchinstall --cleanafter --removemake \
     alacritty-ligatures-git \
     kitty \
     noto-fonts-emoji \
+    otf-alegreya \
+    ttf-alegreya \
     activitywatch-bin \
     zoom
 
