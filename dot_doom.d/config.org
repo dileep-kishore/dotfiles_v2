@@ -21,6 +21,7 @@ Making this file run a little faster
   - [[#whitespace][Whitespace]]
   - [[#writeroom-configuration][Writeroom configuration]]
 - [[#simple-settings][Simple settings]]
+  - [[#battery-status-and-password-cache][Battery status and password-cache]]
   - [[#deleting-files-undo-limits-etc][Deleting files, undo limits, etc.]]
   - [[#select-buffer-after-splitting][Select buffer after splitting]]
   - [[#rotate-layouts][Rotate layouts]]
@@ -555,6 +556,15 @@ Set =global whitespace mode=
 #+end_src
 
 * Simple settings
+
+** Battery status and password-cache
+
+#+begin_src elisp
+(if (equal "Battery status not available"
+           (battery))
+    (display-battery-mode 1)  ; On laptops it's nice to know how much power you have
+  (setq password-cache-expiry nil)) ; no battery = desktop
+#+end_src
 
 ** Deleting files, undo limits, etc.
 
