@@ -31,3 +31,5 @@
     line-numbers-plus-style = 28
 [pull]
     rebase = false
+[github]
+    user = dileep-kishore

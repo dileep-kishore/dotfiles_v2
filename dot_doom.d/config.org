@@ -42,6 +42,7 @@ Making this file run a little faster
   - [[#support-lsp-in-src-blocks][Support =lsp= in =src= blocks]]
   - [[#org-roam][Org-roam]]
   - [[#org-mode-addons][Org-mode addons]]
+  - [[#git-commit-keybinding][Git-commit keybinding]]
 - [[#language-specific-configuration][Language specific configuration]]
   - [[#julia][Julia]]
 - [[#credits][Credits]]
@@ -278,11 +279,11 @@ Doom exposes five (optional) variables for controlling fonts:
 - =doom-unicode-font=
 - =doom-big-font= - Used for =doom-big-font-mode= for presentations or streaming
 #+begin_src elisp
-(setq doom-font (font-spec :family "VictorMono Nerd Font" :size 16 :height 1.0)
-      doom-variable-pitch-font (font-spec :family "Alegreya" :size 19 :height 1.2)
-      doom-unicode-font (font-spec :family "FiraCode Nerd Font" :size 16 :height 1.0)
-      doom-serif-font (font-spec :family "BlexMono Nerd Font" :weight 'light :size 16 :height 1.0)
-      doom-big-font (font-spec :family "FiraCode Nerd Font" :size 25 :height 1.0))
+(setq doom-font (font-spec :family "VictorMono Nerd Font" :size 16)
+      doom-variable-pitch-font (font-spec :family "Alegreya" :size 20 :height 1.2)
+      doom-unicode-font (font-spec :family "FiraCode Nerd Font" :size 16)
+      doom-serif-font (font-spec :family "BlexMono Nerd Font" :weight 'light :size 16)
+      doom-big-font (font-spec :family "FiraCode Nerd Font" :size 25))
 #+end_src
 
 Code snippet to check if we are missing our required font (from [[Credits][Tecosaur]])
@@ -345,6 +346,7 @@ There are several faces, some of them are:
 
 Hide emphasis markup, eg. *bold*, /italics/, +strikethrough+, ~highlight~
 #+begin_src elisp
+(setq org-startup-folded 'overview)
 (setq org-hide-emphasis-markers t)
 #+end_src
 
@@ -360,7 +362,7 @@ Change how the bullets look
 ;; (setq org-superstar-headline-bullets-list '("೧" "೨" "೩" "೪" "೫" "೬" "೭" "೮" "೯"))
 ;; (setq org-superstar-headline-bullets-list '("一" "二" "三" "四" "五" "六" "七" "八"))
 ;; (setq org-superstar-headline-bullets-list '("⁙" "⁘" "⁖" "⁚" "◉" "○" "✸" "✿"))
-(setq org-ellipsis "  ")
+(setq org-ellipsis "…")
 #+end_src
 
 Make "quote" blocks /italic/
@@ -368,12 +370,6 @@ Make "quote" blocks /italic/
 (setq org-fontify-quote-and-verse-blocks t)
 #+end_src
 
-Replace the default "-" marker for lists with "➤"
-#+begin_src elisp
-(font-lock-add-keywords 'org-mode
-                        '(("^ *\\([-]\\) "
-                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "➤"))))))
-#+end_src
 
 ** Ligatures
 
@@ -492,12 +488,12 @@ Adjust the height of =mixed-pitch= font
 (use-package! mixed-pitch
   :hook (org-mode . mixed-pitch-mode)
   :config
-  (setq mixed-pitch-set-heigth t)
+  (setq mixed-pitch-set-height t)
   (set-face-attribute 'org-document-title nil
                       :height 1.9
                       :weight 'bold)
-  (set-face-attribute 'fixed-pitch nil :height 1.2)
-  (set-face-attribute 'variable-pitch nil :height 1.2))
+  (set-face-attribute 'variable-pitch nil :height 1.2)
+  )
 #+end_src
 
 Use ~Alegreya~ font as =variable-pitch-serif-font=
@@ -511,7 +507,7 @@ Use ~Alegreya~ font as =variable-pitch-serif-font=
     "A variable-pitch face with serifs."
     :group 'basic-faces)
   (setq mixed-pitch-set-height t)
-  (setq variable-pitch-serif-font (font-spec :family "Alegreya" :size 21))
+  (setq variable-pitch-serif-font (font-spec :family "Alegreya" :size 20))
   (set-face-attribute 'variable-pitch-serif nil :font variable-pitch-serif-font)
   (defun mixed-pitch-serif-mode (&optional arg)
     "Change the default face of the current buffer to a serifed variable pitch, while keeping some faces fixed pitch."
@@ -520,7 +516,7 @@ Use ~Alegreya~ font as =variable-pitch-serif-font=
       (mixed-pitch-mode (or arg 'toggle)))))
 #+end_src
 
-Change header sizes in =org-mode=. ~Right now this doesn't work in mixed-pitch-mode~
+Change header sizes in =org-mode=.
 #+begin_src elisp
 (after! org
   (setq
@@ -533,9 +529,9 @@ Change header sizes in =org-mode=. ~Right now this doesn't work in mixed-pitch-m
      ("CANCELLED" :foreground "#ff6480" :weight normal :underline t)))
   (set-face-attribute 'org-link nil
                       :weight 'normal)
-  (set-face-attribute 'org-block nil)
-  (set-face-attribute 'org-code nil)
-  (set-face-attribute 'org-date nil)
+  (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-date nil :inherit '(shadow fixed-pitch))
   (set-face-attribute 'org-level-1 nil
                       :height 1.7
                       :weight 'bold)
@@ -651,11 +647,11 @@ Set =global whitespace mode=
 
 - Raise the undow limit to =80Mb=
 - Granular undos in insert mode!
-- Unicde ellipsis ( )
+- Unicde ellipsis (… )
 #+begin_src elisp
 (setq undo-limit 80000000
       evil-want-fine-undo t
-      truncate-string-ellipsis " ")
+      truncate-string-ellipsis "…")
 #+end_src
 
 ** Select buffer after splitting
@@ -1250,6 +1246,19 @@ Finally, we configure =org-roam-bibtex=
 Right now I think that this is unnecessary as I can just use the desktop app
 #+end_quote
 
+** Git-commit keybinding
+
+Keybinding to commit =org= repository using script in =~/.dotfiles/bin/org-git-add-commit.sh=
+#+begin_src elisp
+(defun org-git-add-commit ()
+  " Commit changes in the Org repo using a bash script "
+  (interactive)
+  (shell-command "bash ~/.dotfiles/bin/org-git-add-commit.sh"))
+
+(map! :leader
+      :prefix "z"
+      :desc "org-git-add-commit" "c" #'org-git-add-commit)
+#+end_src
 
 * Language specific configuration
 
