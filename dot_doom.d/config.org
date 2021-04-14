@@ -279,8 +279,8 @@ Doom exposes five (optional) variables for controlling fonts:
 - =doom-unicode-font=
 - =doom-big-font= - Used for =doom-big-font-mode= for presentations or streaming
 #+begin_src elisp
-(setq doom-font (font-spec :family "VictorMono Nerd Font" :size 16)
-      doom-variable-pitch-font (font-spec :family "Alegreya" :size 20 :height 1.2)
+(setq doom-font (font-spec :family "VictorMono Nerd Font" :size 16 :height 100)
+      doom-variable-pitch-font (font-spec :family "Alegreya" :size 20 :height 120)
       doom-unicode-font (font-spec :family "FiraCode Nerd Font" :size 16)
       doom-serif-font (font-spec :family "BlexMono Nerd Font" :weight 'light :size 16)
       doom-big-font (font-spec :family "FiraCode Nerd Font" :size 25))
@@ -462,7 +462,7 @@ Make "quote" blocks /italic/
 
 ** Mixed pitch mode
 
-+Org-mode hook for pretty =unicode= header symbols and =mixed pitch font=+.
+Org-mode hook for pretty =unicode= header symbols and =mixed pitch font=
 - I think the =unicode= header symbols are automatically included with the =org +pretty= flag in ~init.el~, hence adding another hook for that is redundant.
 - Finally, we enable =visual-line-mode= and =org-appear-mode=
 #+begin_src elisp
@@ -489,10 +489,10 @@ Adjust the height of =mixed-pitch= font
   :hook (org-mode . mixed-pitch-mode)
   :config
   (setq mixed-pitch-set-height t)
+  (set-face-attribute 'org-hide nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-document-title nil
                       :height 1.9
                       :weight 'bold)
-  (set-face-attribute 'variable-pitch nil :height 1.2)
   )
 #+end_src
 
@@ -529,7 +529,9 @@ Change header sizes in =org-mode=.
      ("CANCELLED" :foreground "#ff6480" :weight normal :underline t)))
   (set-face-attribute 'org-link nil
                       :weight 'normal)
+  (set-face-attribute 'org-roam-link nil :foreground "#f07178")
   (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-hide nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
   (set-face-attribute 'org-date nil :inherit '(shadow fixed-pitch))
   (set-face-attribute 'org-level-1 nil
