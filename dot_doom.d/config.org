@@ -357,11 +357,11 @@ Change how the bullets look
   (set-face-attribute 'org-superstar-header-bullet nil :height 1.15)
   (set-face-attribute 'org-superstar-leading nil :height 1.2))
 (setq org-superstar-prettify-item-bullets t)
-(setq org-superstar-headline-bullets-list '("⚝" "◉" ":" "⁖" "⁘" "⁙" "✿" "✸" "○"))
+(setq org-superstar-headline-bullets-list '("➊" "➋" "➌" "➍" "➎" "➏" "➐" "➑" "➒"))
+;; (setq org-superstar-headline-bullets-list '("⚝" "◉" "⁚" "⁖" "⁘" "⁙" "✿" "✸" "○"))
 ;; (setq org-superstar-headline-bullets-list '("१" "२" "३" "४" "५" "६" "७" "८" "९"))
 ;; (setq org-superstar-headline-bullets-list '("೧" "೨" "೩" "೪" "೫" "೬" "೭" "೮" "೯"))
 ;; (setq org-superstar-headline-bullets-list '("一" "二" "三" "四" "五" "六" "七" "八"))
-;; (setq org-superstar-headline-bullets-list '("⁙" "⁘" "⁖" "⁚" "◉" "○" "✸" "✿"))
 (setq org-ellipsis "…")
 #+end_src
 
@@ -1148,7 +1148,7 @@ Configuration for =org-noter= (this is already installed in ~Doom Emacs~)
   :config
   (setq
    ;; The WM can handle splits
-   org-noter-notes-window-location 'vertical-split
+   org-noter-notes-window-location 'horizontal-split
    ;; Please stop opening frames
    org-noter-always-create-frame nil
    ;; I want to see the whole file
