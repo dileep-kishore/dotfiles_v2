@@ -557,7 +557,8 @@ Change header sizes in =org-mode=.
   :hook
   (org-mode . org-fancy-priorities-mode)
   :config
-  (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")))
+  ;; (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")))
+  (setq org-fancy-priorities-list '("🄰" "🄱" "🄲" "🄳" "🄴")))
 #+end_src
 
 =org-pretty-table= configuration
