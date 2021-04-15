@@ -18,6 +18,7 @@ Making this file run a little faster
   - [[#font-configuration][Font configuration]]
   - [[#ligatures][Ligatures]]
   - [[#mixed-pitch-mode][Mixed pitch mode]]
+  - [[#priorities][Priorities]]
   - [[#whitespace][Whitespace]]
   - [[#writeroom-configuration][Writeroom configuration]]
 - [[#simple-settings][Simple settings]]
@@ -553,6 +554,14 @@ Change header sizes in =org-mode=.
   (set-face-attribute 'org-document-title nil
                       :height 1.9
                       :weight 'bold))
+#+end_src
+
+** Priorities
+#+begin_src elisp
+(setq   org-highest-priority ?A
+    org-default-priority ?B
+    org-lowest-priority ?D
+)
 (use-package! org-fancy-priorities
   :hook
   (org-mode . org-fancy-priorities-mode)
