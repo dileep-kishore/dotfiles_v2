@@ -410,11 +410,7 @@ Make "quote" blocks /italic/
             :end_export    "⏪"
             :properties    "⚙"
             :end           "∎"
-            :priority_a   ,(propertize "⚑" 'face 'all-the-icons-red)
-            :priority_b   ,(propertize "⬆" 'face 'all-the-icons-orange)
-            :priority_c   ,(propertize "■" 'face 'all-the-icons-yellow)
-            :priority_d   ,(propertize "⬇" 'face 'all-the-icons-green)
-            :priority_e   ,(propertize "❓" 'face 'all-the-icons-blue)))
+            ))
 (set-ligatures! 'org-mode
   :merge t
   :tags          "#+roam_tags:"
@@ -449,15 +445,11 @@ Make "quote" blocks /italic/
   :results       "#+RESULTS:"
   :property      ":PROPERTIES:"
   :end           ":END:"
-  :priority_a    "[#A]"
-  :priority_b    "[#B]"
-  :priority_c    "[#C]"
-  :priority_d    "[#D]"
-  :priority_e    "[#E]")
+  )
 (plist-put! +ligatures-extra-symbols
             :name          "⁍"
-            :true          "⊤"
-            :false         "F"
+            :true          "Ṫ"
+            :false         "Ḟ"
             :pipe          "⯈")
 #+end_src
 
@@ -558,10 +550,10 @@ Change header sizes in =org-mode=.
 
 ** Priorities
 #+begin_src elisp
-(setq   org-highest-priority ?A
-    org-default-priority ?B
-    org-lowest-priority ?D
-)
+(setq
+ org-highest-priority ?A
+ org-default-priority ?B
+ org-lowest-priority ?D)
 (use-package! org-fancy-priorities
   :hook
   (org-mode . org-fancy-priorities-mode)
