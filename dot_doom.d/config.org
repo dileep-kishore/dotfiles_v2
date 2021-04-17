@@ -520,9 +520,8 @@ Change header sizes in =org-mode=.
      ("INPROGRESS" :foreground "#0098dd" :weight normal :underline t)
      ("DONE" :foreground "#50a14f" :weight normal :underline t)
      ("CANCELLED" :foreground "#ff6480" :weight normal :underline t)))
-  (set-face-attribute 'org-link nil
-                      :weight 'normal)
-  (set-face-attribute 'org-roam-link nil :foreground "#f07178")
+  (set-face-attribute 'org-link nil :weight 'normal :slant 'italic)
+  (set-face-attribute 'org-roam-link nil :slant 'italic :foreground "#ff6480")
   (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-hide nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
@@ -553,13 +552,19 @@ Change header sizes in =org-mode=.
 (setq
  org-highest-priority ?A
  org-default-priority ?B
- org-lowest-priority ?D)
+ org-lowest-priority ?E)
+(setq org-priority-faces '((?A :foreground "red")
+                           (?B :foreground "orange")
+                           (?C :foreground "yellow")
+                           (?D :foreground "green")
+                           (?E :foreground "gray")))
 (use-package! org-fancy-priorities
   :hook
   (org-mode . org-fancy-priorities-mode)
   :config
   ;; (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")))
   (setq org-fancy-priorities-list '("🄰" "🄱" "🄲" "🄳" "🄴")))
+(add-hook 'org-agenda-mode-hook 'org-fancy-priorities-mode)
 #+end_src
 
 =org-pretty-table= configuration
