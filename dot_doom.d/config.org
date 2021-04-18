@@ -38,7 +38,7 @@ Making this file run a little faster
   - [[#snippets][Snippets]]
 - [[#vim-and-evil-mode-configuration][Vim and Evil mode configuration]]
 - [[#org-mode-and-org-roam-configuration][Org-mode and Org-roam configuration]]
-  - [[#org-mode-tasks][Org-mode tasks]]
+  - [[#task-management][Task management]]
   - [[#org-agenda-and-org-super-agenda-configuration][Org-agenda and org-super-agenda configuration]]
   - [[#support-lsp-in-src-blocks][Support =lsp= in =src= blocks]]
   - [[#org-roam][Org-roam]]
@@ -515,13 +515,13 @@ Change header sizes in =org-mode=.
   (setq
    org-todo-keyword-faces
    '(("TODO" :foreground "#7c7c75" :weight normal :underline t)
+     ("PROG" :foreground "#0098dd" :weight normal :underline t)
      ("NEXT" :foreground "#9f7efe" :weight normal :underline t)
-     ("WAITING" :foreground "#9f7efe" :weight normal :underline t)
-     ("INPROGRESS" :foreground "#0098dd" :weight normal :underline t)
+     ("WAIT" :foreground "#ff8000" :weight normal :underline t)
      ("DONE" :foreground "#50a14f" :weight normal :underline t)
      ("CANCELLED" :foreground "#ff6480" :weight normal :underline t)))
   (set-face-attribute 'org-link nil :weight 'normal :slant 'italic)
-  (set-face-attribute 'org-roam-link nil :slant 'italic :foreground "#ff6480")
+  (set-face-attribute 'org-roam-link nil :slant 'italic :foreground "#00ebc2")
   (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-hide nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
@@ -851,7 +851,7 @@ This determines the style of the /line numbers/
 
 * Org-mode and Org-roam configuration
 
-** Org-mode tasks
+** Task management
 
 Enable logging of done tasks, and log stuff into LOGBOOK drawer by default
 #+begin_src elisp
@@ -859,9 +859,9 @@ Enable logging of done tasks, and log stuff into LOGBOOK drawer by default
   (setq org-log-done 'time)
   (setq org-log-into-drawer t)
   ;; Don't log when changing state with shift-arrows
-  (setq org-treat-S-cursor-todo-selection-as-state-change nil)
+  ;; (setq org-treat-S-cursor-todo-selection-as-state-change nil)
   ;; Update org-todo keywords
-  (setq org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "WAITING(w@/!)" "INPROGRESS(i)" "|" "DONE(d)" "CANCELLED(c)")))
+  (setq org-todo-keywords '((sequence "TODO(t)" "PROG(p)"  "NEXT(n)" "WAIT(w@/!)" "|" "DONE(d)" "CANCELLED(c)")))
   ;; Ensure that sub-tasks must be completed before parent can be marked done
   (setq org-enforce-todo-dependencies t))
 #+end_src
