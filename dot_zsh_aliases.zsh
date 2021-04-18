@@ -16,7 +16,7 @@ alias rm="rm -i"
 
 # tmux aliases
 alias tnew="tmux new -s"
-alias tattach="tmux attach"
+alias ta="tmux attach -t"
 alias tdetach="tmux detach"
 alias tkill="tmux kill-session -t"
 alias tlist="tmux ls"
