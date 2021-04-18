@@ -10,6 +10,7 @@ Making this file run a little faster
 * Table of Contents :TOC:
 - [[#configuring-private-settings][Configuring private settings]]
   - [[#enabling-ssh-agents][Enabling SSH agents]]
+  - [[#org-mode-and-org-roam-directories][Org-mode and Org-roam directories]]
   - [[#setting-up-email-with-mu4e][Setting up email with =mu4e=]]
 - [[#emacs-daemon][Emacs daemon]]
 - [[#useful-functionsmacros-that-are-helpful-for-configuration][Useful functions/macros that are helpful for configuration]]
@@ -64,6 +65,13 @@ By default doom blacklists =SSH_AUTH_SOCK= and =SSH_AUTH_PID= variables, which m
 #+begin_src elisp
 (when noninteractive
   (add-to-list 'doom-env-whitelist "^SSH_"))
+#+end_src
+
+** Org-mode and Org-roam directories
+
+#+begin_src elisp
+(setq org-directory "~/Documents/Org")
+(setq org-roam-directory "~/Documents/Org/Roam")
 #+end_src
 
 ** Setting up email with =mu4e=
@@ -956,7 +964,6 @@ You might want to refer to the [[https://www.orgroam.com/manual.html#The-Templat
 
 Set up the default directories
 #+begin_src elisp
-(setq org-directory "~/Documents/Org")
 (after! org-roam
   (setq org-roam-directory "~/Documents/Org/Roam"))
 #+end_src
