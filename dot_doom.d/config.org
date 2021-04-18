@@ -15,6 +15,7 @@ Making this file run a little faster
 - [[#useful-functionsmacros-that-are-helpful-for-configuration][Useful functions/macros that are helpful for configuration]]
 - [[#the-looks][The looks]]
   - [[#theme-configuration][Theme configuration]]
+  - [[#modeline][Modeline]]
   - [[#font-configuration][Font configuration]]
   - [[#ligatures][Ligatures]]
   - [[#mixed-pitch-mode][Mixed pitch mode]]
@@ -267,6 +268,19 @@ Simpler window title that shows if a file was modified:
          (let ((project-name (projectile-project-name)))
            (unless (string= "-" project-name)
              (format (if (buffer-modified-p)  " ◉ %s" " ● %s") project-name))))))
+#+end_src
+** Modeline
+
+Remove Zettelkasten prefix from files while using =org-roam=
+#+begin_src elisp
+(defadvice! doom-modeline--buffer-file-name-roam-aware-a (orig-fun)
+  :around #'doom-modeline-buffer-file-name ; takes no args
+  (if (s-contains-p org-roam-directory (or buffer-file-name ""))
+      (replace-regexp-in-string
+       "\\(?:^\\|.*/\\)\\([0-9]\\{4\\}\\)\\([0-9]\\{2\\}\\)\\([0-9]\\{2\\}\\)[0-9]*-"
+       "🢔(\\1-\\2-\\3) "
+       (subst-char-in-string ?_ ?  buffer-file-name))
+    (funcall orig-fun)))
 #+end_src
 
 ** Font configuration
@@ -547,6 +561,8 @@ Change header sizes in =org-mode=.
                       :weight 'bold))
 #+end_src
 
+
+
 ** Priorities
 #+begin_src elisp
 (setq
@@ -579,6 +595,7 @@ Change header sizes in =org-mode=.
                       :height 1.9
                       :weight 'bold))
 #+end_src
+
 ** Whitespace
 
 Set =global whitespace mode=
@@ -588,6 +605,7 @@ Set =global whitespace mode=
  whitespace-style '(face tabs tab-mark trailing newline newline-mark indentation))
 (global-whitespace-mode +1)
 #+end_src
+
 ** Writeroom configuration
 - source :: https://tecosaur.github.io/emacs-config/config.html#writeroom
 
@@ -985,6 +1003,16 @@ Templates for general notes
            "%?"
            :file-name "%<%Y%m%d%H%M>-${slug}"
            :head "#+TITLE: ${title}\n#+roam_alias:\n#+roam_tags:\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+           :unnarrowed t)
+          ("i" "inbox" plain (function org-roam-capture--get-point)
+           "* TODO %?"
+           :file-name "tasks/inbox.org"
+           :head "#+TITLE: Inbox\n#+roam_alias: inbox\n#+roam_tags: tasks\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+           :unnarrowed t)
+          ("t" "task" plain (function org-roam-capture--get-point)
+           "* TODO %?"
+           :file-name "tasks/${slug}"
+           :head "#+TITLE: ${title}\n#+roam_alias:\n#+roam_tags: tasks\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
            :unnarrowed t)
           ("l" "literature" plain (function org-roam-capture--get-point)
            "%?"
