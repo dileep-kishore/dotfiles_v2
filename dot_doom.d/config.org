@@ -20,6 +20,7 @@ Making this file run a little faster
   - [[#ligatures][Ligatures]]
   - [[#mixed-pitch-mode][Mixed pitch mode]]
   - [[#priorities][Priorities]]
+  - [[#tags][Tags]]
   - [[#whitespace][Whitespace]]
   - [[#writeroom-configuration][Writeroom configuration]]
 - [[#simple-settings][Simple settings]]
@@ -595,6 +596,30 @@ Change header sizes in =org-mode=.
                       :height 1.9
                       :weight 'bold))
 #+end_src
+** Tags
+
+Pretty tags using =org-pretty-tags=
+#+begin_src elisp
+(use-package org-pretty-tags
+  :config
+  (setq org-pretty-tags-surrogate-strings
+        `(("OKR"        . ,(all-the-icons-faicon   "rocket"         :face 'all-the-icons-purple  :v-adjust 0.01))
+          ("OBJ"        . ,(all-the-icons-faicon   "bullseye"       :face 'all-the-icons-purple  :v-adjust 0.01))
+          ("uni"        . ,(all-the-icons-faicon   "graduation-cap" :face 'all-the-icons-purple  :v-adjust 0.01))
+          ("code"        . ,(all-the-icons-material "computer"       :face 'all-the-icons-silver  :v-adjust 0.01))
+          ("assignment" . ,(all-the-icons-material "library_books"  :face 'all-the-icons-orange  :v-adjust 0.01))
+          ("lecture"    . ,(all-the-icons-fileicon "keynote"        :face 'all-the-icons-orange  :v-adjust 0.01))
+          ("email"      . ,(all-the-icons-faicon   "envelope"       :face 'all-the-icons-blue    :v-adjust 0.01))
+          ("read"       . ,(all-the-icons-octicon  "book"           :face 'all-the-icons-lblue   :v-adjust 0.01))
+          ("article"    . ,(all-the-icons-octicon  "file-text"      :face 'all-the-icons-yellow  :v-adjust 0.01))
+          ("web"        . ,(all-the-icons-faicon   "globe"          :face 'all-the-icons-green   :v-adjust 0.01))
+          ("info"       . ,(all-the-icons-faicon   "info-circle"    :face 'all-the-icons-blue    :v-adjust 0.01))
+          ("issue"      . ,(all-the-icons-faicon   "bug"            :face 'all-the-icons-red     :v-adjust 0.01))
+          ("someday"    . ,(all-the-icons-faicon   "calendar-o"     :face 'all-the-icons-cyan    :v-adjust 0.01))
+          ("idea"       . ,(all-the-icons-octicon  "light-bulb"     :face 'all-the-icons-yellow  :v-adjust 0.01))
+          ("emacs"      . ,(all-the-icons-fileicon "emacs"          :face 'all-the-icons-lpurple :v-adjust 0.01))))
+  (org-pretty-tags-global-mode))
+#+end_src
 
 ** Whitespace
 
@@ -1005,12 +1030,12 @@ Templates for general notes
            :head "#+TITLE: ${title}\n#+roam_alias:\n#+roam_tags:\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
            :unnarrowed t)
           ("i" "inbox" plain (function org-roam-capture--get-point)
-           "* TODO %?"
+           "* TODO [/] %?"
            :file-name "tasks/inbox.org"
            :head "#+TITLE: Inbox\n#+roam_alias: inbox\n#+roam_tags: tasks\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
            :unnarrowed t)
           ("t" "task" plain (function org-roam-capture--get-point)
-           "* TODO %?"
+           "* TODO [/] %?"
            :file-name "tasks/${slug}"
            :head "#+TITLE: ${title}\n#+roam_alias:\n#+roam_tags: tasks\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
            :unnarrowed t)

@@ -60,6 +60,7 @@
 (package! numpydoc)
 (package! systemd)
 (package! org-download)
+(package! org-pretty-tags)
 (package! org-pretty-table
   :recipe (:host github :repo "Fuco1/org-pretty-table") :pin "474ad84a8f...")
 
