@@ -66,7 +66,7 @@ Plug 'dbeniamine/cheat.sh-vim'            " Access cheat.sh from vim
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " Markdown preview
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }  " Documentation generator
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] } " like spacemacs which key
-Plug 'romgrk/todoist.nvim', { 'do': ':TodoistInstall' }  " todoist plugin for neovim
+Plug 'axvr/org.vim'                       " Org file syntax highlighting
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Themes                                                                       "
