@@ -303,10 +303,10 @@ Doom exposes five (optional) variables for controlling fonts:
 - =doom-unicode-font=
 - =doom-big-font= - Used for =doom-big-font-mode= for presentations or streaming
 #+begin_src elisp
-(setq doom-font (font-spec :family "VictorMono Nerd Font" :size 16 :height 100)
-      doom-variable-pitch-font (font-spec :family "Alegreya" :size 20 :height 120)
-      doom-unicode-font (font-spec :family "FiraCode Nerd Font" :size 16)
-      doom-serif-font (font-spec :family "BlexMono Nerd Font" :weight 'light :size 16)
+(setq doom-font (font-spec :family "VictorMono Nerd Font" :size 16 :height 160)
+      doom-variable-pitch-font (font-spec :family "Alegreya" :size 21 :weight 'extra-light)
+      doom-unicode-font (font-spec :family "FiraCode Nerd Font")
+      doom-serif-font (font-spec :family "BlexMono Nerd Font" :weight 'light)
       doom-big-font (font-spec :family "FiraCode Nerd Font" :size 25))
 #+end_src
 
@@ -499,19 +499,6 @@ Disable =org-appear-autolinks=
   (run-at-time nil nil #'org-appear--set-elements))
 #+end_src
 
-Adjust the height of =mixed-pitch= font
-#+begin_src elisp
-(use-package! mixed-pitch
-  :hook (org-mode . mixed-pitch-mode)
-  :config
-  (setq mixed-pitch-set-height t)
-  (set-face-attribute 'org-hide nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-document-title nil
-                      :height 1.9
-                      :weight 'bold)
-  )
-#+end_src
-
 Use ~Alegreya~ font as =variable-pitch-serif-font=
 #+begin_src elisp
 (autoload #'mixed-pitch-serif-mode "mixed-pitch"
@@ -523,7 +510,11 @@ Use ~Alegreya~ font as =variable-pitch-serif-font=
     "A variable-pitch face with serifs."
     :group 'basic-faces)
   (setq mixed-pitch-set-height t)
-  (setq variable-pitch-serif-font (font-spec :family "Alegreya" :size 20))
+  (set-face-attribute 'org-hide nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-document-title nil
+                      :height 1.9
+                      :weight 'bold)
+  (setq variable-pitch-serif-font (font-spec :family "Alegreya" :size 21 :weight 'extra-light))
   (set-face-attribute 'variable-pitch-serif nil :font variable-pitch-serif-font)
   (defun mixed-pitch-serif-mode (&optional arg)
     "Change the default face of the current buffer to a serifed variable pitch, while keeping some faces fixed pitch."
@@ -535,42 +526,15 @@ Use ~Alegreya~ font as =variable-pitch-serif-font=
 Change header sizes in =org-mode=.
 #+begin_src elisp
 (after! org
-  (setq
-   org-todo-keyword-faces
-   '(("TODO" :foreground "#7c7c75" :weight normal :underline t)
-     ("PROG" :foreground "#0098dd" :weight normal :underline t)
-     ("NEXT" :foreground "#9f7efe" :weight normal :underline t)
-     ("WAIT" :foreground "#ff8000" :weight normal :underline t)
-     ("DONE" :foreground "#50a14f" :weight normal :underline t)
-     ("CANCELLED" :foreground "#ff6480" :weight normal :underline t)))
-  (set-face-attribute 'org-link nil :weight 'normal :slant 'italic)
-  (set-face-attribute 'org-roam-link nil :slant 'italic :foreground "#00ebc2")
+  (set-face-attribute 'org-link nil :slant 'italic)
+  (set-face-attribute 'org-roam-link nil :slant 'italic :box '(line-width 0.1))
   (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-hide nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
-  (set-face-attribute 'org-date nil :inherit '(shadow fixed-pitch))
-  (set-face-attribute 'org-level-1 nil
-                      :height 1.7
-                      :weight 'bold)
-  (set-face-attribute 'org-level-2 nil
-                      :height 1.5
-                      :weight 'bold)
-  (set-face-attribute 'org-level-3 nil
-                      :height 1.25
-                      :weight 'bold)
-  (set-face-attribute 'org-level-4 nil
-                      :height 1.15
-                      :weight 'bold)
-  (set-face-attribute 'org-level-5 nil
-                      :weight 'bold)
-  (set-face-attribute 'org-level-6 nil
-                      :weight 'bold)
   (set-face-attribute 'org-document-title nil
                       :height 1.9
                       :weight 'bold))
 #+end_src
-
-
 
 ** Priorities
 #+begin_src elisp
@@ -912,7 +876,17 @@ Enable logging of done tasks, and log stuff into LOGBOOK drawer by default
   ;; Don't log when changing state with shift-arrows
   ;; (setq org-treat-S-cursor-todo-selection-as-state-change nil)
   ;; Update org-todo keywords
-  (setq org-todo-keywords '((sequence "TODO(t)" "PROG(p)"  "NEXT(n)" "WAIT(w@/!)" "|" "DONE(d)" "CANCELLED(c)")))
+  (setq org-todo-keywords '((sequence "TODO(t)" "PROG(p)"  "NEXT(n)" "WAIT(w@/!)" "OBJ(o)" "KR(k)" "|" "DONE(d)" "CANCELLED(c)")))
+  (setq
+   org-todo-keyword-faces
+   '(("TODO" :foreground "#7c7c75" :weight normal :underline t)
+     ("PROG" :foreground "#0098dd" :weight normal :underline t)
+     ("NEXT" :foreground "#9f7efe" :weight normal :underline t)
+     ("WAIT" :foreground "#c5a89d" :weight normal :underline t)
+     ("OBJ" :foreground "#ff8000" :weight bold :underline t)
+     ("KR" :foreground "#569099" :weight bold :underline t)
+     ("DONE" :foreground "#50a14f" :weight normal :underline t)
+     ("CANCELLED" :foreground "#ff6480" :weight normal :underline t)))
   ;; Ensure that sub-tasks must be completed before parent can be marked done
   (setq org-enforce-todo-dependencies t))
 #+end_src
