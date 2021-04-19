@@ -10,7 +10,7 @@ Making this file run a little faster
 * Table of Contents :TOC:
 - [[#configuring-private-settings][Configuring private settings]]
   - [[#enabling-ssh-agents][Enabling SSH agents]]
-  - [[#org-mode-and-org-roam-directories][Org-mode and Org-roam directories]]
+  - [[#org-mode-and-org-roam-basics][Org-mode and Org-roam basics]]
   - [[#setting-up-email-with-mu4e][Setting up email with =mu4e=]]
 - [[#emacs-daemon][Emacs daemon]]
 - [[#useful-functionsmacros-that-are-helpful-for-configuration][Useful functions/macros that are helpful for configuration]]
@@ -41,6 +41,7 @@ Making this file run a little faster
   - [[#snippets][Snippets]]
 - [[#vim-and-evil-mode-configuration][Vim and Evil mode configuration]]
 - [[#org-mode-and-org-roam-configuration][Org-mode and Org-roam configuration]]
+  - [[#latex][Latex]]
   - [[#task-management][Task management]]
   - [[#org-agenda-and-org-super-agenda-configuration][Org-agenda and org-super-agenda configuration]]
   - [[#support-lsp-in-src-blocks][Support =lsp= in =src= blocks]]
@@ -67,12 +68,26 @@ By default doom blacklists =SSH_AUTH_SOCK= and =SSH_AUTH_PID= variables, which m
   (add-to-list 'doom-env-whitelist "^SSH_"))
 #+end_src
 
-** Org-mode and Org-roam directories
+** Org-mode and Org-roam basics
 
 #+begin_src elisp
-(setq org-directory "~/Documents/Org")
+(setq org-directory "~/Documents/Org"
+      org-use-property-inheritance t              ; it's convenient to have properties inherited
+      org-list-allow-alphabetical t               ; have a. A. a) A) list bullets
+      org-export-in-background t                  ; run export processes in external emacs process
+      org-catch-invisible-edits 'smart            ; try not to accidently do weird stuff in invisible regions
+      org-export-with-sub-superscripts '{}        ; don't treat lone _ / ^ as sub/superscripts, require _{} / ^{}
+      )
+(defvar org-agenda-files nil)
 (setq org-roam-directory "~/Documents/Org/Roam")
+(add-to-list 'org-agenda-files "~/Documents/Org/Roam/tasks")
 #+end_src
+
+Bullet sequences
+#+begin_src elisp
+(setq org-list-demote-modify-bullet '(("+" . "-") ("-" . "+") ("*" . "+") ("1." . "a.")))
+#+end_src
+
 
 ** Setting up email with =mu4e=
 
@@ -880,6 +895,18 @@ This determines the style of the /line numbers/
 
 * Org-mode and Org-roam configuration
 
+** Latex
+
+1. Turn on =cdlatex= minor mode by default
+2. Edit \LaTeX environment after inserting using =C-c }=
+#+begin_src elisp
+(after! org
+  (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
+  (defadvice! org-edit-latex-emv-after-insert ()
+    :after #'org-cdlatex-environment-indent
+    (org-edit-latex-environment)))
+#+end_src
+
 ** Task management
 
 Enable logging of done tasks, and log stuff into LOGBOOK drawer by default
@@ -910,8 +937,119 @@ Turn on auto-revert mode in org mode files so that they automatically update whe
 (add-hook 'org-mode-hook 'auto-revert-mode)
 #+end_src
 
-** TODO Org-agenda and org-super-agenda configuration
+** Org-agenda and org-super-agenda configuration
 - source :: https://www.tquelch.com/posts/emacs-config/#agenda
+
+Set up the hook for =org-super-agenda=
+#+begin_src elisp
+(use-package! org-super-agenda
+  :hook (org-agenda-mode . org-super-agenda-mode))
+
+(after! (org-agenda org-super-agenda)
+  (setq! org-super-agenda-header-map (make-sparse-keymap)))
+#+end_src
+
+Org agenda keybinding
+#+begin_src elisp
+(map! :leader "a" #'org-agenda)
+#+end_src
+
+Org agenda defaults
+#+begin_src elisp
+(setq org-agenda-skip-scheduled-if-done t
+      org-agenda-skip-deadline-if-done t
+      org-agenda-include-deadlines t
+      org-agenda-block-separator nil
+      org-agenda-tags-column 100 ;; from testing this seems to be a good value
+      org-agenda-compact-blocks t)
+#+end_src
+
+When opening an item from the agenda, ensure the whole tree (parents and siblings) is visible
+#+begin_src elisp
+(after! org-agenda
+  (add-hook 'org-agenda-after-show-hook 'org-reveal))
+#+end_src
+
+Remap movement keys to move between agenda items rather than between lines
+#+begin_src elisp
+(map! :map org-agenda-mode-map
+      [remap org-agenda-next-line] #'org-agenda-next-item
+      [remap org-agenda-previous-line] #'org-agenda-previous-item)
+#+end_src
+
+*** Org-agenda custom commands
+
+#+begin_src elisp
+(setq org-agenda-custom-commands
+      '(("o" "Overview"
+         ((agenda "" ((org-agenda-span 'day)
+                      (org-super-agenda-groups
+                       '((:name "Today"
+                          :time-grid t
+                          :date today
+                          :todo "TODAY"
+                          :scheduled today
+                          :order 1)))))
+          (alltodo "" ((org-agenda-overriding-header "")
+                       (org-super-agenda-groups
+                        '((:name "Next to do"
+                           :todo "NEXT"
+                           :order 1)
+                          (:name "Important"
+                           :tag "Important"
+                           :priority "A"
+                           :order 6)
+                          (:name "Due Today"
+                           :deadline today
+                           :order 2)
+                          (:name "Due Soon"
+                           :deadline future
+                           :order 8)
+                          (:name "Overdue"
+                           :deadline past
+                           :face error
+                           :order 7)
+                          (:name "Assignments"
+                           :tag "Assignment"
+                           :order 10)
+                          (:name "Issues"
+                           :tag "Issue"
+                           :order 12)
+                          (:name "Emacs"
+                           :tag "Emacs"
+                           :order 13)
+                          (:name "Projects"
+                           :tag "Project"
+                           :order 14)
+                          (:name "Research"
+                           :tag "Research"
+                           :order 15)
+                          (:name "To read"
+                           :tag "Read"
+                           :order 30)
+                          (:name "Waiting"
+                           :todo "WAITING"
+                           :order 20)
+                          (:name "University"
+                           :tag "uni"
+                           :order 32)
+                          (:name "Trivial"
+                           :priority<= "E"
+                           :tag ("Trivial" "Unimportant")
+                           :todo ("SOMEDAY" )
+                           :order 90)
+                          (:discard (:tag ("Chore" "Routine" "Daily")))))))))))
+#+end_src
+*** Org-agenda looks
+
+Make deadlines have the error face when they've passed
+#+begin_src elisp
+(setq org-agenda-deadline-faces
+      '((1.001 . error)
+        (1.0 . org-warning)
+        (0.5 . org-upcoming-deadline)
+        (0.0 . org-upcoming-distant-deadline)))
+#+end_src
 
 ** Support =lsp= in =src= blocks
 
@@ -1025,12 +1163,12 @@ Templates for general notes
            :head "#+TITLE: ${title}\n#+roam_alias:\n#+roam_tags:\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
            :unnarrowed t)
           ("i" "inbox" plain (function org-roam-capture--get-point)
-           "* TODO [/] %?"
-           :file-name "tasks/inbox.org"
+           "* TODO %? [/]"
+           :file-name "tasks/inbox"
            :head "#+TITLE: Inbox\n#+roam_alias: inbox\n#+roam_tags: tasks\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
            :unnarrowed t)
           ("t" "task" plain (function org-roam-capture--get-point)
-           "* TODO [/] %?"
+           "* TODO %? [/]"
            :file-name "tasks/${slug}"
            :head "#+TITLE: ${title}\n#+roam_alias:\n#+roam_tags: tasks\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
            :unnarrowed t)
