@@ -979,6 +979,7 @@ Set up the hook for =org-super-agenda=
 (org-edna-mode)
 (use-package! org-super-agenda
   :hook (org-agenda-mode . org-super-agenda-mode)
+  :custom-face (org-super-agenda-header ((default (:inherit propositum-agenda-heading))))
   :config (setq org-agenda-start-day nil))
 
 (after! (org-agenda org-super-agenda)
@@ -997,7 +998,8 @@ Org agenda defaults
       org-agenda-include-deadlines t
       org-agenda-block-separator nil
       org-agenda-tags-column 100 ;; from testing this seems to be a good value
-      org-agenda-compact-blocks t)
+      org-agenda-compact-blocks t
+      org-agenda-start-with-log-mode t)
 #+end_src
 
 When opening an item from the agenda, ensure the whole tree (parents and siblings) is visible
@@ -1016,10 +1018,31 @@ Remap movement keys to move between agenda items rather than between lines
 *** Org-agenda custom commands
 
 #+begin_src elisp
+(setq org-super-agenda-groups '((:auto-parent t)))
+#+end_src
+
+#+begin_src elisp
 (setq org-agenda-custom-commands
-      '(("z" "Zen"
-         ((everyting "" ((org-super-agenda-groups
-                          '((:auto-outline-path t)))))))
+      '(("d" "Agenda"
+         ((agenda "" ((org-super-agenda-groups
+                       '((:name "Week ahead"
+                          :time-grid t
+                          :date t
+                          :order 1)))))
+          (alltodo "" ((org-agenda-overriding-header "")
+                       (org-super-agenda-groups
+                        '((:auto-planning t)))))))
+        ("p" "Projects"
+         ((agenda "" ((org-agenda-span 'day)
+                      (org-super-agenda-groups
+                       '((:name "Today"
+                          :time-grid t
+                          :date today
+                          :scheduled today
+                          :order 1)))))
+          (alltodo "" ((org-agenda-overriding-header "")
+                       (org-super-agenda-groups
+                        '((:auto-outline-path t)))))))
         ("o" "Overview"
          ((agenda "" ((org-agenda-span 'day)
                       (org-super-agenda-groups
@@ -1030,42 +1053,44 @@ Remap movement keys to move between agenda items rather than between lines
                           :order 1)))))
           (alltodo "" ((org-agenda-overriding-header "")
                        (org-super-agenda-groups
-                        '((:name "Objectives"
-                           :todo "OBJ"
+                        '((:name "Clocked today"
+                           :log t)
+                          (:name "Objectives"
+                           :and (:todo "OBJ" :deadline t)
                            :order 1)
                           (:name "Key Results"
-                           :todo "KR"
+                           :and (:todo "KR" :deadline t)
                            :order 2)
-                          (:name "Incomplete"
-                           :scheduled past
-                           :face error
-                           :order 3)
-                          (:name "Next to do"
-                           :todo "NEXT"
-                           :order 3)
-                          (:name "Due Today"
-                           :deadline today
-                           :order 4)
-                          (:name "Urgent"
-                           :tag "Urgent"
-                           :order 5)
-                          (:name "Important"
-                           :tag "Important"
-                           :priority "A"
-                           :order 6)
                           (:name "Overdue"
                            :deadline past
                            :face error
+                           :order 3)
+                          (:name "Incomplete"
+                           :scheduled past
+                           :face error
+                           :order 4)
+                          (:name "Next to do"
+                           :todo "NEXT"
+                           :order 5)
+                          (:name "Due Today"
+                           :deadline today
+                           :order 6)
+                          (:name "Urgent"
+                           :tag "Urgent"
                            :order 7)
+                          (:name "Important"
+                           :tag "Important"
+                           :priority "A"
+                           :order 8)
                           (:name "Due Soon"
                            :deadline future
-                           :order 8)
+                           :order 9)
                           (:name "To read"
                            :tag "Read"
-                           :order 9)
+                           :order 10)
                           (:name "Quick Picks"
                            :effort< "0:30"
-                           :order 10)
+                           :order 11)
                           (:name "Issues"
                            :tag "Issue"
                            :order 12)
