@@ -976,6 +976,7 @@ Turn on auto-revert mode in org mode files so that they automatically update whe
 Set up the hook for =org-super-agenda=
 #+begin_src elisp
 (setq org-agenda-start-day nil)
+(org-edna-mode)
 (use-package! org-super-agenda
   :hook (org-agenda-mode . org-super-agenda-mode)
   :config (setq org-agenda-start-day nil))

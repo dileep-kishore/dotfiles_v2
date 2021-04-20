@@ -50,6 +50,7 @@
 ;(unpin! t)
 
 (package! org-super-agenda)
+(package! org-edna)
 (package! wakatime-mode)
 (package! org-appear)
 (package! org-auto-tangle)
