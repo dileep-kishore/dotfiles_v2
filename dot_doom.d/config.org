@@ -630,7 +630,8 @@ Pretty tags using =org-pretty-tags=
 (use-package org-pretty-tags
   :config
   (setq org-pretty-tags-surrogate-strings
-        `(("home"      . ,(all-the-icons-faicon   "home"           :face 'all-the-icons-purple  :v-adjust 0.01))
+        `(("TOC"      . ,(all-the-icons-faicon   "table"           :face 'all-the-icons-purple  :v-adjust 0.01))
+          ("home"      . ,(all-the-icons-faicon   "home"           :face 'all-the-icons-purple  :v-adjust 0.01))
           ("work"      . ,(all-the-icons-material   "work"           :face 'all-the-icons-purple  :v-adjust 0.01))
           ("university" . ,(all-the-icons-faicon   "graduation-cap" :face 'all-the-icons-purple  :v-adjust 0.01))
           ("writing"   . ,(all-the-icons-faicon   "pencil"          :face 'all-the-icons-silver  :v-adjust 0.01))
@@ -974,6 +975,7 @@ Turn on auto-revert mode in org mode files so that they automatically update whe
 
 Set up the hook for =org-super-agenda=
 #+begin_src elisp
+(setq org-agenda-start-day nil)
 (use-package! org-super-agenda
   :hook (org-agenda-mode . org-super-agenda-mode)
   :config (setq org-agenda-start-day nil))
@@ -1033,6 +1035,10 @@ Remap movement keys to move between agenda items rather than between lines
                           (:name "Key Results"
                            :todo "KR"
                            :order 2)
+                          (:name "Incomplete"
+                           :scheduled past
+                           :face error
+                           :order 3)
                           (:name "Next to do"
                            :todo "NEXT"
                            :order 3)
