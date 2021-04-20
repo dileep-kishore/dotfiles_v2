@@ -1213,12 +1213,12 @@ Templates for general notes
            :head "#+TITLE: ${title}\n#+roam_alias:\n#+roam_tags:\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
            :unnarrowed t)
           ("i" "inbox" plain (function org-roam-capture--get-point)
-           "* TODO %? [/]"
+           "** TODO %? [/]"
            :file-name "tasks/inbox"
            :head "#+TITLE: Inbox\n#+roam_alias: inbox\n#+roam_tags: tasks\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
            :unnarrowed t)
           ("t" "task" plain (function org-roam-capture--get-point)
-           "* TODO %? [/]"
+           "** TODO %? [/]"
            :file-name "tasks/${slug}"
            :head "#+TITLE: ${title}\n#+roam_alias:\n#+roam_tags: tasks\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
            :unnarrowed t)
