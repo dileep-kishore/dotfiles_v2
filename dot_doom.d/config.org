@@ -1167,7 +1167,9 @@ You might want to refer to the [[https://www.orgroam.com/manual.html#The-Templat
 Set up the default directories
 #+begin_src elisp
 (after! org-roam
-  (setq org-roam-directory "~/Documents/Org/Roam"))
+  (setq org-roam-directory "~/Documents/Org/Roam")
+  (setq org-roam-file-exclude-regexp "~/Documents/Org/Roam/tasks/archives/*")
+  )
 #+end_src
 
 Keybindings
