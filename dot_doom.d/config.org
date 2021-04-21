@@ -607,7 +607,17 @@ Change header sizes in =org-mode=.
 Default global tags list, using PARA method keywords
 #+begin_src elisp
 (setq org-tag-alist
-      '(("work" . ?w)
+      '(
+        ("must_do")
+        ("should_do")
+        ("could_do")
+        ("impact_high")
+        ("impact_med")
+        ("impact_low")
+        ("effort_high")
+        ("effort_med")
+        ("effort_low")
+        ("work" . ?w)
         ("home" . ?h)
         ("university" . ?u)
         ("writing" . ?w)
@@ -635,7 +645,44 @@ Pretty tags using =org-pretty-tags=
 (use-package org-pretty-tags
   :config
   (setq org-pretty-tags-surrogate-strings
-        `(("TOC"      . ,(all-the-icons-faicon   "table"           :face 'all-the-icons-purple  :v-adjust 0.01))
+        `(
+          ("must_do" . ,(concat
+                         (all-the-icons-octicon   "alert" :face 'all-the-icons-blue  :v-adjust 0.01)
+                         (all-the-icons-octicon   "alert" :face 'all-the-icons-blue  :v-adjust 0.01)
+                         (all-the-icons-octicon   "alert" :face 'all-the-icons-blue  :v-adjust 0.01)
+                         ))
+          ("should_do" . ,(concat
+                           (all-the-icons-octicon   "alert" :face 'all-the-icons-blue  :v-adjust 0.01)
+                           (all-the-icons-octicon   "alert" :face 'all-the-icons-blue  :v-adjust 0.01)
+                           ))
+          ("could_do" . ,(concat
+                          (all-the-icons-octicon   "alert" :face 'all-the-icons-blue  :v-adjust 0.01)
+                          ))
+          ("impact_high" . ,(concat
+                             (all-the-icons-faicon   "fire" :face 'all-the-icons-red  :v-adjust 0.01)
+                             (all-the-icons-faicon   "fire" :face 'all-the-icons-red  :v-adjust 0.01)
+                             (all-the-icons-faicon   "fire" :face 'all-the-icons-red  :v-adjust 0.01)
+                             ))
+          ("impact_med" . ,(concat
+                            (all-the-icons-faicon   "fire" :face 'all-the-icons-red  :v-adjust 0.01)
+                            (all-the-icons-faicon   "fire" :face 'all-the-icons-red  :v-adjust 0.01)
+                            ))
+          ("impact_low" . ,(concat
+                            (all-the-icons-faicon   "fire" :face 'all-the-icons-red  :v-adjust 0.01)
+                            ))
+          ("effort_high" . ,(concat
+                             (all-the-icons-faicon   "coffee" :face 'all-the-icons-yellow  :v-adjust 0.01)
+                             (all-the-icons-faicon   "coffee" :face 'all-the-icons-yellow  :v-adjust 0.01)
+                             (all-the-icons-faicon   "coffee" :face 'all-the-icons-yellow  :v-adjust 0.01)
+                             ))
+          ("effort_med" . ,(concat
+                            (all-the-icons-faicon   "coffee" :face 'all-the-icons-yellow  :v-adjust 0.01)
+                            (all-the-icons-faicon   "coffee" :face 'all-the-icons-yellow  :v-adjust 0.01)
+                            ))
+          ("effort_low" . ,(concat
+                            (all-the-icons-faicon   "coffee" :face 'all-the-icons-yellow  :v-adjust 0.01)
+                            ))
+          ("TOC"      . ,(all-the-icons-faicon   "table"           :face 'all-the-icons-purple  :v-adjust 0.01))
           ("home"      . ,(all-the-icons-faicon   "home"           :face 'all-the-icons-purple  :v-adjust 0.01))
           ("work"      . ,(all-the-icons-material   "work"           :face 'all-the-icons-purple  :v-adjust 0.01))
           ("university" . ,(all-the-icons-faicon   "graduation-cap" :face 'all-the-icons-purple  :v-adjust 0.01))
@@ -652,7 +699,7 @@ Pretty tags using =org-pretty-tags=
           ("info"       . ,(all-the-icons-faicon   "info-circle"    :face 'all-the-icons-blue    :v-adjust 0.01))
           ("issue"      . ,(all-the-icons-faicon   "bug"            :face 'all-the-icons-red     :v-adjust 0.01))
           ("someday"    . ,(all-the-icons-faicon   "calendar-o"     :face 'all-the-icons-cyan    :v-adjust 0.01))
-          ("idea"       . ,(all-the-icons-octicon  "light-bulb"     :face 'all-the-icons-yellow  :v-adjust 0.01))
+          ("idea"       . ,(all-the-icons-faicon  "lightbulb-o"     :face 'all-the-icons-yellow  :v-adjust 0.01))
           ("fitness"   . ,(all-the-icons-faicon "bolt"      :face 'all-the-icons-yellow :v-adjust 0.01))
           ("health"   . ,(all-the-icons-material "local_hospital"      :face 'all-the-icons-yellow :v-adjust 0.01))
           ("dotfiles"   . ,(all-the-icons-fileicon "arch-linux"      :face 'all-the-icons-lpurple :v-adjust 0.01))
