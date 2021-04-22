@@ -1,6 +1,7 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+description: My Doom Emacs configuration file
+#+last_modified: [2021-04-22 Thu 07:34]
+#+startup: overview
 
 Making this file run a little faster
 #+begin_src elisp
@@ -572,11 +573,7 @@ Change header sizes in =org-mode=.
 
 ** Priorities
 #+begin_src elisp
-(use-package! org-fancy-priorities
-  :hook
-  (org-mode . org-fancy-priorities-mode)
-  :config
-  ;; (setq org-fancy-priorities-list '("⚡" "⬆" "⬇" "☕")))
+(after! org
   (setq
    org-highest-priority ?A
    org-default-priority ?B
@@ -585,7 +582,11 @@ Change header sizes in =org-mode=.
                              (?B :foreground "orange")
                              (?C :foreground "yellow")
                              (?D :foreground "green")
-                             (?E :foreground "gray")))
+                             (?E :foreground "gray"))))
+(use-package! org-fancy-priorities
+  :hook
+  (org-mode . org-fancy-priorities-mode)
+  :config
   (setq org-fancy-priorities-list '("🄰" "🄱" "🄲" "🄳" "🄴")))
 (add-hook 'org-agenda-mode-hook 'org-fancy-priorities-mode)
 #+end_src
@@ -690,7 +691,7 @@ Pretty tags using =org-pretty-tags=
           ("coding"    . ,(all-the-icons-faicon   "code"           :face 'all-the-icons-silver  :v-adjust 0.01))
           ("science"    . ,(all-the-icons-faicon   "flask"         :face 'all-the-icons-silver  :v-adjust 0.01))
           ("video"      . ,(all-the-icons-material "movie"         :face 'all-the-icons-orange  :v-adjust 0.01))
-          ("email"      . ,(all-the-icons-faicon   "envelope"       :face 'all-the-icons-blue    :v-adjust 0.01))
+          ("mail"      . ,(all-the-icons-faicon   "envelope"       :face 'all-the-icons-blue    :v-adjust 0.01))
           ("social"      . ,(all-the-icons-faicon   "facebook"       :face 'all-the-icons-blue    :v-adjust 0.01))
           ("read"       . ,(all-the-icons-octicon  "book"           :face 'all-the-icons-lblue   :v-adjust 0.01))
           ("article"    . ,(all-the-icons-octicon  "file-text"      :face 'all-the-icons-yellow  :v-adjust 0.01))
@@ -1051,6 +1052,7 @@ Org agenda defaults
       ;; org-agenda-block-separator nil
       org-agenda-tags-column 100 ;; from testing this seems to be a good value
       org-agenda-compact-blocks t
+      org-agenda-dim-blocked-tasks nil
       org-agenda-start-with-log-mode t)
 #+end_src
 
@@ -1068,10 +1070,6 @@ Remap movement keys to move between agenda items rather than between lines
 #+end_src
 
 *** Org-agenda custom commands
-
-#+begin_src elisp
-(setq org-super-agenda-groups '((:auto-parent t)))
-#+end_src
 
 #+begin_src elisp
 (setq org-agenda-custom-commands
