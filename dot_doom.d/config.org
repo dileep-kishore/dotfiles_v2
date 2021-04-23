@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-04-22 Thu 07:34]
+#+last_modified: [2021-04-22 Thu 10:02]
 #+startup: overview
 
 Making this file run a little faster
@@ -621,11 +621,11 @@ Default global tags list, using PARA method keywords
         ("work" . ?w)
         ("home" . ?h)
         ("university" . ?u)
-        ("writing" . ?w)
+        ("writing")
         ("coding" . ?c)
         ("science" . ?s)
         ("video")
-        ("email" . ?e)
+        ("mail" . ?m)
         ("social")
         ("read" . ?r)
         ("article" . ?a)
