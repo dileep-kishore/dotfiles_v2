@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Meeting updates template
+# uuid: Meeting updates template
+# key: trigger-key
+# condition: t
+# --
+***** Work done in previous period
+***** Goals for meeting [/]
+***** Discussion
+***** Goals for next period
+***** Career goals update [/]

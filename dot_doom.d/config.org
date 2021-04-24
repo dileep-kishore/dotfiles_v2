@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-04-22 Thu 10:02]
+#+last_modified: [2021-04-24 Sat 07:23]
 #+startup: overview
 
 Making this file run a little faster
@@ -49,6 +49,7 @@ Making this file run a little faster
   - [[#org-roam][Org-roam]]
   - [[#org-mode-addons][Org-mode addons]]
   - [[#git-commit-keybinding][Git-commit keybinding]]
+  - [[#org-books][Org-books]]
 - [[#language-specific-configuration][Language specific configuration]]
   - [[#julia][Julia]]
 - [[#credits][Credits]]
@@ -80,7 +81,6 @@ By default doom blacklists =SSH_AUTH_SOCK= and =SSH_AUTH_PID= variables, which m
       org-export-with-sub-superscripts '{}        ; don't treat lone _ / ^ as sub/superscripts, require _{} / ^{}
       )
 (setq org-roam-directory "~/Documents/Org/Roam")
-(setq org-agenda-files (directory-files-recursively "~/Documents/Org/Roam/tasks/" "\\.org$"))
 #+end_src
 
 Bullet sequences
@@ -1059,6 +1059,7 @@ Org agenda defaults
 When opening an item from the agenda, ensure the whole tree (parents and siblings) is visible
 #+begin_src elisp
 (after! org-agenda
+  (setq org-agenda-files (directory-files-recursively "~/Documents/Org/Roam/tasks/" "\\.org$"))
   (add-hook 'org-agenda-after-show-hook 'org-reveal))
 #+end_src
 
@@ -1580,6 +1581,12 @@ Keybinding to commit =org= repository using script in =~/.dotfiles/bin/org-git-a
 (map! :leader
       :prefix "z"
       :desc "org-git-add-commit" "c" #'org-git-add-commit)
+#+end_src
+** Org-books
+
+Setting the path to the reading list org file
+#+begin_src elisp
+(setq org-books-file "~/Documents/Org/Roam/tasks/reading.org")
 #+end_src
 
 * Language specific configuration

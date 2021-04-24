@@ -5,17 +5,18 @@
 # condition: t
 # --
 - [ ] Give yourself the dopamine reward
-- [ ] Why do *you* want to do this task?
+- Why do *you* want to do this task?
   - ${1:your why}
-- [ ] ~Duration~:
+- ~Duration~:
   - ${2:duration}
-- [ ] ~Outcome~:
+- ~Outcome~:
   - ${3:outcome}
-- [ ] ~Questions~ [/]:
-    - [ ] Different approaches you can take to solve the problem?
-    - [ ] How would this be if this were easy?
-    - [ ] What is the fastest way to get to your goal?
-    - [ ] Who can I ask for help with this?
-    - [ ] How can I improve through this or what new skill can I learn?
-- [ ] ~Path~ [/]:
-  1. [ ] ${4:path}
+- ~Questions~:
+    - Different approaches you can take to solve the problem?
+    - How would this be if this were easy?
+    - What is the fastest way to get to your goal?
+    - Who can I ask for help with this?
+    - How can I improve through this or what new skill can I learn?
+
+_Sub-tasks_:
+1. [ ] ${4:path}
