@@ -65,6 +65,10 @@
 (package! org-pretty-table
   :recipe (:host github :repo "Fuco1/org-pretty-table") :pin "474ad84a8f...")
 (package! org-books)
+(package! org-toggl
+  :recipe (:host github :repo "Fuco1/org-toggl"))
+(package! elegant-agenda-mode
+  :recipe (:host github :repo "justinbarclay/elegant-agenda-mode"))
 
 (unpin! org-roam company-org-roam)
 (unpin! mixed-pitch)

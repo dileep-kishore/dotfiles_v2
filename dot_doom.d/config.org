@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-04-24 Sat 07:23]
+#+last_modified: [2021-04-24 Sat 19:17]
 #+startup: overview
 
 Making this file run a little faster
@@ -50,6 +50,8 @@ Making this file run a little faster
   - [[#org-mode-addons][Org-mode addons]]
   - [[#git-commit-keybinding][Git-commit keybinding]]
   - [[#org-books][Org-books]]
+  - [[#org-gcal][Org-gcal]]
+  - [[#org-toggl][Org-toggl]]
 - [[#language-specific-configuration][Language specific configuration]]
   - [[#julia][Julia]]
 - [[#credits][Credits]]
@@ -1036,6 +1038,8 @@ Set up the hook for =org-super-agenda=
   :config (setq org-agenda-start-day nil))
 
 (after! (org-agenda org-super-agenda)
+  (setq org-agenda-files (directory-files-recursively "~/Documents/Org/Roam/tasks/" "\\.org$"))
+  (add-to-list 'org-agenda-files "~/Documents/Org/Roam/calendars")
   (setq! org-super-agenda-header-map (make-sparse-keymap)))
 #+end_src
 
@@ -1059,7 +1063,6 @@ Org agenda defaults
 When opening an item from the agenda, ensure the whole tree (parents and siblings) is visible
 #+begin_src elisp
 (after! org-agenda
-  (setq org-agenda-files (directory-files-recursively "~/Documents/Org/Roam/tasks/" "\\.org$"))
   (add-hook 'org-agenda-after-show-hook 'org-reveal))
 #+end_src
 
@@ -1175,6 +1178,12 @@ Persist clocks on Emacs restarts
 (after! org-clock
   (setq org-clock-persist t)
   (org-clock-persistence-insinuate))
+#+end_src
+*** elegant-agenda-mode
+
+#+begin_src elisp
+(use-package elegant-agenda-mode
+  :hook org-agenda-mode-hook)
 #+end_src
 
 ** Support =lsp= in =src= blocks
@@ -1587,6 +1596,40 @@ Keybinding to commit =org= repository using script in =~/.dotfiles/bin/org-git-a
 Setting the path to the reading list org file
 #+begin_src elisp
 (setq org-books-file "~/Documents/Org/Roam/tasks/reading.org")
+#+end_src
+** Org-gcal
+
+#+begin_src elisp
+(after! org-gcal
+  (add-hook 'org-agenda-mode-hook 'org-gcal-fetch)
+  (setq org-gcal-client-id (password-store-get "cal/client-id")
+        org-gcal-client-secret (password-store-get "cal/client-secret")
+        org-gcal-recurring-events-mode 'nested
+        org-gcal-up-days 30
+        org-gcal-down-days 60
+        org-gcal-fetch-file-alist '(("k.dileep1994@gmail.com" . "~/Documents/Org/Roam/calendars/personal_cal.org")
+                                    ("dkishore@bu.edu" . "~/Documents/Org/Roam/calendars/bu_cal.org")
+                                    ("42umeag2fj98antvq4k5va4g80@group.calendar.google.com" . "~/Documents/Org/Roam/calendars/startup_cal.org"))))
+#+end_src
+
+Add calendar files to =org-agenda=
+#+begin_src elisp
+(add-to-list 'org-agenda-files "~/Documents/Org/Roam/calendars")
+#+end_src
+** Org-toggl
+
+Setting up org-toggl
+#+begin_src elisp
+(after! org
+  (use-package! org-toggl
+    :after org-clock
+    :config
+    (setq toggl-auth-token (password-store-get "toggl/api"))
+    (setq org-toggl-inherit-toggl-properties t)
+    (toggl-get-projects)
+    (org-toggl-integration-mode)
+    )
+  )
 #+end_src
 
 * Language specific configuration

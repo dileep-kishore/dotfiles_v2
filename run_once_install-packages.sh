@@ -113,6 +113,8 @@ paru -S --useask --batchinstall --cleanafter --removemake \
     noto-fonts-emoji \
     otf-alegreya \
     ttf-alegreya \
+    otf-yanone-kaffeesatz \
+    ttf-yanone-kaffeesatz \
     activitywatch-bin \
     zoom
 
