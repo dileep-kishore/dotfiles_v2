@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-04-24 Sat 19:17]
+#+last_modified: [2021-04-24 Sat 21:46]
 #+startup: overview
 
 Making this file run a little faster
@@ -47,6 +47,7 @@ Making this file run a little faster
   - [[#org-agenda-and-org-super-agenda-configuration][Org-agenda and org-super-agenda configuration]]
   - [[#support-lsp-in-src-blocks][Support =lsp= in =src= blocks]]
   - [[#org-roam][Org-roam]]
+  - [[#org-transclusion][Org-transclusion]]
   - [[#org-mode-addons][Org-mode addons]]
   - [[#git-commit-keybinding][Git-commit keybinding]]
   - [[#org-books][Org-books]]
@@ -1559,6 +1560,14 @@ Finally, we configure =org-roam-bibtex=
 
 *** TODO org-roam-graph configuration
 - source ::  https://www.tquelch.com/posts/emacs-config/#roam
+** Org-transclusion
+
+Transclude by reference
+#+begin_src elisp
+(use-package! org-transclusion
+  :hook (org-roam-mode . org-transclusion-mode))
+#+end_src
+
 ** Org-mode addons
 
 *** Org-download

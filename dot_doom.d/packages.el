@@ -69,6 +69,8 @@
   :recipe (:host github :repo "Fuco1/org-toggl"))
 (package! elegant-agenda-mode
   :recipe (:host github :repo "justinbarclay/elegant-agenda-mode"))
+(package! org-transclusion
+    :recipe (:host github :repo "nobiot/org-transclusion"))
 
 (unpin! org-roam company-org-roam)
 (unpin! mixed-pitch)
