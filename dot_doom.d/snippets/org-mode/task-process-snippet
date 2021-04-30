@@ -1,22 +1,34 @@
 # -*- mode: snippet -*-
 # name: Task Process
 # uuid: tp-dpo
-# key: trigger-key
+# key: tp_
 # condition: t
 # --
-- [ ] Give yourself the dopamine reward
-- Why do *you* want to do this task?
-  - ${1:your why}
-- ~Duration~:
-  - ${2:duration}
-- ~Outcome~:
-  - ${3:outcome}
-- ~Questions~:
-    - Different approaches you can take to solve the problem?
-    - How would this be if this were easy?
-    - What is the fastest way to get to your goal?
-    - Who can I ask for help with this?
-    - How can I improve through this or what new skill can I learn?
-
 _Sub-tasks_:
-1. [ ] ${4:path}
+1. [ ] Give yourself the dopamine reward
+2. [ ] ${10:subtasks}
+
+
+***** The big picture
+- What is the *mission* of this task? ${1:mission}
+- What is the *objective* of this task? ${2:mission}
+- ~Duration~: ${3:duration}
+- ~Outcome~: ${4:outcome}
+
+***** Tips for path control
+- Always be in control of your internal state
+- Always prioritize the most important actions - be they important tasks or even micro-actions inside tasks
+- Engage in long-term thinking and planning and do not get frustrated if you are not getting results in the short-term
+- Think about all your problems as fun challenges to face
+
+***** Questions
+- Different approaches you can take to solve the problem?
+  + ${5:q1}
+- How would this be if this were easy?
+  + ${6:q2}
+- What is the fastest way to get to your goal?
+  + ${7:q3}
+- Who can I ask for help with this?
+  + ${8:q4}
+- How can I improve through this or what new skill can I learn?
+  + ${9:q5}

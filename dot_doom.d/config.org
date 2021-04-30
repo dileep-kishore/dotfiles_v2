@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-04-24 Sat 21:46]
+#+last_modified: [2021-04-29 Thu 14:14]
 #+startup: overview
 
 Making this file run a little faster
@@ -45,7 +45,8 @@ Making this file run a little faster
   - [[#latex][Latex]]
   - [[#task-management][Task management]]
   - [[#org-agenda-and-org-super-agenda-configuration][Org-agenda and org-super-agenda configuration]]
-  - [[#support-lsp-in-src-blocks][Support =lsp= in =src= blocks]]
+  - [[#org-babel][Org-babel]]
+  - [[#cancelled-support-lsp-in-src-blocks][CANCELLED Support =lsp= in =src= blocks]]
   - [[#org-roam][Org-roam]]
   - [[#org-transclusion][Org-transclusion]]
   - [[#org-mode-addons][Org-mode addons]]
@@ -530,7 +531,7 @@ Disable =org-appear-autolinks=
   :hook (org-mode . org-appear-mode)
   :config
   (setq org-appear-autoemphasis t
-        org-appear-autosubmarkers t
+        org-appear-autosubmarkers nil
         org-appear-autolinks nil)
   ;; for proper first-time setup, `org-appear--set-elements'
   ;; needs to be run after other hooks have acted.
@@ -1186,39 +1187,27 @@ Persist clocks on Emacs restarts
 (use-package elegant-agenda-mode
   :hook org-agenda-mode-hook)
 #+end_src
-
-** Support =lsp= in =src= blocks
+** Org-babel
 
 #+begin_src elisp
-(cl-defmacro lsp-org-babel-enable (lang)
-  "Support LANG in org source code block."
-  (setq centaur-lsp 'lsp-mode)
-  (cl-check-type lang stringp)
-  (let* ((edit-pre (intern (format "org-babel-edit-prep:%s" lang)))
-         (intern-pre (intern (format "lsp--%s" (symbol-name edit-pre)))))
-    `(progn
-       (defun ,intern-pre (info)
-         (let ((file-name (->> info caddr (alist-get :file))))
-           (unless file-name
-             (setq file-name (make-temp-file "babel-lsp-")))
-           (setq buffer-file-name file-name)
-           (lsp-deferred)))
-       (put ',intern-pre 'function-documentation
-            (format "Enable lsp-mode in the buffer of org source block (%s)."
-                    (upcase ,lang)))
-       (if (fboundp ',edit-pre)
-           (advice-add ',edit-pre :after ',intern-pre)
-         (progn
-           (defun ,edit-pre (info)
-             (,intern-pre info))
-           (put ',edit-pre 'function-documentation
-                (format "Prepare local buffer environment for org source block (%s)."
-                        (upcase ,lang))))))))
-(defvar org-babel-lang-list
-  '("go" "python" "ipython" "bash" "sh"))
-(dolist (lang org-babel-lang-list)
-  (eval `(lsp-org-babel-enable ,lang)))
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (julia . t)
+   (python . t)
+   (bash . t)
+   (shell . t)
+   (latex . t)
+   (C . t)
+   (dot . t)
+   (plantuml . t)
+   (makefile . t)
+   (jupyter . t)))
 #+end_src
+
+** CANCELLED Support =lsp= in =src= blocks
+
+=lsp-mode= already provides experimental support for this. Just use =M-x lsp-org=
 
 ** Org-roam
 
@@ -1229,6 +1218,7 @@ Set up the default directories
 (after! org-roam
   (setq org-roam-directory "~/Documents/Org/Roam")
   (setq org-roam-file-exclude-regexp "~/Documents/Org/Roam/tasks/archives/*")
+  (setq +org-roam-open-buffer-on-find-file nil)
   )
 #+end_src
 
