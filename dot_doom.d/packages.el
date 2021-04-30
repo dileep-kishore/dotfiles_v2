@@ -71,6 +71,7 @@
   :recipe (:host github :repo "justinbarclay/elegant-agenda-mode"))
 (package! org-transclusion
     :recipe (:host github :repo "nobiot/org-transclusion"))
+(package! ein)
 
 (unpin! org-roam company-org-roam)
 (unpin! mixed-pitch)
