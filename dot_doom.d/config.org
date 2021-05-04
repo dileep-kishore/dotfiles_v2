@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-04-30 Fri 13:18]
+#+last_modified: [2021-04-30 Fri 18:29]
 #+startup: overview
 
 Making this file run a little faster
@@ -989,6 +989,11 @@ This determines the style of the /line numbers/
 
 ** Latex
 
+Enable \LaTeX preview on startup (disabled because it's slow)
+#+begin_src elisp :tangle no
+(setq org-startup-with-latex-preview t)
+#+end_src
+
 1. Turn on =cdlatex= minor mode by default
 2. Edit \LaTeX environment after inserting using =C-c }=
 #+begin_src elisp
@@ -1002,26 +1007,34 @@ This determines the style of the /line numbers/
 Additional LaTeX packages to use:
 #+begin_src elisp
 ;; (add-to-list 'org-latex-packages-alist '("" "minted"))
-(setq org-latex-listings 'minted)
-(setq org-latex-minted-options
-      '(("linenos" "true")
-        ("breaklines" "true")
-        ("breakanywhere" "true")))
-(add-to-list 'org-latex-minted-langs '(ipython "python"))
+(after! org
+  (setq org-latex-listings 'minted)
+  (setq org-latex-minted-options
+        '(("linenos" "true")
+          ("breaklines" "true")
+          ("breakanywhere" "true")))
+  )
 #+end_src
 
-Prettier LaTeX in =org-mode=
+Prettier LaTeX in =org-mode= and removing the =org-block= face
 #+begin_src elisp
-(setq org-highlight-latex-and-related '(native script entities))
-#+end_src
-Removing the =org-block= face
-#+begin_src elisp
-(add-to-list 'org-src-block-faces '("latex" (:inherit default :extend t)))
+(after! org
+  (setq org-highlight-latex-and-related '(native script entities))
+  (add-to-list 'org-src-block-faces '("latex" (:inherit default :extend t)))
+  )
 #+end_src
 
 *** Better math rendering
+
+Enable automatic LaTeX fragment previews
 #+begin_src elisp
-(setq org-format-latex-header "\\documentclass{article}
+(use-package! org-fragtog
+  :hook (org-mode . org-fragtog-mode))
+#+end_src
+
+#+begin_src elisp
+(after! org
+  (setq org-format-latex-header "\\documentclass{article}
 \\usepackage[usenames]{xcolor}
 
 \\usepackage[T1]{fontenc}
@@ -1043,12 +1056,13 @@ Removing the =org-block= face
 \\setlength{\\topmargin}{1.5cm}
 \\addtolength{\\topmargin}{-2.54cm}
 % my custom stuff
-\\usepackage[nofont,plaindd]{bmc-maths}
 \\usepackage{arev}
 ")
-(setq org-format-latex-options
-      (plist-put org-format-latex-options :background "Transparent"))
+  (setq org-format-latex-options (plist-put org-format-latex-options :background "Transparent"))
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.8))
+  )
 #+end_src
+
 *** Numbering equations
 
 #+begin_src elisp
@@ -1108,14 +1122,18 @@ Removing the =org-block= face
     (put 'scimax-org-renumber-environment 'enabled nil)
     (message "Latex numbering disabled.")))
 
-(advice-add 'org-create-formula-image :around #'scimax-org-renumber-environment)
-(put 'scimax-org-renumber-environment 'enabled t)
+(after! org
+  (advice-add 'org-create-formula-image :around #'scimax-org-renumber-environment)
+  (put 'scimax-org-renumber-environment 'enabled t)
+  )
 #+end_src
 *** Compiling
 
 #+begin_src elisp
 ;; org-latex-compilers = ("pdflatex" "xelatex" "lualatex"), which are the possible values for %latex
-(setq org-latex-pdf-process '("latexmk -f -pdf -%latex -shell-escape -interaction=nonstopmode -output-directory=%o %f"))
+(after! org
+  (setq org-latex-pdf-process '("latexmk -f -pdf -%latex -shell-escape -interaction=nonstopmode -output-directory=%o %f"))
+  )
 #+end_src
 
 ** Task management

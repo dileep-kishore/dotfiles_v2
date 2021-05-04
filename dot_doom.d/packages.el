@@ -63,7 +63,7 @@
 (package! org-download)
 (package! org-pretty-tags)
 (package! org-pretty-table
-  :recipe (:host github :repo "Fuco1/org-pretty-table") :pin "474ad84a8f...")
+  :recipe (:host github :repo "Fuco1/org-pretty-table"))
 (package! org-books)
 (package! org-toggl
   :recipe (:host github :repo "Fuco1/org-toggl"))
@@ -72,6 +72,7 @@
 (package! org-transclusion
     :recipe (:host github :repo "nobiot/org-transclusion"))
 (package! ein)
+(package! org-fragtog)
 
 (unpin! org-roam company-org-roam)
 (unpin! mixed-pitch)
