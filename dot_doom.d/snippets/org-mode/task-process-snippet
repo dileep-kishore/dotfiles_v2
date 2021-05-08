@@ -11,7 +11,7 @@ _Sub-tasks_:
 
 ***** The big picture
 - What is the *mission* of this task? ${1:mission}
-- What is the *objective* of this task? ${2:mission}
+- What is the *objective* of this task? ${2:objective}
 - ~Duration~: ${3:duration}
 - ~Outcome~: ${4:outcome}
 

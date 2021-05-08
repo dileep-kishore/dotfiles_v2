@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-04-30 Fri 18:29]
+#+last_modified: [2021-05-07 Fri 20:11]
 #+startup: overview
 
 Making this file run a little faster
@@ -512,8 +512,8 @@ Make headings slightly bigger
   )
 (plist-put! +ligatures-extra-symbols
             :name          "⁍"
-            :true          "ṫ"
-            :false         "ḟ"
+            :true          "𝓣𝓻𝓾𝓮"
+            :false         "𝓕𝓪𝓵𝓼𝓮"
             :pipe          "⯈")
 #+end_src
 
@@ -1329,19 +1329,22 @@ Persist clocks on Emacs restarts
 ** Org-babel
 
 #+begin_src elisp
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (julia . t)
-   (python . t)
-   (bash . t)
-   (shell . t)
-   (latex . t)
-   (C . t)
-   (dot . t)
-   (plantuml . t)
-   (makefile . t)
-   (jupyter . t)))
+(after! org-babel
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (julia . t)
+     (python . t)
+     (bash . t)
+     (shell . t)
+     (latex . t)
+     (C . t)
+     (dot . t)
+     (plantuml . t)
+     (makefile . t)
+     (ein . t)
+     (jupyter . t)))
+  )
 #+end_src
 
 ** CANCELLED Support =lsp= in =src= blocks
