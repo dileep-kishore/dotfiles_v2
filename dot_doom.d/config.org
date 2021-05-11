@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-05-11 Tue 11:11]
+#+last_modified: [2021-05-11 Tue 17:55]
 #+startup: overview
 
 Making this file run a little faster
@@ -769,6 +769,8 @@ Set =global whitespace mode=
                 ))))
 #+end_src
 
+#+RESULTS:
+
 * Simple settings
 
 ** Battery status and password-cache
@@ -1174,6 +1176,8 @@ Turn on auto-revert mode in org mode files so that they automatically update whe
 Set up the hook for =org-super-agenda=
 #+begin_src elisp
 (setq org-agenda-start-day nil)
+(setq org-agenda-start-on-weekday 1)
+(setq org-agenda-span 'week)
 (org-edna-mode)
 (use-package! org-super-agenda
   :hook (org-agenda-mode . org-super-agenda-mode)
@@ -1216,18 +1220,31 @@ Remap movement keys to move between agenda items rather than between lines
       [remap org-agenda-previous-line] #'org-agenda-previous-item)
 #+end_src
 
+*** Org-habit
+
+#+begin_src elisp
+(after! org-habit
+  (setq org-habit-preceding-days 7)
+  (setq org-habit-following-days 7)
+  )
+#+end_src
+
 *** Org-agenda custom commands
 
 #+begin_src elisp
 (setq org-agenda-custom-commands
       '(("d" "Agenda"
-         ((agenda "" ((org-super-agenda-groups
-                       '((:time-grid t
-                          :date t
+         ((agenda "" ((org-agenda-span 'day)
+                      (org-super-agenda-groups
+                       '((:name "Today"
+                          :time-grid t
+                          :date today
+                          :scheduled today
                           :order 1)))))
-          (alltodo "" ((org-agenda-overriding-header "")
+          (alltodo "" ((org-agenda-overriding-header "All scheduled tasks")
                        (org-super-agenda-groups
-                        '((:auto-planning t)))))))
+                        '((:auto-planning t)
+                          (:discard (:anything t))))))))
         ("p" "Projects"
          ((agenda "" ((org-agenda-span 'day)
                       (org-super-agenda-groups
@@ -1238,7 +1255,8 @@ Remap movement keys to move between agenda items rather than between lines
                           :order 1)))))
           (alltodo "" ((org-agenda-overriding-header "")
                        (org-super-agenda-groups
-                        '((:auto-outline-path t)))))))
+                        '((:auto-outline-path t)
+                          (:discard (:anything t))))))))
         ("o" "Overview"
          ((agenda "" ((org-agenda-span 'day)
                       (org-super-agenda-groups
@@ -1301,7 +1319,8 @@ Remap movement keys to move between agenda items rather than between lines
                            :tag ("Trivial" "Unimportant")
                            :todo ("SOMEDAY" )
                            :order 90)
-                          (:discard (:tag ("Chore" "Routine" "Daily")))))))))))
+                          (:discard (:tag ("Chore" "Routine" "Daily")))
+                          (:discard (:anything t))))))))))
 #+end_src
 
 *** Org-agenda looks
