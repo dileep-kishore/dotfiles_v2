@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-05-11 Tue 09:23]
+#+last_modified: [2021-05-11 Tue 11:11]
 #+startup: overview
 
 Making this file run a little faster
@@ -55,6 +55,7 @@ Making this file run a little faster
   - [[#org-gcal][Org-gcal]]
   - [[#org-toggl][Org-toggl]]
 - [[#language-specific-configuration][Language specific configuration]]
+  - [[#plantuml][plantuml]]
   - [[#julia][Julia]]
   - [[#groovy-and-nextflow][Groovy and nextflow]]
 - [[#credits][Credits]]
@@ -1775,6 +1776,17 @@ Setting up org-toggl
 #+end_src
 
 * Language specific configuration
+
+** plantuml
+
+Set up =plantuml= diagram support for =org-mode=
+#+begin_src elisp
+(after! org
+  (setq org-plantuml-jar-path (expand-file-name "/usr/share/java/plantuml/plantuml.jar"))
+  (add-to-list 'org-src-lang-modes '("plantuml" . plantuml))
+  (org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
+  )
+#+end_src
 
 ** Julia
 
