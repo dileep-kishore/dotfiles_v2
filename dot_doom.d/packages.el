@@ -72,6 +72,7 @@
 (package! org-transclusion
     :recipe (:host github :repo "nobiot/org-transclusion"))
 (package! org-fragtog)
+(package! groovy-mode)
 
 (unpin! org-roam company-org-roam)
 (unpin! mixed-pitch)

@@ -1,0 +1,24 @@
+# -*- mode: snippet -*-
+# name: Task Process (short)
+# uuid: task-process-short
+# key: trigger-key
+# condition: t
+# --
+_Sub-tasks_:
+1. [ ] Give yourself the dopamine reward
+2. [ ] ${8:subtasks}
+
+
+***** The big picture
+- What is the *mission* of this task? ${1:mission}
+- What is the *objective* of this task? ${2:objective}
+- ~Duration~: ${3:duration}
+- ~Outcome~: ${4:outcome}
+
+***** Questions
+- How would this be if this were easy?
+  + ${5:q2}
+- Who can I ask for help with this?
+  + ${6:q4}
+- How can I improve through this or what new skill can I learn?
+  + ${7:q5}

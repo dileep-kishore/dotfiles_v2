@@ -10,8 +10,10 @@ _Sub-tasks_:
 
 
 ***** The big picture
-- What is the *mission* of this task? ${1:mission}
-- What is the *objective* of this task? ${2:objective}
+- What is the *mission* of this task?
+  ${1:mission}
+- What is the *objective* of this task?
+  ${2:objective}
 - ~Duration~: ${3:duration}
 - ~Outcome~: ${4:outcome}
 
@@ -23,13 +25,13 @@ _Sub-tasks_:
 - Think about all your problems as fun challenges to face
 
 ***** Questions
-- Different approaches you can take to solve the problem?
-  + ${5:q1}
-- How would this be if this were easy?
-  + ${6:q2}
-- What is the fastest way to get to your goal?
-  + ${7:q3}
-- Who can I ask for help with this?
-  + ${8:q4}
-- How can I improve through this or what new skill can I learn?
-  + ${9:q5}
+1. Different approaches you can take to solve the problem?
+  a. ${5:q1}
+2. How would this be if this were easy?
+  a. ${6:q2}
+3. What is the fastest way to get to your goal?
+  a. ${7:q3}
+4. Who can I ask for help with this?
+  a. ${8:q4}
+5. How can I improve through this or what new skill can I learn?
+  a. ${9:q5}

@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-05-07 Fri 20:11]
+#+last_modified: [2021-05-11 Tue 09:23]
 #+startup: overview
 
 Making this file run a little faster
@@ -56,6 +56,7 @@ Making this file run a little faster
   - [[#org-toggl][Org-toggl]]
 - [[#language-specific-configuration][Language specific configuration]]
   - [[#julia][Julia]]
+  - [[#groovy-and-nextflow][Groovy and nextflow]]
 - [[#credits][Credits]]
 
 * Configuring private settings
@@ -1779,6 +1780,11 @@ Setting up org-toggl
 
 #+begin_src elisp
 (setq lsp-julia-default-environment "~/.julia/environments/v1.6")
+#+end_src
+** Groovy and nextflow
+
+#+begin_src elisp
+(add-to-list 'auto-mode-alist '("\\.nf\\'" . groovy-mode))
 #+end_src
 
 * Credits
