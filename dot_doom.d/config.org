@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-05-11 Tue 17:55]
+#+last_modified: [2021-05-12 Wed 08:51]
 #+startup: overview
 
 Making this file run a little faster
@@ -1226,6 +1226,7 @@ Remap movement keys to move between agenda items rather than between lines
 (after! org-habit
   (setq org-habit-preceding-days 7)
   (setq org-habit-following-days 7)
+  (setq +org-habit-graph-window-ratio 0.2)
   )
 #+end_src
 
