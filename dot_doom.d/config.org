@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-05-12 Wed 08:51]
+#+last_modified: [2021-05-12 Wed 14:04]
 #+startup: overview
 
 Making this file run a little faster
@@ -514,8 +514,8 @@ Make headings slightly bigger
   )
 (plist-put! +ligatures-extra-symbols
             :name          "⁍"
-            :true          "𝓣𝓻𝓾𝓮"
-            :false         "𝓕𝓪𝓵𝓼𝓮"
+            :true          "𝓣"
+            :false         "𝓕"
             :pipe          "⯈")
 #+end_src
 
