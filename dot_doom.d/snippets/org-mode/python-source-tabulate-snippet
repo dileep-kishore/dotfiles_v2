@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: Python source tabulate
+# uuid: python-source-tabulate
+# key: <spyt
+# condition: t
+# --
+#+begin_src python :results value raw :return tabulate(${1:dataframe}.iloc[:10, :5], headers=${1:dataframe}.columns[:5], tablefmt="orgtbl")
+${2:code}
+#+end_src

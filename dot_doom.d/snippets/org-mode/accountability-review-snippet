@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: Accountability review snippet
+# uuid: accountability-review
+# key: trigger-key
+# condition: t
+# --
+** Accountability review
+
+*** Recap:
+- ${1:recap}
+
+*** Things I can improve on:
+- ${2:improvement}
+
+*** Tasks for tomorrow:
+- ${3:tasks}

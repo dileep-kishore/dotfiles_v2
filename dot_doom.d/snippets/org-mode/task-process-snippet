@@ -4,10 +4,12 @@
 # key: tp_
 # condition: t
 # --
-_Sub-tasks_:
+_I get to do_:
 1. [ ] Give yourself the dopamine reward
 2. [ ] ${10:subtasks}
 
+***** Review
+-
 
 ***** The big picture
 - What is the *mission* of this task?
@@ -23,6 +25,7 @@ _Sub-tasks_:
 - Always prioritize the most important actions - be they important tasks or even micro-actions inside tasks
 - Engage in long-term thinking and planning and do not get frustrated if you are not getting results in the short-term
 - Think about all your problems as fun challenges to face
+- Embrace frustration when you're making errors and learning, this engages neuroplasticity
 
 ***** Questions
 1. Different approaches you can take to solve the problem?

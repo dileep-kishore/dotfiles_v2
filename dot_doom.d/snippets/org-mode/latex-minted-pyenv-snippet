@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: Latex + minted + pyenv snippet
+# uuid: latex-minted-pyenv
+# key: trigger-key
+# condition: t
+# --
+#+PROPERTY: header-args:python :python /home/dileep/.virtualenvs/${1:venv}/bin/python :session py :results output :exports both
+#+export_file_name: exports/${2:filename}.pdf
+#+latex_header: \usepackage[outputdir=exports]{minted}
+#+latex_header: \usepackage{hyperref}
+#+latex_header: \hypersetup{colorlinks=true, linkcolor=blue, filecolor=magenta, urlcolor=blue}

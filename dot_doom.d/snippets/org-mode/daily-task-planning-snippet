@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: Daily task planning
+# uuid: daily-task-planning
+# key: trigger-key
+# condition: t
+# --
+
+** TODO Daily Task Planning Checklist [/]
+
+- [ ] Schedule time for learning
+- [ ] Schedule time for reading
+- [ ] Look at current objectives (there should only be three)
+- [ ] Plan your 3 most important tasks based on these OKRs
+- [ ] Are there any meetings that are getting in the way of your deep work? Can you move them around?
+
