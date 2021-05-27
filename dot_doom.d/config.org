@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-05-26 Wed 17:27]
+#+last_modified: [2021-05-26 Wed 20:41]
 #+startup: overview
 
 Making this file run a little faster
@@ -1784,16 +1784,13 @@ Add calendar files to =org-agenda=
 
 Setting up org-toggl
 #+begin_src elisp
-(after! org
-  (use-package! org-toggl
+(use-package! org-toggl
     :after org-clock
     :config
     (setq toggl-auth-token (password-store-get "toggl/api"))
     (setq org-toggl-inherit-toggl-properties t)
     (toggl-get-projects)
-    (org-toggl-integration-mode)
-    )
-  )
+    (org-toggl-integration-mode))
 #+end_src
 
 * Language specific configuration
