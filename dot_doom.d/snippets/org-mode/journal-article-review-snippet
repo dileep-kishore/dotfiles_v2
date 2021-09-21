@@ -1,0 +1,23 @@
+# -*- mode: snippet -*-
+# name: Journal article review snippet
+# uuid: journal-article-review-snippet
+# key: trigger-key
+# condition: t
+# --
+
+** Things to remember
+- Read critically
+- Read creatively
+- Make  notes
+- Try to summarize the paper in a few sentences
+- Compare the paper to other works
+
+** TODO Question to ask
+- From where did the author seems to draw the ideas?
+- What exactly was accomplished by this piece of work?
+- How does it seem to to relate to other work on this field?
+- What would be the reasonable next step to build upon this work?
+- What ideas from related fields might be brought to bear upon this subject?
+- What are the unsolved research problems?
+
+** TODO Summary

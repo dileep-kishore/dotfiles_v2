@@ -4,7 +4,7 @@
 # key: trigger-key
 # condition: t
 # --
-** Accountability review
+** TODO Accountability review
 
 *** Recap:
 - ${1:recap}
@@ -13,4 +13,6 @@
 - ${2:improvement}
 
 *** Tasks for tomorrow:
-- ${3:tasks}
+1. Priority1: ${3:priority1}
+2. Priority2: ${4:priority2}
+3. Priority3: ${5:priority3}
