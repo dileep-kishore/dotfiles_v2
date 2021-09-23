@@ -137,3 +137,15 @@ if [ ! -f ~/.emacs.d/bin/doom ]; then
 git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
 ~/.emacs.d/bin/doom install
 fi
+
+# install texlive stuff
+sudo pacman -S --needed --noconfirm \
+    texlive-bin \
+    texlive-core \
+    texlive-bibtexextra \
+    texlive-fontsextra \
+    texlive-formatsextra \
+    texlive-latexextra \
+    texlive-pictures \
+    texlive-publishers \
+    texlive-science
