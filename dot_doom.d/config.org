@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-09-26 Sun 11:26]
+#+last_modified: [2021-09-26 Sun 11:31]
 #+startup: overview
 
 Making this file run a little faster
@@ -1410,19 +1410,19 @@ Keybindings
             ((day_template (get-string-from-file "~/Documents/Org/Roam/_templates/dailies-template.org"))
              (week_template (get-string-from-file "~/Documents/Org/Roam/_templates/weekly-template.org")))
           `(("j" "journaling" entry "- %?" :if-new
-             (file+head "dailies/%<%Y-%m-%d>.org" ,day_template)
+             (file+head "%<%Y-%m-%d>.org" ,day_template)
              :empty-lines-before 1
              :olp ("Journaling"))
             ("p" "plan" entry "** TODO %<%H:%M> %?" :if-new
-             (file+head "dailies/%<%Y-%m-%d>.org" ,day_template)
+             (file+head "%<%Y-%m-%d>.org" ,day_template)
              :empty-lines-before 1
              :olp ("Day Planner"))
             ("t" "thoughts" entry "- %<%H:%M> %?" :if-new
-             (file+head "dailies/%<%Y-%m-%d>.org" ,day_template)
+             (file+head "%<%Y-%m-%d>.org" ,day_template)
              :empty-lines-before 1
              :olp ("Thoughts"))
             ("w" "weekly" entry "%?" :if-new
-             (file+head "dailies/%<%Y-w%U>.org" ,week_template)
+             (file+head "%<%Y-w%U>.org" ,week_template)
              :empty-lines-before 1
              :olp ("How was your week? General thoughts")))))
   )
