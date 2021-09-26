@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-09-26 Sun 09:03]
+#+last_modified: [2021-09-26 Sun 11:15]
 #+startup: overview
 
 Making this file run a little faster
@@ -87,6 +87,7 @@ By default doom blacklists =SSH_AUTH_SOCK= and =SSH_AUTH_PID= variables, which m
       org-export-with-sub-superscripts '{}        ; don't treat lone _ / ^ as sub/superscripts, require _{} / ^{}
       )
 (setq org-roam-directory "~/Documents/Org/Roam")
+(org-roam-db-autosync-mode)  ; needed to ensure org-roam is available on startup
 #+end_src
 
 Bullet sequences
@@ -478,7 +479,7 @@ Make headings slightly bigger
   :merge t
   :tags          "#+roam_tags"
   :filetags      "#+filetags"
-  :alias         "#+roam_alias"
+  :alias         ":ROAM_ALIASES:"
   :created:      "#+created"
   :last_modified:"#+last_modified"
   :startup       "#+startup"
@@ -1377,7 +1378,7 @@ Persist clocks on Emacs restarts
 
 ** Org-roam
 
-You might want to refer to the [[https://www.orgroam.com/manual.html#The-Templating-System][templating system documentation]] for details.
+You might want to refer to the [[https://www.orgroam.com/manual.html#The-Templating-System][templating system documentation]] for details. This has been updated for v2
 
 Set up the default directories
 #+begin_src elisp
@@ -1413,32 +1414,20 @@ Keybindings
         (let
             ((day_template (get-string-from-file "~/Documents/Org/Roam/_templates/dailies-template.org"))
              (week_template (get-string-from-file "~/Documents/Org/Roam/_templates/weekly-template.org")))
-          `(("j" "journaling" item
-             #'org-roam-capture--get-point
-             "- %?"
+          `(("j" "journaling" entry "- %?" :if-new
+             (file+head "dailies/%<%Y-%m-%d>.org" ,day_template)
              :empty-lines-before 1
-             :file-name "dailies/%<%Y-%m-%d>"
-             :head ,day_template
              :olp ("Journaling"))
-            ("p" "plan" item
-             #'org-roam-capture--get-point
-             "** TODO %<%H:%M> %?"
-             :file-name "dailies/%<%Y-%m-%d>"
-             :head ,day_template
+            ("p" "plan" entry "** TODO %<%H:%M> %?" :if-new
+             (file+head "dailies/%<%Y-%m-%d>.org" ,day_template)
              :empty-lines-before 1
              :olp ("Day Planner"))
-            ("t" "thoughts" item
-             #'org-roam-capture--get-point
-             "- %<%H:%M> %?"
-             :file-name "dailies/%<%Y-%m-%d>"
-             :head ,day_template
+            ("t" "thoughts" entry "- %<%H:%M> %?" :if-new
+             (file+head "dailies/%<%Y-%m-%d>.org" ,day_template)
              :empty-lines-before 1
              :olp ("Thoughts"))
-            ("w" "weekly" item
-             #'org-roam-capture--get-point
-             "%?"
-             :file-name "dailies/%<%Y-w%U>"
-             :head ,week_template
+            ("w" "weekly" entry "%?" :if-new
+             (file+head "dailies/%<%Y-w%U>.org" ,week_template)
              :empty-lines-before 1
              :olp ("How was your week? General thoughts")))))
   )
@@ -1451,35 +1440,35 @@ Templates for general notes
 (after! org-roam
 
   (setq org-roam-capture-templates
-        '(("d" "default" plain (function org-roam-capture--get-point)
-           "%?"
-           :file-name "%<%Y%m%d%H%M>-${slug}"
-           :head "#+TITLE: ${title}\n#+roam_alias:\n#+roam_tags:\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+        '(("d" "default" plain "%?" :if-new
+           (file+head "%<%Y%m%d%H%M>-${slug}.org"
+                      "#+TITLE: ${title}\n#+filetags:\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+           )
            :unnarrowed t)
-          ("i" "inbox" plain (function org-roam-capture--get-point)
-           "** TODO %? [/]"
-           :file-name "tasks/inbox"
-           :head "#+TITLE: Inbox\n#+roam_alias: inbox\n#+roam_tags: tasks\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n#+startup: overview\n#+archive: archives/${slug}-a.org::datetree/\n\n"
+          ("i" "inbox" plain "** TODO %? [/]" :if-new
+           (file+head "tasks/inbox.org"
+                      "#+TITLE: Inbox\n#+filetags: tasks\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n#+startup: overview\n#+archive: archives/${slug}-a.org::datetree/\n\n"
+           )
            :unnarrowed t)
-          ("t" "task" plain (function org-roam-capture--get-point)
-           "** TODO %? [/]"
-           :file-name "tasks/${slug}"
-           :head "#+TITLE: ${title}\n#+roam_alias:\n#+roam_tags: tasks\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n#+startup: overview\n#+archive: archives/${slug}-a.org::datetree/\n\n"
+          ("t" "task" plain "** TODO %? [/]" :if-new
+           (file+head "tasks/${slug}.org"
+                      "#+TITLE: ${title}\n#+filetags: tasks\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n#+startup: overview\n#+archive: archives/${slug}-a.org::datetree/\n\n"
+           )
            :unnarrowed t)
-          ("l" "literature" plain (function org-roam-capture--get-point)
-           "%?"
-           :file-name "literature/%<%Y%m%d%H%M>-${slug}"
-           :head "#+TITLE: ${title}\n#+roam_alias:\n#+roam_tags: literature %^{roam_tags}\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+          ("l" "literature" plain "%?" :if-new
+           (file+head "literature/%<%Y%m%d%H%M>-${slug}.org"
+                      "#+TITLE: ${title}\n#+filetags: literature %^{roam_tags}\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+           )
            :unnarrowed t)
-          ("f" "fleeting" plain (function org-roam-capture--get-point)
-           "%?"
-           :file-name "fleeting/%<%Y%m%d%H%M>-${slug}"
-           :head "#+TITLE: ${title}\n#+roam_alias:\n#+roam_tags:fleeting\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+          ("f" "fleeting" plain "%?" :if-new
+           (file+head "fleeting/%<%Y%m%d%H%M>-${slug}.org"
+                      "#+TITLE: ${title}\n#+filetags:fleeting\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+           )
            :unnarrowed t)
-          ("p" "Permanent (prompt folder)" plain (function org-roam-capture--get-point)
-           "%?"
-           :file-name "%(read-directory-name \"directory: \" org-directory)/%<%Y%m%d%H%M>-${slug}"
-           :head "#+TITLE: ${title}\n#+roam_alias:\n#+roam_tags: permanent\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+          ("p" "Permanent (prompt folder)" plain "%?" :if-new
+           (file+head "%(read-directory-name \"directory: \" org-directory)/%<%Y%m%d%H%M>-${slug}.org"
+                      "#+TITLE: ${title}\n#+filetags: permanent\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
+           )
            :unnarrowed t)))
   )
 #+end_src
@@ -1488,16 +1477,15 @@ Templates for capturing references from the web using =org-protocol=
 #+begin_src elisp
 (after! org-roam
   (setq org-roam-capture-ref-templates
-        '(("r" "ref" plain (function org-roam-capture--get-point)
-           "%?"
-           :file-name "websites/${slug}"
-           :head "#+TITLE: ${title}\n#+roam_alias:\n#+ROAM_KEY: ${ref}\n#+roam_tags: websites\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n- source :: ${ref}\n\n"
+        '(("r" "ref" plain "%?" :if-new
+           (file+head "websites/${slug}.org"
+                      ":PROPERTIES:\n:ROAM_REFS:${ref}\n:END:\n#+TITLE: ${title}\n#+filetags: websites\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n- source :: ${ref}\n\n"
+           )
            :unnarrowed t)
-          ("i" "incremental" plain
-           (function org-roam-capture--get-point)
-           "* %?"
-           :file-name "websites/${slug}"
-           :head "#+TITLE: ${title}\n#+roam_alias:\n#+ROAM_KEY: ${ref}\n#+roam_tags: websites\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n- source :: ${ref}\n\n"
+          ("i" "incremental" plain "* %?" :if-new
+           (file+head "websites/${slug}.org"
+                      ":PROPERTIES:\n:ROAM_REFS:${ref}\n:END:\n#+TITLE: ${title}\n#+filetags: websites\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n- source :: ${ref}\n\n"
+           )
            :unnarrowed t
            :empty-lines-before 1))))
 #+end_src
@@ -1564,7 +1552,7 @@ Add this hook
 
 *** Org-roam-protocol
 
-Registering the =roam-protocol=
+To register the =roam-protocol=, create a desktop application in =/usr/share/applications/org-protocol.desktop= or =~/.local/share/applications/org-protocol.desktop=
 #+begin_src config :tangle no
 [Desktop Entry]
 Name=Org-Protocol
@@ -1673,7 +1661,7 @@ Set up =org-ref= to manage ~cite:~  links
    org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
    org-ref-default-bibliography (list zot_bib)
    org-ref-bibliography-notes (concat lit_notes "/bibnotes.org")
-   org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
+   org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_REFS: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
    org-ref-notes-directory lit_notes
    org-ref-notes-function 'orb-edit-notes
    ))
@@ -1694,10 +1682,9 @@ Finally, we configure =org-roam-bibtex=
   (setq orb-preformat-keywords
         '(("citekey" . "=key=") "title" "url" "file" "author-or-editor" "keywords"))
   (setq orb-templates
-        '(("r" "ref" plain (function org-roam-capture--get-point)
-           ""
-           :file-name "literature/${slug}"
-           :head "#+TITLE: ${citekey}: ${title}\n#+ROAM_KEY: ${ref}\n#+roam_alias:\n#+roam_tags: literature\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U
+        '(("r" "ref" plain "" :if-new
+           (file+head "literature/${slug}.org"
+                      ":PROPERTIES:\n:ROAM_REFS: ${ref}\n:END:\n#+TITLE: ${citekey}: ${title}\n#+filetags: literature\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U
 - tags ::
 - keywords :: ${keywords}
 \n* ${title}
@@ -1708,6 +1695,7 @@ Finally, we configure =org-roam-bibtex=
 :NOTER_DOCUMENT: ${file}
 :NOTER_PAGE:
 :END:\n\n"
+)
            :unnarrowed t))))
 #+end_src
 
