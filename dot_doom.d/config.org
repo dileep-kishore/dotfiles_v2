@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-09-26 Sun 11:31]
+#+last_modified: [2021-09-26 Sun 12:10]
 #+startup: overview
 
 Making this file run a little faster
@@ -1471,7 +1471,7 @@ Templates for general notes
 Templates for capturing references from the web using =org-protocol=
 #+begin_src elisp
 (after! org-roam
-  (setq org-roam-capture-ref-templates
+  (setq org-roam-capture-templates
         '(("r" "ref" plain "%?" :if-new
            (file+head "websites/${slug}.org"
                       ":PROPERTIES:\n:ROAM_REFS:${ref}\n:END:\n#+TITLE: ${title}\n#+filetags: websites\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n- source :: ${ref}\n\n"
@@ -1676,7 +1676,7 @@ Finally, we configure =org-roam-bibtex=
   :config
   (setq orb-preformat-keywords
         '(("citekey" . "=key=") "title" "url" "file" "author-or-editor" "keywords"))
-  (setq orb-templates
+  (setq org-roam-capture-templates
         '(("r" "ref" plain "" :if-new
            (file+head "literature/${slug}.org"
                       ":PROPERTIES:\n:ROAM_REFS: ${ref}\n:END:\n#+TITLE: ${citekey}: ${title}\n#+filetags: literature\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U
