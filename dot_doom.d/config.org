@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-09-26 Sun 11:15]
+#+last_modified: [2021-09-26 Sun 11:26]
 #+startup: overview
 
 Making this file run a little faster
@@ -557,6 +557,7 @@ Use ~Alegreya~ font as =variable-pitch-serif-font=
     :group 'basic-faces)
   (setq mixed-pitch-set-height t)
   (set-face-attribute 'org-hide nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-quote nil :inherit 'variable-pitch-serif)
   (set-face-attribute 'org-document-title nil
                       :height 1.9
                       :weight 'bold)
@@ -576,6 +577,7 @@ Change header sizes in =org-mode=.
   (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-hide nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-quote nil :inherit 'variable-pitch-serif)
   (set-face-attribute 'org-document-title nil
                       :height 1.9
                       :weight 'bold))
@@ -605,13 +607,6 @@ Change header sizes in =org-mode=.
 #+begin_src elisp
 (use-package! org-pretty-table
   :commands (org-pretty-table-mode global-org-pretty-table-mode))
-#+end_src
-
-#+begin_src elisp :tangle no
-(after! mixed-pitch
-  (set-face-attribute 'org-document-title nil
-                      :height 1.9
-                      :weight 'bold))
 #+end_src
 ** Tags
 
