@@ -49,14 +49,21 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+
+(unpin! org-roam company-org-roam)
+(unpin! mixed-pitch)
+(unpin! ein)
+
 (package! org-super-agenda)
 (package! org-edna)
 (package! wakatime-mode)
 (package! org-appear)
 (package! org-auto-tangle)
-(package! org-roam-server)
 (package! org-ref)
 (package! org-roam-bibtex)
+(package! websocket)
+(package! org-roam-ui
+    :recipe (:host github :repo "org-roam/org-roam-ui" :files ("*.el" "out")))
 (package! org-noter-pdftools)
 (package! numpydoc)
 (package! systemd)
@@ -73,7 +80,3 @@
     :recipe (:host github :repo "nobiot/org-transclusion"))
 (package! org-fragtog)
 (package! groovy-mode)
-
-(unpin! org-roam company-org-roam)
-(unpin! mixed-pitch)
-(unpin! ein)

@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-05-26 Wed 20:41]
+#+last_modified: [2021-09-26 Sun 09:03]
 #+startup: overview
 
 Making this file run a little faster
@@ -444,6 +444,7 @@ Make headings slightly bigger
             :last_modified:"∂"
             :export_file   "Є"
             :tags          "τ"
+            :filetags      "τ"
             :checkbox      "☐"
             :pending       "■"
             :checkedbox    "🗹"
@@ -476,6 +477,7 @@ Make headings slightly bigger
 (set-ligatures! 'org-mode
   :merge t
   :tags          "#+roam_tags"
+  :filetags      "#+filetags"
   :alias         "#+roam_alias"
   :created:      "#+created"
   :last_modified:"#+last_modified"
@@ -570,7 +572,6 @@ Change header sizes in =org-mode=.
 #+begin_src elisp
 (after! org
   (set-face-attribute 'org-link nil :slant 'italic)
-  (set-face-attribute 'org-roam-link nil :slant 'italic :box '(line-width 0.1))
   (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-hide nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
@@ -1581,23 +1582,20 @@ xdg-mime default org-protocol.desktop x-scheme-handler/org-protocol
 
 TODO Customize graph view for =org-protocol=
 
-*** Org-roam-server
+*** Org-roam-ui
 
-Settings for the =org-roam-server=
+Settings for the =org-roam-ui=
 #+begin_src elisp
-(use-package! org-roam-server
-  :config
-  (setq org-roam-server-host "127.0.0.1"
-        org-roam-server-port 8080
-        org-roam-server-authenticate nil
-        org-roam-server-export-inline-images t
-        org-roam-server-serve-files nil
-        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
-        org-roam-server-network-poll t
-        org-roam-server-network-arrows nil
-        org-roam-server-network-label-truncate t
-        org-roam-server-network-label-truncate-length 60
-        org-roam-server-network-label-wrap-length 20))
+(use-package! websocket
+    :after org-roam)
+
+(use-package! org-roam-ui
+    :after org-roam
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+          org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start nil))
 #+end_src
 
 *** Searching and indexing files
@@ -1755,12 +1753,14 @@ Keybinding to commit =org= repository using script in =~/.dotfiles/bin/org-git-a
       :prefix "z"
       :desc "org-git-add-commit" "c" #'org-git-add-commit)
 #+end_src
+
 ** Org-books
 
 Setting the path to the reading list org file
 #+begin_src elisp
 (setq org-books-file "~/Documents/Org/Roam/tasks/reading.org")
 #+end_src
+
 ** Org-gcal
 
 #+begin_src elisp
