@@ -1,6 +1,6 @@
 setName1=defaults
 sites1=4chan.org amazon.com anime* asurascans.com buzzfeed.com cnn.com collegehumor.com ebay.com espn.com etsy.com facebook.com feedly.com funnyordie.com huffingtonpost.com hulu.com imgur.com instagram.com lifehacker.com lightnovel* lightnovelworld.com manga* manhua* manhwa* medium.com netflix.com news.google.com news.ycombinator.com nytimes.com quora.com reddit.com renren.com scribblehub.com slashdot.com stumbleupon.com tumblr.com twitter.com vimeo.com webnovel.com webtoons.com youtube.com
-times1=0001-0400,1800-2359
+times1=0001-0400,1700-2359
 limitMins1=40
 limitPeriod1=86400
 limitOffset1=
