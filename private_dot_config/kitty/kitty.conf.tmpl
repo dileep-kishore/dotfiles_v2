@@ -23,6 +23,8 @@ bold_italic_font Victor Mono Bold Italic Nerd Font Complete
 # Font size (in pts)
 # templating {{- if (eq .chezmoi.hostname "red-zen") }}
 font_size 10.5
+# {{- else if (eq .chezmoi.hostname "dkishore-bu") }}
+font_size 10.5
 # {{- else if (eq .chezmoi.hostname "dileep-xmonad") }}
 font_size: 7.5
 # {{- end }}
