@@ -184,7 +184,7 @@ zinit light trapd00r/LS_COLORS
 zinit wait"2" lucid from"gh-r" as"null" for \
      sbin"**/fd"        @sharkdp/fd \
      sbin"**/bat"       @sharkdp/bat \
-     sbin"exa* -> exa"  ogham/exa \
+     sbin"**/bin/exa"  ogham/exa \
      sbin"noti"         variadico/noti \
      sbin"**/sad"       ms-jpq/sad \
      sbin"sd* -> sd"    chmln/sd
@@ -192,7 +192,7 @@ zinit wait"2" lucid from"gh-r" as"null" for \
 zinit wait lucid as"completion" for \
     https://raw.githubusercontent.com/sharkdp/fd/master/contrib/completion/_fd \
     https://raw.githubusercontent.com/BurntSushi/ripgrep/master/complete/_rg \
-    https://github.com/ogham/exa/blob/master/completions/completions.zsh
+    https://github.com/ogham/exa/blob/master/completions/zsh/_exa
 
 zinit ice as"completion"
 zinit snippet /home/dileep/.zfunc/_poetry
@@ -200,7 +200,7 @@ zinit snippet /home/dileep/.zfunc/_poetry
 # lsd
 zinit wait lucid from"gh-r" as"null" for \
     sbin"**/lsd"        Peltoche/lsd \
-    sbin"zoxide* -> zoxide" ajeetdsouza/zoxide
+    sbin"**/zoxide" ajeetdsouza/zoxide
 
 # zoxide and delta
 zinit wait"2" lucid from"gh-r" as"null" for \
@@ -253,6 +253,8 @@ export WORKON_HOME=$HOME/.virtualenvs
 source /usr/bin/virtualenvwrapper.sh
 
 # Pyenv config
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # Zoxide config

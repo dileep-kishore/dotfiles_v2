@@ -128,7 +128,7 @@ style = "bold #458588"
 
 [jobs]
 format = "[jobs](italic) [$symbol $number]($style) "
-threshold = 0
+number_threshold = 1
 symbol = "⚙ "
 
 [julia]

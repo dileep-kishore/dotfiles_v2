@@ -25,6 +25,7 @@ sudo pacman -S --needed --noconfirm \
     cabal-install \
     spotifyd \
     trash-cli \
+    pwgen \
     stack \
     libqalculate \
     pamixer \
