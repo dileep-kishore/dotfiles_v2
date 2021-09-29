@@ -173,7 +173,9 @@ myStartupHook = do
           spawnOnce "nm-applet &"
           spawnOnce "volumeicon &"
           spawnOnce "blueman-applet &"
+          -- templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dileep-xmonad")) }}
           spawnOnce "~/.dotfiles/bin/killer.sh || shutdown -h now &"
+          -- {{- end }}
           spawnOnce "aw-qt &"
           spawnOnce "barrier &"
           spawnOnce "syncthing -no-browser &"
@@ -369,7 +371,7 @@ mySpacing' i = spacingRaw True (Border i i i i) True (Border i i i i) True
 tall     = renamed [Replace "tall"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           -- templating {{- if (eq .chezmoi.hostname "red-zen") }}
+           -- templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dkishore-bu")) }}
            $ subLayout [] (smartBorders Simplest)
            -- {{- end }}
            $ limitWindows 12
@@ -378,7 +380,7 @@ tall     = renamed [Replace "tall"]
 magnify  = renamed [Replace "magnify"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           -- templating {{- if (eq .chezmoi.hostname "red-zen") }}
+           -- templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dkishore-bu")) }}
            $ subLayout [] (smartBorders Simplest)
            -- {{- end }}
            $ magnifier
@@ -388,21 +390,21 @@ magnify  = renamed [Replace "magnify"]
 monocle  = renamed [Replace "monocle"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           -- templating {{- if (eq .chezmoi.hostname "red-zen") }}
+           -- templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dkishore-bu")) }}
            $ subLayout [] (smartBorders Simplest)
            -- {{- end }}
            $ limitWindows 20 Full
 floats   = renamed [Replace "floats"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           -- templating {{- if (eq .chezmoi.hostname "red-zen") }}
+           -- templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dkishore-bu")) }}
            $ subLayout [] (smartBorders Simplest)
            -- {{- end }}
            $ limitWindows 20 simplestFloat
 grid     = renamed [Replace "grid"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
-           -- templating {{- if (eq .chezmoi.hostname "red-zen") }}
+           -- templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dkishore-bu")) }}
            $ subLayout [] (smartBorders Simplest)
            -- {{- end }}
            $ limitWindows 12
