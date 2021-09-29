@@ -100,13 +100,13 @@ if [ ! -d $HOME/.config/nnn/plugins ]; then
 fi
 
 paru -S --useask --batchinstall --cleanafter --removemake \
-    emacs-git \
     mu \
     betterlockscreen \
     nnn-nerd \
-    brave \
+    brave-bin \
     spotify \
     devour \
+    snapd \
     nerd-fonts-complete \
     layan-cursor-theme-git \
     alacritty-ligatures-git \
@@ -118,7 +118,6 @@ paru -S --useask --batchinstall --cleanafter --removemake \
     ttf-yanone-kaffeesatz \
     activitywatch-bin \
     zoom
-
 
 paru -S --useask --batchinstall --cleanafter --removemake \
     bash-language-server \
@@ -132,6 +131,9 @@ paru -S --useask --batchinstall --cleanafter --removemake \
 if [ ! -d $HOME/.tmux/plugins/tpm ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
+
+# TODO install emacs using snapd (might need a restart)
+sudo snap install emacs --edge --classic
 
 # install doom emacs
 if [ ! -f ~/.emacs.d/bin/doom ]; then
