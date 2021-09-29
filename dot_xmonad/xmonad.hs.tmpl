@@ -635,7 +635,7 @@ main :: IO ()
 main = do
     home <- getHomeDirectory
     -- Launching three instances of xmobar on their monitors.
-    -- Templating {{- if (eq .chezmoi.hostname "red-zen") }}
+    -- templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dkishore-bu")) }}
     xmproc0 <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc0"
     xmproc1 <- spawnPipe "xmobar -x 1 ~/.config/xmobar/xmobarrc1"
     -- {{- else if (eq .chezmoi.hostname "dileep-xmonad") }}
@@ -663,7 +663,7 @@ main = do
         , normalBorderColor   = myNormColor
         , focusedBorderColor  = myFocusColor
         , logHook = workspaceHistoryHook <+> myLogHook <+> dynamicLogWithPP xmobarPP
-                        -- Templating {{- if (eq .chezmoi.hostname "red-zen") }}
+                        -- templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dkishore-bu")) }}
                         { ppOutput = \x -> hPutStrLn xmproc0 x  >> hPutStrLn xmproc1 x
                         -- {{- else if (eq .chezmoi.hostname "dileep-xmonad") }}
                         { ppOutput = hPutStrLn xmproc2
