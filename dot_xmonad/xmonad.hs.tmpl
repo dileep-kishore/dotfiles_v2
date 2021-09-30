@@ -475,7 +475,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
 
 
     -- Workspaces
-myWorkspaces = ["web","term","code","sync","comm","music","note","tasks","misc"]
+myWorkspaces = ["web","term","code","cal","comm","music","notes","tasks","misc"]
 
 
     -- ManageHook
@@ -485,13 +485,11 @@ myManageHook = composeAll
      -- I'm doing it this way because otherwise I would have to write out the full
      -- name of my workspaces, and the names would very long if using clickable workspaces.
      [ className =? "brave-browser"     --> doShift "web"
-       , className =? "barrier"     --> doShift "sync"
-       , className =? "syncthing GTK"     --> doShift "sync"
+       , className =? "morgen"     --> doShift "cal"
        , className =? "skype"     --> doShift "comm"
        , className =? "discord"     --> doShift "comm"
        , className =? "spotify"     --> doShift "music"
-       , className =? "obsidian"     --> doShift "note"
-       , className =? "clickup desktop"     --> doShift "tasks"
+       , className =? "obsidian"     --> doShift "notes"
        , className =? "mpv"     --> doShift "music"
        , className =? "vlc"     --> doShift "music"
        , className =? "Zotero"     --> doShift "misc"
