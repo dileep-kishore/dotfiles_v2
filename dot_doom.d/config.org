@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-09-26 Sun 12:10]
+#+last_modified: [2021-09-30 Thu 06:33]
 #+startup: overview
 
 Making this file run a little faster
@@ -1430,7 +1430,8 @@ Keybindings
 
 *** Org-roam capture templates
 
-Templates for general notes
+1. Templates for general notes
+2. Templates for capturing references from the web using =org-protocol=
 #+begin_src elisp
 (after! org-roam
 
@@ -1450,6 +1451,17 @@ Templates for general notes
                       "#+TITLE: ${title}\n#+filetags: tasks\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n#+startup: overview\n#+archive: archives/${slug}-a.org::datetree/\n\n"
            )
            :unnarrowed t)
+          ("r" "ref" plain "%?" :if-new
+           (file+head "websites/${slug}.org"
+                      ":PROPERTIES:\n:ROAM_REFS:${ref}\n:END:\n#+TITLE: ${title}\n#+filetags: websites\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n- source :: ${ref}\n\n"
+           )
+           :unnarrowed t)
+          ("i" "incremental" plain "* %?" :if-new
+           (file+head "websites/${slug}.org"
+                      ":PROPERTIES:\n:ROAM_REFS:${ref}\n:END:\n#+TITLE: ${title}\n#+filetags: websites\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n- source :: ${ref}\n\n"
+           )
+           :unnarrowed t
+           :empty-lines-before 1)
           ("l" "literature" plain "%?" :if-new
            (file+head "literature/%<%Y%m%d%H%M>-${slug}.org"
                       "#+TITLE: ${title}\n#+filetags: literature %^{roam_tags}\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n\n"
@@ -1466,23 +1478,6 @@ Templates for general notes
            )
            :unnarrowed t)))
   )
-#+end_src
-
-Templates for capturing references from the web using =org-protocol=
-#+begin_src elisp
-(after! org-roam
-  (setq org-roam-capture-templates
-        '(("r" "ref" plain "%?" :if-new
-           (file+head "websites/${slug}.org"
-                      ":PROPERTIES:\n:ROAM_REFS:${ref}\n:END:\n#+TITLE: ${title}\n#+filetags: websites\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n- source :: ${ref}\n\n"
-           )
-           :unnarrowed t)
-          ("i" "incremental" plain "* %?" :if-new
-           (file+head "websites/${slug}.org"
-                      ":PROPERTIES:\n:ROAM_REFS:${ref}\n:END:\n#+TITLE: ${title}\n#+filetags: websites\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n- source :: ${ref}\n\n"
-           )
-           :unnarrowed t
-           :empty-lines-before 1))))
 #+end_src
 *** Org-roam hooks
 
