@@ -81,6 +81,8 @@ sudo pacman -S --needed --noconfirm \
     neovim \
     python-pynvim \
     python-ueberzug \
+    xdotool \
+    xclip \
     isync
 
 if [ ! -d $HOME/npm-global/lib/node_modules/neovim ]; then
