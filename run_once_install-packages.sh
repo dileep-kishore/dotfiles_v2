@@ -136,8 +136,7 @@ if [ ! -d $HOME/.tmux/plugins/tpm ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
-# TODO install emacs using snapd (might need a restart)
-sudo snap install emacs --edge --classic
+# TODO install emacs (figure out the best way to do this)
 
 # install doom emacs
 if [ ! -f ~/.emacs.d/bin/doom ]; then
