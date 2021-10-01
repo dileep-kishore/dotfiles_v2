@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-09-30 Thu 06:33]
+#+last_modified: [2021-09-30 Thu 21:08]
 #+startup: overview
 
 Making this file run a little faster
@@ -448,16 +448,16 @@ Make headings slightly bigger
             :filetags      "τ"
             :checkbox      "☐"
             :pending       "■"
-            :checkedbox    "🗹"
+            :checkedbox    "☒"
             :list_property "∷"
             :em_dash       "—"
             :ellipses      "…"
             :arrow_right   "→"
             :arrow_left    "←"
             :title         "干"
-            :subtitle      "𝙩"
+            :subtitle      "t"
             :author        "Ꭿ"
-            :date          "𝘿"
+            :date          "Đ"
             :property      "⛭"
             :options       "⌥"
             :latex_class   "🄲"
@@ -469,7 +469,7 @@ Make headings slightly bigger
             :end_quote     "❞"
             :caption       "☰"
             :header        "›"
-            :results       "🠶"
+            :results       "ℛ"
             :begin_export  "⤇"
             :end_export    "⤆"
             :properties    "⛭"
@@ -517,8 +517,8 @@ Make headings slightly bigger
   )
 (plist-put! +ligatures-extra-symbols
             :name          "⁍"
-            :true          "𝓣"
-            :false         "𝓕"
+            :true          "Ṫ"
+            :false         "Ḟ"
             :pipe          "⯈")
 #+end_src
 
