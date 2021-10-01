@@ -11,6 +11,7 @@ sudo pacman -S --needed --noconfirm \
     git \
     subversion \
     gparted \
+    procs \
     dpkg
 
 sudo pacman -S --needed --noconfirm \
@@ -117,6 +118,7 @@ paru -S --useask --batchinstall --cleanafter --removemake \
     otf-yanone-kaffeesatz \
     ttf-yanone-kaffeesatz \
     activitywatch-bin \
+    1password-cli \
     zoom
 
 paru -S --useask --batchinstall --cleanafter --removemake \
