@@ -151,6 +151,8 @@ sudo pacman -S --needed --noconfirm \
     texlive-bibtexextra \
     texlive-fontsextra \
     texlive-formatsextra \
+    texlive-langextra \
+    texlive-humanities \
     texlive-latexextra \
     texlive-pictures \
     texlive-publishers \
