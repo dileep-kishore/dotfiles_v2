@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-10-01 Fri 21:29]
+#+last_modified: [2021-10-02 Sat 07:56]
 #+startup: overview
 
 Making this file run a little faster
@@ -456,7 +456,7 @@ Make headings slightly bigger
             :arrow_left    "←"
             :title         "干"
             :subtitle      "t"
-            :author        "Å"
+            :author        "₳"
             :date          "Đ"
             :property      "⛭"
             :options       "⌥"
