@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-10-01 Fri 13:26]
+#+last_modified: [2021-10-01 Fri 21:29]
 #+startup: overview
 
 Making this file run a little faster
@@ -456,7 +456,7 @@ Make headings slightly bigger
             :arrow_left    "←"
             :title         "干"
             :subtitle      "t"
-            :author        "@"
+            :author        "Å"
             :date          "Đ"
             :property      "⛭"
             :options       "⌥"
@@ -1057,7 +1057,7 @@ Enable automatic LaTeX fragment previews
 \\setlength{\\topmargin}{1.5cm}
 \\addtolength{\\topmargin}{-2.54cm}
 % my custom stuff
-\\usepackage{arev}
+% \\usepackage{arev}
 ")
   (setq org-format-latex-options (plist-put org-format-latex-options :background "Transparent"))
   (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.8))
