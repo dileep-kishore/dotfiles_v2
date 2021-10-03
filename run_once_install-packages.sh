@@ -57,6 +57,8 @@ sudo pacman -S --needed --noconfirm \
     yarn \
     rust \
     copyq \
+    editorconfig-core-c \
+    graphviz \
     xsel \
     ncdu \
     tldr \
