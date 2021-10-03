@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-10-02 Sat 14:33]
+#+last_modified: [2021-10-03 Sun 09:20]
 #+startup: overview
 
 Making this file run a little faster
@@ -1452,10 +1452,21 @@ Keybindings
            )
            :unnarrowed t)
           ("r" "ref" plain "%?" :if-new
-           (file+head "websites/${slug}.org"
-                      ":PROPERTIES:\n:ROAM_REFS:${ref}\n:END:\n#+TITLE: ${title}\n#+filetags: websites\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n- source :: ${ref}\n\n"
-           )
+           (file+head "literature/${slug}.org"
+                      ":PROPERTIES:\n:ROAM_REFS: ${ref}\n:END:\n#+TITLE: ${citekey}: ${title}\n#+filetags: literature\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U
+- tags ::
+- keywords :: ${keywords}
+\n* ${title}
+:PROPERTIES:
+:Custom_ID: ${citekey}
+:URL: ${url}
+:AUTHOR: ${author-or-editor}
+:NOTER_DOCUMENT: ${file}
+:NOTER_PAGE:
+:END:\n\n"
+)
            :unnarrowed t)
+
           ("i" "incremental" plain "* %?" :if-new
            (file+head "websites/${slug}.org"
                       ":PROPERTIES:\n:ROAM_REFS:${ref}\n:END:\n#+TITLE: ${title}\n#+filetags: websites\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U\n- source :: ${ref}\n\n"
@@ -1670,23 +1681,7 @@ Finally, we configure =org-roam-bibtex=
   :hook (org-roam-mode . org-roam-bibtex-mode)
   :config
   (setq orb-preformat-keywords
-        '(("citekey" . "=key=") "title" "url" "file" "author-or-editor" "keywords"))
-  (setq org-roam-capture-templates
-        '(("r" "ref" plain "" :if-new
-           (file+head "literature/${slug}.org"
-                      ":PROPERTIES:\n:ROAM_REFS: ${ref}\n:END:\n#+TITLE: ${citekey}: ${title}\n#+filetags: literature\n#+author: %(concat user-full-name)\n#+created: %u\n#+last_modified: %U
-- tags ::
-- keywords :: ${keywords}
-\n* ${title}
-:PROPERTIES:
-:Custom_ID: ${citekey}
-:URL: ${url}
-:AUTHOR: ${author-or-editor}
-:NOTER_DOCUMENT: ${file}
-:NOTER_PAGE:
-:END:\n\n"
-)
-           :unnarrowed t))))
+        '(("citekey" . "=key=") "title" "url" "file" "author-or-editor" "keywords")))
 #+end_src
 
 *** TODO org-roam-graph configuration
