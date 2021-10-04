@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-10-03 Sun 09:20]
+#+last_modified: [2021-10-03 Sun 20:40]
 #+startup: overview
 
 Making this file run a little faster
@@ -1198,6 +1198,7 @@ Org agenda defaults
 (setq org-agenda-skip-scheduled-if-done t
       org-agenda-skip-deadline-if-done t
       org-agenda-include-deadlines t
+      org-agenda-log-mode-items '(closed clock state)
       ;; org-agenda-block-separator nil
       org-agenda-tags-column 100 ;; from testing this seems to be a good value
       org-agenda-compact-blocks t
