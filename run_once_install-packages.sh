@@ -138,7 +138,7 @@ if [ ! -d $HOME/.tmux/plugins/tpm ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
-# TODO install emacs (figure out the best way to do this)
+# NOTE: Emacs installation is done outside of the script
 
 # install doom emacs
 if [ ! -f ~/.emacs.d/bin/doom ]; then
