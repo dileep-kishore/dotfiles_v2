@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-10-03 Sun 20:40]
+#+last_modified: [2021-10-05 Tue 08:42]
 #+startup: overview
 
 Making this file run a little faster
@@ -1665,14 +1665,9 @@ Set up =org-ref= to manage ~cite:~  links
    org-ref-bibliography-notes (concat lit_notes "/bibnotes.org")
    org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_REFS: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
    org-ref-notes-directory lit_notes
-   org-ref-notes-function 'orb-edit-notes
+   org-ref-notes-function 'orb-org-ref-edit-note
    ))
 #+end_src
-
-#+begin_quote
-Note:
-=org-ref= template options are not the same as =org-roam= template options
-#+end_quote
 
 Finally, we configure =org-roam-bibtex=
 #+begin_src elisp
@@ -1682,7 +1677,9 @@ Finally, we configure =org-roam-bibtex=
   :hook (org-roam-mode . org-roam-bibtex-mode)
   :config
   (setq orb-preformat-keywords
-        '(("citekey" . "=key=") "title" "url" "file" "author-or-editor" "keywords")))
+        '(("citekey" . "=key=") "title" "url" "file" "author-or-editor" "keywords")
+        orb-process-file-keyword t
+        orb-file-field-extensions '("pdf")))
 #+end_src
 
 *** TODO org-roam-graph configuration
