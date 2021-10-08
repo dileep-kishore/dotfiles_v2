@@ -1,16 +1,16 @@
 # -*- mode: snippet -*-
-# name: Review snippet
-# uuid: review-snippet
+# name: Task Review snippet
+# uuid: task-review-snippet
 # key: review_
 # condition: t
 # --
-***** `(current-time-string)`
-****** Reset [/]
+****** `(current-time-string)`
+******* Reset [/]
 - [ ] Stand and Stretch
 - [ ] Focus on far away objects and dilate pupils
 - [ ] 10 Physiological sighs (2 inhales + 1 exhale)
 - [ ] Give yourself a dopamine reward
-****** Reflect
+******* Reflect
 - What are you currently working on?
   ${1:work}
 - How does this connect to the objective?

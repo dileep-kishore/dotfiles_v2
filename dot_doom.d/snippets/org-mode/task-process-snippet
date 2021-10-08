@@ -1,15 +1,15 @@
 # -*- mode: snippet -*-
-# name: Task Process
+# name: Task Process (Duration, Path, Outcome)
 # uuid: tp-dpo
 # key: tp_
 # condition: t
 # --
 _I get to do_:
 1. [ ] Give yourself the dopamine reward
-2. [ ] ${10:subtasks}
+2. [ ] ${12:subtasks}
 ***** Task Review
 ***** The big picture
-- What is the *mission* of this task?
+- What is the *mission* of this task? (Benefit to you and the world)
   ${1:mission}
 - What is the *objective* of this task?
   ${2:objective}
@@ -25,11 +25,14 @@ _I get to do_:
 ***** Questions
 1. Different approaches you can take to solve the problem?
   a. ${5:q1}
+  b. ${6:q1}
 2. How would this be if this were easy?
-  a. ${6:q2}
+  a. ${7:q2}
 3. What is the fastest way to get to your goal?
-  a. ${7:q3}
-4. Who can I ask for help with this?
-  a. ${8:q4}
-5. How can I improve through this or what new skill can I learn?
-  a. ${9:q5}
+  a. ${8:q3}
+4. What is the least you can do to get the most results?
+  a. ${9:q4}
+5. Who can I ask for help with this?
+  a. ${10:q5}
+6. How can I improve through this or what new skill can I learn?
+  a. ${11:q6}

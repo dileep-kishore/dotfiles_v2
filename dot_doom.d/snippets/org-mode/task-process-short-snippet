@@ -4,17 +4,14 @@
 # key: trigger-key
 # condition: t
 # --
-_Sub-tasks_:
+_I get to do_:
 1. [ ] Give yourself the dopamine reward
 2. [ ] ${8:subtasks}
-
-
 ***** The big picture
 - What is the *mission* of this task? ${1:mission}
 - What is the *objective* of this task? ${2:objective}
 - ~Duration~: ${3:duration}
 - ~Outcome~: ${4:outcome}
-
 ***** Questions
 - How would this be if this were easy?
   + ${5:q2}
