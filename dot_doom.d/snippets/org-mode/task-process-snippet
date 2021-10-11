@@ -5,8 +5,9 @@
 # condition: t
 # --
 _I get to do_:
-1. [ ] Give yourself the dopamine reward
-2. [ ] ${12:subtasks}
+1. [ ] ${12:subtasks}
+2. [ ] Update the notes
+3. [ ] Give yourself the dopamine reward
 ***** Task Review
 ***** The big picture
 - What is the *mission* of this task? (Benefit to you and the world)
