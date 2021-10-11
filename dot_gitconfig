@@ -33,3 +33,5 @@
     rebase = false
 [github]
     user = dileep-kishore
+[init]
+    defaultBranch = main
