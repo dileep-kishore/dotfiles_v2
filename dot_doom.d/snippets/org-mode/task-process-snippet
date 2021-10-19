@@ -12,10 +12,12 @@ _I get to do_:
 ***** The big picture
 - What is the *mission* of this task? (Benefit to you and the world)
   ${1:mission}
+- How does this task satisfy your curiosity? (Scientific and programming)
+  ${2:curiosity}
 - What is the *objective* of this task?
-  ${2:objective}
-- ~Duration~: ${3:duration}
-- ~Outcome~: ${4:outcome}
+  ${3:objective}
+- ~Duration~: ${4:duration}
+- ~Outcome~: ${5:outcome}
 ***** Tips for path control
 - Think about how fun it will be to work on the task and to accomplish it
 - Always be in control of your internal state
@@ -25,15 +27,15 @@ _I get to do_:
 - Embrace frustration when you're making errors and learning, this engages neuroplasticity
 ***** Questions
 1. Different approaches you can take to solve the problem?
-  a. ${5:q1}
-  b. ${6:q1}
+  a. ${6:q1}
+  b. ${7:q1}
 2. How would this be if this were easy?
-  a. ${7:q2}
+  a. ${8:q2}
 3. What is the fastest way to get to your goal?
-  a. ${8:q3}
+  a. ${9:q3}
 4. What is the least you can do to get the most results?
-  a. ${9:q4}
+  a. ${10:q4}
 5. Who can I ask for help with this?
-  a. ${10:q5}
+  a. ${11:q5}
 6. How can I improve through this or what new skill can I learn?
-  a. ${11:q6}
+  a. ${12:q6}
