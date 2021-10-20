@@ -28,7 +28,7 @@ Config { font    = "xft:FiraCode Nerd Font:weight=bold:pixelsize=12:antialias=tr
                       -- Runs a standard shell command 'uname -r' to get kernel version
                     , Run Com "uname" ["-r"] "" 3600
                       -- Script that prints current toggl timer
-                    , Run Com "/home/dileep/.dotfiles/bin/toggl_polybar.py" [] "toggl" 100
+                    , Run Com "/home/dileep/.dotfiles/bin/toggl_polybar.py" [] "toggl" 50
                       -- Script that dynamically adjusts xmobar padding depending on number of trayer icons.
                     , Run Com "~/.config/xmobar/trayer_padding_icon.sh" [] "trayerpad" 20
                       -- Prints out the left side items such as workspaces, layout, etc.
