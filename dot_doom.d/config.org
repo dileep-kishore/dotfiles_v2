@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-10-05 Tue 08:42]
+#+last_modified: [2021-10-20 Wed 11:00]
 #+startup: overview
 
 Making this file run a little faster
@@ -14,6 +14,8 @@ Making this file run a little faster
   - [[#org-mode-and-org-roam-basics][Org-mode and Org-roam basics]]
   - [[#setting-up-email-with-mu4e][Setting up email with =mu4e=]]
 - [[#emacs-daemon][Emacs daemon]]
+- [[#word-delimiters-and-text-objects][Word delimiters and text objects]]
+  - [[#treat-_-as-a-word-character-in-various-programming-languages][Treat '_' as a word character in various programming languages]]
 - [[#useful-functionsmacros-that-are-helpful-for-configuration][Useful functions/macros that are helpful for configuration]]
 - [[#the-looks][The looks]]
   - [[#theme-configuration][Theme configuration]]
@@ -235,6 +237,16 @@ if ! $force_wait; then
 args+=(--no-wait); fi
 emacsclient -create-frame --alternate-editor="" "${args[@]}"
 fi
+#+end_src
+* Word delimiters and text objects
+** Treat '_' as a word character in various programming languages
+#+begin_src elisp
+;; For python
+(add-hook! 'python-mode-hook (modify-syntax-entry ?_ "w"))
+;; For ruby
+(add-hook! 'ruby-mode-hook (modify-syntax-entry ?_ "w"))
+;; For Javascript
+(add-hook! 'js2-mode-hook (modify-syntax-entry ?_ "w"))
 #+end_src
 
 * Useful functions/macros that are helpful for configuration
