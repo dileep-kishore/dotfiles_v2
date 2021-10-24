@@ -1739,6 +1739,19 @@ Keybinding to commit =org= repository using script in =~/.dotfiles/bin/org-git-a
       :desc "org-git-add-commit" "c" #'org-git-add-commit)
 #+end_src
 
+** Keybinding to update title size
+#+begin_src elisp
+(defun org-title-style-update ()
+  " Update org-document-title style"
+    (set-face-attribute 'org-document-title nil
+                        :height 1.9
+                        :weight 'bold))
+
+(map! :leader
+      :prefix "z"
+      :desc "org-title-style-update" "t" #'org-title-style-update)
+#+end_src
+
 ** Org-books
 
 Setting the path to the reading list org file
