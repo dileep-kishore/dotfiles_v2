@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-10-20 Wed 11:00]
+#+last_modified: [2021-10-24 Sun 13:52]
 #+startup: overview
 
 Making this file run a little faster
@@ -1701,6 +1701,8 @@ Finally, we configure =org-roam-bibtex=
 Transclude by reference
 #+begin_src elisp
 (use-package! org-transclusion
+  :defer
+  :after org
   :hook (org-roam-mode . org-transclusion-mode))
 #+end_src
 

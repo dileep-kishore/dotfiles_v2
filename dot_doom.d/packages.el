@@ -77,6 +77,9 @@
 (package! elegant-agenda-mode
   :recipe (:host github :repo "justinbarclay/elegant-agenda-mode"))
 (package! org-transclusion
-    :recipe (:host github :repo "nobiot/org-transclusion"))
+  :recipe (:host github
+           :repo "nobiot/org-transclusion"
+           :branch "main"
+           :files ("*.el")))
 (package! org-fragtog)
 (package! groovy-mode)
