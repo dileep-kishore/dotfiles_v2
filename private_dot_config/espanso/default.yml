@@ -61,3 +61,12 @@ matches:
 
   - trigger: ":bugmail"
     replace: "dkishore@bu.edu"
+
+  - trigger: ":daniel_zoom"
+    replace: "https://bostonu.zoom.us/j/91324569840?pwd=dytwMHdlb01Ia2xjdllPWHFkd25aZz09"
+
+  - trigger: ":segre"
+    replace: "Segrè"
+
+  - trigger: ":addr"
+    replace: "1156 Commonwealth Avenue\nApt 26\nAllston\nMA 02134"
