@@ -63,7 +63,7 @@ export NNN_TRASH=1
 export NNN_FIFO=/tmp/nnn.fifo
 
 # rofi themes patch
-export PATH="$PATH:$HOME/Downloads/rofi/1080p/bin"
+export PATH="$PATH:$HOME/.config/rofi/bin"
 
 ################################################################################
 # Zinit init                                                                   #
