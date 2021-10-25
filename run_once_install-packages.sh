@@ -122,6 +122,7 @@ paru -S --useask --batchinstall --cleanafter --removemake \
     otf-yanone-kaffeesatz \
     ttf-yanone-kaffeesatz \
     activitywatch-bin \
+    espanso \
     1password-cli \
     zoom
 
