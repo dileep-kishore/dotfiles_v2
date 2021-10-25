@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-10-25 Mon 08:50]
+#+last_modified: [2021-10-25 Mon 09:14]
 #+startup: overview
 
 Making this file run a little faster
@@ -570,7 +570,7 @@ Use ~Alegreya~ font as =variable-pitch-serif-font=
     :group 'basic-faces)
   (setq mixed-pitch-set-height t)
   (set-face-attribute 'org-hide nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-quote nil :inherit 'variable-pitch-serif)
+  (set-face-attribute 'org-quote nil :background "#1e2030" :extend t :inherit 'variable-pitch-serif)
   (set-face-attribute 'org-document-title nil
                       :height 1.9
                       :weight 'bold)
@@ -590,7 +590,8 @@ Change header sizes in =org-mode=.
   (set-face-attribute 'org-block nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-hide nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
-  (set-face-attribute 'org-quote nil :inherit 'variable-pitch-serif)
+  ;; (set-face-attribute 'org-quote nil :inherit 'variable-pitch-serif)
+  (set-face-attribute 'org-quote nil :background "#1e2030" :extend t :inherit 'variable-pitch-serif)
   (set-face-attribute 'org-document-title nil
                       :height 1.9
                       :weight 'bold))
