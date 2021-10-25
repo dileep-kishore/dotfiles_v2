@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-10-24 Sun 13:52]
+#+last_modified: [2021-10-25 Mon 08:50]
 #+startup: overview
 
 Making this file run a little faster
@@ -53,6 +53,7 @@ Making this file run a little faster
   - [[#org-transclusion][Org-transclusion]]
   - [[#org-mode-addons][Org-mode addons]]
   - [[#git-commit-keybinding][Git-commit keybinding]]
+  - [[#keybinding-to-update-title-size][Keybinding to update title size]]
   - [[#org-books][Org-books]]
   - [[#org-gcal][Org-gcal]]
   - [[#org-toggl][Org-toggl]]
@@ -275,7 +276,7 @@ There are two ways to load a /theme/ in *Doom Emacs*, assuming that it is instal
 2. Manually load it using the =load-theme= function
 
 #+begin_src elisp
-(setq doom-theme 'doom-palenight)
+(setq doom-theme 'doom-moonlight)
 #+end_src
 
 Nicer name for the default fallback buffer

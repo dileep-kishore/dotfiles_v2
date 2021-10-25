@@ -83,3 +83,4 @@
            :files ("*.el")))
 (package! org-fragtog)
 (package! groovy-mode)
+(package! plantuml-mode)
