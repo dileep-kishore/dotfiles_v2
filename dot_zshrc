@@ -62,6 +62,9 @@ export NNN_COLORS="#d79921"
 export NNN_TRASH=1
 export NNN_FIFO=/tmp/nnn.fifo
 
+# rofi themes patch
+export PATH="$PATH:$HOME/Downloads/rofi/1080p/bin"
+
 ################################################################################
 # Zinit init                                                                   #
 ################################################################################
