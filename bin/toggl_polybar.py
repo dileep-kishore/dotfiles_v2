@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 
+from random import randint
 import subprocess
+from time import sleep
 
 
+sleep(randint(0, 2))
 process = subprocess.run(["toggl", "now"], stdout=subprocess.PIPE)
 output = process.stdout.decode("utf-8")
 try:
