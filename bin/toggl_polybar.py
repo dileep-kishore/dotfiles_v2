@@ -5,7 +5,7 @@ import subprocess
 from time import sleep
 
 
-sleep(randint(0, 2))
+sleep(randint(0, 5))
 process = subprocess.run(["toggl", "now"], stdout=subprocess.PIPE)
 output = process.stdout.decode("utf-8")
 try:
