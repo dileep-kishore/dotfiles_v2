@@ -18,7 +18,7 @@ matches:
       - name: mydate
         type: date
         params:
-          format: "%Y/%m/%d"
+          format: "%Y-%m-%d"
 
   # Shell commands
   - trigger: ":shell"
