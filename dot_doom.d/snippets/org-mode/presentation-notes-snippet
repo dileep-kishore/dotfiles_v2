@@ -5,10 +5,12 @@
 # condition: t
 # --
 ** Title
+- speaker ::
 Goal:
 *** Introduction
 *** Methods
 *** Results
+*** Future directions
 *** Questions
 #+subtitle: The only stupid questions are the ones that remain un-asked
 **** Something that I did not understand
