@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: Presentation notes
+# uuid: presentation-notes-snippet
+# key: trigger-key
+# condition: t
+# --
+** Title
+Goal:
+*** Introduction
+*** Methods
+*** Results
+*** Questions
+#+subtitle: The only stupid questions are the ones that remain un-asked
+**** Something that I did not understand
+**** Comparison to previous studies or methods
+**** Future plans
+**** Origin of the idea or research
+**** Questions about methodology
+**** What problem is this trying to solve? Was this successful?
