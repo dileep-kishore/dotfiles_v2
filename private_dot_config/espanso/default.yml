@@ -70,3 +70,6 @@ matches:
 
   - trigger: ":addr"
     replace: "1156 Commonwealth Avenue\nApt 26\nAllston\nMA 02134"
+
+  - trigger: ":phone"
+    replace: "8573028235"
