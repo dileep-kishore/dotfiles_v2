@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-10-25 Mon 09:14]
+#+last_modified: [2021-11-01 Mon 15:13]
 #+startup: overview
 
 Making this file run a little faster
@@ -1161,7 +1161,7 @@ Enable logging of done tasks, and log stuff into LOGBOOK drawer by default
   ;; Don't log when changing state with shift-arrows
   ;; (setq org-treat-S-cursor-todo-selection-as-state-change nil)
   ;; Update org-todo keywords
-  (setq org-todo-keywords '((sequence "TODO(t)" "PROG(p)"  "NEXT(n)" "WAIT(w@/!)" "REVIEW(r@/!)" "OBJ(o)" "KR(k)" "|" "DONE(d)" "CANCELLED(c)")))
+  (setq org-todo-keywords '((sequence "TODO(t)" "PROG(p)"  "NEXT(n)" "WAIT(w@/!)" "REVIEW(r@/!)" "MISSION(m)" "OBJ(o)" "KR(k)" "|" "DONE(d)" "CANCELLED(c)")))
   (setq
    org-todo-keyword-faces
    '(("TODO" :foreground "#7c7c75" :weight normal :underline t)
@@ -1169,6 +1169,7 @@ Enable logging of done tasks, and log stuff into LOGBOOK drawer by default
      ("NEXT" :foreground "#9f7efe" :weight normal :underline t)
      ("WAIT" :foreground "#c5a89d" :weight normal :underline t)
      ("REVIEW" :foreground "#5ac18e" :weight normal :underline t)
+     ("MISSION" :foreground "#ff7373" :weight bold :underline t)
      ("OBJ" :foreground "#ff8000" :weight bold :underline t)
      ("KR" :foreground "#569099" :weight bold :underline t)
      ("DONE" :foreground "#50a14f" :weight normal :underline t)
@@ -1283,6 +1284,9 @@ Remap movement keys to move between agenda items rather than between lines
                        (org-super-agenda-groups
                         '((:name "Clocked today"
                            :log t)
+                          (:name "Missions"
+                           :and (:todo "MISSION" :deadline t)
+                           :order 1)
                           (:name "Objectives"
                            :and (:todo "OBJ" :deadline t)
                            :order 1)
