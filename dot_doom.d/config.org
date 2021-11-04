@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-11-01 Mon 15:13]
+#+last_modified: [2021-11-02 Tue 17:55]
 #+startup: overview
 
 Making this file run a little faster
@@ -30,7 +30,6 @@ Making this file run a little faster
 - [[#simple-settings][Simple settings]]
   - [[#battery-status-and-password-cache][Battery status and password-cache]]
   - [[#deleting-files-undo-limits-etc][Deleting files, undo limits, etc.]]
-  - [[#select-buffer-after-splitting][Select buffer after splitting]]
   - [[#rotate-layouts][Rotate layouts]]
   - [[#wakatime-mode][Wakatime-mode]]
   - [[#chezmoi-keybindings][Chezmoi keybindings]]
@@ -812,27 +811,6 @@ Set =global whitespace mode=
 (setq undo-limit 80000000
       evil-want-fine-undo t
       truncate-string-ellipsis "…")
-#+end_src
-
-** Select buffer after splitting
-
-Being able to see which buffer to open after splitting windows
-1. First we will enter the new window
-#+begin_src elisp
-(setq evil-vsplit-window-right t
-      evil-split-window-below t)
-#+end_src
-
-2. Then we will pull up =ivy=
-#+begin_src elisp
-(defadvice! prompt-for-buffer (&rest _)
-  :after '(evil-window-split evil-window-vsplit)
-  (+ivy/switch-buffer))
-#+end_src
-
-3. Also, enable previews
-#+begin_src elisp
-(setq +ivy-buffer-preview t)
 #+end_src
 
 ** Rotate layouts
@@ -1668,23 +1646,6 @@ Configuration for =helm-bibtex=
  bibtex-completion-notes-path lit_notes
  bibtex-completion-bibliography zot_bib
  bibtex-completion-pdf-field "file")
-#+end_src
-
-Set up =org-ref= to manage ~cite:~  links
-#+begin_src elisp
-(use-package! org-ref
-  :after org
-  :config
-  (setq
-   org-ref-completion-library 'org-ref-ivy-cite
-   ;; org-ref-completion-library 'org-ref-helm-insert-cite-link
-   org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
-   org-ref-default-bibliography (list zot_bib)
-   org-ref-bibliography-notes (concat lit_notes "/bibnotes.org")
-   org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_REFS: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
-   org-ref-notes-directory lit_notes
-   org-ref-notes-function 'orb-org-ref-edit-note
-   ))
 #+end_src
 
 Finally, we configure =org-roam-bibtex=
