@@ -1,10 +1,9 @@
 # -*- mode: snippet -*-
-# name: Journal article review snippet
+# name: Journal article review
 # uuid: journal-article-review-snippet
 # key: trigger-key
 # condition: t
 # --
-
 ** Things to remember
 - Read critically
 - Read creatively
@@ -12,12 +11,29 @@
 - Try to summarize the paper in a few sentences
 - Compare the paper to other works
 
-** TODO Question to ask
+
+** Notes
+*** General subject
+*** Specific subject
+Not "What is this paper about", but "What problem is this entire field trying to solve?"
+*** Hypothesis/Big question
+*** Previous work
+What work has been done before in this field to answer the BIG QUESTION? What are the limitations of that work? What, according to the authors, needs to be done next?
+*** Methodology
+*** Result(s)
+*** Summary of key points
+*** Context
+How this article relates to other work in the field; how it ties in with key issues and findings by others, including yourself
+*** Significance (to the field; in relation to your own work)
+- Do the results answer the SPECIFIC QUESTION(S)? What do you think they mean?
+- What do other researchers say about this paper? Look up where this paper has been cited
+*** Important Figures and/or Tables
+*** Cited references to follow up on
+Cite those obviously related to your topic AND any papers frequently cited by others because those works may well prove to be essential as you develop your own work
+*** TODO Questions to ask yourself
 - From where did the author seems to draw the ideas?
 - What exactly was accomplished by this piece of work?
 - How does it seem to to relate to other work on this field?
 - What would be the reasonable next step to build upon this work?
 - What ideas from related fields might be brought to bear upon this subject?
 - What are the unsolved research problems?
-
-** TODO Summary
