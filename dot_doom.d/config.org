@@ -1139,7 +1139,7 @@ Enable logging of done tasks, and log stuff into LOGBOOK drawer by default
   ;; Don't log when changing state with shift-arrows
   ;; (setq org-treat-S-cursor-todo-selection-as-state-change nil)
   ;; Update org-todo keywords
-  (setq org-todo-keywords '((sequence "TODO(t)" "PROG(p)"  "NEXT(n)" "WAIT(w@/!)" "REVIEW(r@/!)" "MISSION(m)" "OBJ(o)" "KR(k)" "|" "DONE(d)" "CANCELLED(c)")))
+  (setq org-todo-keywords '((sequence "TODO(t)" "PROG(p)"  "NEXT(n)" "WAIT(w@/!)" "REVIEW(r@/!)" "MISSION(m)" "OBJ(o)" "KR(k)" "|" "DONE(d)" "CANCELLED(c)" "DONE:MISSION(M)" "DONE:OBJ(O)" "DONE:KR(K)")))
   (setq
    org-todo-keyword-faces
    '(("TODO" :foreground "#7c7c75" :weight normal :underline t)
@@ -1151,6 +1151,9 @@ Enable logging of done tasks, and log stuff into LOGBOOK drawer by default
      ("OBJ" :foreground "#ff8000" :weight bold :underline t)
      ("KR" :foreground "#569099" :weight bold :underline t)
      ("DONE" :foreground "#50a14f" :weight normal :underline t)
+     ("DONE:MISSION" :foreground "#50a14f" :weight normal :underline t)
+     ("DONE:OBJ" :foreground "#50a14f" :weight normal :underline t)
+     ("DONE:KR" :foreground "#50a14f" :weight normal :underline t)
      ("CANCELLED" :foreground "#ff6480" :weight normal :underline t)))
   ;; Ensure that sub-tasks must be completed before parent can be marked done
   (setq org-enforce-todo-dependencies t))
