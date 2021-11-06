@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: Moderation training snippet
+# uuid: moderation_training_snippet
+# key: trigger-key
+# condition: t
+# --
+** TODO Date
+*** What is the plan?
+*** What did I do?
+*** My thoughts during?
+*** My thoughts after
+*** What to do next time?
