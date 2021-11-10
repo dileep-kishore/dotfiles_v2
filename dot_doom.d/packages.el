@@ -84,3 +84,4 @@
 (package! org-fragtog)
 (package! groovy-mode)
 (package! plantuml-mode)
+(package! focus)
