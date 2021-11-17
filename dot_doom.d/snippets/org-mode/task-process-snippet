@@ -27,17 +27,17 @@ _I get to do_:
 - Embrace frustration when you're making errors and learning, this engages neuroplasticity
 ***** Questions
 1. Is this the right goal? How can you make it more quantifiable?
-  a. ${6:q1}
+  ${6:q1}
 2. Different approaches you can take to solve the problem?
   a. ${7:q2}
   b. ${8:q2}
 3. How would this be if this were easy?
-  a. ${9:q3}
+  ${9:q3}
 4. What is the fastest way to get to your goal?
-  a. ${10:q4}
+  ${10:q4}
 5. What is the least you can do to get the most results?
-  a. ${11:q5}
+  ${11:q5}
 6. Who can I ask for help with this?
-  a. ${12:q6}
+  ${12:q6}
 7. How can I improve through this or what new skill can I learn?
-  a. ${13:q7}
+  ${13:q7}
