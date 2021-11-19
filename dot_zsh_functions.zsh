@@ -68,4 +68,4 @@ function makezip() { zip -r "${1%%/}.zip" "$1" ; }
 function my_ps() { ps $@ -u $USER -o pid,%cpu,%mem,bsdtime,command ; }
 
 # Scrot image to clipboard
-function scrot_clip() { scrot -e "xclip -selection clipboard -t image/png -i $1" }
+function scrot_clip() { scrot -s '/tmp/%F_%T.png' -e 'xclip -selection clip -t image/png -i "$f"' ; }
