@@ -11,13 +11,13 @@ _I get to do_:
 ***** Task Review
 ***** The big picture
 - What is the *mission* of this task? (Benefit to you and the world)
-  ${1:mission} with deadline
+  ${1:mission with deadline}
 - How does this task satisfy your curiosity? (Scientific and programming)
   ${2:curiosity}
 - What is the *objective* of this task?
-  ${3:objective} with deadline
+  ${3:objective with deadline}
 - ~Duration~: ${4:duration}
-- ~Outcome~: ${5:outcome} with deadline
+- ~Outcome~: ${5:outcome with deadline}
 ***** Tips for path control
 - Think about how fun it will be to work on the task and to accomplish it
 - Always be in control of your internal state
