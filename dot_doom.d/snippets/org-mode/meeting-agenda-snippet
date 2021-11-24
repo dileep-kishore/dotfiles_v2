@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: Meeting agenda snippet
+# uuid: meeting_agenda_
+# key: trigger-key
+# condition: t
+# --
+** Agenda
+*** Goal of project
+- Long term ::
+- Short term ::
+*** Goal of meeting
+#+subtitle: What have we accomplished since the last meeting?
+*** Partcipants and roles
+*** Agenda times
+*** Desired outcome

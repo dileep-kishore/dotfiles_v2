@@ -14,7 +14,7 @@
 ******* Reflect
 - What are you currently working on?
   ${1:work}
-- How does this connect to the objective?
+- How does this connect to the task and the objective?
   ${2:connection}
 - Is this task essential? Can this be eliminated?
   ${3:essential}
