@@ -34,7 +34,9 @@ _I get to do_:
   ${10:q4}
 5. What is the least you can do to get the most results?
   ${11:q5}
-6. Who can I ask for help with this?
+6. How can you eliminate this task and still achieve your mission (Inversion)?
   ${12:q6}
-7. How can I improve through this or what new skill can I learn?
+7. Who can I ask for help with this?
   ${13:q7}
+8. How can I improve through this or what new skill can I learn?
+  ${14:q8}
