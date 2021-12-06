@@ -5,7 +5,7 @@
 # condition: t
 # --
 _I get to do_:
-1. [ ] ${14:subtasks}
+1. [ ] ...
 2. [ ] Update the notes
 3. [ ] Give yourself the dopamine reward
 ***** Task Review
@@ -40,3 +40,7 @@ _I get to do_:
   ${13:q7}
 8. How can I improve through this or what new skill can I learn?
   ${14:q8}
+9. What problem might you encounter during this task? What are the worst decision you could possibly make? How can you screw this up?
+  ${15:q9}
+10. How can you deal with them? What tests can I write?
+  ${16:q10}
