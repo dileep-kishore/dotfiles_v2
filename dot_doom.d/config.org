@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-11-02 Tue 17:55]
+#+last_modified: [2021-12-07 Tue 21:06]
 #+startup: overview
 
 Making this file run a little faster
@@ -734,6 +734,7 @@ Set =global whitespace mode=
  global-whitespace-mode t
  whitespace-style '(face tabs tab-mark trailing newline newline-mark indentation))
 (global-whitespace-mode +1)
+(whitespace-mode +1)
 #+end_src
 
 ** Writeroom configuration
