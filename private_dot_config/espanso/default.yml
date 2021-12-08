@@ -73,3 +73,12 @@ matches:
 
   - trigger: ":phone"
     replace: "8573028235"
+
+  - trigger: ":impandas"
+    replace: "import pandas as pd"
+
+  - trigger: ":imnumpy"
+    replace: "import numpy as np"
+
+  - trigger: ":immatplotlib"
+    replace: "import matplotlib.pyplot as plt"
