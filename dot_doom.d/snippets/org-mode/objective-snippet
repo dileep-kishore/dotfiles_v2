@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: objective-snippet
+# uuid: objective-snippet
+# key: obj_
+# condition: t
+# --
+OBJ [#B] ${1:description} [%] :impact_med:effort_med:should_do:
+DEADLINE: <`(format-time-string "%Y-%m-%d")`$0>

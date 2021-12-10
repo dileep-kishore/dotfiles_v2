@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: todo-snippet
+# uuid: todo-snippet
+# key: todo_
+# condition: t
+# --
+TODO [#B] ${1:description} [/]
+:PROPERTIES:
+:Effort:   1:00
+:END:
