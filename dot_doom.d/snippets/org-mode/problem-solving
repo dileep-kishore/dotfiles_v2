@@ -4,10 +4,10 @@
 # key: trigger-key
 # condition: t
 # --
-** {$1:Question}?
+** ${1:Question}?
 *** Pros
-    - {$2:pros}
+    - ${2:pros}
 *** Cons
-    - {$3:cons}
+    - ${3:cons}
 *** Solutions
-    - {$4:solutions}
+    - ${4:solutions}
