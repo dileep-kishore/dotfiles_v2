@@ -129,6 +129,7 @@ paru -S --useask --batchinstall --cleanafter --removemake \
 paru -S --useask --batchinstall --cleanafter --removemake \
     bash-language-server \
     neovim-coc-git \
+    wakatime-cli-bin \
     dockerfile-language-server-bin \
     texlab \
     rust-analyzer \
@@ -159,4 +160,5 @@ sudo pacman -S --needed --noconfirm \
     texlive-latexextra \
     texlive-pictures \
     texlive-publishers \
-    texlive-science
+    texlive-science \
+    biber
