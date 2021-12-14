@@ -25,6 +25,8 @@
 -- Gray: #abb2bf
 -- Black: #282c24
 
+{-# OPTIONS_GHC -Wno-deprecations #-}
+
    -- Base
 import XMonad
 import System.Directory
@@ -377,7 +379,7 @@ tall     = renamed [Replace "tall"]
            $ limitWindows 12
            $ mySpacing 4
            $ ResizableTall 1 (3/100) (1/2) []
-magnify  = renamed [Replace "magnify"]
+magnify1  = renamed [Replace "magnify"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
            -- templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dkishore-bu")) }}
@@ -464,7 +466,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
              where
                -- I've commented out the layouts I don't use.
                myDefaultLayout =     tall
-                                 ||| magnify
+                                 ||| magnify1
                                  ||| noBorders monocle
                                  ||| floats
                                  ||| noBorders tabs
@@ -634,10 +636,10 @@ main = do
     home <- getHomeDirectory
     -- Launching three instances of xmobar on their monitors.
     -- templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dkishore-bu")) }}
-    xmproc0 <- spawnPipe "xmobar -x 0 ~/.config/xmobar/xmobarrc0"
-    xmproc1 <- spawnPipe "xmobar -x 1 ~/.config/xmobar/xmobarrc1"
+    xmproc0 <- spawnPipe "/home/dileep/.local/bin/xmobar -x 0 ~/.config/xmobar/xmobarrc0"
+    xmproc1 <- spawnPipe "/home/dileep/.local/bin/xmobar -x 1 ~/.config/xmobar/xmobarrc1"
     -- {{- else if (eq .chezmoi.hostname "dileep-xmonad") }}
-    xmproc2 <- spawnPipe "xmobar ~/.config/xmobar/xmobarrc2"
+    xmproc2 <- spawnPipe "/home/dileep/.local/bin/xmobar ~/.config/xmobar/xmobarrc2"
     -- {{- end }}
     xmonad $ ewmh def
         { manageHook = ( isFullscreen --> doFullFloat ) <+> myManageHook <+> manageDocks
