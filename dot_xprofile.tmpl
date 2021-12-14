@@ -10,7 +10,7 @@ xrandr --output HDMI-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP
 xrandr --output DVI-D-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal &
 # {{- end }}
 nitrogen --restore &
-# picom --experimental-backends &
+picom &
 redshift -l 42.35765:-71.12889 &
 # templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dileep-xmonad")) }}
 ~/.dotfiles/bin/killer.sh || shutdown -h now &
