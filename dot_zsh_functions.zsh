@@ -69,3 +69,6 @@ function my_ps() { ps $@ -u $USER -o pid,%cpu,%mem,bsdtime,command ; }
 
 # Scrot image to clipboard
 function scrot_clip() { scrot -s '/tmp/%F_%T.png' -e 'xclip -selection clip -t image/png -i "$f"' ; }
+
+# Function for easy access to wacom config
+function my_wacom() { /home/dileep/.dotfiles/bin/wacom_config.sh "$1" }
