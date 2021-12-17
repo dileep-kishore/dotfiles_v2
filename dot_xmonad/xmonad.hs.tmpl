@@ -580,6 +580,10 @@ myKeys home =
         , ("M-S-<Tab>", rotSlavesDown)    -- Rotate all windows except master and keep focus in place
         , ("M-C-<Tab>", rotAllDown)       -- Rotate all the windows in the current stack
 
+    -- Wacom orientation
+        , ("M-S-h", spawn "/home/dileep/.dotfiles/bin/wacom_config.sh left") -- Orient Wacom to Left monitor
+        , ("M-S-l", spawn "/home/dileep/.dotfiles/bin/wacom_config.sh right") -- Orient Wacom to Right monitor
+
     -- Layouts
         , ("M-<Tab>", sendMessage NextLayout)           -- Switch to next layout
         , ("M-C-M1-<Up>", sendMessage Arrange)
