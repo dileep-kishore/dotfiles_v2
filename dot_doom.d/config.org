@@ -1762,6 +1762,15 @@ Setting up org-toggl
     (org-toggl-integration-mode))
 #+end_src
 
+** Org-Krita
+
+Setting up =org-krita=
+#+begin_src elisp
+(use-package! org-krita
+  :config
+  (add-hook 'org-mode-hook 'org-krita-mode))
+#+end_src
+
 * Language specific configuration
 
 ** plantuml
