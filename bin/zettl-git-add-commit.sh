@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-ORG_PATH="$HOME/Documents/Org"
+ZETTL_PATH="$HOME/Documents/Zettelkasten"
 
-cd $ORG_PATH || exit 1
+cd $ZETTL_PATH || exit 1
 
 # Make sure main branch is checked out
 if ! [[ $(git rev-parse --abbrev-ref HEAD) = "main" ]]
