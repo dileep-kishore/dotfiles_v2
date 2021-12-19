@@ -84,6 +84,7 @@
 (package! org-fragtog)
 (package! groovy-mode)
 (package! plantuml-mode)
+(package! company-tabnine)
 (package! org-krita
   :recipe (:host github
            :repo "lepisma/org-krita"

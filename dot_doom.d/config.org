@@ -1,6 +1,6 @@
 #+title: Doom Emacs literate config
 #+author: Dileep Kishore
-#+last_modified: [2021-12-07 Tue 21:06]
+#+last_modified: [2021-12-18 Sat 14:02]
 #+startup: overview
 
 Making this file run a little faster
@@ -38,8 +38,8 @@ Making this file run a little faster
   - [[#registers][Registers]]
 - [[#dired][dired]]
   - [[#keybindings][Keybindings]]
-- [[#autocompletions-and-snippets][Autocompletions and snippets]]
-  - [[#autocompletions][Autocompletions]]
+- [[#auto-completions-and-snippets][Auto-completions and snippets]]
+  - [[#auto-completions][Auto-completions]]
   - [[#snippets][Snippets]]
 - [[#vim-and-evil-mode-configuration][Vim and Evil mode configuration]]
 - [[#org-mode-and-org-roam-configuration][Org-mode and Org-roam configuration]]
@@ -56,6 +56,7 @@ Making this file run a little faster
   - [[#org-books][Org-books]]
   - [[#org-gcal][Org-gcal]]
   - [[#org-toggl][Org-toggl]]
+  - [[#org-krita][Org-Krita]]
 - [[#language-specific-configuration][Language specific configuration]]
   - [[#plantuml][plantuml]]
   - [[#julia][Julia]]
@@ -921,14 +922,14 @@ We will be using =SPC d= for all =dired= keybindings (since ~Doom Emacs~) doesn'
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 #+end_src
 
-* Autocompletions and snippets
+* Auto-completions and snippets
 
-** Autocompletions
+** Auto-completions
 
 Decrease =company-mode= completion delay and other nice things 🤣 (also I just figured out how to insert emoji).
 #+begin_src elisp
 (after! company
-  (setq company-idle-delay 0.2
+  (setq company-idle-delay 0
         company-minimum-prefix-length 2)
   (setq company-show-numbers t))
 #+end_src
@@ -950,6 +951,15 @@ Having =ispell= enabled in =text=, =markdown= and =GFM=
     company-ispell
     company-files
     company-yasnippet))
+#+end_src
+
+*** Tabnine integration
+#+begin_src elisp
+(use-package! company-tabnine
+  :ensure t
+  :config
+  (add-to-list 'company-backends 'company-tabnine))
+(setq +lsp-company-backends '(company-lsp company-tabnine :separate company-capf company-yasnippet company-dabbrev company-dabbrev-code))
 #+end_src
 
 ** Snippets
