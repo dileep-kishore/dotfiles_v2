@@ -1,7 +1,7 @@
 -- :help options
 vim.opt.backup = false                          -- turns off backup file
 vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
-vim.opt.cmdheight = 2                           -- number of screen lines to use for command-line
+vim.opt.cmdheight = 1                           -- number of screen lines to use for command-line
 vim.opt.completeopt = {"menuone", "preview", "noselect"}  -- list of options for insert mode completion
 vim.opt.conceallevel = 1                        -- concealed text is replaced with one charcter
 vim.opt.fileencoding = "utf-8"                  -- the encoding written to a file
@@ -17,7 +17,7 @@ vim.opt.splitbelow = true                       -- force all horizontal splits t
 vim.opt.splitright = true                       -- force all vertical splits to go to the right of current window
 vim.opt.swapfile = false                        -- turns off swapfile creation
 vim.opt.termguicolors = true                    -- set term gui colors (most terminals support this)
-vim.opt.timeoutlen = 1000                       -- time to wait for a mapped sequence to complete (in milliseconds)
+vim.opt.timeoutlen = 500                       -- time to wait for a mapped sequence to complete (in milliseconds)
 vim.opt.undofile = true                         -- enable persistent undo
 vim.opt.updatetime = 300                        -- faster completion (4000ms default)
 vim.opt.writebackup = false                     -- do not make backup before overwritting a file
@@ -35,3 +35,4 @@ vim.opt.sidescrolloff = 8                       -- minimal no. of screen lines t
 vim.opt.guifont = "Cascadia Code:h12"           -- the font used in graphical neovim applications
 vim.opt.shortmess:append({ c = true })          -- don't pass messages to the |ins-completion-menu|
 vim.opt.formatoptions:append({"n", "1"})        -- numbered list formatting and break before one letter words
+vim.opt.formatoptions:remove({"r", "o"})        -- numbered list formatting and break before one letter words
