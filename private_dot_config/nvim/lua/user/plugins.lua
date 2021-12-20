@@ -23,7 +23,7 @@ autocmd BufWritePost plugins.lua source <afile> | PackerSync
 augroup end
 ]])
 
--- Use a protected call so we don't error out on first use
+-- Use a protected call so we don"t error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
     return
@@ -42,14 +42,23 @@ packer.init {
 return packer.startup(function(use)
     use "wbthomason/packer.nvim"                                 -- Have packer manage itself
     use "nvim-lua/plenary.nvim"                                  -- Useful lua functions used ny lots of plugins
+    use "lewis6991/impatient.nvim"                               -- Speed up loading lua modules
 
     -- Treesitter related
-    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate"
+    }
     use "JoosepAlviste/nvim-ts-context-commentstring"            -- For context dependent commenting
 
     -- Telescope related
     use "nvim-telescope/telescope.nvim"                          -- Find, Filter, Preview, Pick.
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } -- Native C sorting for better performance
+    use {
+        "nvim-telescope/telescope-fzf-native.nvim",              -- Native C sorting for better performance
+        run = "make"
+    } 
+    -- Project management
+    use "ahmedkhalf/project.nvim"                                -- Superior project management
 
     -- LSP related
     use "neovim/nvim-lspconfig"                                  -- Collection of configurations for built-in LSP client 
