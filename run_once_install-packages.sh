@@ -20,7 +20,6 @@ sudo pacman -S --needed --noconfirm \
     picom \
     nitrogen \
     rofi \
-    xmobar \
     trayer \
     volumeicon \
     cabal-install \
@@ -81,6 +80,7 @@ sudo pacman -S --needed --noconfirm \
     neofetch \
     ripgrep \
     neovim \
+    tree-sitter \
     python-pynvim \
     python-ueberzug \
     xdotool \
