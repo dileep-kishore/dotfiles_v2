@@ -50,6 +50,8 @@ return packer.startup(function(use)
         run = ":TSUpdate"
     }
     use "JoosepAlviste/nvim-ts-context-commentstring"            -- For context dependent commenting
+    -- Quick fix window
+    use {'kevinhwang91/nvim-bqf', ft = 'qf'}                     -- Make Neovim quickfix window better
 
     -- Telescope related
     use "nvim-telescope/telescope.nvim"                          -- Find, Filter, Preview, Pick.
