@@ -41,9 +41,13 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 -- Turn off highlight after search
 keymap("n", "<Leader>/", ":nohlsearch<CR>", opts)
 
--- TODO: Keybinding to save file (map <leader>s :w<CR>)
+-- Save files
+keymap("n", "<C-s>", ":w<CR>", opts)
+
+-- Quit window
+keymap("n", "<Leader>q", ":q<CR>", opts)
+
 -- TODO: Keybinding to close window (nnoremap <leader>x :x<cr>)
--- TODO: Keybinding to quit window (nnoremap <leader>q :q!<cr>)
 -- TODO: Keybinding to remape movement (nnoremap j gj; nnoremap k gk)
 
 
