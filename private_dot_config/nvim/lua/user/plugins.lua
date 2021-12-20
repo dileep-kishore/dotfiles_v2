@@ -3,7 +3,7 @@ local fn = vim.fn
 -- Automatically install packer
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-   PACKER_BOOTSTRAP = fn.system({
+    PACKER_BOOTSTRAP = fn.system({
         "git",
         "clone",
         "--depth",
@@ -59,9 +59,27 @@ return packer.startup(function(use)
     use "folke/trouble.nvim"                                     -- A pretty list for showing diagnostics
 
     -- Completions
-    
+
+    -- Keybindings
+    use "folke/which-key.nvim"                                   -- Displays popup with possible keybindings of command
+
+    -- Git
+    use "TimUntersberger/neogit"                                 -- Magit clone for Neovim
+    use "lewis6991/gitsigns.nvim"                                -- Show better gitsigns in the gutter
+
     -- Themes and eye candy
     use "folke/tokyonight.nvim"
     use "EdenEast/nightfox.nvim"
-    use "kyazdani42/nvim-web-devicons"
+    -- Dashboard
+    -- Files and explorer
+    use { "kyazdani42/nvim-tree.lua", config = function() require "nvim-tree".setup {} end }
+    use "kyazdani42/nvim-web-devicons"                           -- Nice set of icons for files
+    -- Indentation
+    use "lukas-reineke/indent-blankline.nvim"                    -- Adds indentation guides to all lines (including blanks)
+
+    -- Automatically set up your configuration after cloning packer.nvim
+    -- Put this at the end after all plugins
+    if PACKER_BOOTSTRAP then
+        require("packer").sync()
+    end
 end)
