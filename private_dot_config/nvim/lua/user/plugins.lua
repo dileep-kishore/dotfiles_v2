@@ -86,7 +86,6 @@ return packer.startup(function(use)
         end
     }
     -- completions
-    use "onsails/lspkind-nvim"                                   -- Pretty icons for LSP completions
     use "ray-x/lsp_signature.nvim"                               -- Show function signatures
     -- Diagonostics
     use "folke/trouble.nvim"                                     -- A pretty list for showing diagnostics
@@ -98,14 +97,39 @@ return packer.startup(function(use)
 
     ---- Completions
     use "hrsh7th/nvim-cmp"                                       -- The completion plugin
-    use "hrsh7th/cmp-buffer"                                     -- buffer completions
-    use "hrsh7th/cmp-path"                                       -- path completions
-    use "hrsh7th/cmp-cmdline"                                    -- cmdline completions
-    use "saadparwaiz1/cmp_luasnip"                               -- snippet completions
-    use "hrsh7th/cmp-nvim-lsp"                                   -- lsp completions
-    use "petertriho/cmp-git"                                     -- git issue/pull request completions
+    use {
+        "hrsh7th/cmp-buffer",                                     -- buffer completions
+        after = { "nvim-cmp" },
+    }
+    use {
+        "hrsh7th/cmp-path",                                       -- path completions
+        after = { "nvim-cmp" },
+    }
+    use {
+        "hrsh7th/cmp-cmdline",                                    -- cmdline completions
+        opt = true,
+        event = "CmdlineEnter",
+    }
+    use {
+        "hrsh7th/cmp-nvim-lsp",                                   -- lsp completions
+        after = { "nvim-cmp", "nvim-lspconfig" },
+    }
+    use {
+        "petertriho/cmp-git",                                     -- git issue/pull request completions
+        opt = true,
+        ft = "gitcommit",
+    }
+    -- icons
+    use {
+        "onsails/lspkind-nvim",                                   -- Pretty icons for LSP completions
+        after = { "nvim-cmp", "nvim-lspconfig" },
+    }
     -- snippets
     use "L3MON4D3/LuaSnip"                                       -- snippet engine
+    use {
+        "saadparwaiz1/cmp_luasnip",                               -- snippet completions
+        after = { "nvim-cmp", "LuaSnip" },
+    }
     use "rafamadriz/friendly-snippets"                           -- a bunch of snippets to use
     -- documentation
     use {
@@ -116,8 +140,6 @@ return packer.startup(function(use)
     }
     -- Brackets
     use "windwp/nvim-autopairs"                                  -- Power autopair plugin for Neovim
-    -- Wild menu
-    use { "gelguy/wilder.nvim", run = ":UpdateRemotePlugins" }   -- Wild menu customization
     -- Increment and decrement library
     use "monaqa/dial.nvim"                                       -- Increment/decrement various numbers and things
 
