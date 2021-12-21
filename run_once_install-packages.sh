@@ -128,12 +128,10 @@ paru -S --useask --batchinstall --cleanafter --removemake \
 
 paru -S --useask --batchinstall --cleanafter --removemake \
     bash-language-server \
-    neovim-coc-git \
     wakatime-cli-bin \
-    dockerfile-language-server-bin \
     texlab \
     rust-analyzer \
-    haskell-language-server-bin
+    glow
 # Install julia and R language servers manually
 
 if [ ! -d $HOME/.tmux/plugins/tpm ]; then
