@@ -16,7 +16,6 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -53,12 +52,10 @@ keymap("n", "<C-q>", ":q<CR>", opts)
 -- TODO: Keybinding to close window (nnoremap <leader>x :x<cr>)
 -- TODO: Keybinding to remape movement (nnoremap j gj; nnoremap k gk)
 
-
 -- Insert --
 -- Move text up and down
 keymap("i", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("i", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
-
 
 -- Visual --
 -- Stay in indent mode
@@ -69,7 +66,6 @@ keymap("v", ">", ">gv", opts)
 keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 keymap("v", "p", '"_dP', opts)
-
 
 -- Visual Block --
 -- Move text up and down

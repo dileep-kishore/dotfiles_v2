@@ -8,18 +8,20 @@ local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 local diagnostics = null_ls.builtins.diagnostics
 
-null_ls.setup({
+null_ls.setup {
     debug = false,
     on_attach = function(client)
         if client.resolved_capabilities.document_formatting then
-            vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+            vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
         end
     end,
     sources = {
         formatting.prettier,
         formatting.clang_format,
-        formatting.black.with({ extra_args = { "--fast" } }),
-        formatting.stylua,
+        formatting.black.with { extra_args = { "--fast" } },
+        formatting.stylua.with {
+            extra_args = { "--config-path", vim.fn.expand "~/.config/stylua.toml" },
+        },
         formatting.fixjson,
         formatting.styler,
         formatting.latexindent,
@@ -37,4 +39,4 @@ null_ls.setup({
         -- diagnostics.shellcheck,
         -- diagnostics.yamllint,
     },
-})
+}
