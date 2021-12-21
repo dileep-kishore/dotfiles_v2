@@ -52,21 +52,30 @@ return packer.startup(function(use)
         run = ":TSUpdate"
     }
     use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" }    -- Rainbow paranthesis
-    use "JoosepAlviste/nvim-ts-context-commentstring"            -- For context dependent commenting
+    use {
+        "JoosepAlviste/nvim-ts-context-commentstring",           -- For context dependent commenting
+        after = "nvim-treesitter"
+    }
+    use {
+        "romgrk/nvim-treesitter-context",                        -- Shows context of current position using floatin window
+        after = "nvim-treesitter"
+    }
     -- Quick fix window
     use {"kevinhwang91/nvim-bqf", ft = "qf"}                     -- Make Neovim quickfix window better
+    -- file types
+    use "nathom/filetype.nvim"                                   -- Speed up neovim filetype loading
 
     ---- Telescope related
     use "nvim-telescope/telescope.nvim"                          -- Find, Filter, Preview, Pick.
     use {
         "nvim-telescope/telescope-fzf-native.nvim",              -- Native C sorting for better performance
         run = "make"
-    } 
+    }
     -- Project management
     use "ahmedkhalf/project.nvim"                                -- Superior project management
 
     ---- LSP related
-    use "neovim/nvim-lspconfig"                                  -- Collection of configurations for built-in LSP client 
+    use "neovim/nvim-lspconfig"                                  -- Collection of configurations for built-in LSP client
     use "williamboman/nvim-lsp-installer"                        -- Fast and easy-to-use language server installer
     use "tamago324/nlsp-settings.nvim"                           -- language server settings defined in json
     use "jose-elias-alvarez/null-ls.nvim"                        -- configurations for formatters and linters
@@ -96,8 +105,15 @@ return packer.startup(function(use)
     use "hrsh7th/cmp-nvim-lsp"                                   -- lsp completions
     use "petertriho/cmp-git"                                     -- git issue/pull request completions
     -- snippets
-    use "L3MON4D3/LuaSnip"                                       --snippet engine
+    use "L3MON4D3/LuaSnip"                                       -- snippet engine
     use "rafamadriz/friendly-snippets"                           -- a bunch of snippets to use
+    -- documentation
+    use {
+        "kkoomen/vim-doge",                                      -- generates documentation skeletons
+        run = ":call doge#install()",
+        opt = true,
+        cmd = { "DogeGenerate", "DogeCreateDocStandard" }
+    }
     -- Brackets
     use "windwp/nvim-autopairs"                                  -- Power autopair plugin for Neovim
     -- Wild menu
@@ -107,6 +123,7 @@ return packer.startup(function(use)
 
     ---- Keybindings
     use "folke/which-key.nvim"                                   -- Displays popup with possible keybindings of command
+    use {'jdhao/better-escape.vim', event = 'InsertEnter'}       -- Faster Esc mapping
     -- Commenting
     use {
         "numToStr/Comment.nvim",                                 -- Smart powerful commenting framework
@@ -121,26 +138,44 @@ return packer.startup(function(use)
         "pwntester/octo.nvim",                                   -- Edit GitHub issues and pull requests
         config = function()
             require"octo".setup()
-        end 
-    }  
+        end
+    }
     use "lewis6991/gitsigns.nvim"                                -- Show better gitsigns in the gutter
     -- git diffs
     use "sindrets/diffview.nvim"                                 -- Easily cycle through diffs for modified files in a git rev
 
+    ---- Session management
+    use {
+        'rmagatti/auto-session',                                 -- Seamless automatic session management
+        config = function()
+            require('auto-session').setup {
+                log_level = 'info',
+                auto_session_suppress_dirs = {'~/', '~/Projects'}
+            }
+        end
+    }
+    use {
+        'rmagatti/session-lens',                                 -- Fuzzy session switcher using Telescope
+        config = function()
+            require('session-lens').setup()
+        end
+    }
+
 
     ---- Motions, windows and navigation
     use "ggandor/lightspeed.nvim"                                -- Vim motions on steroids
-    use {
-        "blackCauldron7/surround.nvim",                          -- surround.vim written in lua
-        config = function()
-            require"surround".setup {mappings_style = "surround"}
-        end
-    }
     use "edluffy/specs.nvim"                                     -- show where your cursor moves when jumping around
     use "tpope/vim-repeat"                                       -- Plugin to repeat complex maps
+    use "tpope/vim-unimpaired"                                   -- Complementary pairs of mappings
+    use "tpope/vim-surround"                                     -- Surround.vim
+    use {
+        "mizlan/iswap.nvim",                                     -- Interactively swap treesitter elements
+        opt = true,
+        cmd = { "ISwap", "ISwapWith" }
+    }
     -- Search
     use "windwp/nvim-spectre"                                    -- Project wide search and replace
-    use "kevinhwang91/nvim-hlslens"                              -- Better highlight searches 
+    use "kevinhwang91/nvim-hlslens"                              -- Better highlight searches
     -- Peek
     use "nacro90/numb.nvim"                                      -- Peek at lines of buffer in a non-intrusive way
     -- Marks
@@ -155,6 +190,16 @@ return packer.startup(function(use)
         config = function()
             require("Navigator").setup()
         end
+    }
+
+    ---- Language specific
+    -- LaTeX
+    -- TODO: LaTeX support with vimtex(?)
+    -- Python
+    use {
+        "untitled-ai/jupyter_ascending.vim",                    -- Edit jupytext file and keep it in syc with .ipynb
+        opt = true,
+        ft = { "python" }
     }
 
     ---- Themes and eye candy
@@ -192,6 +237,12 @@ return packer.startup(function(use)
         config = function()
             require "nvim-tree".setup {}
         end
+    }
+    use {
+        "luukvbaal/nnn.nvim",                                    -- Use nnn from neovim
+        opt = true,
+        cmd = { "NnnExplorer", "NnnPicker" },
+        config = function() require("nnn").setup() end
     }
     use "kyazdani42/nvim-web-devicons"                           -- Nice set of icons for files
     -- Indentation
@@ -241,6 +292,13 @@ return packer.startup(function(use)
 
     ---- Miscellaneous
     use "wakatime/vim-wakatime"                                 -- Track your coding activity
+    use "gpanders/editorconfig.nvim"                            -- Editconfig support
+    use {
+        "RishabhRD/nvim-cheat.sh",                              -- Query cht.sh from nevim
+        opt = true,
+        requires = { "RishabhRD/popfix" },
+        cmd = { "Cheat", "CheatList", "CheatWithoutComments", "CheatListWithoutComments" },
+    }
 
 
     -- Automatically set up your configuration after cloning packer.nvim
