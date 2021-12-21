@@ -5,8 +5,7 @@ vim.g.tokyonight_style = "night"
 vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
 
 -- load the colorscheme
-vim.cmd[[colorscheme tokyonight]]
-
+vim.cmd([[colorscheme tokyonight]])
 
 -- Config nvim-colorizer
 -- neoscroll
