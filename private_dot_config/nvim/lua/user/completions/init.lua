@@ -1,0 +1,5 @@
+require("user.completions.cmp")
+require("user.completions.cmp-cmdline")
+require("user.completions.cmp-git")
+require("user.completions.autopairs")
+require("user.completions.dial")
