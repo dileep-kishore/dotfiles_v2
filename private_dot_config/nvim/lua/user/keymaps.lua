@@ -44,8 +44,11 @@ keymap("n", "<Leader>/", ":nohlsearch<CR>", opts)
 -- Save files
 keymap("n", "<C-s>", ":w<CR>", opts)
 
+-- Save files
+keymap("n", "<C-x>", ":x<CR>", opts)
+
 -- Quit window
-keymap("n", "<Leader>q", ":q<CR>", opts)
+keymap("n", "<C-q>", ":q<CR>", opts)
 
 -- TODO: Keybinding to close window (nnoremap <leader>x :x<cr>)
 -- TODO: Keybinding to remape movement (nnoremap j gj; nnoremap k gk)
