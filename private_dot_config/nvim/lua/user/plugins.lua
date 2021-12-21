@@ -41,19 +41,22 @@ packer.init {
 ---- Plugins ----
 return packer.startup(function(use)
     use "wbthomason/packer.nvim"                                 -- Have packer manage itself
-    use "nvim-lua/plenary.nvim"                                  -- Useful lua functions used ny lots of plugins
     use "lewis6991/impatient.nvim"                               -- Speed up loading lua modules
+    use "nvim-lua/plenary.nvim"                                  -- Useful lua functions used ny lots of plugins
+    use "nvim-lua/popup.nvim"                                    -- Popup related code not yet in Neovim
+    use "rcarriga/nvim-notify"                                   -- Configurable notification manager
 
-    -- Treesitter related
+    ---- Treesitter related
     use {
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate"
     }
+    use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" }    -- Rainbow paranthesis
     use "JoosepAlviste/nvim-ts-context-commentstring"            -- For context dependent commenting
     -- Quick fix window
-    use {'kevinhwang91/nvim-bqf', ft = 'qf'}                     -- Make Neovim quickfix window better
+    use {"kevinhwang91/nvim-bqf", ft = "qf"}                     -- Make Neovim quickfix window better
 
-    -- Telescope related
+    ---- Telescope related
     use "nvim-telescope/telescope.nvim"                          -- Find, Filter, Preview, Pick.
     use {
         "nvim-telescope/telescope-fzf-native.nvim",              -- Native C sorting for better performance
@@ -62,21 +65,47 @@ return packer.startup(function(use)
     -- Project management
     use "ahmedkhalf/project.nvim"                                -- Superior project management
 
-    -- LSP related
+    ---- LSP related
     use "neovim/nvim-lspconfig"                                  -- Collection of configurations for built-in LSP client 
     use "williamboman/nvim-lsp-installer"                        -- Fast and easy-to-use language server installer
     use "tamago324/nlsp-settings.nvim"                           -- language server settings defined in json
     use "jose-elias-alvarez/null-ls.nvim"                        -- configurations for formatters and linters
+    use {
+        'rmagatti/goto-preview',                                 -- Preview goto definition in floating window
+        config = function()
+            require('goto-preview').setup {}
+        end
+    }
+    -- completions
+    use "onsails/lspkind-nvim"                                   -- Pretty icons for LSP completions
+    use "ray-x/lsp_signature.nvim"                               -- Show function signatures
+    -- Diagonostics
     use "folke/trouble.nvim"                                     -- A pretty list for showing diagnostics
+    use "antoinemadec/FixCursorHold.nvim"                        -- FIXME: This is needed to fix lsp doc highlight
     -- Code navigation
     use "simrat39/symbols-outline.nvim"                          -- A tree like view for navigating symbols
     -- Spell check
     use "lewis6991/spellsitter.nvim"
 
-    -- Completions
+    ---- Completions
+    use "hrsh7th/nvim-cmp"                                       -- The completion plugin
+    use "hrsh7th/cmp-buffer"                                     -- buffer completions
+    use "hrsh7th/cmp-path"                                       -- path completions
+    use "hrsh7th/cmp-cmdline"                                    -- cmdline completions
+    use "saadparwaiz1/cmp_luasnip"                               -- snippet completions
+    use "hrsh7th/cmp-nvim-lsp"                                   -- lsp completions
+    use "petertriho/cmp-git"                                     -- git issue/pull request completions
+    -- snippets
+    use "L3MON4D3/LuaSnip"                                       --snippet engine
+    use "rafamadriz/friendly-snippets"                           -- a bunch of snippets to use
+    -- Brackets
     use "windwp/nvim-autopairs"                                  -- Power autopair plugin for Neovim
+    -- Wild menu
+    use { "gelguy/wilder.nvim", run = ":UpdateRemotePlugins" }   -- Wild menu customization
+    -- Increment and decrement library
+    use "monaqa/dial.nvim"                                       -- Increment/decrement various numbers and things
 
-    -- Keybindings
+    ---- Keybindings
     use "folke/which-key.nvim"                                   -- Displays popup with possible keybindings of command
     -- Commenting
     use {
@@ -86,7 +115,7 @@ return packer.startup(function(use)
         end
     }
 
-    -- Git
+    ---- Git
     use "TimUntersberger/neogit"                                 -- Magit clone for Neovim
     use {
         "pwntester/octo.nvim",                                   -- Edit GitHub issues and pull requests
@@ -95,8 +124,28 @@ return packer.startup(function(use)
         end 
     }  
     use "lewis6991/gitsigns.nvim"                                -- Show better gitsigns in the gutter
+    -- git diffs
+    use "sindrets/diffview.nvim"                                 -- Easily cycle through diffs for modified files in a git rev
 
-    -- Motions, windows and navigation
+
+    ---- Motions, windows and navigation
+    use "ggandor/lightspeed.nvim"                                -- Vim motions on steroids
+    use {
+        "blackCauldron7/surround.nvim",                          -- surround.vim written in lua
+        config = function()
+            require"surround".setup {mappings_style = "surround"}
+        end
+    }
+    use "edluffy/specs.nvim"                                     -- show where your cursor moves when jumping around
+    use "tpope/vim-repeat"                                       -- Plugin to repeat complex maps
+    -- Search
+    use "windwp/nvim-spectre"                                    -- Project wide search and replace
+    use "kevinhwang91/nvim-hlslens"                              -- Better highlight searches 
+    -- Peek
+    use "nacro90/numb.nvim"                                      -- Peek at lines of buffer in a non-intrusive way
+    -- Marks
+    use "chentau/marks.nvim"                                     -- Better UI for manipulating mark
+    -- Window management
     use "famiu/bufdelete.nvim"                                   -- Delete buffers without messing up window layout
     -- Terminals
     use "akinsho/toggleterm.nvim"                                -- Persist and toggle multiple terminals during an editing session
@@ -108,13 +157,28 @@ return packer.startup(function(use)
         end
     }
 
-    -- Themes and eye candy
+    ---- Themes and eye candy
     use "folke/tokyonight.nvim"
     use "EdenEast/nightfox.nvim"
+    use "norcalli/nvim-colorizer.lua"                            -- Colorizer
+    -- Smooth scrolling
+    use 'karb94/neoscroll.nvim'                                  -- Smooth scrolling in Neovim
+    -- Highlights
+    use "RRethy/vim-illuminate"                                  -- Show all occurrences of word under cursor
+    -- Show registers
+    use "tversteeg/registers.nvim"                               -- Show register content during access
+    -- Clipboard
+    use {
+        "AckslD/nvim-neoclip.lua",                               -- Clipboard manager inspired by clipmenu
+        config = function()
+            require('neoclip').setup()
+        end,
+    }
     -- Tabline
     use "akinsho/bufferline.nvim"                                -- A snazzy buffer line built using lua
     -- Statusline
     use "nvim-lualine/lualine.nvim"                              -- A blazing fast statusline written in lua
+    use "SmiteshP/nvim-gps"                                      -- Status line component to show exact cursor position
     -- Dashboard
     use {
         "goolord/alpha-nvim",                                    -- A fast framework for making a greeter
@@ -132,6 +196,51 @@ return packer.startup(function(use)
     use "kyazdani42/nvim-web-devicons"                           -- Nice set of icons for files
     -- Indentation
     use "lukas-reineke/indent-blankline.nvim"                    -- Adds indentation guides to all lines (including blanks)
+    -- Zen mode
+    use "Pocco81/TrueZen.nvim"                                   -- Distraction free writing
+
+    ---- Remote editing
+    use {
+        "chipsenkbeil/distant.nvim",                             -- Edit remote files using local environment
+        config = function()
+            require("distant").setup {
+                -- Applies Chip"s personal settings to every machine you connect to
+                --
+                -- 1. Ensures that distant servers terminate with no connections
+                -- 2. Provides navigation bindings for remote directories
+                -- 3. Provides keybinding to jump into a remote file"s parent directory
+                ["*"] = require("distant.settings").chip_default()
+            }
+        end
+    }
+
+    ---- Code execution
+    use { "michaelb/sniprun", run = "bash ./install.sh"}        -- Code runner plugin for neovim
+    use {
+        "rcarriga/vim-ultest",                                  -- Runs tests
+        requires = {"vim-test/vim-test"},
+        run = ":UpdateRemotePlugins"
+    }
+
+    ---- Note taking
+    use "oberblastmeister/neuron.nvim"                          -- Zettelkasten note-taking using the neuron binary
+    -- Markdown preview
+    use "ellisonleao/glow.nvim"                                 -- Markdown preview in the terminal using glow
+    -- TODOS
+    use {
+        "folke/todo-comments.nvim",                             -- Highlight and list TODOs in your files
+        requires = "nvim-lua/plenary.nvim",
+        config = function()
+            require("todo-comments").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
+
+    ---- Miscellaneous
+    use "wakatime/vim-wakatime"                                 -- Track your coding activity
 
 
     -- Automatically set up your configuration after cloning packer.nvim
