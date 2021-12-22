@@ -1,10 +1,9 @@
 -- Config lightspeed.nvim
--- nvim-spectre
 -- nvim-hlslens
 -- numb
 -- marks
 -- bufdelete
--- toggleterm
+-- Iswap
 -- Navigator.nvim
 
 -- TODO: Look here for hlslens setup: https://github.com/kevinhwang91/nvim-hlslens/issues/17
