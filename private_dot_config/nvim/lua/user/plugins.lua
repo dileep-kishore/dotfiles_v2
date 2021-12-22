@@ -197,9 +197,6 @@ return packer.startup(function(use)
     -- Commenting
     use {
         "numToStr/Comment.nvim", -- Smart powerful commenting framework
-        config = function()
-            require("Comment").setup()
-        end,
     }
 
     ---- Git
