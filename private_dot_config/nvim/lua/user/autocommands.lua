@@ -20,6 +20,8 @@ local autocmds = {
     git = {
         { "FileType", "gitcommit", "setlocal wrap" },
         { "FileType", "gitcommit", "setlocal spell" },
+        { "FileType", "NeogitCommitMessage", "setlocal wrap" },
+        { "FileType", "NeogitCommitMessage", "setlocal spell" },
     },
     markdown = {
         { "FileType", "markdown", "setlocal wrap" },
