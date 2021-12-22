@@ -359,11 +359,17 @@ return packer.startup(function(use)
     }
 
     ---- Code execution
-    use { "michaelb/sniprun", run = "bash ./install.sh" }
+    -- FIXME: Had to manually run "install.sh", wait for update
+    use {
+        "michaelb/sniprun",
+        run = "bash ./install.sh",
+        cmd = { "SnipRun", "SnipInfo" },
+    }
     use {
         "rcarriga/vim-ultest", -- Runs tests
         requires = { "vim-test/vim-test" },
         run = ":UpdateRemotePlugins",
+        cmd = { "Ultest", "UltestLast", "UltestAttach", "UltestSummary" },
     }
 
     ---- Note taking

@@ -203,6 +203,12 @@ local mappings = {
     },
 
     c = {
+        name = "Code execution",
+        t = { "<cmd>Ultest<cr>", "Run Ultest" },
+        s = { "<cmd>SnipRun<cr>", "Run SnipRun" },
+    },
+
+    w = {
         name = "Swap",
         c = { "<cmd>ISwapWith<cr>", "Swap current" },
         s = { "<cmd>ISwap<cr>", "Swap interactive" },
