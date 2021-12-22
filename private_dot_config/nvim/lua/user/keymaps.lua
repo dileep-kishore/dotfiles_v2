@@ -52,8 +52,7 @@ keymap("n", "<C-x>", ":Bdelete<CR>", opts)
 -- Quit window
 keymap("n", "<C-q>", ":q<CR>", opts)
 
--- TODO: Keybinding to close window (nnoremap <leader>x :x<cr>)
--- TODO: Keybinding to remape movement (nnoremap j gj; nnoremap k gk)
+-- TODO: Keybinding to remap movement (nnoremap j gj; nnoremap k gk)
 
 -- Insert --
 -- Move text up and down
