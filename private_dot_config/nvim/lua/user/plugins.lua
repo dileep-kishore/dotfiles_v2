@@ -208,10 +208,14 @@ return packer.startup(function(use)
         config = function()
             require("octo").setup()
         end,
+        cmd = { "Octo" },
     }
     use "lewis6991/gitsigns.nvim"
     -- git diffs
-    use "sindrets/diffview.nvim"
+    use {
+        "sindrets/diffview.nvim", -- Diffview functionality similar to vscode
+        cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+    }
 
     ---- Motions, windows and navigation
     use "ggandor/lightspeed.nvim"

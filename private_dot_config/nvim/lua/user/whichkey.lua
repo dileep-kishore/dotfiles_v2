@@ -124,6 +124,8 @@ local mappings = {
         b = { "<cmd>Telescope git_branches theme=dropdown<cr>", "Checkout branch" },
         c = { "<cmd>Telescope git_commits theme=dropdown<cr>", "Checkout commit" },
         d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
+        h = { "<cmd>DiffviewFileHistory<cr>", "View file history" },
+        D = { "<cmd>DiffviewOpen<cr>", "View diffs of all modified files" },
     },
 
     l = {
