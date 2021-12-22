@@ -41,7 +41,7 @@ keymap("n", "<A-j>", ":m .+1<CR>==", opts)
 keymap("n", "<A-k>", ":m .-2<CR>==", opts)
 
 -- Turn off highlight after search
-keymap("n", "<Leader>/", ":nohlsearch<CR>", opts)
+keymap("n", "<Leader>/", ":noh<CR>", opts)
 
 -- Save files
 keymap("n", "<C-s>", ":w<CR>", opts)
@@ -78,9 +78,16 @@ keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 ---- Hlslens
+-- FIXME: Hlslens stops working after opening Telescope
 keymap("n", "n", "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>", opts)
 keymap("n", "N", "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>", opts)
 keymap("n", "*", "*<Cmd>lua require('hlslens').start()<CR>", opts)
 keymap("n", "#", "#<Cmd>lua require('hlslens').start()<CR>", opts)
 keymap("n", "g*", "g*<Cmd>lua require('hlslens').start()<CR>", opts)
 keymap("n", "g#", "g#<Cmd>lua require('hlslens').start()<CR>", opts)
+
+---- Navigator.nvim
+keymap("n", "<C-h>", "<CMD>lua require('Navigator').left()<CR>", opts)
+keymap("n", "<C-k>", "<CMD>lua require('Navigator').up()<CR>", opts)
+keymap("n", "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opts)
+keymap("n", "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opts)

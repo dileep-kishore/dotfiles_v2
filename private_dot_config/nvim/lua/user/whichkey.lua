@@ -200,6 +200,12 @@ local mappings = {
         l = { "<cmd>Trouble loclist<cr>", "Trouble loclist" },
         q = { "<cmd>Trouble quickfix<cr>", "Trouble quickfix" },
     },
+
+    c = {
+        name = "Swap",
+        c = { "<cmd>ISwapWith<cr>", "Swap current" },
+        s = { "<cmd>ISwap<cr>", "Swap interactive" },
+    },
 }
 
 which_key.setup(setup)

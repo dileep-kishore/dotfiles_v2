@@ -230,7 +230,12 @@ return packer.startup(function(use)
     }
     -- Search
     use "windwp/nvim-spectre"
-    use "kevinhwang91/nvim-hlslens"
+    use {
+        "kevinhwang91/nvim-hlslens",
+        config = function()
+            require("hlslens").setup()
+        end,
+    }
     -- Peek
     use {
         "nacro90/numb.nvim",

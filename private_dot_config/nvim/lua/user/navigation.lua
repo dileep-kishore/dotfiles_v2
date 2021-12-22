@@ -1,10 +1,3 @@
--- Config lightspeed.nvim
--- bufdelete
--- Iswap
--- Navigator.nvim
-
--- TODO: Look here for hlslens setup: https://github.com/kevinhwang91/nvim-hlslens/issues/17
-
 local specs_status_ok, specs = pcall(require, "specs")
 if not specs_status_ok then
     return
