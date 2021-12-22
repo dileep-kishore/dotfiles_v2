@@ -223,12 +223,15 @@ return packer.startup(function(use)
     use "tpope/vim-repeat"
     use "tpope/vim-unimpaired"
     use "tpope/vim-surround"
+    use "michaeljsmith/vim-indent-object"
+    use "nvim-treesitter/nvim-treesitter-textobjects"
     use {
         "mizlan/iswap.nvim", -- Interactively swap treesitter elements
         opt = true,
         cmd = { "ISwap", "ISwapWith" },
     }
     -- Search
+    use "tpope/vim-abolish"
     use "windwp/nvim-spectre"
     use {
         "kevinhwang91/nvim-hlslens",
