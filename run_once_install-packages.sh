@@ -51,6 +51,7 @@ sudo pacman -S --needed --noconfirm \
     go \
     julia \
     r \
+    lua \
     nodejs \
     npm \
     yarn \
