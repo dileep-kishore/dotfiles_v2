@@ -85,6 +85,7 @@ sudo pacman -S --needed --noconfirm \
     python-ueberzug \
     xdotool \
     xclip \
+    fortune-mod \
     isync
 
 if [ ! -d $HOME/npm-global/lib/node_modules/neovim ]; then

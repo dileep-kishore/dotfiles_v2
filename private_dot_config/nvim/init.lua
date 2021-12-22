@@ -14,6 +14,7 @@ require "user.git"
 require "user.bars"
 require "user.togglterm"
 require "user.indentline"
+require "user.dashboard"
 -- require("user.misc")
 
 -- FIXME: These have to be set at end because a plugin is modifying them
