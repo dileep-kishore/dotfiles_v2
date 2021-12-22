@@ -13,6 +13,14 @@ function nvim_create_augroups(definitions)
 end
 
 local autocmds = {
+    general_settings = {
+        { "BufWinEnter", "*", "set formatoptions-=cro" },
+        { "FileType", "qf", "set nobuflisted" },
+    },
+    git = {
+        { "FileType", "gitcommit", "setlocal wrap" },
+        { "FileType", "gitcommit", "setlocal spell" },
+    },
     terminal_job = {
         { "TermOpen", "*", [[tnoremap <buffer> <Esc> <c-\><c-n>]] },
         { "TermOpen", "*", "startinsert" },
