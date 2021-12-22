@@ -71,11 +71,36 @@ return packer.startup(function(use)
         "nvim-telescope/telescope-fzf-native.nvim", -- Native C sorting for better performance
         run = "make",
         after = "telescope.nvim",
+        config = function()
+            require("telescope").load_extension "fzf"
+        end,
     }
+    use {
+        "nvim-telescope/telescope-frecency.nvim",
+        after = "telescope.nvim",
+        config = function()
+            require("telescope").load_extension "frecency"
+        end,
+        requires = { "tami5/sqlite.lua" },
+    }
+    -- Search headings
+    use {
+        "crispgm/telescope-heading.nvim",
+        after = "telescope.nvim",
+        config = function()
+            require("telescope").load_extension "heading"
+        end,
+    }
+    -- Symobls
+    use "nvim-telescope/telescope-symbols.nvim"
     -- Project management
     use {
         "ahmedkhalf/project.nvim", -- Superior project management
         after = "telescope.nvim",
+        config = function()
+            require("project_nvim").setup {}
+            require("telescope").load_extension "projects"
+        end,
     }
 
     ---- LSP related
