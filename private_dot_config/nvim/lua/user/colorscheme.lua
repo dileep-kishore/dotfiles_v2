@@ -9,6 +9,3 @@ vim.cmd [[colorscheme tokyonight]]
 
 -- registers window
 vim.g.registers_window_border = "rounded"
-
--- nvim-web-devicons
--- TrueZen

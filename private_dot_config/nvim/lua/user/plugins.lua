@@ -335,7 +335,13 @@ return packer.startup(function(use)
     -- Indentation
     use "lukas-reineke/indent-blankline.nvim"
     -- Zen mode
-    use "Pocco81/TrueZen.nvim"
+    use {
+        "Pocco81/TrueZen.nvim",
+        config = function()
+            require("true-zen").setup()
+        end,
+        cmd = { "TZMinimalist", "TZFocus", "TZAtaraxis" },
+    }
 
     ---- Remote editing
     use {
