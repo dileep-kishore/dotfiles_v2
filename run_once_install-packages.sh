@@ -129,6 +129,7 @@ paru -S --useask --batchinstall --cleanafter --removemake \
     zoom
 
 paru -S --useask --batchinstall --cleanafter --removemake \
+    neuron-zettelkasten-bin \
     stylua \
     luacheck \
     bash-language-server \

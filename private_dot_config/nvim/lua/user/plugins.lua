@@ -376,7 +376,7 @@ return packer.startup(function(use)
     ---- Note taking
     use "oberblastmeister/neuron.nvim"
     -- Markdown preview
-    use "ellisonleao/glow.nvim"
+    use { "ellisonleao/glow.nvim", cmd = "Glow" }
     -- TODOS
     use {
         "folke/todo-comments.nvim", -- Highlight and list TODOs in your files

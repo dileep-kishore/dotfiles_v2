@@ -17,6 +17,8 @@ require "user.indentline"
 require "user.dashboard"
 require "user.whichkey"
 require "user.navigation"
+require "user.execution"
+require "user.note-taking"
 -- require("user.misc")
 
 -- FIXME: These have to be set at end because a plugin is modifying them

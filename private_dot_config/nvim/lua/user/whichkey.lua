@@ -209,6 +209,7 @@ local mappings = {
         name = "Code execution",
         t = { "<cmd>Ultest<cr>", "Run Ultest" },
         s = { "<cmd>SnipRun<cr>", "Run SnipRun" },
+        p = { "<cmd>Glow<cr>", "Run Glow" },
     },
 
     w = {
