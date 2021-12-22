@@ -1,7 +1,4 @@
 -- Config lightspeed.nvim
--- nvim-hlslens
--- numb
--- marks
 -- bufdelete
 -- Iswap
 -- Navigator.nvim

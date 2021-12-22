@@ -232,9 +232,19 @@ return packer.startup(function(use)
     use "windwp/nvim-spectre"
     use "kevinhwang91/nvim-hlslens"
     -- Peek
-    use "nacro90/numb.nvim"
+    use {
+        "nacro90/numb.nvim",
+        config = function()
+            require("numb").setup()
+        end,
+    }
     -- Marks
-    use "chentau/marks.nvim"
+    use {
+        "chentau/marks.nvim",
+        config = function()
+            require("marks").setup {}
+        end,
+    }
     -- Window management
     use "famiu/bufdelete.nvim"
     -- Terminals

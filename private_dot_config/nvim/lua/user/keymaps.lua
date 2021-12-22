@@ -47,7 +47,7 @@ keymap("n", "<Leader>/", ":nohlsearch<CR>", opts)
 keymap("n", "<C-s>", ":w<CR>", opts)
 
 -- Close buffer
-keymap("n", "<C-x>", ":bd<CR>", opts)
+keymap("n", "<C-x>", ":Bdelete<CR>", opts)
 
 -- Quit window
 keymap("n", "<C-q>", ":q<CR>", opts)
