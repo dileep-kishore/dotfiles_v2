@@ -213,23 +213,6 @@ return packer.startup(function(use)
     -- git diffs
     use "sindrets/diffview.nvim"
 
-    ---- Session management
-    use {
-        "rmagatti/auto-session", -- Seamless automatic session management
-        config = function()
-            require("auto-session").setup {
-                log_level = "info",
-                auto_session_suppress_dirs = { "~/", "~/Projects" },
-            }
-        end,
-    }
-    use {
-        "rmagatti/session-lens", -- Fuzzy session switcher using Telescope
-        config = function()
-            require("session-lens").setup()
-        end,
-    }
-
     ---- Motions, windows and navigation
     use "ggandor/lightspeed.nvim"
     use "edluffy/specs.nvim"
