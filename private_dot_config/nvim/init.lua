@@ -7,8 +7,10 @@ require "user.colorscheme"
 require "user.comp_snip"
 require "user.lsp"
 require "user.treesitter"
+require "user.comment"
 require "user.telescope"
 require "user.nvim-tree"
+require "user.git"
 -- require("user.misc")
 
 -- FIXME: These have to be set at end because a plugin is modifying them
