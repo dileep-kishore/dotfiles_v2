@@ -3,6 +3,11 @@ if not status_ok then
     return
 end
 
+local gps_ok, gps = pcall(require, "nvim-gps")
+if not gps_ok then
+    return
+end
+
 local hide_in_width = function()
     return vim.fn.winwidth(0) > 80
 end
@@ -60,6 +65,20 @@ local branch = {
     icon = "",
 }
 
+local function get_gps()
+    local fname = vim.api.nvim_buf_get_name(0):match "^.+/(.+)$"
+    if gps.is_available() == true then
+        local location = gps.get_location()
+        if location == "" then
+            return fname
+        else
+            return location
+        end
+    else
+        return fname
+    end
+end
+
 local location = {
     "location",
 }
@@ -88,7 +107,7 @@ lualine.setup {
         always_divide_middle = true,
     },
     sections = {
-        lualine_a = { branch, filename },
+        lualine_a = { branch, get_gps },
         lualine_b = { mode },
         lualine_c = { diagnostics, modified_section },
         -- lualine_x = { "encoding", "fileformat", "filetype" },

@@ -275,11 +275,21 @@ return packer.startup(function(use)
     ---- Themes and eye candy
     use "folke/tokyonight.nvim"
     use "EdenEast/nightfox.nvim"
-    use "norcalli/nvim-colorizer.lua"
+    use {
+        "norcalli/nvim-colorizer.lua",
+        config = function()
+            require("colorizer").setup()
+        end,
+    }
     -- Smooth scrolling
-    use "karb94/neoscroll.nvim"
+    use {
+        "karb94/neoscroll.nvim",
+        config = function()
+            require("neoscroll").setup()
+            require("telescope").load_extension "neoclip"
+        end,
+    }
     -- Highlights
-    use "RRethy/vim-illuminate"
     -- Show registers
     use "tversteeg/registers.nvim"
     -- Clipboard
@@ -293,7 +303,12 @@ return packer.startup(function(use)
     use "akinsho/bufferline.nvim"
     -- Statusline
     use "nvim-lualine/lualine.nvim"
-    use "SmiteshP/nvim-gps"
+    use {
+        "SmiteshP/nvim-gps",
+        config = function()
+            require("nvim-gps").setup()
+        end,
+    }
     -- Dashboard
     use {
         "goolord/alpha-nvim", -- A fast framework for making a greeter

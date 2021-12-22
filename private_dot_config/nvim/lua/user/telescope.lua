@@ -5,9 +5,6 @@ end
 
 local actions = require "telescope.actions"
 
-local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
-
 telescope.setup {
     defaults = {
 

@@ -169,7 +169,8 @@ local mappings = {
         j = { "<cmd>Telescope jumplist<cr>", "Jumplist" },
         h = { "<cmd>Telescope heading<cr>", "Heading" },
         s = { "<cmd>Telescope symbols<cr>", "Symbols" },
-        c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+        c = { "<cmd>Telescope neoclip<cr>", "Colorscheme" },
+        C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
         f = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     },
 
