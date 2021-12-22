@@ -33,6 +33,9 @@ keymap("n", "<C-Right>", ":vertical resize +4<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
+-- Navigate tabs
+keymap("n", "<C-t>", ":tabnew<CR>", opts)
+
 -- Move text up and down
 keymap("n", "<A-j>", ":m .+1<CR>==", opts)
 keymap("n", "<A-k>", ":m .-2<CR>==", opts)
