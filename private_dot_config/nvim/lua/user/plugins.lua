@@ -175,6 +175,8 @@ return packer.startup(function(use)
             require("cmp_git").setup()
         end,
     }
+    -- icons
+    use "onsails/lspkind-nvim" -- Icons for completions
     -- snippets
     use "L3MON4D3/LuaSnip"
     use {
