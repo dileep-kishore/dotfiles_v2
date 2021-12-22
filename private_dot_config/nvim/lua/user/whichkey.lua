@@ -172,6 +172,7 @@ local mappings = {
         c = { "<cmd>Telescope neoclip<cr>", "Colorscheme" },
         C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
         f = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+        t = { "<cmd>TodoTelescope<cr>", "Search todos" },
     },
 
     h = {
@@ -181,6 +182,7 @@ local mappings = {
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
         o = { "<cmd>Telescope vim_options<cr>", "Vim Options" },
         c = { "<cmd>Telescope commands<cr>", "Commands" },
+        t = { "<cmd>TodoQuickFix<cr>", "Open TODOs in quickfix" },
     },
 
     t = {
@@ -200,6 +202,7 @@ local mappings = {
         d = { "<cmd>Trouble document_diagnostics<cr>", "Trouble document_diagnostics" },
         l = { "<cmd>Trouble loclist<cr>", "Trouble loclist" },
         q = { "<cmd>Trouble quickfix<cr>", "Trouble quickfix" },
+        t = { "<cmd>TodoTrouble<cr>", "Trouble todos" },
     },
 
     c = {

@@ -344,18 +344,19 @@ return packer.startup(function(use)
     }
 
     ---- Remote editing
+    -- FIXME: :DistantInstall throws an error
     use {
         "chipsenkbeil/distant.nvim", -- Edit remote files using local environment
         config = function()
             require("distant").setup {
                 -- Applies Chip"s personal settings to every machine you connect to
-                --
                 -- 1. Ensures that distant servers terminate with no connections
                 -- 2. Provides navigation bindings for remote directories
                 -- 3. Provides keybinding to jump into a remote file"s parent directory
                 ["*"] = require("distant.settings").chip_default(),
             }
         end,
+        cmd = { "DistantRun", "DistantOpen", "DistantConnet", "DistantLaunch" },
     }
 
     ---- Code execution
@@ -381,11 +382,7 @@ return packer.startup(function(use)
         "folke/todo-comments.nvim", -- Highlight and list TODOs in your files
         requires = "nvim-lua/plenary.nvim",
         config = function()
-            require("todo-comments").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
+            require("todo-comments").setup {}
         end,
     }
 
