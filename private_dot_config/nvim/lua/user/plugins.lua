@@ -51,10 +51,9 @@ return packer.startup(function(use)
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
     }
-    use { "p00f/nvim-ts-rainbow", after = "nvim-treesitter" }
+    use "p00f/nvim-ts-rainbow" -- Rainbow paranthesis
     use {
         "JoosepAlviste/nvim-ts-context-commentstring", -- For context dependent commenting
-        after = "nvim-treesitter",
     }
     use {
         "romgrk/nvim-treesitter-context", -- Shows context of current position using floatin window
@@ -91,7 +90,7 @@ return packer.startup(function(use)
             require("telescope").load_extension "heading"
         end,
     }
-    -- Symobls
+    -- Symbols
     use "nvim-telescope/telescope-symbols.nvim"
     -- Project management
     use {
@@ -191,12 +190,6 @@ return packer.startup(function(use)
     }
     -- Brackets
     use "windwp/nvim-autopairs"
-    -- Increment and decrement library
-    use {
-        "monaqa/dial.nvim", -- Increment/decrement various numbers and things
-        opt = true,
-        cmd = { "DialIncrement", "DialDecrement" },
-    }
 
     ---- Keybindings
     use "folke/which-key.nvim"

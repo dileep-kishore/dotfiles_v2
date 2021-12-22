@@ -6,6 +6,7 @@ require "user.impatient"
 require "user.colorscheme"
 require "user.comp_snip"
 require "user.lsp"
+require "user.treesitter"
 require "user.telescope"
 require "user.nvim-tree"
 -- require("user.misc")
