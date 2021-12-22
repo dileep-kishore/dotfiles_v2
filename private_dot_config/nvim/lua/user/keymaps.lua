@@ -43,8 +43,8 @@ keymap("n", "<Leader>/", ":nohlsearch<CR>", opts)
 -- Save files
 keymap("n", "<C-s>", ":w<CR>", opts)
 
--- Save files
-keymap("n", "<C-x>", ":x<CR>", opts)
+-- Close buffer
+keymap("n", "<C-x>", ":bd<CR>", opts)
 
 -- Quit window
 keymap("n", "<C-q>", ":q<CR>", opts)

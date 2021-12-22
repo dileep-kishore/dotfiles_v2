@@ -1,6 +1,6 @@
 -- autocommands
 -------- This function is taken from https://github.com/norcalli/nvim_utils
-function nvim_create_augroups(definitions)
+local function nvim_create_augroups(definitions)
     for group_name, definition in pairs(definitions) do
         vim.api.nvim_command("augroup " .. group_name)
         vim.api.nvim_command "autocmd!"
@@ -21,6 +21,10 @@ local autocmds = {
         { "FileType", "gitcommit", "setlocal wrap" },
         { "FileType", "gitcommit", "setlocal spell" },
     },
+    markdown = {
+        { "FileType", "markdown", "setlocal wrap" },
+        { "FileType", "markdown", "setlocal spell" },
+    },
     terminal_job = {
         { "TermOpen", "*", [[tnoremap <buffer> <Esc> <c-\><c-n>]] },
         { "TermOpen", "*", "startinsert" },
@@ -33,7 +37,7 @@ local autocmds = {
         { "VimLeave", "*", "wshada!" },
     },
     resize_windows_proportionally = {
-        { "VimResized", "*", ":wincmd =" },
+        { "VimResized", "*", "tabdo wincmd =" },
     },
     toggle_search_highlighting = {
         { "InsertEnter", "*", "setlocal nohlsearch" },
@@ -44,4 +48,12 @@ local autocmds = {
 }
 
 nvim_create_augroups(autocmds)
+
+vim.cmd [[
+augroup _alpha
+    autocmd!
+    autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
+augroup end
+]]
+
 -- autocommands END
