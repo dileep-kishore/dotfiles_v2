@@ -18,7 +18,7 @@ git_status="#(~/.dotfiles/private_dot_config/tmux/git-status.sh #{pane_current_p
 
 #+--- Bars LEFT ---+
 # Session name
-set -g status-left "#[fg=#1a1b26,bg=#7aa2f7,bold,italics]  #H #[bg=#1a1b26,fg=#7aa2f7,italics] #[bg=#1a1b26,fg=white,italics]#(uptime -p | cut -f 1-2 -d',' | cut -c 3-)"
+set -g status-left "#[fg=#1a1b26,bg=#7aa2f7,bold,italics]  #H #[bg=#1a1b26,fg=#7aa2f7,italics] #[bg=#1a1b26,fg=white,italics,nobold]#(uptime -p | cut -f 1-2 -d',' | cut -c 3-)"
 
 #+--- Windows ---+
 # Focus
@@ -27,5 +27,5 @@ set -g window-status-current-format "#[bg=#1a1b26,fg=#bb9af7,bold,italics]┃#[f
 set -g window-status-format "#[fg=brightwhite,bg=#1a1b26,nobold,noitalics,nounderscore]   #I•#W #F  "
 
 #+--- Bars RIGHT ---+
-set -g status-right "#[fg=white,bg=#1a1b26,italics] %a #[bg=#1a1b26,fg=#7aa2f7] $git_status#[fg=#1a1b26,bg=#7aa2f7,bold,italics]#S"
+set -g status-right "#[fg=white,bg=#1a1b26,italics] %a #[bg=#1a1b26,fg=#7aa2f7] $git_status#[fg=#1a1b26,bg=#7aa2f7,bold,noitalics]#S"
 set -g window-status-separator ""
