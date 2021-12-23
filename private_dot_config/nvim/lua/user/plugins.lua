@@ -58,6 +58,9 @@ return packer.startup(function(use)
     use {
         "romgrk/nvim-treesitter-context", -- Shows context of current position using floatin window
         after = "nvim-treesitter",
+        config = function()
+            require("treesitter-context").setup()
+        end,
     }
     -- Quick fix window
     use { "kevinhwang91/nvim-bqf", ft = "qf" }
@@ -324,14 +327,6 @@ return packer.startup(function(use)
         "kyazdani42/nvim-tree.lua",
         config = function()
             require("nvim-tree").setup {}
-        end,
-    }
-    use {
-        "luukvbaal/nnn.nvim", -- Use nnn from neovim
-        opt = true,
-        cmd = { "NnnExplorer", "NnnPicker" },
-        config = function()
-            require("nnn").setup()
         end,
     }
     use "kyazdani42/nvim-web-devicons"
