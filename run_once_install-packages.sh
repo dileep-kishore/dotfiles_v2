@@ -18,7 +18,6 @@ sudo pacman -S --needed --noconfirm \
     ispell \
     lxappearance \
     lightdm-webkit2-greeter \
-    picom \
     nitrogen \
     rofi \
     trayer \
@@ -87,6 +86,7 @@ sudo pacman -S --needed --noconfirm \
     xdotool \
     xclip \
     fortune-mod \
+    prettier \
     cowsay \
     isync
 
@@ -108,6 +108,7 @@ if [ ! -d $HOME/.config/nnn/plugins ]; then
 fi
 
 paru -S --useask --batchinstall --cleanafter --removemake \
+    picom-git \
     mu \
     betterlockscreen \
     lightdm-webkit-theme-aether \
