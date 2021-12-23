@@ -22,6 +22,7 @@ require "awful.hotkeys_popup.keys"
 
 -- Additional modules
 local smart_borders = require "smart_borders"
+local collision = require "collision"()
 local awesome_navigator = require "awesomewm-vim-tmux-navigator"
 
 --  Error handling
@@ -181,7 +182,7 @@ local tasklist_buttons = gears.table.join(
 
 awful.screen.connect_for_each_screen(function(s)
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ " ", " ", " ", " ", " ", " ", " ", " ", " " }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -257,12 +258,6 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
     awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
 
-    -- awful.key({ modkey }, "j", function()
-    --     awful.client.focus.byidx(1)
-    -- end, { description = "focus next by index", group = "client" }),
-    -- awful.key({ modkey }, "k", function()
-    --     awful.client.focus.byidx(-1)
-    -- end, { description = "focus previous by index", group = "client" }),
     awful.key({ modkey }, "w", function()
         mymainmenu:show()
     end, { description = "show main menu", group = "awesome" }),
@@ -274,12 +269,6 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift" }, "k", function()
         awful.client.swap.byidx(-1)
     end, { description = "swap with previous client by index", group = "client" }),
-    awful.key({ modkey, "Control" }, "j", function()
-        awful.screen.focus_relative(1)
-    end, { description = "focus the next screen", group = "screen" }),
-    awful.key({ modkey, "Control" }, "k", function()
-        awful.screen.focus_relative(-1)
-    end, { description = "focus the previous screen", group = "screen" }),
     awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
     awful.key({ modkey }, "Tab", function()
         awful.client.focus.history.previous()
@@ -292,27 +281,15 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "Return", function()
         awful.spawn(terminal)
     end, { description = "open a terminal", group = "launcher" }),
-    awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
+    awful.key({ modkey, "Shift" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
     awful.key({ modkey, "Shift" }, "x", awesome.quit, { description = "quit awesome", group = "awesome" }),
 
-    -- awful.key({ modkey }, "l", function()
-    --     awful.tag.incmwfact(0.05)
-    -- end, { description = "increase master width factor", group = "layout" }),
-    -- awful.key({ modkey }, "h", function()
-    --     awful.tag.incmwfact(-0.05)
-    -- end, { description = "decrease master width factor", group = "layout" }),
-    awful.key({ modkey, "Shift" }, "h", function()
-        awful.tag.incnmaster(1, nil, true)
-    end, { description = "increase the number of master clients", group = "layout" }),
     awful.key({ modkey, "Shift" }, "l", function()
-        awful.tag.incnmaster(-1, nil, true)
-    end, { description = "decrease the number of master clients", group = "layout" }),
-    awful.key({ modkey, "Control" }, "h", function()
-        awful.tag.incncol(1, nil, true)
-    end, { description = "increase the number of columns", group = "layout" }),
-    awful.key({ modkey, "Control" }, "l", function()
-        awful.tag.incncol(-1, nil, true)
-    end, { description = "decrease the number of columns", group = "layout" }),
+        awful.tag.incmwfact(0.05)
+    end, { description = "increase master width factor", group = "layout" }),
+    awful.key({ modkey, "Shift" }, "h", function()
+        awful.tag.incmwfact(-0.05)
+    end, { description = "decrease master width factor", group = "layout" }),
     awful.key({ modkey }, "space", function()
         awful.layout.inc(1)
     end, { description = "select next", group = "layout" }),
@@ -329,24 +306,9 @@ globalkeys = gears.table.join(
     end, { description = "restore minimized", group = "client" }),
 
     -- Prompt
-    awful.key({ modkey }, "r", function()
-        -- awful.screen.focused().mypromptbox:run()
+    awful.key({ modkey, "Shift" }, "Return", function()
         awful.spawn "/home/dileep/.config/rofi/bin/launcher_colorful"
-        -- awful.screen.focused().spawn.with_shell "rofi"
-    end, { description = "run prompt", group = "launcher" }),
-
-    awful.key({ modkey }, "x", function()
-        awful.prompt.run {
-            prompt = "Run Lua code: ",
-            textbox = awful.screen.focused().mypromptbox.widget,
-            exe_callback = awful.util.eval,
-            history_path = awful.util.get_cache_dir() .. "/history_eval",
-        }
-    end, { description = "lua execute prompt", group = "awesome" }),
-    -- Menubar
-    awful.key({ modkey }, "p", function()
-        menubar.show()
-    end, { description = "show the menubar", group = "launcher" })
+    end, { description = "run rofi", group = "launcher" })
 )
 
 clientkeys = gears.table.join(
@@ -509,8 +471,8 @@ awful.rules.rules = {
     { rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = false } },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    { rule = { class = "Brave-browser" }, properties = { screen = 1, tag = "1" } },
+    { rule = { class = "Zoom" }, properties = { screen = 2, tag = "5" } },
 }
 --
 
