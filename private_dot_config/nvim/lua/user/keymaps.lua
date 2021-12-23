@@ -87,9 +87,3 @@ keymap("n", "*", "*<Cmd>lua require('hlslens').start()<CR>", opts)
 keymap("n", "#", "#<Cmd>lua require('hlslens').start()<CR>", opts)
 keymap("n", "g*", "g*<Cmd>lua require('hlslens').start()<CR>", opts)
 keymap("n", "g#", "g#<Cmd>lua require('hlslens').start()<CR>", opts)
-
----- Navigator.nvim
-keymap("n", "<C-h>", "<CMD>lua require('Navigator').left()<CR>", opts)
-keymap("n", "<C-k>", "<CMD>lua require('Navigator').up()<CR>", opts)
-keymap("n", "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opts)
-keymap("n", "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opts)

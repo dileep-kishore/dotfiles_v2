@@ -21,9 +21,8 @@ local hotkeys_popup = require "awful.hotkeys_popup"
 require "awful.hotkeys_popup.keys"
 
 -- Additional modules
-local xresources = require "beautiful.xresources"
-local dpi = xresources.apply_dpi
 local smart_borders = require "smart_borders"
+local awesome_navigator = require "awesomewm-vim-tmux-navigator"
 
 --  Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -258,12 +257,12 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
     awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
 
-    awful.key({ modkey }, "j", function()
-        awful.client.focus.byidx(1)
-    end, { description = "focus next by index", group = "client" }),
-    awful.key({ modkey }, "k", function()
-        awful.client.focus.byidx(-1)
-    end, { description = "focus previous by index", group = "client" }),
+    -- awful.key({ modkey }, "j", function()
+    --     awful.client.focus.byidx(1)
+    -- end, { description = "focus next by index", group = "client" }),
+    -- awful.key({ modkey }, "k", function()
+    --     awful.client.focus.byidx(-1)
+    -- end, { description = "focus previous by index", group = "client" }),
     awful.key({ modkey }, "w", function()
         mymainmenu:show()
     end, { description = "show main menu", group = "awesome" }),
@@ -294,14 +293,14 @@ globalkeys = gears.table.join(
         awful.spawn(terminal)
     end, { description = "open a terminal", group = "launcher" }),
     awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
-    awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
+    awful.key({ modkey, "Shift" }, "x", awesome.quit, { description = "quit awesome", group = "awesome" }),
 
-    awful.key({ modkey }, "l", function()
-        awful.tag.incmwfact(0.05)
-    end, { description = "increase master width factor", group = "layout" }),
-    awful.key({ modkey }, "h", function()
-        awful.tag.incmwfact(-0.05)
-    end, { description = "decrease master width factor", group = "layout" }),
+    -- awful.key({ modkey }, "l", function()
+    --     awful.tag.incmwfact(0.05)
+    -- end, { description = "increase master width factor", group = "layout" }),
+    -- awful.key({ modkey }, "h", function()
+    --     awful.tag.incmwfact(-0.05)
+    -- end, { description = "decrease master width factor", group = "layout" }),
     awful.key({ modkey, "Shift" }, "h", function()
         awful.tag.incnmaster(1, nil, true)
     end, { description = "increase the number of master clients", group = "layout" }),
@@ -355,7 +354,7 @@ clientkeys = gears.table.join(
         c.fullscreen = not c.fullscreen
         c:raise()
     end, { description = "toggle fullscreen", group = "client" }),
-    awful.key({ modkey, "Shift" }, "c", function(c)
+    awful.key({ modkey, "Shift" }, "q", function(c)
         c:kill()
     end, { description = "close", group = "client" }),
     awful.key(
@@ -548,13 +547,13 @@ end)
 -- This is especially the case with daemons (like syncthing)
 awful.spawn.with_shell "bash ~/.config/awesome/autorun.sh"
 
--- Smart borders
+---- Smart borders config
 smart_borders {
     layout = "ratio",
-    border_width = dpi(6),
+    border_width = 6,
     show_button_tooltips = true,
     align_horizontal = "center",
-    rounded_corner = dpi(12),
+    rounded_corner = 14,
     color_normal = "#1a1b26",
     color_focus = "#7aa2f7",
     color_close_normal = {
@@ -593,4 +592,15 @@ smart_borders {
         to = { 40, 0 },
         stops = { { 0, "#a1bfcf" }, { 1, "#F7C6FF" } },
     },
+}
+
+---- awesomewm-vim-tmux-navigator config
+awesome_navigator {
+    up = { "Up", "k" },
+    down = { "Down", "j" },
+    left = { "Left", "h" },
+    right = { "Right", "l" },
+    mod = "Mod4",
+    mod_keysym = "Super_L",
+    experimental = true,
 }

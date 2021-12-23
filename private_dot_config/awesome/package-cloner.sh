@@ -13,3 +13,7 @@ fi
 if [ ! -d $AWESOMEDIR/lain ]; then
     git clone https://github.com/lcpz/lain $AWESOMEDIR/lain
 fi
+
+if [ ! -d $AWESOMEDIR/awesomewm-vim-tmux-navigator ]; then
+    git clone https://github.com/intrntbrn/awesomewm-vim-tmux-navigator $AWESOMEDIR/awesomewm-vim-tmux-navigator
+fi
