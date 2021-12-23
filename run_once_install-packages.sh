@@ -17,6 +17,7 @@ sudo pacman -S --needed --noconfirm \
 sudo pacman -S --needed --noconfirm \
     ispell \
     lxappearance \
+    lightdm-webkit2-greeter \
     picom \
     nitrogen \
     rofi \
@@ -109,6 +110,7 @@ fi
 paru -S --useask --batchinstall --cleanafter --removemake \
     mu \
     betterlockscreen \
+    lightdm-webkit-theme-aether \
     nnn-nerd \
     brave-bin \
     spotify \
