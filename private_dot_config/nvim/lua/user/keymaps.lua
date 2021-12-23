@@ -76,6 +76,9 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
+-- Apply changes to dotfiles
+keymap("n", "<Space>z", ":!chezmoi apply<CR>", opts)
+
 ---- Hlslens
 -- FIXME: Hlslens stops working after opening Telescope
 keymap("n", "n", "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>", opts)

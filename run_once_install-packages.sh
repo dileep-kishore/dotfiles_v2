@@ -22,11 +22,9 @@ sudo pacman -S --needed --noconfirm \
     rofi \
     trayer \
     volumeicon \
-    cabal-install \
     spotifyd \
     trash-cli \
     pwgen \
-    stack \
     libqalculate \
     pamixer \
     ttf-font-awesome \
@@ -52,6 +50,7 @@ sudo pacman -S --needed --noconfirm \
     julia \
     r \
     lua \
+    luarocks \
     nodejs \
     npm \
     yarn \
