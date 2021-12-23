@@ -10,7 +10,7 @@
 set-option -g status-justify centre
 set-option -g status-keys vi
 set-option -g status-position bottom
-set -g status-right-length 150
+set -g status-left-length 150
 set-option -g status-style fg=white,bg=#1a1b26
 
 # Replace the location of the script.
