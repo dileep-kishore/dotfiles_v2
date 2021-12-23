@@ -20,6 +20,11 @@ local hotkeys_popup = require "awful.hotkeys_popup"
 -- when client with a matching name is opened:
 require "awful.hotkeys_popup.keys"
 
+-- Additional modules
+local xresources = require "beautiful.xresources"
+local dpi = xresources.apply_dpi
+local smart_borders = require "smart_borders"
+
 --  Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -54,6 +59,10 @@ end
 --  Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+
+---- My config variables
+beautiful.useless_gap = 5
+beautiful.border_width = 0
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -171,25 +180,7 @@ local tasklist_buttons = gears.table.join(
     end)
 )
 
-local function set_wallpaper(s)
-    -- Wallpaper
-    if beautiful.wallpaper then
-        local wallpaper = beautiful.wallpaper
-        -- If wallpaper is a function, call it with the screen
-        if type(wallpaper) == "function" then
-            wallpaper = wallpaper(s)
-        end
-        gears.wallpaper.maximized(wallpaper, s, true)
-    end
-end
-
--- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
-screen.connect_signal("property::geometry", set_wallpaper)
-
 awful.screen.connect_for_each_screen(function(s)
-    -- Wallpaper
-    set_wallpaper(s)
-
     -- Each screen has its own tag table.
     awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
@@ -340,7 +331,8 @@ globalkeys = gears.table.join(
 
     -- Prompt
     awful.key({ modkey }, "r", function()
-        awful.screen.focused().mypromptbox:run()
+        -- awful.screen.focused().mypromptbox:run()
+        awful.spawn "/home/dileep/.config/rofi/bin/launcher_colorful"
         -- awful.screen.focused().spawn.with_shell "rofi"
     end, { description = "run prompt", group = "launcher" }),
 
@@ -536,46 +528,6 @@ client.connect_signal("manage", function(c)
     end
 end)
 
--- Add a titlebar if titlebars_enabled is set to true in the rules.
-client.connect_signal("request::titlebars", function(c)
-    -- buttons for the titlebar
-    local buttons = gears.table.join(
-        awful.button({}, 1, function()
-            c:emit_signal("request::activate", "titlebar", { raise = true })
-            awful.mouse.client.move(c)
-        end),
-        awful.button({}, 3, function()
-            c:emit_signal("request::activate", "titlebar", { raise = true })
-            awful.mouse.client.resize(c)
-        end)
-    )
-
-    awful.titlebar(c):setup {
-        { -- Left
-            awful.titlebar.widget.iconwidget(c),
-            buttons = buttons,
-            layout = wibox.layout.fixed.horizontal,
-        },
-        { -- Middle
-            { -- Title
-                align = "center",
-                widget = awful.titlebar.widget.titlewidget(c),
-            },
-            buttons = buttons,
-            layout = wibox.layout.flex.horizontal,
-        },
-        { -- Right
-            awful.titlebar.widget.floatingbutton(c),
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.stickybutton(c),
-            awful.titlebar.widget.ontopbutton(c),
-            awful.titlebar.widget.closebutton(c),
-            layout = wibox.layout.fixed.horizontal(),
-        },
-        layout = wibox.layout.align.horizontal,
-    }
-end)
-
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", { raise = false })
@@ -583,23 +535,62 @@ end)
 
 client.connect_signal("focus", function(c)
     c.border_color = beautiful.border_focus
+    c.opacity = 1
 end)
 client.connect_signal("unfocus", function(c)
     c.border_color = beautiful.border_normal
+    c.opacity = 0.9
 end)
 --
 
----- My config
-beautiful.useless_gap = 5
-beautiful.border_width = 5
-
 ---- Auostart stuff
-awful.spawn.with_shell "nm-applet &"
-awful.spawn.with_shell "volumeicon &"
-awful.spawn.with_shell "blueman-applet &"
--- templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dileep-xmonad")) }}
-awful.spawn.with_shell "~/.dotfiles/bin/killer.sh || shutdown -h now &"
--- {{- end }}
-awful.spawn.with_shell "aw-qt &"
-awful.spawn.with_shell "barrier &"
-awful.spawn.with_shell "syncthing -no-browser &"
+-- NOTE: We create an additional file because not all processes work properly with spawn.once
+-- This is especially the case with daemons (like syncthing)
+awful.spawn.with_shell "bash ~/.config/awesome/autorun.sh"
+
+-- Smart borders
+smart_borders {
+    layout = "ratio",
+    border_width = dpi(6),
+    show_button_tooltips = true,
+    align_horizontal = "center",
+    rounded_corner = dpi(12),
+    color_normal = "#1a1b26",
+    color_focus = "#7aa2f7",
+    color_close_normal = {
+        type = "linear",
+        from = { 0, 0 },
+        to = { 60, 0 },
+        stops = { { 0, "#fd8489" }, { 1, "#56666f" } },
+    },
+    color_close_focus = {
+        type = "linear",
+        from = { 0, 0 },
+        to = { 60, 0 },
+        stops = { { 0, "#fd8489" }, { 1, "#a1bfcf" } },
+    },
+    color_close_hover = {
+        type = "linear",
+        from = { 0, 0 },
+        to = { 60, 0 },
+        stops = { { 0, "#FF9EA3" }, { 1, "#a1bfcf" } },
+    },
+    color_floating_normal = {
+        type = "linear",
+        from = { 0, 0 },
+        to = { 40, 0 },
+        stops = { { 0, "#56666f" }, { 1, "#ddace7" } },
+    },
+    color_floating_focus = {
+        type = "linear",
+        from = { 0, 0 },
+        to = { 40, 0 },
+        stops = { { 0, "#a1bfcf" }, { 1, "#ddace7" } },
+    },
+    color_floating_hover = {
+        type = "linear",
+        from = { 0, 0 },
+        to = { 40, 0 },
+        stops = { { 0, "#a1bfcf" }, { 1, "#F7C6FF" } },
+    },
+}

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+function run {
+    if ! pgrep -u $USER -f $1; then
+        ${@:2} &
+    fi
+}
+
+run nitrogen nitrogen --restore
+run nm-applet nm-applet
+run volumeicon volumeicon
+run blueman-applet blueman-applet
+# templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dileep-xmonad")) }}
+run /home/dileep/.dotfiles/bin/killer.sh /home/dileep/.dotfiles/bin/killer.sh
+# {{- end }}
+run activitywatch aw-qt
+run barrier barrier
+run syncthing -no-browser syncthing
