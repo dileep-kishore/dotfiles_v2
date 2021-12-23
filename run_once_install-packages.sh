@@ -12,6 +12,7 @@ sudo pacman -S --needed --noconfirm \
     subversion \
     gparted \
     procs \
+    btop \
     dpkg
 
 sudo pacman -S --needed --noconfirm \
@@ -135,6 +136,7 @@ paru -S --useask --batchinstall --cleanafter --removemake \
     neuron-zettelkasten-bin \
     stylua \
     luacheck \
+    nodejs-markdownlint-cli \
     bash-language-server \
     wakatime-cli-bin \
     texlab \
