@@ -379,6 +379,13 @@ return packer.startup(function(use)
             require("todo-comments").setup {}
         end,
     }
+    -- org-mode
+    use {
+        "nvim-orgmode/orgmode",
+        config = function()
+            require("orgmode").setup {}
+        end,
+    }
 
     ---- Miscellaneous
     use "wakatime/vim-wakatime"

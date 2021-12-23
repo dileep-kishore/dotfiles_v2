@@ -276,7 +276,7 @@ There are two ways to load a /theme/ in *Doom Emacs*, assuming that it is instal
 2. Manually load it using the =load-theme= function
 
 #+begin_src elisp
-(setq doom-theme 'doom-moonlight)
+(setq doom-theme 'doom-tokyo-night)
 #+end_src
 
 Nicer name for the default fallback buffer
