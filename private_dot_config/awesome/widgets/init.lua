@@ -177,7 +177,7 @@ function _M.create_wibox(s)
                 layout = wibox.layout.fixed.horizontal,
                 _M.launcher,
                 s.taglist,
-                s.promptbox,
+                -- s.promptbox,
             },
             -- middle widgets
             s.tasklist,
