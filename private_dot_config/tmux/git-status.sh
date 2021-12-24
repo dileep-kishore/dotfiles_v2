@@ -9,4 +9,6 @@ if test "$BRANCH" != ""; then
     else
         echo "#[fg=red,bg=#1a1b26,nobold,noitalics,nounderscore]#[fg=#1a1b26,bg=red,bold,italics]  $BRANCH #[fg=#7aa2f7,bg=red,nobold,noitalics,nounderscore]"
     fi
+else
+    echo "#[fg=#7aa2f7,bg=#1a1b26,nobold,noitalics,nounderscore]"
 fi
