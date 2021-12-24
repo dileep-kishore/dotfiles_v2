@@ -562,4 +562,5 @@ awesome_navigator {
     mod = "Mod4",
     mod_keysym = "Super_L",
     experimental = true,
+    -- focus = collision.focus
 }
