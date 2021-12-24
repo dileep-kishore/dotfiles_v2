@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DOTFILES=$HOME/.dotfiles/private_dot_config/awesome
+DOTFILES=$HOME/.dotfiles/private_dot_config/awesome/modules
 AWESOMEDIR=$HOME/.config/awesome/modules
 
 if [ ! -d $AWESOMEDIR/collision ]; then
