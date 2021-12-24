@@ -18,6 +18,9 @@ require "rules"
 -- load signals
 require "signals"
 
+-- load modules
+require "modules"
+
 -- autostart
 -- NOTE: We create an additional file because not all processes work properly with spawn.once
 -- This is especially the case with daemons (like syncthing)
