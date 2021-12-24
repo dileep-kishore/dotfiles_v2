@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 DOTFILES=$HOME/.dotfiles/private_dot_config/awesome
-AWESOMEDIR=$HOME/.config/awesome
+AWESOMEDIR=$HOME/.config/awesome/modules
 
 if [ ! -d $AWESOMEDIR/collision ]; then
     git clone https://github.com/Elv13/collision $AWESOMEDIR/collision
