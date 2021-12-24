@@ -77,6 +77,8 @@ if [ ! -d $HOME/Downloads/paru ]; then
     cd $MAINDIR
 fi
 
+bash ~/.config/awesome/package-cloner.sh
+
 sudo pacman -S --needed --noconfirm \
     neofetch \
     ripgrep \
