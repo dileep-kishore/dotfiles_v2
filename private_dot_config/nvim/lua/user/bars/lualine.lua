@@ -36,7 +36,7 @@ local mode = {
 local filename = {
     "filename",
     file_status = false,
-    path = 0,
+    path = 1,
     cond = hide_in_width,
 }
 
