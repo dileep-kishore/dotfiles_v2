@@ -19,6 +19,8 @@ require "rules"
 require "signals"
 
 -- load modules
+beautiful.useless_gap = 5
+beautiful.border_width = 0
 require "modules"
 
 -- autostart
