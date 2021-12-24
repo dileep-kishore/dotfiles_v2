@@ -24,6 +24,7 @@ require "awful.hotkeys_popup.keys"
 local smart_borders = require "smart_borders"
 local collision = require "collision"()
 local awesome_navigator = require "awesomewm-vim-tmux-navigator"
+local lain = require "lain"
 
 --  Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -58,13 +59,7 @@ end
 
 --  Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-
----- My config variables
-beautiful.icon_theme = "/usr/share/icons/Papirus-Dark"
-beautiful.font = "Fira Code Regular Nerd Font 12"
-beautiful.useless_gap = 5
-beautiful.border_width = 0
+beautiful.init "~/.config/awesome/theme.lua"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
