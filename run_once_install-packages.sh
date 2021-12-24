@@ -113,6 +113,8 @@ paru -S --useask --batchinstall --cleanafter --removemake \
     mu \
     betterlockscreen \
     lightdm-webkit-theme-aether \
+    orchis-theme-git \
+    ttf-google-fonts-git \
     nnn-nerd \
     brave-bin \
     spotify \
