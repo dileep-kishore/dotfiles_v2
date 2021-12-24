@@ -93,7 +93,7 @@ local mappings = {
 
     f = {
         name = "Files",
-        f = { ":Telescope frecency theme=dropdown<CR>", "Frequent files" },
+        f = { ":Telescope find_files theme=dropdown<CR>", "Find files" },
         g = { ":Telescope git_files theme=dropdown<CR>", "Git files" },
         F = { ":Telescope find_files theme=dropdown<CR>", "Find files" },
         b = { ":Telescope buffers theme=dropdown<CR>", "Select buffers" },
@@ -171,7 +171,7 @@ local mappings = {
         s = { "<cmd>Telescope symbols<cr>", "Symbols" },
         c = { "<cmd>Telescope neoclip<cr>", "Colorscheme" },
         C = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-        f = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+        f = { ":Telescope frecency theme=dropdown<CR>", "Frequent files" },
         t = { "<cmd>TodoTelescope<cr>", "Search todos" },
     },
 
