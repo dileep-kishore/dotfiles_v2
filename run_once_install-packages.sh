@@ -13,6 +13,7 @@ sudo pacman -S --needed --noconfirm \
     gparted \
     procs \
     btop \
+    xorg-server-xephyr \
     dpkg
 
 sudo pacman -S --needed --noconfirm \
