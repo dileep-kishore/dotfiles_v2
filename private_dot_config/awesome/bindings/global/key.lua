@@ -9,7 +9,7 @@ local widgets = require "widgets"
 
 menubar.utils.terminal = apps.terminal
 
--- general awesome keys
+---- general awesome keys
 awful.keyboard.append_global_keybindings {
     awful.key {
         modifiers = { mod.super },
@@ -28,7 +28,7 @@ awful.keyboard.append_global_keybindings {
         end,
     },
     awful.key {
-        modifiers = { mod.super, mod.ctrl },
+        modifiers = { mod.super, mod.shift },
         key = "r",
         description = "reload awesome",
         group = "awesome",
@@ -36,24 +36,10 @@ awful.keyboard.append_global_keybindings {
     },
     awful.key {
         modifiers = { mod.super, mod.shift },
-        key = "q",
+        key = "x",
         description = "quit awesome",
         group = "awesome",
         on_press = awesome.quit,
-    },
-    awful.key {
-        modifiers = { mod.super },
-        key = "x",
-        description = "lua execute prompt",
-        group = "awesome",
-        on_press = function()
-            awful.prompt.run {
-                prompt = "Run Lua code: ",
-                textbox = awful.screen.focused().promptbox.widget,
-                exe_callback = awful.util.eval,
-                history_path = awful.util.get_cache_dir() .. "/history_eval",
-            }
-        end,
     },
     awful.key {
         modifiers = { mod.super },
@@ -67,29 +53,20 @@ awful.keyboard.append_global_keybindings {
     awful.key {
         modifiers = { mod.super },
         key = "r",
-        description = "run prompt",
+        description = "Rofi launcher",
         group = "launcher",
         on_press = function()
-            awful.screen.focused().promptbox:run()
-        end,
-    },
-    awful.key {
-        modifiers = { mod.super },
-        key = "p",
-        description = "show the menubar",
-        group = "launcher",
-        on_press = function()
-            menubar.show()
+            awful.spawn.with_shell "bash ~/.config/rofi/launcher.sh"
         end,
     },
 }
 
--- tags related keybindings
+---- tag related keybindings
 awful.keyboard.append_global_keybindings {
     awful.key {
         modifiers = { mod.super },
         key = "Left",
-        description = "view preivous",
+        description = "view previous",
         group = "tag",
         on_press = awful.tag.viewprev,
     },
@@ -109,26 +86,8 @@ awful.keyboard.append_global_keybindings {
     },
 }
 
--- focus related keybindings
+---- focus related keybindings
 awful.keyboard.append_global_keybindings {
-    awful.key {
-        modifiers = { mod.super },
-        key = "j",
-        description = "focus next by index",
-        group = "client",
-        on_press = function()
-            awful.client.focus.byidx(1)
-        end,
-    },
-    awful.key {
-        modifiers = { mod.super },
-        key = "k",
-        description = "focus previous by index",
-        group = "client",
-        on_press = function()
-            awful.client.focus.byidx(-1)
-        end,
-    },
     awful.key {
         modifiers = { mod.super },
         key = "Tab",
@@ -143,7 +102,16 @@ awful.keyboard.append_global_keybindings {
     },
     awful.key {
         modifiers = { mod.super, mod.ctrl },
-        key = "j",
+        key = "h",
+        description = "focus the prev screen",
+        group = "screen",
+        on_press = function()
+            awful.screen.focus_relative(-1)
+        end,
+    },
+    awful.key {
+        modifiers = { mod.super, mod.ctrl },
+        key = "l",
         description = "focus the next screen",
         group = "screen",
         on_press = function()
@@ -192,7 +160,7 @@ awful.keyboard.append_global_keybindings {
         on_press = awful.client.urgent.jumpto,
     },
     awful.key {
-        modifiers = { mod.super },
+        modifiers = { mod.super, mod.shift },
         key = "l",
         description = "increase master width factor",
         group = "layout",
@@ -201,48 +169,12 @@ awful.keyboard.append_global_keybindings {
         end,
     },
     awful.key {
-        modifiers = { mod.super },
+        modifiers = { mod.super, mod.shift },
         key = "h",
         description = "decrease master width factor",
         group = "layout",
         on_press = function()
             awful.tag.incmwfact(-0.05)
-        end,
-    },
-    awful.key {
-        modifiers = { mod.super, mod.shift },
-        key = "h",
-        description = "increase the number of master clients",
-        group = "layout",
-        on_press = function()
-            awful.tag.incnmaster(1, nil, true)
-        end,
-    },
-    awful.key {
-        modifiers = { mod.super, mod.shift },
-        key = "l",
-        description = "decrease the number of master clients",
-        group = "layout",
-        on_press = function()
-            awful.tag.incnmaster(-1, nil, true)
-        end,
-    },
-    awful.key {
-        modifiers = { mod.super, mod.ctrl },
-        key = "h",
-        description = "increase the number of columns",
-        group = "layout",
-        on_press = function()
-            awful.tag.incnmaster(1, nil, true)
-        end,
-    },
-    awful.key {
-        modifiers = { mod.super, mod.ctrl },
-        key = "l",
-        description = "decrease the number of columns",
-        group = "layout",
-        on_press = function()
-            awful.tag.incnmaster(-1, nil, true)
         end,
     },
     awful.key {
@@ -321,9 +253,9 @@ awful.keyboard.append_global_keybindings {
         end,
     },
     awful.key {
-        modifiers = { mod.super },
-        keygroup = "numpad",
-        description = "select layout directrly",
+        modifiers = { mod.alt, mod.shift },
+        keygroup = "numrow",
+        description = "select layout directly",
         group = "layout",
         on_press = function(index)
             local tag = awful.screen.focused().selected_tag
