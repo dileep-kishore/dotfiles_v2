@@ -61,6 +61,8 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 ---- My config variables
+beautiful.icon_theme = "/usr/share/icons/Papirus-Dark"
+beautiful.font = "Fira Code Regular Nerd Font 12"
 beautiful.useless_gap = 5
 beautiful.border_width = 0
 
@@ -307,7 +309,8 @@ globalkeys = gears.table.join(
 
     -- Prompt
     awful.key({ modkey, "Shift" }, "Return", function()
-        awful.spawn "/home/dileep/.config/rofi/bin/launcher_colorful"
+        local curr_screen = awful.screen.focused()
+        awful.spawn.with_shell("bash ~/.config/rofi/launcher.sh", curr_screen)
     end, { description = "run rofi", group = "launcher" })
 )
 
