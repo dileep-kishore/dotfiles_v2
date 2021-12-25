@@ -7,7 +7,7 @@ pcall(require, "luarocks.loader")
 local beautiful = require "beautiful"
 local gears = require "gears"
 local awful = require "awful"
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init(os.getenv "HOME" .. "/.config/awesome/theme/theme.lua")
 
 -- load key and mouse bindings
 require "bindings"
@@ -19,8 +19,6 @@ require "rules"
 require "signals"
 
 -- load modules
-beautiful.useless_gap = 5
-beautiful.border_width = 0
 require "modules"
 
 -- autostart
