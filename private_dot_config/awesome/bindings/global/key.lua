@@ -56,7 +56,7 @@ awful.keyboard.append_global_keybindings {
         description = "Rofi launcher",
         group = "launcher",
         on_press = function()
-            awful.spawn "bash ~/.config/rofi/launcher.sh"
+            awful.spawn.with_shell "bash ~/.config/rofi/launcher.sh"
         end,
     },
 }
