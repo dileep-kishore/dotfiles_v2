@@ -59,6 +59,24 @@ awful.keyboard.append_global_keybindings {
             awful.spawn.with_shell "bash ~/.config/rofi/launcher.sh"
         end,
     },
+    awful.key {
+        modifiers = { mod.alt, mod.shift },
+        key = "h",
+        description = "Wacom on left screen",
+        group = "launcher",
+        on_press = function()
+            awful.spawn.with_shell "bash ~/.dotfiles/bin/wacom_config.sh left"
+        end,
+    },
+    awful.key {
+        modifiers = { mod.alt, mod.shift },
+        key = "l",
+        description = "Wacom on right screen",
+        group = "launcher",
+        on_press = function()
+            awful.spawn.with_shell "bash ~/.dotfiles/bin/wacom_config.sh right"
+        end,
+    },
 }
 
 ---- tag related keybindings
