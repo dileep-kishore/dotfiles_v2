@@ -16,7 +16,7 @@ theme.name = "tokyo-night"
 theme.font = "Lato Medium 12"
 theme.title_font = "Lato Medium 13"
 
-theme.bg_normal = "#1a1b26"
+theme.bg_normal = "#1a1b26BB"
 theme.bg_focus = "#1a1b26"
 theme.bg_urgent = "#ff0000"
 theme.bg_minimize = "#444444"
