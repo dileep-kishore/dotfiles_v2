@@ -108,6 +108,8 @@ local mappings = {
 
     g = {
         name = "Git",
+        a = { "<cmd>Git add<cr>", "Git add" },
+        c = { "<cmd>Git commit<cr>", "Git commit" },
         g = { "<cmd>Neogit<CR>", "Neogit" },
         j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
         k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
@@ -122,7 +124,7 @@ local mappings = {
         },
         o = { "<cmd>Telescope git_status theme=dropdown<cr>", "Open changed file" },
         b = { "<cmd>Telescope git_branches theme=dropdown<cr>", "Checkout branch" },
-        c = { "<cmd>Telescope git_commits theme=dropdown<cr>", "Checkout commit" },
+        C = { "<cmd>Telescope git_commits theme=dropdown<cr>", "Checkout commit" },
         d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
         h = { "<cmd>DiffviewFileHistory<cr>", "View file history" },
         D = { "<cmd>DiffviewOpen<cr>", "View diffs of all modified files" },

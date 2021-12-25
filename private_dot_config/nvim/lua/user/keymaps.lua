@@ -87,3 +87,7 @@ keymap("n", "*", "*<Cmd>lua require('hlslens').start()<CR>", opts)
 keymap("n", "#", "#<Cmd>lua require('hlslens').start()<CR>", opts)
 keymap("n", "g*", "g*<Cmd>lua require('hlslens').start()<CR>", opts)
 keymap("n", "g#", "g#<Cmd>lua require('hlslens').start()<CR>", opts)
+
+---- Treesitter hint textobject
+keymap("o", "m", ":<C-U>lua require('tsht').nodes()<CR>", { noremap = false, silent = true })
+keymap("v", "m", ":<C-U>lua require('tsht').nodes()<CR>", opts)

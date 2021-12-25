@@ -205,6 +205,7 @@ return packer.startup(function(use)
     }
 
     ---- Git
+    use "tpope/vim-fugitive" -- The premier vim plugin for Git
     use "TimUntersberger/neogit"
     use {
         "pwntester/octo.nvim", -- Edit GitHub issues and pull requests
@@ -222,6 +223,7 @@ return packer.startup(function(use)
 
     ---- Motions, windows and navigation
     use "ggandor/lightspeed.nvim"
+    use "mfussenegger/nvim-ts-hint-textobject"
     use "edluffy/specs.nvim"
     use "tpope/vim-repeat"
     use "tpope/vim-unimpaired"
@@ -282,6 +284,22 @@ return packer.startup(function(use)
             require("colorizer").setup()
         end,
     }
+    -- Smooth buffer change when opening quick et al.
+    use {
+        "luukvbaal/stabilize.nvim",
+        config = function()
+            require("stabilize").setup()
+        end,
+    }
+    -- Highlight current mode in cursorline
+    use {
+        "mvllow/modes.nvim",
+        event = "BufRead",
+        config = function()
+            vim.opt.cursorline = true
+            require("modes").setup()
+        end,
+    }
     -- Smooth scrolling
     use {
         "karb94/neoscroll.nvim",
@@ -290,6 +308,7 @@ return packer.startup(function(use)
             require("telescope").load_extension "neoclip"
         end,
     }
+    use "tpope/vim-sleuth" -- Automatically adjust shiftwidth and expandtab
     -- Highlights
     -- Show registers
     use "tversteeg/registers.nvim"
