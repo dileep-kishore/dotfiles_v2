@@ -18,7 +18,7 @@ theme.title_font = "Lato Medium 13"
 
 theme.bg_normal = "#1a1b26BB"
 theme.bg_focus = "#1a1b26"
-theme.bg_urgent = "#ff0000"
+theme.bg_urgent = "#8c4351"
 theme.bg_minimize = "#444444"
 theme.bg_systray = theme.bg_normal
 
@@ -31,7 +31,7 @@ theme.useless_gap = dpi(5)
 theme.border_width = dpi(0)
 theme.border_normal = "#000000"
 theme.border_focus = "#535d6c"
-theme.border_marked = "#CC9393"
+theme.border_marked = "#8c4351"
 
 -- There are other variable sets
 -- overriding the icons one when
@@ -47,42 +47,15 @@ theme.border_marked = "#CC9393"
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Taglist
-theme.taglist_bg_empty = theme.bg_minimize
-theme.taglist_bg_occupied = theme.bg_minimize
-theme.taglist_bg_urgent = "linear:0,0:"
-    .. dpi(40)
-    .. ",0:0,"
-    .. theme.bg_urgent
-    .. ":0.08,"
-    .. theme.bg_urgent
-    .. ":0.08,"
-    .. theme.bg_urgent
-    .. ":1,"
-    .. theme.bg_urgent
-theme.taglist_bg_focus = "linear:0,0:"
-    .. dpi(40)
-    .. ",0:0,"
-    .. theme.bg_focus
-    .. ":0.08,"
-    .. theme.bg_focus
-    .. ":0.08,"
-    .. theme.bg_focus
-    .. ":1,"
-    .. theme.bg_focus
+theme.taglist_bg_empty = "#a9b1d6"
+theme.taglist_bg_occupied = theme.fg_focus
+theme.taglist_bg_urgent = theme.bg_urgent
+theme.taglist_bg_focus = "#bb9af7"
 
 -- Tasklist
-theme.tasklist_font = "Roboto medium 11"
+theme.tasklist_font = "Lato Medium 12"
 theme.tasklist_bg_normal = theme.bg_normal
-theme.tasklist_bg_focus = "linear:0,0:0,"
-    .. dpi(40)
-    .. ":0,"
-    .. theme.fg_normal
-    .. ":0.95,"
-    .. theme.fg_normal
-    .. ":0.95,"
-    .. theme.fg_normal
-    .. ":1,"
-    .. theme.fg_normal
+theme.tasklist_bg_focus = "#bb9af7"
 theme.tasklist_bg_urgent = theme.bg_urgent
 theme.tasklist_fg_focus = "#DDDDDD"
 theme.tasklist_fg_urgent = theme.fg_normal

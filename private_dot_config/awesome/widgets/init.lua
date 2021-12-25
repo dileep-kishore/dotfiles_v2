@@ -99,7 +99,7 @@ function _M.create_taglist(s)
             shape = gears.shape.partial_squircle,
         },
         layout = {
-            spacing = 12,
+            spacing = 2,
             spacing_widget = {
                 color = "#1a1b26",
                 shape = gears.shape.partial_squircle,
@@ -107,62 +107,57 @@ function _M.create_taglist(s)
             },
             layout = wibox.layout.fixed.horizontal,
         },
-        -- widget_template = {
-        --     {
-        --         {
-        --             {
-        --                 {
-        --                     {
-        --                         id = "index_role",
-        --                         widget = wibox.widget.textbox,
-        --                     },
-        --                     margins = 4,
-        --                     widget = wibox.container.margin,
-        --                 },
-        --                 bg = "#dddddd",
-        --                 shape = gears.shape.circle,
-        --                 widget = wibox.container.background,
-        --             },
-        --             {
-        --                 {
-        --                     id = "icon_role",
-        --                     widget = wibox.widget.imagebox,
-        --                 },
-        --                 margins = 2,
-        --                 widget = wibox.container.margin,
-        --             },
-        --             {
-        --                 id = "text_role",
-        --                 widget = wibox.widget.textbox,
-        --             },
-        --             layout = wibox.layout.fixed.horizontal,
-        --         },
-        --         left = 18,
-        --         right = 18,
-        --         widget = wibox.container.margin,
-        --     },
-        --     id = "background_role",
-        --     widget = wibox.container.background,
-        --     -- Add support for hover colors and an index label
-        --     create_callback = function(self, c3, index, objects)
-        --         self:get_children_by_id("index_role")[1].markup = "<b> " .. index .. " </b>"
-        --         self:connect_signal("mouse::enter", function()
-        --             if self.bg ~= "#ff0000" then
-        --                 self.backup = self.bg
-        --                 self.has_backup = true
-        --             end
-        --             self.bg = "#ff0000"
-        --         end)
-        --         self:connect_signal("mouse::leave", function()
-        --             if self.has_backup then
-        --                 self.bg = self.backup
-        --             end
-        --         end)
-        --     end,
-        --     update_callback = function(self, c3, index, objects)
-        --         self:get_children_by_id("index_role")[1].markup = "<b> " .. index .. " </b>"
-        --     end,
-        -- },
+        widget_template = {
+            {
+                {
+                    {
+                        {
+                            {
+                                id = "index_role",
+                                widget = wibox.widget.imagebox,
+                            },
+                            margins = 0,
+                            widget = wibox.container.margin,
+                        },
+                        widget = wibox.container.background,
+                    },
+                    {
+                        {
+                            id = "icon_role",
+                            widget = wibox.widget.imagebox,
+                        },
+                        margins = 2,
+                        widget = wibox.container.margin,
+                    },
+                    layout = wibox.layout.align.horizontal,
+                },
+                bg = "#1a1b26",
+                left = 10,
+                right = 10,
+                widget = wibox.container.margin,
+            },
+            id = "background_role",
+            widget = wibox.container.background,
+            -- Add support for hover colors and an index label
+            create_callback = function(self, c3, index, objects)
+                self:get_children_by_id("index_role")[1].markup = "<b> " .. index .. " </b>"
+                self:connect_signal("mouse::enter", function()
+                    if self.bg ~= beautiful.bg_urgent then
+                        self.backup = self.bg
+                        self.has_backup = true
+                    end
+                    self.bg = beautiful.bg_urgent
+                end)
+                self:connect_signal("mouse::leave", function()
+                    if self.has_backup then
+                        self.bg = self.backup
+                    end
+                end)
+            end,
+            update_callback = function(self, c3, index, objects)
+                self:get_children_by_id("index_role")[1].markup = "<b> " .. index .. " </b>"
+            end,
+        },
         buttons = {
             awful.button {
                 modifiers = {},
@@ -227,6 +222,43 @@ function _M.create_tasklist(s)
     return awful.widget.tasklist {
         screen = s,
         filter = awful.widget.tasklist.filter.currenttags,
+        layout = {
+            spacing_widget = {
+                {
+                    forced_width = 5,
+                    forced_height = 24,
+                    thickness = 1,
+                    color = "#777777",
+                    widget = wibox.widget.separator,
+                },
+                valign = "center",
+                halign = "center",
+                widget = wibox.container.place,
+            },
+            spacing = 1,
+            layout = wibox.layout.fixed.horizontal,
+        },
+        widget_template = {
+            {
+                wibox.widget.base.make_widget(),
+                forced_height = 5,
+                id = "background_role",
+                widget = wibox.container.background,
+            },
+            {
+                {
+                    id = "clienticon",
+                    widget = awful.widget.clienticon,
+                },
+                margins = 5,
+                widget = wibox.container.margin,
+            },
+            nil,
+            create_callback = function(self, c, index, objects)
+                self:get_children_by_id("clienticon")[1].client = c
+            end,
+            layout = wibox.layout.align.vertical,
+        },
         buttons = {
             awful.button {
                 modifiers = {},
@@ -265,7 +297,8 @@ function _M.create_wibox(s)
         screen = s,
         position = "top",
         widget = {
-            layout = wibox.layout.fixed.horizontal,
+            layout = wibox.layout.align.horizontal,
+            expand = "none",
             -- left widgets
             {
                 layout = wibox.layout.fixed.horizontal,
@@ -278,7 +311,6 @@ function _M.create_wibox(s)
             {
                 layout = wibox.layout.align.horizontal,
                 s.taglist,
-                wibox.container.background(mysep(beautiful.fg_focus, _M.left_tri), beautiful.bg_normal),
             },
             -- right widgets
             {
