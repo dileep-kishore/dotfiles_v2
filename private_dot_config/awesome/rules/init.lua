@@ -58,6 +58,12 @@ ruled.client.connect_signal("request::rules", function()
         properties = { screen = 1, tag = "1" },
     }
 
+    -- Set telegram to always appear on the tag named '5' on screen 2
+    ruled.client.append_rule {
+        rule = { class = "TelegramDesktop" },
+        properties = { screen = 2, tag = "5" },
+    }
+
     -- Set Zoom to always appear on the tag named '5' on screen 2
     ruled.client.append_rule {
         rule = { class = "zoom" },
