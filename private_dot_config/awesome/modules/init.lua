@@ -1,5 +1,5 @@
 local smart_borders = require "modules.smart_borders"
-local awesome_navigator = require "modules.awesomewm-vim-tmux-navigator"
+local awesome_navigator = require "awesomewm-vim-tmux-navigator"
 
 ---- Smart borders config
 smart_borders {
