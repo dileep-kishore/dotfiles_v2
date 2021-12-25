@@ -329,6 +329,12 @@ return packer.startup(function(use)
     use "lukas-reineke/indent-blankline.nvim"
     -- Zen mode
     use {
+        "folke/twilight.nvim",
+        config = function()
+            require("twilight").setup {}
+        end,
+    }
+    use {
         "Pocco81/TrueZen.nvim",
         config = function()
             require("true-zen").setup()
