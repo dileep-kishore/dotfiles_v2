@@ -169,6 +169,9 @@ zinit wait lucid for \
 # Interactive `cd`
 zinit wait lucid for b4b4r07/enhancd
 
+# Atuin
+zinit wait lucid for ellie/atuin
+
 # forgit
 zinit wait"2" lucid for wfxr/forgit
 

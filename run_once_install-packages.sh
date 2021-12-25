@@ -29,6 +29,7 @@ sudo pacman -S --needed --noconfirm \
     pwgen \
     libqalculate \
     pamixer \
+    atuin \
     ttf-font-awesome \
     otf-font-awesome \
     adapta-gtk-theme \
