@@ -46,3 +46,8 @@ vim.opt.showbreak = "↳ " -- Show break for wrapped lines
 vim.opt.shortmess:append { c = true }
 vim.opt.formatoptions:append { "n", "1" }
 vim.opt.formatoptions:remove { "r", "o" }
+vim.opt.foldnestmax = 20
+vim.opt.foldminlines = 1
+vim.opt.foldlevel = 3
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
