@@ -4,6 +4,7 @@ local awful = require "awful"
 local hotkeys_popup = require "awful.hotkeys_popup"
 local beautiful = require "beautiful"
 local wibox = require "wibox"
+local gears = require "gears"
 
 local apps = require "config.apps"
 local mod = require "bindings.mod"
@@ -35,6 +36,20 @@ _M.launcher = awful.widget.launcher {
 
 _M.keyboardlayout = awful.widget.keyboardlayout()
 _M.textclock = wibox.widget.textclock()
+
+function _M.right_tri(cr, width, height, degree)
+    cr:move_to(width, 0)
+    cr:line_to(0, height)
+    cr:line_to(width, height)
+    cr:close_path()
+end
+
+function _M.left_tri(cr, width, height, degree)
+    cr:move_to(0, 0)
+    cr:line_to(0, height)
+    cr:line_to(width, height)
+    cr:close_path()
+end
 
 function _M.create_promptbox()
     return awful.widget.prompt()
@@ -80,6 +95,74 @@ function _M.create_taglist(s)
     return awful.widget.taglist {
         screen = s,
         filter = awful.widget.taglist.filter.all,
+        style = {
+            shape = gears.shape.partial_squircle,
+        },
+        layout = {
+            spacing = 12,
+            spacing_widget = {
+                color = "#1a1b26",
+                shape = gears.shape.partial_squircle,
+                widget = wibox.widget.separator,
+            },
+            layout = wibox.layout.fixed.horizontal,
+        },
+        -- widget_template = {
+        --     {
+        --         {
+        --             {
+        --                 {
+        --                     {
+        --                         id = "index_role",
+        --                         widget = wibox.widget.textbox,
+        --                     },
+        --                     margins = 4,
+        --                     widget = wibox.container.margin,
+        --                 },
+        --                 bg = "#dddddd",
+        --                 shape = gears.shape.circle,
+        --                 widget = wibox.container.background,
+        --             },
+        --             {
+        --                 {
+        --                     id = "icon_role",
+        --                     widget = wibox.widget.imagebox,
+        --                 },
+        --                 margins = 2,
+        --                 widget = wibox.container.margin,
+        --             },
+        --             {
+        --                 id = "text_role",
+        --                 widget = wibox.widget.textbox,
+        --             },
+        --             layout = wibox.layout.fixed.horizontal,
+        --         },
+        --         left = 18,
+        --         right = 18,
+        --         widget = wibox.container.margin,
+        --     },
+        --     id = "background_role",
+        --     widget = wibox.container.background,
+        --     -- Add support for hover colors and an index label
+        --     create_callback = function(self, c3, index, objects)
+        --         self:get_children_by_id("index_role")[1].markup = "<b> " .. index .. " </b>"
+        --         self:connect_signal("mouse::enter", function()
+        --             if self.bg ~= "#ff0000" then
+        --                 self.backup = self.bg
+        --                 self.has_backup = true
+        --             end
+        --             self.bg = "#ff0000"
+        --         end)
+        --         self:connect_signal("mouse::leave", function()
+        --             if self.has_backup then
+        --                 self.bg = self.backup
+        --             end
+        --         end)
+        --     end,
+        --     update_callback = function(self, c3, index, objects)
+        --         self:get_children_by_id("index_role")[1].markup = "<b> " .. index .. " </b>"
+        --     end,
+        -- },
         buttons = {
             awful.button {
                 modifiers = {},
@@ -126,6 +209,17 @@ function _M.create_taglist(s)
                 end,
             },
         },
+        -- list_update,
+    }
+end
+
+local function mysep(color, shape)
+    return wibox.widget {
+        shape = shape,
+        color = color,
+        border_width = 0,
+        forced_width = 18,
+        widget = wibox.widget.separator,
     }
 end
 
@@ -171,22 +265,31 @@ function _M.create_wibox(s)
         screen = s,
         position = "top",
         widget = {
-            layout = wibox.layout.align.horizontal,
+            layout = wibox.layout.fixed.horizontal,
             -- left widgets
             {
                 layout = wibox.layout.fixed.horizontal,
-                _M.launcher,
-                s.taglist,
+                -- _M.launcher,
+                s.tasklist,
+                wibox.container.background(mysep(beautiful.fg_focus, _M.left_tri), beautiful.bg_normal),
                 -- s.promptbox,
             },
             -- middle widgets
-            s.tasklist,
+            {
+                layout = wibox.layout.align.horizontal,
+                s.taglist,
+                wibox.container.background(mysep(beautiful.fg_focus, _M.left_tri), beautiful.bg_normal),
+            },
             -- right widgets
             {
                 layout = wibox.layout.fixed.horizontal,
+                wibox.container.background(mysep(beautiful.fg_focus, _M.right_tri), beautiful.bg_normal),
                 _M.keyboardlayout,
+                wibox.container.background(mysep(beautiful.fg_focus, _M.right_tri), beautiful.bg_normal),
                 wibox.widget.systray(),
+                wibox.container.background(mysep(beautiful.fg_focus, _M.right_tri), beautiful.bg_normal),
                 _M.textclock,
+                wibox.container.background(mysep(beautiful.fg_focus, _M.right_tri), beautiful.bg_normal),
                 s.layoutbox,
             },
         },
