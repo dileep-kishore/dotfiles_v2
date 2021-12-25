@@ -61,20 +61,20 @@ awful.keyboard.append_global_keybindings {
     },
     awful.key {
         modifiers = { mod.alt, mod.shift },
-        key = "h",
+        key = "Left",
         description = "Wacom on left screen",
         group = "launcher",
         on_press = function()
-            awful.spawn.with_shell "bash ~/.dotfiles/bin/wacom_config.sh left"
+            awful.spawn.with_shell "~/.dotfiles/bin/wacom_config.sh 'left'"
         end,
     },
     awful.key {
         modifiers = { mod.alt, mod.shift },
-        key = "l",
+        key = "Right",
         description = "Wacom on right screen",
         group = "launcher",
         on_press = function()
-            awful.spawn.with_shell "bash ~/.dotfiles/bin/wacom_config.sh right"
+            awful.spawn.with_shell "~/.dotfiles/bin/wacom_config.sh 'right'"
         end,
     },
 }
