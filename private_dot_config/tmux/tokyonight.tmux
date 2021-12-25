@@ -22,7 +22,7 @@ set -g status-left "#[fg=#1a1b26,bg=#7aa2f7,bold,italics]  #H #[bg=#1a1b26,fg
 
 #+--- Windows ---+
 # Focus
-set -g window-status-current-format "#[bg=#1a1b26,fg=#bb9af7,bold,italics]┃#[fg=#1a1b26,bg=#bb9af7]  #I•#W #F #[bg=#1a1b26,fg=#bb9af7,bold,italics]┃ "
+set -g window-status-current-format "#[bg=#1a1b26,fg=#bb9af7,bold,italics] #[fg=#1a1b26,bg=#bb9af7]  #I•#W #F #[bg=#1a1b26,fg=#bb9af7,bold,italics] "
 # Unfocused
 set -g window-status-format "#[fg=brightwhite,bg=#1a1b26,nobold,noitalics,nounderscore]   #I•#W #F  "
 
