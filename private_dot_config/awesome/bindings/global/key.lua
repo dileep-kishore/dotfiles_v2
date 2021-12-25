@@ -51,8 +51,8 @@ awful.keyboard.append_global_keybindings {
         end,
     },
     awful.key {
-        modifiers = { mod.super },
-        key = "r",
+        modifiers = { mod.super, mod.shift },
+        key = "Return",
         description = "Rofi launcher",
         group = "launcher",
         on_press = function()
