@@ -46,6 +46,48 @@ theme.border_marked = "#CC9393"
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
 
+-- Taglist
+theme.taglist_bg_empty = theme.bg_minimize
+theme.taglist_bg_occupied = theme.bg_minimize
+theme.taglist_bg_urgent = "linear:0,0:"
+    .. dpi(40)
+    .. ",0:0,"
+    .. theme.bg_urgent
+    .. ":0.08,"
+    .. theme.bg_urgent
+    .. ":0.08,"
+    .. theme.bg_urgent
+    .. ":1,"
+    .. theme.bg_urgent
+theme.taglist_bg_focus = "linear:0,0:"
+    .. dpi(40)
+    .. ",0:0,"
+    .. theme.bg_focus
+    .. ":0.08,"
+    .. theme.bg_focus
+    .. ":0.08,"
+    .. theme.bg_focus
+    .. ":1,"
+    .. theme.bg_focus
+
+-- Tasklist
+theme.tasklist_font = "Roboto medium 11"
+theme.tasklist_bg_normal = theme.bg_normal
+theme.tasklist_bg_focus = "linear:0,0:0,"
+    .. dpi(40)
+    .. ":0,"
+    .. theme.fg_normal
+    .. ":0.95,"
+    .. theme.fg_normal
+    .. ":0.95,"
+    .. theme.fg_normal
+    .. ":1,"
+    .. theme.fg_normal
+theme.tasklist_bg_urgent = theme.bg_urgent
+theme.tasklist_fg_focus = "#DDDDDD"
+theme.tasklist_fg_urgent = theme.fg_normal
+theme.tasklist_fg_normal = "#AAAAAA"
+
 -- Tooltips
 theme.tooltip_bg = "#232323"
 --theme.tooltip_border_color = '#232323'
