@@ -306,7 +306,10 @@ function _M.create_wibox(s)
     return awful.wibar {
         screen = s,
         position = "top",
-        bg = "#00000000",
+        -- bg = "#00000000",
+        bg = "#1a1b26EE",
+        shape = gears.shape.rounded_rect,
+        border_width = dpi(5),
         widget = {
             layout = wibox.layout.align.horizontal,
             expand = "none",
