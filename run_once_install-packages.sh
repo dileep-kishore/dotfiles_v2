@@ -28,6 +28,7 @@ sudo pacman -S --needed --noconfirm \
     trash-cli \
     pwgen \
     libqalculate \
+    alsa-utils \
     pamixer \
     atuin \
     ttf-font-awesome \

@@ -324,41 +324,77 @@ function _M.create_tasklist(s)
 end
 
 function _M.create_wibox(s)
-    return awful.wibar {
-        screen = s,
-        position = "top",
-        -- bg = "#00000000",
-        bg = "#1a1b26EE",
-        shape = gears.shape.rounded_bar,
-        border_width = dpi(5),
-        widget = {
-            layout = wibox.layout.align.horizontal,
-            expand = "none",
-            -- left widgets
-            {
-                layout = wibox.layout.fixed.horizontal,
-                -- _M.launcher,
-                s.tasklist,
-                -- s.promptbox,
-            },
-            -- middle widgets
-            {
+    if s.index == 1 then
+        return awful.wibar {
+            screen = s,
+            position = "top",
+            -- bg = "#00000000",
+            bg = "#1a1b26",
+            shape = gears.shape.rounded_bar,
+            border_width = dpi(5),
+            widget = {
                 layout = wibox.layout.align.horizontal,
-                s.taglist,
+                expand = "none",
+                -- left widgets
+                {
+                    layout = wibox.layout.fixed.horizontal,
+                    -- _M.launcher,
+                    s.tasklist,
+                    -- s.promptbox,
+                },
+                -- middle widgets
+                {
+                    layout = wibox.layout.align.horizontal,
+                    s.taglist,
+                },
+                -- right widgets
+                {
+                    layout = wibox.layout.fixed.horizontal,
+                    custom_widgets.volume_widget,
+                    custom_widgets.spotify_widget,
+                    custom_widgets.net_speed_widget,
+                    custom_widgets.weather_widget,
+                    s.layoutbox,
+                    custom_widgets.logout_menu_widget,
+                },
             },
-            -- right widgets
-            {
-                layout = wibox.layout.fixed.horizontal,
-                custom_widgets.ram_widget,
-                custom_widgets.fs_widget,
-                custom_widgets.cpu_widget,
-                s.systray,
-                custom_widgets.mytextclock,
-                s.layoutbox,
-                custom_widgets.logout_menu_widget,
+        }
+    else
+        return awful.wibar {
+            screen = s,
+            position = "top",
+            bg = "#1a1b26",
+            shape = gears.shape.rounded_bar,
+            border_width = dpi(5),
+            widget = {
+                layout = wibox.layout.align.horizontal,
+                expand = "none",
+                -- left widgets
+                {
+                    layout = wibox.layout.fixed.horizontal,
+                    -- _M.launcher,
+                    s.tasklist,
+                    -- s.promptbox,
+                },
+                -- middle widgets
+                {
+                    layout = wibox.layout.align.horizontal,
+                    s.taglist,
+                },
+                -- right widgets
+                {
+                    layout = wibox.layout.fixed.horizontal,
+                    custom_widgets.ram_widget,
+                    custom_widgets.fs_widget,
+                    custom_widgets.cpu_widget,
+                    s.systray,
+                    custom_widgets.mytextclock,
+                    s.layoutbox,
+                    custom_widgets.logout_menu_widget,
+                },
             },
-        },
-    }
+        }
+    end
 end
 
 return _M

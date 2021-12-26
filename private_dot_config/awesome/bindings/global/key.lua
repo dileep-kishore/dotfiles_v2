@@ -7,6 +7,7 @@ local apps = require "config.apps"
 local mod = require "bindings.mod"
 local widgets = require "widgets"
 local modules = require "modules"
+local custom_widgets = require "widgets.custom"
 
 menubar.utils.terminal = apps.terminal
 
@@ -94,6 +95,15 @@ awful.keyboard.append_global_keybindings {
         group = "launcher",
         on_press = function()
             modules.term_scratch:toggle()
+        end,
+    },
+    awful.key {
+        modifiers = { mod.super },
+        key = "d",
+        description = "Spotify shell",
+        group = "launcher",
+        on_press = function()
+            custom_widgets.spotify_shell.launch()
         end,
     },
 }
