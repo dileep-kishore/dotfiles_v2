@@ -13,8 +13,8 @@ local themes_path = os.getenv "HOME" .. "/.config/awesome/theme/"
 local theme = {}
 
 theme.name = "tokyo-night"
-theme.font = "Lato Medium 12"
-theme.title_font = "Lato Medium 13"
+theme.font = "Lato Medium 16"
+theme.title_font = "Lato Medium 18"
 
 theme.bg_normal = "#1a1b26BB"
 theme.bg_focus = "#1a1b26"
@@ -53,13 +53,15 @@ theme.taglist_bg_urgent = theme.bg_urgent
 theme.taglist_bg_focus = "#bb9af7"
 
 -- Tasklist
+theme.tasklist_disable_icon = true
+theme.taslist_plain_task_name = true
 theme.tasklist_font = "Lato Medium 12"
-theme.tasklist_bg_normal = theme.bg_normal
+theme.tasklist_bg_normal = "#a9b1d6"
 theme.tasklist_bg_focus = "#bb9af7"
 theme.tasklist_bg_urgent = theme.bg_urgent
-theme.tasklist_fg_focus = "#DDDDDD"
-theme.tasklist_fg_urgent = theme.fg_normal
-theme.tasklist_fg_normal = "#AAAAAA"
+theme.tasklist_fg_focus = theme.border_normal
+theme.tasklist_fg_urgent = theme.border_normal
+theme.tasklist_fg_normal = theme.border_normal
 
 -- Tooltips
 theme.tooltip_bg = "#232323"
@@ -83,7 +85,7 @@ theme.taglist_squares_unsel = themes_path .. "icons/taglist/square_unsel.png"
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path .. "icons/submenu.png"
-theme.menu_height = dpi(18)
+theme.menu_height = dpi(22)
 theme.menu_width = dpi(160)
 
 -- You can add as many variables as

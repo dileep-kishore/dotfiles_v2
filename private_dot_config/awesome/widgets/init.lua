@@ -5,6 +5,8 @@ local hotkeys_popup = require "awful.hotkeys_popup"
 local beautiful = require "beautiful"
 local wibox = require "wibox"
 local gears = require "gears"
+local xresources = require "beautiful.xresources"
+local dpi = xresources.apply_dpi
 
 local apps = require "config.apps"
 local mod = require "bindings.mod"
@@ -96,13 +98,13 @@ function _M.create_taglist(s)
         screen = s,
         filter = awful.widget.taglist.filter.all,
         style = {
-            shape = gears.shape.partial_squircle,
+            shape = gears.shape.rounded_rect,
         },
         layout = {
             spacing = 2,
             spacing_widget = {
                 color = "#1a1b26",
-                shape = gears.shape.partial_squircle,
+                shape = gears.shape.circle,
                 widget = wibox.widget.separator,
             },
             layout = wibox.layout.fixed.horizontal,
@@ -131,7 +133,6 @@ function _M.create_taglist(s)
                     },
                     layout = wibox.layout.align.horizontal,
                 },
-                bg = "#1a1b26",
                 left = 10,
                 right = 10,
                 widget = wibox.container.margin,
@@ -222,43 +223,52 @@ function _M.create_tasklist(s)
     return awful.widget.tasklist {
         screen = s,
         filter = awful.widget.tasklist.filter.currenttags,
+
+        style = {
+            shape = gears.shape.rounded_rect,
+        },
         layout = {
+            spacing = 10,
             spacing_widget = {
                 {
                     forced_width = 5,
-                    forced_height = 24,
-                    thickness = 1,
-                    color = "#777777",
+                    shape = gears.shape.circle,
                     widget = wibox.widget.separator,
                 },
                 valign = "center",
                 halign = "center",
                 widget = wibox.container.place,
             },
-            spacing = 1,
-            layout = wibox.layout.fixed.horizontal,
+            layout = wibox.layout.flex.horizontal,
         },
+        -- Notice that there is *NO* wibox.wibox prefix, it is a template,
+        -- not a widget instance.
         widget_template = {
             {
-                wibox.widget.base.make_widget(),
-                forced_height = 5,
-                id = "background_role",
-                widget = wibox.container.background,
-            },
-            {
                 {
-                    id = "clienticon",
-                    widget = awful.widget.clienticon,
+                    {
+                        {
+                            id = "clienticon",
+                            widget = awful.widget.clienticon,
+                        },
+                        margins = 2,
+                        widget = wibox.container.margin,
+                    },
+                    {
+                        id = "text_role",
+                        widget = wibox.widget.textbox,
+                    },
+                    layout = wibox.layout.align.horizontal,
                 },
-                margins = 5,
+                left = 10,
+                right = 10,
                 widget = wibox.container.margin,
             },
-            nil,
-            create_callback = function(self, c, index, objects)
-                self:get_children_by_id("clienticon")[1].client = c
-            end,
-            layout = wibox.layout.align.vertical,
+            forced_width = dpi(200),
+            id = "background_role",
+            widget = wibox.container.background,
         },
+
         buttons = {
             awful.button {
                 modifiers = {},
@@ -296,6 +306,7 @@ function _M.create_wibox(s)
     return awful.wibar {
         screen = s,
         position = "top",
+        bg = "#00000000",
         widget = {
             layout = wibox.layout.align.horizontal,
             expand = "none",
@@ -304,7 +315,6 @@ function _M.create_wibox(s)
                 layout = wibox.layout.fixed.horizontal,
                 -- _M.launcher,
                 s.tasklist,
-                wibox.container.background(mysep(beautiful.fg_focus, _M.left_tri), beautiful.bg_normal),
                 -- s.promptbox,
             },
             -- middle widgets
