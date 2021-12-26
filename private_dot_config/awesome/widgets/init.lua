@@ -349,10 +349,13 @@ function _M.create_wibox(s)
             -- right widgets
             {
                 layout = wibox.layout.fixed.horizontal,
+                custom_widgets.ram_widget,
+                custom_widgets.fs_widget,
                 custom_widgets.cpu_widget,
                 s.systray,
                 custom_widgets.mytextclock,
                 s.layoutbox,
+                custom_widgets.logout_menu_widget,
             },
         },
     }

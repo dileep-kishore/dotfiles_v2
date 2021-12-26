@@ -33,7 +33,12 @@ if [ ! -d $AWESOMEDIR/modules/rubato ]; then
     ln -s $AWESOMEDIR/modules/rubato $DOTFILES/modules/rubato
 fi
 
-if [ ! -d $AWESOMEDIR/modules/awesome-wm-widgets ]; then
-    git clone https://github.com/streetturtle/awesome-wm-widgets $AWESOMEDIR/modules/awesome-wm-widgets
-    ln -s $AWESOMEDIR/modules/awesome-wm-widgets $DOTFILES/modules/awesome-wm-widgets
+if [ ! -d $AWESOMEDIR/awesome-wm-widgets ]; then
+    git clone https://github.com/streetturtle/awesome-wm-widgets $AWESOMEDIR/awesome-wm-widgets
+    ln -s $AWESOMEDIR/awesome-wm-widgets $DOTFILES/awesome-wm-widgets
+fi
+
+if [ ! -d $AWESOMEDIR/awesome-buttons ]; then
+    git clone https://github.com/streetturtle/awesome-buttons $AWESOMEDIR/awesome-buttons
+    ln -s $AWESOMEDIR/awesome-buttons $DOTFILES/awesome-buttons
 fi

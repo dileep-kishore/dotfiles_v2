@@ -45,6 +45,8 @@ ruled.client.connect_signal("request::rules", function()
         properties = { floating = true },
     }
 
+    -- TODO: Fix screen for laptop
+
     -- Add titlebars to normal clients and dialogs
     ruled.client.append_rule {
         id = "titlebars",
