@@ -4,8 +4,8 @@ DOTFILES=$HOME/.dotfiles/private_dot_config/awesome
 AWESOMEDIR=$HOME/.config/awesome
 
 if [ ! -d $AWESOMEDIR/modules/collision ]; then
-    git clone https://github.com/Elv13/collision $AWESOMEDIR/modules/collision
-    ln -s $AWESOMEDIR/modules/collision $DOTFILES/modules/collision
+    git clone https://github.com/Elv13/collision $AWESOMEDIR/collision
+    ln -s $AWESOMEDIR/collision $DOTFILES/collision
 fi
 
 if [ ! -d $AWESOMEDIR/modules/smart_borders ]; then

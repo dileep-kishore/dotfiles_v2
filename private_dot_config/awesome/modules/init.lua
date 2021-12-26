@@ -3,11 +3,11 @@ local awesome_navigator = require "awesomewm-vim-tmux-navigator"
 local bling = require "modules.bling"
 local rubato = require "modules.rubato"
 local naughty = require "naughty"
-local awful = require "awful"
-local beautiful = require "beautiful"
-local wibox = require "wibox"
 
 local _M = {}
+
+---- Collision config
+require "collision"()
 
 ---- Smart borders config
 smart_borders {
