@@ -354,7 +354,7 @@ function _M.create_wibox(s)
                 wibox.container.background(mysep(beautiful.fg_focus, _M.right_tri), beautiful.bg_normal),
                 _M.keyboardlayout,
                 wibox.container.background(mysep(beautiful.fg_focus, _M.right_tri), beautiful.bg_normal),
-                wibox.widget.systray(),
+                s.systray,
                 wibox.container.background(mysep(beautiful.fg_focus, _M.right_tri), beautiful.bg_normal),
                 _M.textclock,
                 wibox.container.background(mysep(beautiful.fg_focus, _M.right_tri), beautiful.bg_normal),

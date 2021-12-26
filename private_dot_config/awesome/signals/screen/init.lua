@@ -18,7 +18,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
     end
     -- s.promptbox = widgets.create_promptbox()
     s.layoutbox = widgets.create_layoutbox(s)
-    -- s.leftpanel = widgets.create_leftpanel(s)
+    s.systray = wibox.widget.systray()
+    s.systray.visible = false
     s.taglist = widgets.create_taglist(s)
     s.tasklist = widgets.create_tasklist(s)
     s.wibox = widgets.create_wibox(s)

@@ -44,6 +44,15 @@ awful.keyboard.append_global_keybindings {
     },
     awful.key {
         modifiers = { mod.super },
+        key = "=",
+        description = "toggle systray",
+        group = "awesoome",
+        on_press = function()
+            awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
+        end,
+    },
+    awful.key {
+        modifiers = { mod.super },
         key = "Return",
         description = "open a terminal",
         group = "launcher",
