@@ -118,4 +118,12 @@ bling.widget.tag_preview.enable {
     honor_workarea = true, -- Honor work area when creating widget size
 }
 
+-- task preview
+bling.widget.task_preview.enable {
+    x = 20, -- The x-coord of the popup
+    y = 40, -- The y-coord of the popup
+    height = 400, -- The height of the popup
+    width = 400, -- The width of the popup
+}
+
 return _M

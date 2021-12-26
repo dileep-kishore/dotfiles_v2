@@ -278,6 +278,18 @@ function _M.create_tasklist(s)
             forced_width = dpi(200),
             id = "background_role",
             widget = wibox.container.background,
+            nil,
+            create_callback = function(self, c, index, objects) --luacheck: no unused args
+                self:get_children_by_id("clienticon")[1].client = c
+
+                -- BLING: Toggle the popup on hover and disable it off hover
+                self:connect_signal("mouse::enter", function()
+                    awesome.emit_signal("bling::task_preview::visibility", s, true, c)
+                end)
+                self:connect_signal("mouse::leave", function()
+                    awesome.emit_signal("bling::task_preview::visibility", s, false, c)
+                end)
+            end,
         },
 
         buttons = {
