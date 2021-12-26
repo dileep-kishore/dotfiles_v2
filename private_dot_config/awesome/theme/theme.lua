@@ -112,6 +112,8 @@ theme.layout_centered = themes_path .. "icons/layouts/centered.png"
 
 ---- for tabbar
 theme.tabbar_style = "modern"
+theme.tag_preview_client_border_width = 0
+theme.tag_preview_widget_border_color = "#bb9af7" -- The border color of the widget
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus, theme.fg_focus)

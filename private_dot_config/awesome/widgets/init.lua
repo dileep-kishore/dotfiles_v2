@@ -143,6 +143,14 @@ function _M.create_taglist(s)
             create_callback = function(self, c3, index, objects)
                 self:get_children_by_id("index_role")[1].markup = "<b> " .. index .. " </b>"
                 self:connect_signal("mouse::enter", function()
+                    -- BLING: Only show widget when there are clients in the tag
+                    if #c3:clients() > 0 then
+                        -- BLING: Update the widget with the new tag
+                        awesome.emit_signal("bling::tag_preview::update", c3)
+                        -- BLING: Show the widget
+                        awesome.emit_signal("bling::tag_preview::visibility", s, true)
+                    end
+
                     if self.bg ~= beautiful.bg_urgent then
                         self.backup = self.bg
                         self.has_backup = true
@@ -150,6 +158,9 @@ function _M.create_taglist(s)
                     self.bg = beautiful.bg_urgent
                 end)
                 self:connect_signal("mouse::leave", function()
+                    -- BLING: Turn the widget off
+                    awesome.emit_signal("bling::tag_preview::visibility", s, false)
+
                     if self.has_backup then
                         self.bg = self.backup
                     end

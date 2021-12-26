@@ -3,6 +3,9 @@ local awesome_navigator = require "awesomewm-vim-tmux-navigator"
 local bling = require "modules.bling"
 local rubato = require "modules.rubato"
 local naughty = require "naughty"
+local awful = require "awful"
+local beautiful = require "beautiful"
+local wibox = require "wibox"
 
 local _M = {}
 
@@ -68,10 +71,11 @@ awesome_navigator {
 ---- bling config
 bling.module.flash_focus.enable()
 
+-- scratchpad
 -- These are example rubato tables. You can use one for just y, just x, or both.
 -- The duration and easing is up to you. Please check out the rubato docs to learn more.
 local anim_y = rubato.timed {
-    pos = 1090,
+    pos = -900,
     rate = 60,
     easing = rubato.quadratic,
     intro = 0.1,
@@ -80,7 +84,7 @@ local anim_y = rubato.timed {
 }
 
 local anim_x = rubato.timed {
-    pos = -970,
+    pos = 0,
     rate = 60,
     easing = rubato.quadratic,
     intro = 0.1,
@@ -89,7 +93,7 @@ local anim_x = rubato.timed {
 }
 
 _M.term_scratch = bling.module.scratchpad {
-    command = "alacritty start --class spad", -- How to spawn the scratchpad
+    command = "alacritty --class spad --working-directory ~/Documents/Zettelkasten", -- How to spawn the scratchpad
     rule = { instance = "spad" }, -- The rule that the scratchpad will be searched by
     sticky = true, -- Whether the scratchpad should be sticky
     autoclose = true, -- Whether it should hide itself when losing focus
@@ -103,5 +107,15 @@ _M.term_scratch = bling.module.scratchpad {
 _M.term_scratch:connect_signal("turn_on", function(c)
     naughty.notify { title = "Turned on!" }
 end)
+
+-- tag preview
+bling.widget.tag_preview.enable {
+    show_client_content = true, -- Whether or not to show the client content
+    x = 630, -- The x-coord of the popup
+    y = 40, -- The y-coord of the popup
+    scale = 0.33, -- The scale of the previews compared to the screen
+    honor_padding = false, -- Honor padding when creating widget size
+    honor_workarea = true, -- Honor work area when creating widget size
+}
 
 return _M
