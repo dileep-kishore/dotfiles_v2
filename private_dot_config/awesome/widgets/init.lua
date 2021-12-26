@@ -350,10 +350,27 @@ function _M.create_wibox(s)
                 -- right widgets
                 {
                     layout = wibox.layout.fixed.horizontal,
-                    custom_widgets.volume_widget,
-                    custom_widgets.spotify_widget,
-                    custom_widgets.net_speed_widget,
-                    custom_widgets.weather_widget,
+                    wibox.container.background(
+                        wibox.container.margin(custom_widgets.toggl_output, 5, 5, 5, 5),
+                        "#565f89",
+                        gears.shape.rectangle
+                    ),
+                    wibox.container.background(
+                        wibox.container.margin(custom_widgets.volume_widget, 5, 0, 5, 5),
+                        "#414868",
+                        gears.shape.rectangle
+                    ),
+                    wibox.container.background(
+                        wibox.container.margin(custom_widgets.spotify_widget, 5, 5, 5, 5),
+                        "#414868",
+                        gears.shape.rectangle
+                    ),
+                    wibox.container.background(
+                        wibox.container.margin(custom_widgets.weather_widget, 5, 5, 5, 5),
+                        "#2d3248",
+                        gears.shape.rectangle
+                    ),
+                    s.systray,
                     s.layoutbox,
                     custom_widgets.logout_menu_widget,
                 },
@@ -384,11 +401,38 @@ function _M.create_wibox(s)
                 -- right widgets
                 {
                     layout = wibox.layout.fixed.horizontal,
-                    custom_widgets.ram_widget,
-                    custom_widgets.fs_widget,
-                    custom_widgets.cpu_widget,
+                    wibox.container.background(
+                        wibox.container.margin(custom_widgets.net_speed_widget, 5, 0, 5, 5),
+                        "#565f89",
+                        gears.shape.rectangle
+                    ),
+                    wibox.container.background(
+                        wibox.container.margin(custom_widgets.pacupdate_output, 5, 5, 5, 5),
+                        "#565f89",
+                        gears.shape.rectangle
+                    ),
+                    -- custom_widgets.battery_widget,
+                    wibox.container.background(
+                        wibox.container.margin(custom_widgets.ram_widget, 5, 5, 5, 5),
+                        "#414868",
+                        gears.shape.rectangle
+                    ),
+                    wibox.container.background(
+                        wibox.container.margin(custom_widgets.fs_widget, 5, 5, 5, 5),
+                        "#414868",
+                        gears.shape.rectangle
+                    ),
+                    wibox.container.background(
+                        wibox.container.margin(custom_widgets.cpu_widget, 5, 5, 5, 5),
+                        "#414868",
+                        gears.shape.rectangle
+                    ),
                     s.systray,
-                    custom_widgets.mytextclock,
+                    wibox.container.background(
+                        wibox.container.margin(custom_widgets.mytextclock, 5, 5, 5, 5),
+                        "#2d3248",
+                        gears.shape.rectangle
+                    ),
                     s.layoutbox,
                     custom_widgets.logout_menu_widget,
                 },

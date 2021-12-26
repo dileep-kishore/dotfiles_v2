@@ -1,4 +1,6 @@
 local wibox = require "wibox"
+local beautiful = require "beautiful"
+local awful = require "awful"
 local calendar_widget = require "awesome-wm-widgets.calendar-widget.calendar"
 local cpu_widget = require "awesome-wm-widgets.cpu-widget.cpu-widget"
 local fs_widget = require "awesome-wm-widgets.fs-widget.fs-widget"
@@ -9,11 +11,12 @@ local spotify_widget = require "awesome-wm-widgets.spotify-widget.spotify"
 local volume_widget = require "awesome-wm-widgets.volume-widget.volume"
 local spotify_shell = require "awesome-wm-widgets.spotify-shell.spotify-shell"
 local weather_curl_widget = require "awesome-wm-widgets.weather-widget.weather"
+local batteryarc_widget = require "awesome-wm-widgets.batteryarc-widget.batteryarc"
+local markup = require "modules.lain.util.markup"
 
 local _M = {}
 
 -- Create a textclock widget
--- TODO: Use vicious to create the textclock
 _M.mytextclock = wibox.widget.textclock()
 local cw = calendar_widget {
     theme = "outrun",
@@ -26,13 +29,22 @@ _M.mytextclock:connect_signal("button::press", function(_, _, _, button)
         cw.toggle()
     end
 end)
+_M.mydatewidget = wibox.widget.textbox()
+
+-- Battery widget
+_M.battery_widget = batteryarc_widget {
+    show_current_level = true,
+    arc_thickness = 1,
+    notification_position = "top_right",
+    warning_msg_position = "top_right",
+}
 
 -- Create a cpu widget
 _M.cpu_widget = cpu_widget {
     width = 70,
     step_width = 2,
     step_spacing = 0,
-    color = "#434c5e",
+    color = "#FFFFFF",
 }
 
 -- Create a filesystem widget
@@ -82,5 +94,15 @@ _M.weather_widget = weather_curl_widget {
     show_hourly_forecast = true,
     show_daily_forecast = true,
 }
+
+-- Toggl widget
+_M.toggl_output = awful.widget.watch([[python /home/dileep/.dotfiles/bin/toggl_polybar.py]], 5, function(widget, stdout)
+    widget:set_markup(markup.font(beautiful.font, markup("#ffffff", stdout)))
+end)
+
+-- Updates widget
+_M.pacupdate_output = awful.widget.watch([[bash /home/dileep/.dotfiles/bin/pacupdate.sh]], 360, function(widget, stdout)
+    widget:set_markup(markup.font(beautiful.font, markup("#ffffff", stdout)))
+end)
 
 return _M

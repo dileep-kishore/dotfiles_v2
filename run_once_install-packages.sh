@@ -2,6 +2,7 @@
 
 sudo pacman -S --needed --noconfirm \
     base-devel \
+    acpi \
     openssh \
     netctl \
     bluez \
