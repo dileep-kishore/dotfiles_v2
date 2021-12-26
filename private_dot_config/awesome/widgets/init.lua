@@ -96,13 +96,13 @@ function _M.create_taglist(s)
         screen = s,
         filter = awful.widget.taglist.filter.all,
         style = {
-            shape = gears.shape.rectangle,
+            shape = gears.shape.rounded_rect,
         },
         layout = {
             spacing = 2,
             spacing_widget = {
-                color = "#1a1b26",
-                shape = gears.shape.rectangle,
+                color = beautiful.bg_normal,
+                shape = gears.shape.rounded_rect,
                 widget = wibox.widget.separator,
             },
             layout = wibox.layout.fixed.horizontal,
