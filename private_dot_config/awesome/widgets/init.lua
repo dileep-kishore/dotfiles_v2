@@ -98,13 +98,13 @@ function _M.create_taglist(s)
         screen = s,
         filter = awful.widget.taglist.filter.all,
         style = {
-            shape = gears.shape.rounded_rect,
+            shape = gears.shape.rectangle,
         },
         layout = {
             spacing = 2,
             spacing_widget = {
                 color = "#1a1b26",
-                shape = gears.shape.circle,
+                shape = gears.shape.rectangle,
                 widget = wibox.widget.separator,
             },
             layout = wibox.layout.fixed.horizontal,
@@ -308,7 +308,7 @@ function _M.create_wibox(s)
         position = "top",
         -- bg = "#00000000",
         bg = "#1a1b26EE",
-        shape = gears.shape.rounded_rect,
+        shape = gears.shape.rounded_bar,
         border_width = dpi(5),
         widget = {
             layout = wibox.layout.align.horizontal,

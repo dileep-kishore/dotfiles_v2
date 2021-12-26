@@ -13,8 +13,8 @@ local themes_path = os.getenv "HOME" .. "/.config/awesome/theme/"
 local theme = {}
 
 theme.name = "tokyo-night"
-theme.font = "Lato Medium 16"
-theme.title_font = "Lato Medium 18"
+theme.font = "Lato Medium 14"
+theme.title_font = "Lato Medium 16"
 
 theme.bg_normal = "#1a1b26BB"
 theme.bg_focus = "#1a1b26"
