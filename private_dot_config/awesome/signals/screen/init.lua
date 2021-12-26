@@ -9,7 +9,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
     -- awful.tag(vars.tags, s, awful.layout.layouts[1])
     for i = 1, 9, 1 do
         awful.tag.add(i, {
-            icon = "/home/dileep/.config/awesome/theme/icons/taglist/" .. i .. ".svg",
+            icon = os.getenv "HOME" .. "/.config/awesome/theme/icons/taglist/" .. i .. ".svg",
             icon_only = true,
             layout = awful.layout.suit.tile,
             screen = s,
