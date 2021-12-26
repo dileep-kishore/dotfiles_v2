@@ -106,6 +106,9 @@ theme.layout_tile = themes_path .. "icons/layouts/tile.png"
 theme.layout_tiletop = themes_path .. "icons/layouts/tiletop.png"
 theme.layout_spiral = themes_path .. "icons/layouts/spiral.png"
 theme.layout_dwindle = themes_path .. "icons/layouts/dwindle.png"
+theme.layout_mstab = themes_path .. "icons/layouts/mstab.png"
+theme.layout_deck = themes_path .. "icons/layouts/deck.png"
+theme.layout_centered = themes_path .. "icons/layouts/centered.png"
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus, theme.fg_focus)

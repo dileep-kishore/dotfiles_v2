@@ -1,6 +1,7 @@
 local _M = {}
 
 local awful = require "awful"
+local bling = require "modules.bling"
 
 _M.layouts = {
     awful.layout.suit.tile,
@@ -11,6 +12,9 @@ _M.layouts = {
     awful.layout.suit.spiral,
     awful.layout.suit.max,
     awful.layout.suit.magnifier,
+    bling.layout.mstab,
+    bling.layout.centered,
+    bling.layout.deck,
     -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.fair,
     -- awful.layout.suit.spiral.dwindle,
