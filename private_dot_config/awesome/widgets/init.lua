@@ -10,6 +10,7 @@ local dpi = xresources.apply_dpi
 
 local apps = require "config.apps"
 local mod = require "bindings.mod"
+local custom_widgets = require "widgets.custom"
 
 _M.awesomemenu = {
     {
@@ -35,9 +36,6 @@ _M.launcher = awful.widget.launcher {
     image = beautiful.awesome_icon,
     menu = _M.mainmenu,
 }
-
-_M.keyboardlayout = awful.widget.keyboardlayout()
-_M.textclock = wibox.widget.textclock()
 
 function _M.right_tri(cr, width, height, degree)
     cr:move_to(width, 0)
@@ -351,13 +349,9 @@ function _M.create_wibox(s)
             -- right widgets
             {
                 layout = wibox.layout.fixed.horizontal,
-                wibox.container.background(mysep(beautiful.fg_focus, _M.right_tri), beautiful.bg_normal),
-                _M.keyboardlayout,
-                wibox.container.background(mysep(beautiful.fg_focus, _M.right_tri), beautiful.bg_normal),
+                custom_widgets.cpu_widget,
                 s.systray,
-                wibox.container.background(mysep(beautiful.fg_focus, _M.right_tri), beautiful.bg_normal),
-                _M.textclock,
-                wibox.container.background(mysep(beautiful.fg_focus, _M.right_tri), beautiful.bg_normal),
+                custom_widgets.mytextclock,
                 s.layoutbox,
             },
         },
