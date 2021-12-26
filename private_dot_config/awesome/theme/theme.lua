@@ -16,7 +16,7 @@ theme.name = "tokyo-night"
 theme.font = "Lato Medium 14"
 theme.title_font = "Lato Medium 16"
 
-theme.bg_normal = "#1a1b26BB"
+theme.bg_normal = "#1a1b2600"
 theme.bg_focus = "#1a1b26"
 theme.bg_urgent = "#8c4351"
 theme.bg_minimize = "#444444"
@@ -32,6 +32,12 @@ theme.border_width = dpi(0)
 theme.border_normal = "#000000"
 theme.border_focus = "#ffffff"
 theme.border_marked = "#8c4351"
+
+-- more colors
+theme.first = "#30313b"
+theme.second = "#474851"
+theme.third = "#5e5f67"
+theme.fourth = "#75767c"
 
 -- There are other variable sets
 -- overriding the icons one when

@@ -328,8 +328,7 @@ function _M.create_wibox(s)
         return awful.wibar {
             screen = s,
             position = "top",
-            -- bg = "#00000000",
-            bg = "#1a1b26",
+            bg = beautiful.bg_normal,
             shape = gears.shape.rounded_bar,
             border_width = dpi(5),
             widget = {
@@ -351,28 +350,42 @@ function _M.create_wibox(s)
                 {
                     layout = wibox.layout.fixed.horizontal,
                     wibox.container.background(
-                        wibox.container.margin(custom_widgets.toggl_output, 5, 5, 5, 5),
-                        "#565f89",
-                        gears.shape.rectangle
+                        wibox.container.margin(custom_widgets.toggl_output, 10, 10, 5, 5),
+                        beautiful.first,
+                        gears.shape.rounded_rect
                     ),
                     wibox.container.background(
-                        wibox.container.margin(custom_widgets.volume_widget, 5, 0, 5, 5),
-                        "#414868",
-                        gears.shape.rectangle
-                    ),
-                    wibox.container.background(
-                        wibox.container.margin(custom_widgets.spotify_widget, 5, 5, 5, 5),
-                        "#414868",
-                        gears.shape.rectangle
+                        wibox.container.margin(
+                            wibox.layout.align.horizontal(custom_widgets.volume_widget, custom_widgets.spotify_widget),
+                            10,
+                            10,
+                            5,
+                            5
+                        ),
+                        beautiful.second,
+                        gears.shape.rounded_rect
                     ),
                     wibox.container.background(
                         wibox.container.margin(custom_widgets.weather_widget, 5, 5, 5, 5),
-                        "#2d3248",
-                        gears.shape.rectangle
+                        beautiful.third,
+                        gears.shape.rounded_rect
                     ),
-                    s.systray,
-                    s.layoutbox,
-                    custom_widgets.logout_menu_widget,
+                    wibox.container.background(
+                        wibox.container.margin(s.systray, 0, 0, 0, 0),
+                        beautiful.fourth,
+                        gears.shape.rounded_rect
+                    ),
+                    wibox.container.background(
+                        wibox.container.margin(
+                            wibox.layout.align.horizontal(s.layoutbox, custom_widgets.logout_menu_widget),
+                            7,
+                            7,
+                            2,
+                            2
+                        ),
+                        beautiful.fourth,
+                        gears.shape.rounded_rect
+                    ),
                 },
             },
         }
@@ -380,7 +393,7 @@ function _M.create_wibox(s)
         return awful.wibar {
             screen = s,
             position = "top",
-            bg = "#1a1b26",
+            bg = beautiful.bg_normal,
             shape = gears.shape.rounded_bar,
             border_width = dpi(5),
             widget = {
@@ -402,39 +415,56 @@ function _M.create_wibox(s)
                 {
                     layout = wibox.layout.fixed.horizontal,
                     wibox.container.background(
-                        wibox.container.margin(custom_widgets.net_speed_widget, 5, 0, 5, 5),
-                        "#565f89",
-                        gears.shape.rectangle
-                    ),
-                    wibox.container.background(
-                        wibox.container.margin(custom_widgets.pacupdate_output, 5, 5, 5, 5),
-                        "#565f89",
-                        gears.shape.rectangle
+                        wibox.container.margin(
+                            wibox.layout.align.horizontal(
+                                custom_widgets.net_speed_widget,
+                                custom_widgets.pacupdate_output
+                            ),
+                            10,
+                            10,
+                            5,
+                            5
+                        ),
+                        beautiful.first,
+                        gears.shape.rounded_rect
                     ),
                     -- custom_widgets.battery_widget,
                     wibox.container.background(
-                        wibox.container.margin(custom_widgets.ram_widget, 5, 5, 5, 5),
-                        "#414868",
-                        gears.shape.rectangle
+                        wibox.container.margin(
+                            wibox.layout.align.horizontal(
+                                custom_widgets.ram_widget,
+                                custom_widgets.cpu_widget,
+                                custom_widgets.fs_widget
+                            ),
+                            10,
+                            10,
+                            5,
+                            5
+                        ),
+                        beautiful.second,
+                        gears.shape.rounded_rect
                     ),
                     wibox.container.background(
-                        wibox.container.margin(custom_widgets.fs_widget, 5, 5, 5, 5),
-                        "#414868",
-                        gears.shape.rectangle
+                        wibox.container.margin(s.systray, 0, 0, 0, 0),
+                        beautiful.fourth,
+                        gears.shape.rounded_rect
                     ),
-                    wibox.container.background(
-                        wibox.container.margin(custom_widgets.cpu_widget, 5, 5, 5, 5),
-                        "#414868",
-                        gears.shape.rectangle
-                    ),
-                    s.systray,
                     wibox.container.background(
                         wibox.container.margin(custom_widgets.mytextclock, 5, 5, 5, 5),
-                        "#2d3248",
-                        gears.shape.rectangle
+                        beautiful.third,
+                        gears.shape.rounded_rect
                     ),
-                    s.layoutbox,
-                    custom_widgets.logout_menu_widget,
+                    wibox.container.background(
+                        wibox.container.margin(
+                            wibox.layout.align.horizontal(s.layoutbox, custom_widgets.logout_menu_widget),
+                            7,
+                            7,
+                            2,
+                            2
+                        ),
+                        beautiful.fourth,
+                        gears.shape.rounded_rect
+                    ),
                 },
             },
         }
