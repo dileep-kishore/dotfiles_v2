@@ -47,7 +47,7 @@ theme.border_marked = "#8c4351"
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Taglist
-theme.taglist_bg_empty = "#a9b1d6"
+theme.taglist_bg_empty = "#565f89"
 theme.taglist_bg_occupied = theme.fg_focus
 theme.taglist_bg_urgent = theme.bg_urgent
 theme.taglist_bg_focus = "#bb9af7"
@@ -72,8 +72,11 @@ theme.tooltip_shape = function(cr, w, h)
 end
 
 -- Generate taglist squares:
-theme.taglist_squares_sel = themes_path .. "icons/taglist/square_sel.png"
-theme.taglist_squares_unsel = themes_path .. "icons/taglist/square_unsel.png"
+-- theme.taglist_squares_sel = themes_path .. "icons/taglist/square_sel.png"
+-- theme.taglist_squares_unsel = themes_path .. "icons/taglist/square_unsel.png"
+theme.taglist_squares_sel = gears.surface.load_from_shape(10, 50, gears.shape.circle, "#8c4351")
+theme.taglist_squares_unsel = gears.surface.load_from_shape(10, 50, gears.shape.circle, "#ffffff")
+theme.taglist_spacing = 5
 
 -- Variables set for theming notifications:
 -- notification_font
