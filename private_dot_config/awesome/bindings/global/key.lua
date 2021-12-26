@@ -6,6 +6,7 @@ local menubar = require "menubar"
 local apps = require "config.apps"
 local mod = require "bindings.mod"
 local widgets = require "widgets"
+local modules = require "modules"
 
 menubar.utils.terminal = apps.terminal
 
@@ -75,6 +76,15 @@ awful.keyboard.append_global_keybindings {
         group = "launcher",
         on_press = function()
             awful.spawn.with_shell "~/.dotfiles/bin/wacom_config.sh 'right'"
+        end,
+    },
+    awful.key {
+        modifiers = { mod.alt, mod.shift },
+        key = "t",
+        description = "Open scratcpad",
+        group = "launcher",
+        on_press = function()
+            modules.term_scratch:toggle()
         end,
     },
 }

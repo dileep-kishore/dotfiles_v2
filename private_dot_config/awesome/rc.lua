@@ -9,6 +9,9 @@ local gears = require "gears"
 local awful = require "awful"
 beautiful.init(os.getenv "HOME" .. "/.config/awesome/theme/theme.lua")
 
+-- load modules
+require "modules"
+
 -- load key and mouse bindings
 require "bindings"
 
@@ -17,9 +20,6 @@ require "rules"
 
 -- load signals
 require "signals"
-
--- load modules
-require "modules"
 
 -- autostart
 -- NOTE: We create an additional file because not all processes work properly with spawn.once

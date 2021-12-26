@@ -27,3 +27,8 @@ if [ ! -d $AWESOMEDIR/modules/bling ]; then
     git clone https://github.com/Nooo37/bling $AWESOMEDIR/modules/bling
     ln -s $AWESOMEDIR/modules/bling $DOTFILES/modules/bling
 fi
+
+if [ ! -d $AWESOMEDIR/modules/rubato ]; then
+    git clone https://github.com/andOrlando/rubato $AWESOMEDIR/modules/rubato
+    ln -s $AWESOMEDIR/modules/rubato $DOTFILES/modules/rubato
+fi
