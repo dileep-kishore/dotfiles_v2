@@ -52,7 +52,7 @@ ruled.client.connect_signal("request::rules", function()
         properties = { titlebars_enabled = false },
     }
 
-    -- Set Firefox to always map on the tag named '2' on screen 1.
+    -- Set Brave to always map on the tag named '2' on screen 1.
     ruled.client.append_rule {
         rule = { class = "Brave-browser" },
         properties = { screen = 1, tag = "1" },
@@ -61,6 +61,18 @@ ruled.client.connect_signal("request::rules", function()
     -- Set telegram to always appear on the tag named '5' on screen 2
     ruled.client.append_rule {
         rule = { class = "TelegramDesktop" },
+        properties = { screen = 2, tag = "5" },
+    }
+
+    -- Set skype to always appear on the tag named '5' on screen 2
+    ruled.client.append_rule {
+        rule = { class = "Skype" },
+        properties = { screen = 2, tag = "5" },
+    }
+
+    -- Set Signal to always appear on the tag named '5' on screen 2
+    ruled.client.append_rule {
+        rule = { class = "Signal" },
         properties = { screen = 2, tag = "5" },
     }
 
