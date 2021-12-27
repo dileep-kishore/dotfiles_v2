@@ -509,28 +509,6 @@ function _M.create_wibox(s)
                     gears.shape.rounded_rect
                 ),
                 wibox.container.background(
-                    wibox.container.margin(custom_widgets.weather_widget, 5, 5, 5, 5),
-                    beautiful.third,
-                    gears.shape.rounded_rect
-                ),
-                wibox.container.background(
-                    wibox.container.margin(s.systray, 0, 0, 0, 0),
-                    beautiful.fourth,
-                    gears.shape.rounded_rect
-                ),
-                wibox.container.background(
-                    wibox.container.margin(
-                        wibox.layout.align.horizontal(custom_widgets.net_speed_widget, custom_widgets.pacupdate_output),
-                        10,
-                        10,
-                        5,
-                        5
-                    ),
-                    beautiful.first,
-                    gears.shape.rounded_rect
-                ),
-                -- custom_widgets.battery_widget,
-                wibox.container.background(
                     wibox.container.margin(
                         wibox.layout.align.horizontal(
                             custom_widgets.battery_widget,
@@ -544,6 +522,11 @@ function _M.create_wibox(s)
                         5
                     ),
                     beautiful.second,
+                    gears.shape.rounded_rect
+                ),
+                wibox.container.background(
+                    wibox.container.margin(custom_widgets.weather_widget, 5, 5, 5, 5),
+                    beautiful.third,
                     gears.shape.rounded_rect
                 ),
                 wibox.container.background(
