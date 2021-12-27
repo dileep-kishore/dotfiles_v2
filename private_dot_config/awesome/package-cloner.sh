@@ -42,3 +42,11 @@ if [ ! -d $AWESOMEDIR/awesome-buttons ]; then
     git clone https://github.com/streetturtle/awesome-buttons $AWESOMEDIR/awesome-buttons
     ln -s $AWESOMEDIR/awesome-buttons $DOTFILES/awesome-buttons
 fi
+
+if [ ! -f $AWESOMEDIR/json.lua ]; then
+    bash $DOTFILES/widgets/install-jsonlua.sh
+fi
+
+if [ ! -d $HOME/Downloads/spotify-cli ]; then
+    bash $DOTFILES/widgets/install-spotifycli.sh
+fi
