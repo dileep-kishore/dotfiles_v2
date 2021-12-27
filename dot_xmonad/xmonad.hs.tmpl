@@ -175,7 +175,7 @@ myStartupHook = do
           spawnOnce "nm-applet &"
           spawnOnce "volumeicon &"
           spawnOnce "blueman-applet &"
-          -- templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dileep-xmonad")) }}
+          -- templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dileep-awesome")) }}
           spawnOnce "~/.dotfiles/bin/killer.sh || shutdown -h now &"
           -- {{- end }}
           spawnOnce "aw-qt &"
@@ -642,7 +642,7 @@ main = do
     -- templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dkishore-bu")) }}
     xmproc0 <- spawnPipe "/home/dileep/.local/bin/xmobar -x 0 ~/.config/xmobar/xmobarrc0"
     xmproc1 <- spawnPipe "/home/dileep/.local/bin/xmobar -x 1 ~/.config/xmobar/xmobarrc1"
-    -- {{- else if (eq .chezmoi.hostname "dileep-xmonad") }}
+    -- {{- else if (eq .chezmoi.hostname "dileep-awesome") }}
     xmproc2 <- spawnPipe "/home/dileep/.local/bin/xmobar ~/.config/xmobar/xmobarrc2"
     -- {{- end }}
     xmonad $ ewmh def
@@ -669,7 +669,7 @@ main = do
         , logHook = workspaceHistoryHook <+> myLogHook <+> dynamicLogWithPP xmobarPP
                         -- templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dkishore-bu")) }}
                         { ppOutput = \x -> hPutStrLn xmproc0 x  >> hPutStrLn xmproc1 x
-                        -- {{- else if (eq .chezmoi.hostname "dileep-xmonad") }}
+                        -- {{- else if (eq .chezmoi.hostname "dileep-awesome") }}
                         { ppOutput = hPutStrLn xmproc2
                         -- {{- end }}
                         , ppCurrent = xmobarColor onePurple "" . wrap "⌠ " " ⌡" -- Current workspace

@@ -396,6 +396,12 @@ return packer.startup(function(use)
     -- NOTE: Might consider replacing this with telekasten.nvim
     use "oberblastmeister/neuron.nvim"
     -- Markdown preview
+    use {
+        "iamcco/markdown-preview.nvim",
+        run = "cd app && yarn install",
+        ft = "markdown",
+        cmd = { "MarkdownPreview" },
+    }
     use { "ellisonleao/glow.nvim", cmd = "Glow" }
     -- TODOS
     use {

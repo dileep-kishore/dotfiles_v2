@@ -108,7 +108,7 @@ local mappings = {
 
     g = {
         name = "Git",
-        a = { "<cmd>Git add<cr>", "Git add" },
+        a = { "<cmd>Gwrite<cr>", "Git add" },
         c = { "<cmd>Git commit<cr>", "Git commit" },
         g = { "<cmd>Neogit<CR>", "Neogit" },
         j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
