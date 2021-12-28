@@ -87,7 +87,13 @@ ruled.client.connect_signal("request::rules", function()
 
     -- Set Spotify to always appear on the tag named '5' on screen 2
     ruled.client.append_rule {
-        rule = { class = "zoom" },
+        rule = { class = "Spotify" },
+        properties = { screen = 2, tag = "6" },
+    }
+
+    -- Set Brain.fm to always appear on the tag named '5' on screen 2
+    ruled.client.append_rule {
+        rule = { class = "brainfm-nativefier-037ccc" },
         properties = { screen = 2, tag = "6" },
     }
 
