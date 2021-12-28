@@ -326,7 +326,7 @@ end
 
 ---- NOTE: templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dkishore-bu")) }}
 function _M.create_wibox(s)
-    if s.index == 1 then
+    if s.index == 2 then
         return awful.wibar {
             screen = s,
             position = "top",
@@ -368,7 +368,7 @@ function _M.create_wibox(s)
                         gears.shape.rounded_rect
                     ),
                     wibox.container.background(
-                        wibox.container.margin(custom_widgets.weather_widget, 5, 5, 5, 5),
+                        wibox.container.margin(custom_widgets.mytextclock, 5, 5, 5, 5),
                         beautiful.third,
                         gears.shape.rounded_rect
                     ),
@@ -446,13 +446,13 @@ function _M.create_wibox(s)
                         gears.shape.rounded_rect
                     ),
                     wibox.container.background(
-                        wibox.container.margin(s.systray, 0, 0, 0, 0),
-                        beautiful.fourth,
+                        wibox.container.margin(custom_widgets.weather_widget, 5, 5, 5, 5),
+                        beautiful.third,
                         gears.shape.rounded_rect
                     ),
                     wibox.container.background(
-                        wibox.container.margin(custom_widgets.mytextclock, 5, 5, 5, 5),
-                        beautiful.third,
+                        wibox.container.margin(s.systray, 0, 0, 0, 0),
+                        beautiful.fourth,
                         gears.shape.rounded_rect
                     ),
                     wibox.container.background(
