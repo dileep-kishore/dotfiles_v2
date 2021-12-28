@@ -89,6 +89,3 @@ alias todoist="todoist --color --namespace --indent --project-namespace"
 
 # xephyr testing aliases
 alias test_awesome="Xephyr :5 & sleep 1 ; DISPLAY=:5 awesome"
-
-# eureka alias
-alias idea="eureka"

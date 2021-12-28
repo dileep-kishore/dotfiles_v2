@@ -52,9 +52,6 @@ export FZF_DEFAULT_OPTS="--height 40% --reverse --preview 'bat --style=numbers -
 # poetry path
 export PATH="$HOME/.poetry/bin:$PATH"
 
-# cargo installed apps
-export PATH="$HOME/.cargo/bin:$PATH"
-
 # doom path
 export PATH="$HOME/.emacs.d/bin:$PATH"
 
