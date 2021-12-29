@@ -103,6 +103,11 @@ _M.weather_widget = weather_curl_widget {
 _M.toggl_output = awful.widget.watch([[python /home/dileep/.dotfiles/bin/toggl_polybar.py]], 5, function(widget, stdout)
     widget:set_markup(markup.font(beautiful.font, markup("#ffffff", stdout)))
 end)
+_M.toggl_output:connect_signal("button::press", function(_, _, _, button)
+    if button == 1 then
+        awful.spawn.with_shell "toggl stop"
+    end
+end)
 ---- {{- end }}
 
 -- Updates widget
