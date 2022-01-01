@@ -53,13 +53,19 @@ ruled.client.connect_signal("request::rules", function()
         properties = { titlebars_enabled = false },
     }
 
-    ---- NOTE: templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dkishore-bu")) }}
+    -- Set Morgen to always map on the tag named '2' on screen 1.
+    ruled.client.append_rule {
+        rule = { class = "Morgen" },
+        properties = { screen = 1, tag = "4" },
+    }
 
     -- Set Brave to always map on the tag named '2' on screen 1.
     ruled.client.append_rule {
         rule = { class = "Brave-browser" },
         properties = { screen = 1, tag = "1" },
     }
+
+    ---- NOTE: templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dkishore-bu")) }}
 
     -- Set telegram to always appear on the tag named '5' on screen 2
     ruled.client.append_rule {
