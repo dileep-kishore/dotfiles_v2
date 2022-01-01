@@ -105,7 +105,7 @@ ruled.client.connect_signal("request::rules", function()
 
     -- Set Airtable to always appear on the tag named '8' on screen 2
     ruled.client.append_rule {
-        rule = { class = "Airtable" },
+        rule = { name = "Airtable" },
         properties = { screen = 2, tag = "8" },
     }
 
