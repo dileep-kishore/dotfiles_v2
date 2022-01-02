@@ -65,6 +65,12 @@ ruled.client.connect_signal("request::rules", function()
         properties = { screen = 1, tag = "1" },
     }
 
+    -- Set Airtable to always appear on the tag named '8' on screen 2
+    ruled.client.append_rule {
+        rule = { name = "Airtable" },
+        properties = { screen = 1, tag = "8" },
+    }
+
     ---- NOTE: templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dkishore-bu")) }}
 
     -- Set telegram to always appear on the tag named '5' on screen 2
@@ -107,12 +113,6 @@ ruled.client.connect_signal("request::rules", function()
     ruled.client.append_rule {
         rule = { class = "obsidian" },
         properties = { screen = 2, tag = "7" },
-    }
-
-    -- Set Airtable to always appear on the tag named '8' on screen 2
-    ruled.client.append_rule {
-        rule = { name = "Airtable" },
-        properties = { screen = 2, tag = "8" },
     }
 
     -- Set ClickUp to always appear on the tag named '8' on screen 2
