@@ -7,78 +7,81 @@
 # Matches are the substitution rules, when you type the "trigger" string
 # it gets replaced by the "replace" string.
 matches:
-  # Simple text replacement
-  - trigger: ":espanso"
-    replace: "Hi there!"
+    # Simple text replacement
+    - trigger: ":espanso"
+      replace: "Hi there!"
 
-  # Dates
-  - trigger: ":date"
-    replace: "{{mydate}}"
-    vars:
-      - name: mydate
-        type: date
-        params:
-          format: "%Y-%m-%d"
+    # Dates
+    - trigger: ":date"
+      replace: "{{mydate}}"
+      vars:
+          - name: mydate
+            type: date
+            params:
+                format: "%Y-%m-%d"
 
-  # Shell commands
-  - trigger: ":shell"
-    replace: "{{output}}"
-    vars:
-      - name: output
-        type: shell
-        params:
-          cmd: "echo Hello from your shell"
+    # Shell commands
+    - trigger: ":shell"
+      replace: "{{output}}"
+      vars:
+          - name: output
+            type: shell
+            params:
+                cmd: "echo Hello from your shell"
 
-  - trigger: ":br"
-    replace: "Best Regards,\nDileep"
+    - trigger: ":br"
+      replace: "Best Regards,\nDileep"
 
-  - trigger: ":now"
-    replace: "{{mytime}}"
-    vars:
-      - name: mytime
-        type: date
-        params:
-          format: "%H:%M"
+    - trigger: ":now"
+      replace: "{{mytime}}"
+      vars:
+          - name: mytime
+            type: date
+            params:
+                format: "%H:%M"
 
-  - trigger: ":ip"
-    replace: "{{output}}"
-    vars:
-      - name: output
-        type: shell
-        params:
-          cmd: "curl 'https://api.ipify.org'"
+    - trigger: ":ip"
+      replace: "{{output}}"
+      vars:
+          - name: output
+            type: shell
+            params:
+                cmd: "curl 'https://api.ipify.org'"
 
-  - trigger: ":localip"
-    replace: "{{output}}"
-    vars:
-      - name: output
-        type: shell
-        params:
-          cmd: "ip a | grep 'inet 192' | awk '{ print $2 }'"
+    - trigger: ":localip"
+      replace: "{{output}}"
+      vars:
+          - name: output
+            type: shell
+            params:
+                cmd: "ip a | grep 'inet 192' | awk '{ print $2 }'"
 
-  - trigger: ":gmail"
-    replace: "k.dileep1994@gmail.com"
+    - trigger: ":gmail"
+      replace: "k.dileep1994@gmail.com"
 
-  - trigger: ":bugmail"
-    replace: "dkishore@bu.edu"
+    - trigger: ":bugmail"
+      replace: "dkishore@bu.edu"
 
-  - trigger: ":daniel_zoom"
-    replace: "https://bostonu.zoom.us/j/91324569840?pwd=dytwMHdlb01Ia2xjdllPWHFkd25aZz09"
+    - trigger: ":pm.me"
+      replace: "dileep-kishore@protonmail.com"
 
-  - trigger: ":segre"
-    replace: "Segrè"
+    - trigger: ":daniel_zoom"
+      replace: "https://bostonu.zoom.us/j/91324569840?pwd=dytwMHdlb01Ia2xjdllPWHFkd25aZz09"
 
-  - trigger: ":addr"
-    replace: "1156 Commonwealth Avenue\nApt 26\nAllston\nMA 02134"
+    - trigger: ":segre"
+      replace: "Segrè"
 
-  - trigger: ":phone"
-    replace: "8573028235"
+    - trigger: ":addr"
+      replace: "1156 Commonwealth Avenue\nApt 26\nAllston\nMA 02134"
 
-  - trigger: ":impandas"
-    replace: "import pandas as pd"
+    - trigger: ":phone"
+      replace: "8573028235"
 
-  - trigger: ":imnumpy"
-    replace: "import numpy as np"
+    - trigger: ":impandas"
+      replace: "import pandas as pd"
 
-  - trigger: ":immatplotlib"
-    replace: "import matplotlib.pyplot as plt"
+    - trigger: ":imnumpy"
+      replace: "import numpy as np"
+
+    - trigger: ":immatplotlib"
+      replace: "import matplotlib.pyplot as plt"
