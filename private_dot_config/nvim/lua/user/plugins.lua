@@ -393,6 +393,11 @@ return packer.startup(function(use)
     }
 
     ---- Note taking
+    -- NOTE: Might consider replacing this with telekasten.nvim
+    use {
+        "oberblastmeister/neuron.nvim",
+        branch = "unstable",
+    }
     -- Markdown preview
     use {
         "iamcco/markdown-preview.nvim",
