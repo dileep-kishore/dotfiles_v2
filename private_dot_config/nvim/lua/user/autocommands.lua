@@ -32,6 +32,9 @@ local autocmds = {
         { "TermOpen", "*", "startinsert" },
         { "TermOpen", "*", "setlocal listchars= nonumber norelativenumber" },
     },
+    custom_filetypes = {
+        { "BufNew,BufNewFile,BufRead", "*.nf", "set filetype=groovy" },
+    },
     restore_cursor = {
         { "BufRead", "*", [[call setpos(".", getpos("'\""))]] },
     },
