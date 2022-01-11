@@ -18,16 +18,19 @@ null_ls.setup {
     sources = {
         formatting.prettier,
         formatting.clang_format,
-        formatting.black.with { extra_args = { "--fast" } },
+        formatting.black,
         formatting.stylua.with {
             extra_args = { "--config-path", vim.fn.expand "~/.config/stylua.toml" },
         },
         formatting.fixjson,
+        formatting.eslint_d,
         formatting.styler,
         formatting.latexindent,
         formatting.markdownlint,
         formatting.rustfmt,
-        formatting.shfmt,
+        formatting.shfmt.with {
+            filetypes = { "bash", "zsh", "sh" },
+        },
         -- NOTE: Diagnostics can be handled with lsp servers
         -- diagnostics.codespell,
         -- diagnostics.mypy,
