@@ -79,6 +79,12 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- Apply changes to dotfiles
 keymap("n", "<Space>z", ":!chezmoi apply<CR>", opts)
 
+---- Navigator.nvim
+keymap("n", "<C-h>", "<CMD>lua require('Navigator').left()<CR>", opts)
+keymap("n", "<C-k>", "<CMD>lua require('Navigator').up()<CR>", opts)
+keymap("n", "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opts)
+keymap("n", "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opts)
+
 ---- Hlslens
 -- FIXME: Hlslens stops working after opening Telescope
 keymap("n", "n", "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>", opts)

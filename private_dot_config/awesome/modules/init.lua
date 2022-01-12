@@ -1,13 +1,9 @@
 local smart_borders = require "modules.smart_borders"
-local awesome_navigator = require "awesomewm-vim-tmux-navigator"
 local bling = require "modules.bling"
 local rubato = require "modules.rubato"
 local naughty = require "naughty"
 
 local _M = {}
-
----- Collision config
-require "collision"()
 
 ---- Smart borders config
 smart_borders {
@@ -54,18 +50,6 @@ smart_borders {
         to = { 40, 0 },
         stops = { { 0, "#7aa2f7" }, { 1, "#F7C6FF" } },
     },
-}
-
----- awesomewm-vim-tmux-navigator config
-awesome_navigator {
-    up = { "Up", "k" },
-    down = { "Down", "j" },
-    left = { "Left", "h" },
-    right = { "Right", "l" },
-    mod = "Mod4",
-    mod_keysym = "Super_L",
-    experimental = true,
-    -- focus = collision.focus
 }
 
 ---- bling config

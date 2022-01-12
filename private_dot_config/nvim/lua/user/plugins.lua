@@ -263,9 +263,13 @@ return packer.startup(function(use)
     use "famiu/bufdelete.nvim"
     -- Terminals
     use "akinsho/toggleterm.nvim"
-    -- Awesome + Neovim + TMUX Navigation
-    use "intrntbrn/awesomewm-vim-tmux-navigator"
-
+    -- TMUX Navigation
+    use {
+        "numToStr/Navigator.nvim", -- Smoothly navigate between splits and panes
+        config = function()
+            require("Navigator").setup()
+        end,
+    }
     ---- Language specific
     -- LaTeX
     -- TODO: LaTeX support with vimtex(?)

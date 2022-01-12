@@ -137,6 +137,24 @@ awful.keyboard.append_global_keybindings {
 awful.keyboard.append_global_keybindings {
     awful.key {
         modifiers = { mod.super },
+        key = "h",
+        description = "focus next by index",
+        group = "client",
+        on_press = function()
+            awful.client.focus.byidx(1)
+        end,
+    },
+    awful.key {
+        modifiers = { mod.super },
+        key = "l",
+        description = "focus previous by index",
+        group = "client",
+        on_press = function()
+            awful.client.focus.byidx(-1)
+        end,
+    },
+    awful.key {
+        modifiers = { mod.super },
         key = "Tab",
         description = "go back",
         group = "client",
