@@ -138,19 +138,37 @@ awful.keyboard.append_global_keybindings {
     awful.key {
         modifiers = { mod.super },
         key = "h",
-        description = "focus next by index",
+        description = "focus global left",
         group = "client",
         on_press = function()
-            awful.client.focus.byidx(1)
+            awful.client.focus.global_bydirection("left", client.focus)
         end,
     },
     awful.key {
         modifiers = { mod.super },
         key = "l",
-        description = "focus previous by index",
+        description = "focus global right",
         group = "client",
         on_press = function()
-            awful.client.focus.byidx(-1)
+            awful.client.focus.global_bydirection("right", client.focus)
+        end,
+    },
+    awful.key {
+        modifiers = { mod.super },
+        key = "j",
+        description = "focus global down",
+        group = "client",
+        on_press = function()
+            awful.client.focus.global_bydirection("down", client.focus)
+        end,
+    },
+    awful.key {
+        modifiers = { mod.super },
+        key = "k",
+        description = "focus global up",
+        group = "client",
+        on_press = function()
+            awful.client.focus.global_bydirection("up", client.focus)
         end,
     },
     awful.key {
