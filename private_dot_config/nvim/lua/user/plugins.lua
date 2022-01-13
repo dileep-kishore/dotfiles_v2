@@ -153,6 +153,14 @@ return packer.startup(function(use)
             require("spellsitter").setup()
         end,
     }
+    use {
+        "dvdsk/prosesitter", -- Syntax aware prose linting
+        ft = { "tex", "markdown", "org" },
+        config = function()
+            require("telescope").load_extension "prosesitter"
+            require("prosesitter"):setup()
+        end,
+    }
 
     ---- Completions
     use "hrsh7th/nvim-cmp"
@@ -230,6 +238,7 @@ return packer.startup(function(use)
     use "tpope/vim-unimpaired"
     use "tpope/vim-surround"
     use "michaeljsmith/vim-indent-object"
+    use "wellle/targets.vim"
     use "nvim-treesitter/nvim-treesitter-textobjects"
     use {
         "mizlan/iswap.nvim", -- Interactively swap treesitter elements
@@ -272,7 +281,11 @@ return packer.startup(function(use)
     }
     ---- Language specific
     -- LaTeX
-    -- TODO: LaTeX support with vimtex(?)
+    use {
+        "lervag/vimtex",
+        opt = true,
+        ft = { "tex" },
+    }
     -- Python
     use {
         "untitled-ai/jupyter_ascending.vim", -- Edit jupytext file and keep it in syc with .ipynb
