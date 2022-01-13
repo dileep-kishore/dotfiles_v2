@@ -153,14 +153,6 @@ return packer.startup(function(use)
             require("spellsitter").setup()
         end,
     }
-    use {
-        "dvdsk/prosesitter", -- Syntax aware prose linting
-        ft = { "tex", "markdown", "org" },
-        config = function()
-            require("telescope").load_extension "prosesitter"
-            require("prosesitter"):setup()
-        end,
-    }
 
     ---- Completions
     use "hrsh7th/nvim-cmp"
