@@ -303,7 +303,7 @@ awful.keyboard.append_global_keybindings {
             local screen = awful.screen.focused()
             local tag = screen.tags[index]
             if tag then
-                tag:viewtoggle(tag)
+                awful.tag.viewtoggle(tag)
             end
         end,
     },
