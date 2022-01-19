@@ -24,7 +24,7 @@ null_ls.setup {
         },
         formatting.fixjson,
         formatting.eslint_d,
-        formatting.styler,
+        -- formatting.styler,
         -- formatting.latexindent,
         formatting.markdownlint,
         formatting.rustfmt,
