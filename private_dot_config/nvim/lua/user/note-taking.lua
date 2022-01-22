@@ -1,15 +1,26 @@
--- neuron config
-local status_ok, neuron = pcall(require, "neuron")
+-- zk config
+local status_ok, zk = pcall(require, "zk")
 if not status_ok then
     return
 end
 
-neuron.setup {
-    virtual_titles = true,
-    mappings = true,
-    run = nil, -- function to run when in neuron dir
-    neuron_dir = "~/Documents/Zettelkasten", -- the directory of all of your notes, expanded by default (currently supports only one directory for notes, find a way to detect neuron.dhall to use any directory)
-    leader = "<Space>n", -- the leader key to for all mappings, remember with 'go zettel'
+zk.setup {
+    picker = "telescope",
+    lsp = {
+        -- `config` is passed to `vim.lsp.start_client(config)`
+        config = {
+            cmd = { "zk", "lsp" },
+            name = "zk",
+            -- on_attach = ...
+            -- etc, see `:h vim.lsp.start_client()`
+        },
+
+        -- automatically attach buffers in a zk notebook that match the given filetypes
+        auto_attach = {
+            enabled = true,
+            filetypes = { "markdown" },
+        },
+    },
 }
 
 -- glow config

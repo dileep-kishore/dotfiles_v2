@@ -105,6 +105,7 @@ local mappings = {
         },
         r = { "<cmd>lua require('spectre').open_file_search()<cr>", "Spectre search and replace (file)" },
         R = { "<cmd>lua require('spectre').open()<cr>", "Spectre search and replace (project)" },
+        z = { ":ZkNotes<CR>", "Search notes (ZK)" },
     },
 
     g = {
@@ -196,6 +197,16 @@ local mappings = {
         f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
         h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
         v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
+    },
+
+    n = {
+        name = "Zk",
+        n = { "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", "New note" },
+        o = { "<Cmd>ZkNotes<CR>", "Search notes" },
+        t = { "<Cmd>ZkTags<CR>", "Search tags" },
+        f = { "<Cmd>ZkNotes { match = vim.fn.input('Search: ') }<CR>", "Search notes with query" },
+        b = { "<Cmd>ZkBacklinks<CR>", "Search backlinks" },
+        l = { "<Cmd>Zklinks<CR>", "Search links" },
     },
 
     x = {

@@ -411,8 +411,7 @@ return packer.startup(function(use)
     ---- Note taking
     -- NOTE: Might consider replacing this with telekasten.nvim
     use {
-        "oberblastmeister/neuron.nvim",
-        branch = "unstable",
+        "mickael-menu/zk-nvim",
     }
     -- Markdown preview
     use {

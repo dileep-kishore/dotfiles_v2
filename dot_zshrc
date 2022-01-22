@@ -42,8 +42,8 @@ export XDG_LIB_HOME="${HOME}/.local/lib"
 export XDG_CACHE_HOME="${HOME}/.cache"
 
 # Hardrives and extensions
-export SEAGATE="/run/media/dileep/Seagate\ Expansion\ Drive/"
-export CRUCIAL="/run/media/dileep/Crucial"
+export SEAGATE="/media/seagate"
+export CRUCIAL="/media/crucial"
 
 # fzf configuration
 export FZF_BASE="$HOME/.fzf"
@@ -62,8 +62,8 @@ export NNN_COLORS="#d79921"
 export NNN_TRASH=1
 export NNN_FIFO=/tmp/nnn.fifo
 
-# rofi themes patch
-export PATH="$PATH:$HOME/.config/rofi/bin"
+# zk notebook directory
+export ZK_NOTEBOOK_DIR="/home/dileep/Documents/Zettelkasten"
 
 ################################################################################
 # Powerlevel10k

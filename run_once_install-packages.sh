@@ -96,6 +96,7 @@ sudo pacman -S --needed --noconfirm \
     fortune-mod \
     prettier \
     cowsay \
+    zk \
     isync
 
 if [ ! -d $HOME/npm-global/lib/node_modules/neovim ]; then
@@ -143,7 +144,6 @@ paru -S --useask --batchinstall --cleanafter --removemake \
     zoom
 
 paru -S --useask --batchinstall --cleanafter --removemake \
-    neuron-zettelkasten-bin \
     stylua \
     luacheck \
     nodejs-markdownlint-cli \
