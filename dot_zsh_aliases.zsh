@@ -24,7 +24,6 @@ alias tlist="tmux ls"
 # Launch ipython with vim keybindings
 alias vimipython="ipython --TerminalInteractiveShell.editing_mode=vi"
 
-
 # Git aliases
 alias gitplog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --graph --date=short"
 
@@ -89,3 +88,6 @@ alias todoist="todoist --color --namespace --indent --project-namespace"
 
 # xephyr testing aliases
 alias test_awesome="Xephyr :5 & sleep 1 ; DISPLAY=:5 awesome"
+
+# vimclip alias
+alias vc="~/.dotfiles/bin/vimclip.sh"

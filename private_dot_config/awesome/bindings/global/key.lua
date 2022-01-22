@@ -98,6 +98,15 @@ awful.keyboard.append_global_keybindings {
         end,
     },
     awful.key {
+        modifiers = { mod.alt, mod.shift },
+        key = "v",
+        description = "Open vimclip",
+        group = "launcher",
+        on_press = function()
+            modules.vim_clip:toggle()
+        end,
+    },
+    awful.key {
         modifiers = { mod.super },
         key = "d",
         description = "Spotify shell",
