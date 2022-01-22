@@ -42,6 +42,7 @@ sudo pacman -S --needed --noconfirm \
     feh \
     zathura \
     sxiv \
+    xplr \
     renameutils \
     zathura-pdf-mupdf \
     featherpad \

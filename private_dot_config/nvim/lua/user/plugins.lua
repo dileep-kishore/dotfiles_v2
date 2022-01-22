@@ -361,6 +361,8 @@ return packer.startup(function(use)
         end,
     }
     use "kyazdani42/nvim-web-devicons"
+    -- File managers
+    use "is0n/fm-nvim"
     -- Indentation
     use "lukas-reineke/indent-blankline.nvim"
     -- Zen mode

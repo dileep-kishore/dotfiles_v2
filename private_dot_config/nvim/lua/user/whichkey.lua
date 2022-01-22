@@ -93,6 +93,7 @@ local mappings = {
 
     f = {
         name = "Files",
+        e = { ":Xplr<CR>", "Open Xplr" },
         f = { ":Telescope find_files theme=dropdown<CR>", "Find files" },
         g = { ":Telescope git_files theme=dropdown<CR>", "Git files" },
         F = { ":Telescope find_files theme=dropdown<CR>", "Find files" },
