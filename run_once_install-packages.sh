@@ -90,6 +90,7 @@ sudo pacman -S --needed --noconfirm \
     tree-sitter \
     python-pynvim \
     python-ueberzug \
+    ffmpegthumbnailer \
     xdotool \
     xclip \
     fortune-mod \
@@ -117,6 +118,7 @@ fi
 paru -S --useask --batchinstall --cleanafter --removemake \
     picom-git \
     mu \
+    xsv \
     betterlockscreen \
     lightdm-webkit-theme-aether \
     orchis-theme-git \

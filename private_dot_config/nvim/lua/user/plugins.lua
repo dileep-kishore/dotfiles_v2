@@ -104,6 +104,14 @@ return packer.startup(function(use)
             require("telescope").load_extension "projects"
         end,
     }
+    -- Search media
+    use {
+        "nvim-telescope/telescope-media-files.nvim",
+        after = "telescope.nvim",
+        config = function()
+            require("telescope").load_extension "media_files"
+        end,
+    }
 
     ---- LSP related
     use "neovim/nvim-lspconfig"

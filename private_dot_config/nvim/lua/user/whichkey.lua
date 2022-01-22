@@ -98,6 +98,7 @@ local mappings = {
         F = { ":Telescope find_files theme=dropdown<CR>", "Find files" },
         b = { ":Telescope buffers theme=dropdown<CR>", "Select buffers" },
         d = { ":Telescope fd theme=dropdown<CR>", "Find files (fd)" },
+        m = { ":Telescope media_files<CR>", "Media files" },
         s = {
             ":Telescope current_buffer_fuzzy_find theme=dropdown<CR>",
             "Search current buffer",
