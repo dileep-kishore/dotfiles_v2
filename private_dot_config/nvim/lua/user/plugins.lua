@@ -231,7 +231,6 @@ return packer.startup(function(use)
     use "tpope/vim-surround"
     use "michaeljsmith/vim-indent-object"
     use "wellle/targets.vim"
-    use "nvim-treesitter/nvim-treesitter-textobjects"
     use {
         "mizlan/iswap.nvim", -- Interactively swap treesitter elements
         opt = true,
