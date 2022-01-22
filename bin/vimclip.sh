@@ -24,7 +24,7 @@ else
         exit 1
     fi
 
-    TMP=$(mktemp -p /tmp -t vimclip.XXXXXXXX)
+    TMP=$(mktemp -p /tmp -t vimclip_XXXXXXXX.md)
     $EDITOR $TMP
     if [ -s $TMP ]; then
         xsel -i -b <$TMP
