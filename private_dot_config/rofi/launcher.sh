@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-## Author  : Aditya Shakya
-## Mail    : adi1090x@gmail.com
-## Github  : @adi1090x
-## Twitter : @adi1090x
-
 # Available Styles
 # >> Created and tested on : rofi 1.6.0-1
 #
@@ -16,7 +11,7 @@ dir="$HOME/.config/rofi"
 
 # dark
 ALPHA="#00000000"
-BG="#00000000"
+BG="#000000aa"
 FG="#FFFFFFff"
 SELECT="#101010ff"
 

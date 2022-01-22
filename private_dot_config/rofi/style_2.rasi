@@ -1,17 +1,8 @@
-/*
- *
- * Author  : Aditya Shakya
- * Mail    : adi1090x@gmail.com
- * Github  : @adi1090x
- * Twitter : @adi1090x
- *
- */
-
 configuration {
-	font:							"Iosevka Nerd Font 10";
+	font:							"Cascadia Code 12";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
-    display-drun: 					"";
+    display-drun: 					"ﲵ";
     drun-display-format:            "{name}";
     disable-history:                false;
 	sidebar-mode: 					false;
@@ -37,7 +28,7 @@ prompt {
 	padding: 						0.30% 1% 0% -0.5%;
 	background-color: 				@al;
 	text-color: 					@bg;
-	font:							"FantasqueSansMono Nerd Font 12";
+	font:							"Alegreya 14";
 }
 
 entry {
