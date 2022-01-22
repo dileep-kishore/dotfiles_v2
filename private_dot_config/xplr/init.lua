@@ -2266,7 +2266,6 @@ end
 xplr.fn.custom = {}
 
 ---- Plugins
--- require("material-landscape2").setup()
 require("fzf").setup()
 require("dua-cli").setup()
 require("preview-tabbed").setup()

@@ -34,10 +34,10 @@ theme.border_focus = "#ffffff"
 theme.border_marked = "#8c4351"
 
 -- more colors
-theme.first = "#30313b"
-theme.second = "#474851"
-theme.third = "#5e5f67"
-theme.fourth = "#75767c"
+theme.first = "#4a3d62"
+theme.second = "#1f3252"
+theme.third = "#4a232a"
+theme.fourth = "#0f0f14"
 
 -- There are other variable sets
 -- overriding the icons one when
@@ -53,7 +53,7 @@ theme.fourth = "#75767c"
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Taglist
-theme.taglist_bg_empty = "#565f89"
+theme.taglist_bg_empty = "#999ca8"
 theme.taglist_bg_occupied = theme.fg_focus
 theme.taglist_bg_urgent = theme.bg_urgent
 theme.taglist_bg_focus = "#bb9af7"
@@ -80,8 +80,8 @@ end
 -- Generate taglist squares:
 -- theme.taglist_squares_sel = themes_path .. "icons/taglist/square_sel.png"
 -- theme.taglist_squares_unsel = themes_path .. "icons/taglist/square_unsel.png"
-theme.taglist_squares_sel = gears.surface.load_from_shape(10, 50, gears.shape.circle, "#8c4351")
-theme.taglist_squares_unsel = gears.surface.load_from_shape(10, 50, gears.shape.circle, "#ffffff")
+theme.taglist_squares_sel = gears.surface.load_from_shape(15, 10, gears.shape.circle, "#ffffff")
+-- theme.taglist_squares_unsel = gears.surface.load_from_shape(10, 50, gears.shape.circle, "#ffffff")
 theme.taglist_spacing = 5
 
 -- Variables set for theming notifications:
