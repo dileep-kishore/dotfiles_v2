@@ -89,7 +89,7 @@
     # nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
     # ranger                  # ranger shell (https://github.com/ranger/ranger)
     nnn                     # nnn shell (https://github.com/jarun/nnn)
-    # xplr                    # xplr shell (https://github.com/sayanarijit/xplr)
+    xplr                    # xplr shell (https://github.com/sayanarijit/xplr)
     vim_shell               # vim shell indicator (:sh)
     # midnight_commander      # midnight commander shell (https://midnight-commander.org/)
     # nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
@@ -755,7 +755,7 @@
   ##################[ xplr: xplr shell (https://github.com/sayanarijit/xplr) ]##################
   # xplr shell color.
   typeset -g POWERLEVEL9K_XPLR_FOREGROUND=0
-  typeset -g POWERLEVEL9K_XPLR_BACKGROUND=6
+  typeset -g POWERLEVEL9K_XPLR_BACKGROUND=5
   # Custom icon.
   # typeset -g POWERLEVEL9K_XPLR_VISUAL_IDENTIFIER_EXPANSION='⭐'
 

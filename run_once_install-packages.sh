@@ -14,6 +14,7 @@ sudo pacman -S --needed --noconfirm \
     gparted \
     procs \
     btop \
+    dua-cli \
     xorg-server-xephyr \
     dpkg
 
