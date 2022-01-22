@@ -10,10 +10,7 @@ process = subprocess.run(["toggl", "now"], stdout=subprocess.PIPE)
 output = process.stdout.decode("utf-8")
 try:
     result = [s.strip() for s in output.split("\n")]
-    if result[0].startswith("An error"):
-        error, title, *rest = result
-    else:
-        title, *rest = result
+    title, *rest = result
     title = title.split("#")[0].strip()
     data = {r.split(":", 1)[0]: r.split(":", 1)[-1].strip() for r in rest}
     if len(title) > 20:
