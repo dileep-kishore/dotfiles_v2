@@ -36,13 +36,14 @@
 
 ## Screenshots
 
-|                 | Image                     |
-| --------------- | ------------------------- |
-| Desktop1        | ![](assets/desktop1.png)  |
-| Desktop2        | ![](assets/desktop2.png)  |
-| Neovim          | ![](assets/neovim.png)    |
-| Terminal + Tmux | ![](assets/terminals.png) |
-| Doom Emacs      | ![](assets/emacs.png)     |
+|                        | Image                     |
+| ---------------------- | ------------------------- |
+| Desktop1               | ![](assets/desktop1.png)  |
+| Desktop2               | ![](assets/desktop2.png)  |
+| Neovim                 | ![](assets/neovim.png)    |
+| Terminal + Tmux        | ![](assets/terminals.png) |
+| Doom Emacs             | ![](assets/emacs.png)     |
+| Both screens + Spotify | ![](assets/desktop.png)   |
 
 ## Installation
 
@@ -58,28 +59,28 @@ If you install the dependencies manually, then the `dotfiles` can be used in any
 
 ## Packages
 
-| Name      | Details                                         |
-| --------- | ----------------------------------------------- |
-| Nitrogen  | Wallpaper manager                               |
-| rofi      | Application launcher and window switcher        |
-| nnn       | File explorer                                   |
-| Syncthing | Synchronize files between two or more computers |
-| Barrier   | Share mouse and keyboard                        |
-| Brave     | Browser                                         |
-| Enhancd   | A better cd with interactive filtering          |
-| Forgit    | A utility to use git interactively              |
-| fzf       | Fuzzy search and interactive filtering          |
-| fd        | A better alternative to find                    |
-| bat       | A better alternative to cat                     |
-| lsd       | The next generation ls command                  |
-| noti      | Send notifications from the terminal            |
-| sad       | CLI search and replace                          |
-| sd        | CLI search and replace                          |
-| ripgrep   | A better alternative to grep                    |
-| delta     | A git pager                                     |
-| zoxide    | Jump between directories in zsh                 |
-| atuin     | zsh history navigation                          |
-| espanso   | For text expansion                              |
+| Name         | Details                                         |
+| ------------ | ----------------------------------------------- |
+| Nitrogen     | Wallpaper manager                               |
+| rofi         | Application launcher and window switcher        |
+| ~~nnn~~ xplr | File explorer                                   |
+| Syncthing    | Synchronize files between two or more computers |
+| Barrier      | Share mouse and keyboard                        |
+| Brave        | Browser                                         |
+| Enhancd      | A better cd with interactive filtering          |
+| Forgit       | A utility to use git interactively              |
+| fzf          | Fuzzy search and interactive filtering          |
+| fd           | A better alternative to find                    |
+| bat          | A better alternative to cat                     |
+| lsd          | The next generation ls command                  |
+| noti         | Send notifications from the terminal            |
+| sad          | CLI search and replace                          |
+| sd           | CLI search and replace                          |
+| ripgrep      | A better alternative to grep                    |
+| delta        | A git pager                                     |
+| zoxide       | Jump between directories in zsh                 |
+| atuin        | zsh history navigation                          |
+| espanso      | For text expansion                              |
 
 ## Credits
 
