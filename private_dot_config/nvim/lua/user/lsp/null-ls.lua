@@ -24,7 +24,7 @@ null_ls.setup {
         formatting.stylua.with {
             extra_args = { "--config-path", vim.fn.expand "~/.config/stylua.toml" },
         },
-        formatting.fixjson,
+        -- formatting.fixjson,
         formatting.eslint_d.with {
             prefer_local = "node_modules/.bin",
         },
