@@ -253,6 +253,8 @@ return packer.startup(function(use)
             require("hlslens").setup()
         end,
     }
+    -- Scrollbar
+    use "petertriho/nvim-scrollbar"
     -- Peek
     use {
         "nacro90/numb.nvim",
@@ -324,6 +326,10 @@ return packer.startup(function(use)
             require("neoscroll").setup()
             require("telescope").load_extension "neoclip"
         end,
+    }
+    -- Better folding
+    use {
+        "anuvyklack/pretty-fold.nvim",
     }
     use "tpope/vim-sleuth" -- Automatically adjust shiftwidth and expandtab
     -- Highlights
