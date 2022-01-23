@@ -210,7 +210,7 @@ local mappings = {
         l = { "<Cmd>Zklinks<CR>", "Search links" },
     },
 
-    x = {
+    d = {
         name = "Trouble",
         x = { "<cmd>Trouble<cr>", "Trouble" },
         w = { "<cmd>Trouble workspace_diagnostics<cr>", "Trouble workspace_diagnostics" },

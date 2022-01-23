@@ -368,7 +368,13 @@ return packer.startup(function(use)
     }
     use "kyazdani42/nvim-web-devicons"
     -- File managers
-    use "is0n/fm-nvim"
+    use {
+        "fhill2/xplr.nvim",
+        run = function()
+            require("xplr").install { hide = true }
+        end,
+        requires = { { "nvim-lua/plenary.nvim" }, { "MunifTanjim/nui.nvim" } },
+    }
     -- Indentation
     use "lukas-reineke/indent-blankline.nvim"
     -- Zen mode

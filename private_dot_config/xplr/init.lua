@@ -8,7 +8,7 @@ package.path = home .. "/.config/xplr/plugins/?/init.lua;" .. home .. "/.config/
 -- Config
 ---- General
 ------ Debug error
-xplr.config.general.disable_debug_error_mode = false
+xplr.config.general.disable_debug_error_mode = true
 
 ------ Show hidden
 xplr.config.general.show_hidden = false
