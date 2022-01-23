@@ -16,14 +16,19 @@ null_ls.setup {
         end
     end,
     sources = {
-        formatting.prettier,
+        formatting.prettier.with {
+            disabled_filetypes = { "typescript", "typescriptreact" },
+        },
         formatting.clang_format,
         formatting.black,
         formatting.stylua.with {
             extra_args = { "--config-path", vim.fn.expand "~/.config/stylua.toml" },
         },
         formatting.fixjson,
-        formatting.eslint_d,
+        formatting.eslint_d.with {
+            prefer_local = "node_modules/.bin",
+        },
+        formatting.stylelint,
         -- formatting.styler,
         -- formatting.latexindent,
         formatting.markdownlint,
