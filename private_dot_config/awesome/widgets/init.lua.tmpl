@@ -97,13 +97,13 @@ function _M.create_taglist(s)
         screen = s,
         filter = awful.widget.taglist.filter.all,
         style = {
-            shape = gears.shape.rounded_rect,
+            shape = gears.shape.rectangle,
         },
         layout = {
             spacing = 2,
             spacing_widget = {
                 color = beautiful.bg_normal,
-                shape = gears.shape.rounded_rect,
+                shape = gears.shape.rectangle,
                 widget = wibox.widget.separator,
             },
             layout = wibox.layout.fixed.horizontal,
@@ -235,15 +235,15 @@ function _M.create_tasklist(s)
         filter = awful.widget.tasklist.filter.currenttags,
 
         style = {
-            shape = gears.shape.rounded_rect,
+            shape = gears.shape.rectangle,
         },
         layout = {
-            spacing = 10,
+            spacing = 5,
             spacing_widget = {
                 {
-                    forced_width = 5,
-                    shape = gears.shape.circle,
-                    widget = wibox.widget.separator,
+                    forced_width = 3,
+                    shape = gears.shape.rectangle,
+                    widget = wibox.widget.background,
                 },
                 valign = "center",
                 halign = "center",
@@ -331,7 +331,7 @@ function _M.create_wibox(s)
             screen = s,
             position = "top",
             bg = beautiful.bg_normal,
-            shape = gears.shape.rounded_bar,
+            shape = gears.shape.rectangle,
             border_width = dpi(5),
             widget = {
                 layout = wibox.layout.align.horizontal,
@@ -354,7 +354,7 @@ function _M.create_wibox(s)
                     wibox.container.background(
                         wibox.container.margin(custom_widgets.toggl_output, 10, 10, 5, 5),
                         beautiful.first,
-                        gears.shape.rounded_rect
+                        gears.shape.rectangle
                     ),
                     wibox.container.background(
                         wibox.container.margin(
@@ -365,17 +365,17 @@ function _M.create_wibox(s)
                             5
                         ),
                         beautiful.second,
-                        gears.shape.rounded_rect
+                        gears.shape.rectangle
                     ),
                     wibox.container.background(
                         wibox.container.margin(custom_widgets.mytextclock, 5, 5, 5, 5),
                         beautiful.third,
-                        gears.shape.rounded_rect
+                        gears.shape.rectangle
                     ),
                     wibox.container.background(
                         wibox.container.margin(s.systray, 0, 0, 0, 0),
                         beautiful.fourth,
-                        gears.shape.rounded_rect
+                        gears.shape.rectangle
                     ),
                     wibox.container.background(
                         wibox.container.margin(
@@ -386,7 +386,7 @@ function _M.create_wibox(s)
                             2
                         ),
                         beautiful.fourth,
-                        gears.shape.rounded_rect
+                        gears.shape.rectangle
                     ),
                 },
             },
@@ -396,7 +396,7 @@ function _M.create_wibox(s)
             screen = s,
             position = "top",
             bg = beautiful.bg_normal,
-            shape = gears.shape.rounded_bar,
+            shape = gears.shape.rectangle,
             border_width = dpi(5),
             widget = {
                 layout = wibox.layout.align.horizontal,
@@ -428,7 +428,7 @@ function _M.create_wibox(s)
                             5
                         ),
                         beautiful.first,
-                        gears.shape.rounded_rect
+                        gears.shape.rectangle
                     ),
                     wibox.container.background(
                         wibox.container.margin(
@@ -443,17 +443,17 @@ function _M.create_wibox(s)
                             5
                         ),
                         beautiful.second,
-                        gears.shape.rounded_rect
+                        gears.shape.rectangle
                     ),
                     wibox.container.background(
                         wibox.container.margin(custom_widgets.weather_widget, 5, 5, 5, 5),
                         beautiful.third,
-                        gears.shape.rounded_rect
+                        gears.shape.rectangle
                     ),
                     wibox.container.background(
                         wibox.container.margin(s.systray, 0, 0, 0, 0),
                         beautiful.fourth,
-                        gears.shape.rounded_rect
+                        gears.shape.rectangle
                     ),
                     wibox.container.background(
                         wibox.container.margin(
@@ -464,7 +464,7 @@ function _M.create_wibox(s)
                             2
                         ),
                         beautiful.fourth,
-                        gears.shape.rounded_rect
+                        gears.shape.rectangle
                     ),
                 },
             },
@@ -477,7 +477,7 @@ function _M.create_wibox(s)
         screen = s,
         position = "top",
         bg = beautiful.bg_normal,
-        shape = gears.shape.rounded_bar,
+        shape = gears.shape.rectangle,
         border_width = dpi(5),
         widget = {
             layout = wibox.layout.align.horizontal,
@@ -506,7 +506,7 @@ function _M.create_wibox(s)
                         5
                     ),
                     beautiful.second,
-                    gears.shape.rounded_rect
+                    gears.shape.rectangle
                 ),
                 wibox.container.background(
                     wibox.container.margin(
@@ -522,22 +522,22 @@ function _M.create_wibox(s)
                         5
                     ),
                     beautiful.second,
-                    gears.shape.rounded_rect
+                    gears.shape.rectangle
                 ),
                 wibox.container.background(
                     wibox.container.margin(custom_widgets.weather_widget, 5, 5, 5, 5),
                     beautiful.third,
-                    gears.shape.rounded_rect
+                    gears.shape.rectangle
                 ),
                 wibox.container.background(
                     wibox.container.margin(s.systray, 0, 0, 0, 0),
                     beautiful.fourth,
-                    gears.shape.rounded_rect
+                    gears.shape.rectangle
                 ),
                 wibox.container.background(
                     wibox.container.margin(custom_widgets.mytextclock, 5, 5, 5, 5),
                     beautiful.third,
-                    gears.shape.rounded_rect
+                    gears.shape.rectangle
                 ),
                 wibox.container.background(
                     wibox.container.margin(
@@ -548,7 +548,7 @@ function _M.create_wibox(s)
                         2
                     ),
                     beautiful.fourth,
-                    gears.shape.rounded_rect
+                    gears.shape.rectangle
                 ),
             },
         },

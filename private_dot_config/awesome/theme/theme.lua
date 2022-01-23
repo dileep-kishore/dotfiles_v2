@@ -37,7 +37,7 @@ theme.border_marked = "#8c4351"
 theme.first = "#4a3d62"
 theme.second = "#1f3252"
 theme.third = "#4a232a"
-theme.fourth = "#0f0f14"
+theme.fourth = "#0c3a42"
 
 -- There are other variable sets
 -- overriding the icons one when
@@ -80,7 +80,7 @@ end
 -- Generate taglist squares:
 -- theme.taglist_squares_sel = themes_path .. "icons/taglist/square_sel.png"
 -- theme.taglist_squares_unsel = themes_path .. "icons/taglist/square_unsel.png"
-theme.taglist_squares_sel = gears.surface.load_from_shape(15, 10, gears.shape.circle, "#ffffff")
+theme.taglist_squares_sel = gears.surface.load_from_shape(10, 10, gears.shape.rectangle, "#8c4351")
 -- theme.taglist_squares_unsel = gears.surface.load_from_shape(10, 50, gears.shape.circle, "#ffffff")
 theme.taglist_spacing = 5
 
