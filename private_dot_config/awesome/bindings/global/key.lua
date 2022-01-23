@@ -107,6 +107,33 @@ awful.keyboard.append_global_keybindings {
         end,
     },
     awful.key {
+        modifiers = { mod.alt, mod.shift },
+        key = "o",
+        description = "Open obsidian",
+        group = "launcher",
+        on_press = function()
+            awful.spawn "obsidian"
+        end,
+    },
+    awful.key {
+        modifiers = { mod.alt, mod.shift },
+        key = "m",
+        description = "Open morgen",
+        group = "launcher",
+        on_press = function()
+            awful.spawn "morgen"
+        end,
+    },
+    awful.key {
+        modifiers = { mod.alt, mod.shift },
+        key = "n",
+        description = "Open neovim (notes)",
+        group = "launcher",
+        on_press = function()
+            awful.spawn.with_shell "alacritty --working-directory ~/Documents/Zettelkasten"
+        end,
+    },
+    awful.key {
         modifiers = { mod.super },
         key = "d",
         description = "Spotify shell",
