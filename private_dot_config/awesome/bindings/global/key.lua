@@ -117,6 +117,15 @@ awful.keyboard.append_global_keybindings {
     },
     awful.key {
         modifiers = { mod.alt, mod.shift },
+        key = "a",
+        description = "Open Airtable",
+        group = "launcher",
+        on_press = function()
+            awful.spawn "airtable"
+        end,
+    },
+    awful.key {
+        modifiers = { mod.alt, mod.shift },
         key = "m",
         description = "Open morgen",
         group = "launcher",
