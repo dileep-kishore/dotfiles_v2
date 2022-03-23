@@ -11,6 +11,3 @@ xrandr --output DVI-D-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output D
 # {{- end }}
 picom --experimental-backends &
 redshift -l 42.35765:-71.12889 &
-# templating {{- if (or (eq .chezmoi.hostname "red-zen") (eq .chezmoi.hostname "dileep-awesome")) }}
-~/.dotfiles/bin/killer.sh || shutdown -h now &
-# {{- end }}
