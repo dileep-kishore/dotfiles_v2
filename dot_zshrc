@@ -141,7 +141,7 @@ zinit light jeffreytse/zsh-vi-mode
 zinit wait lucid for \
     OMZP::asdf \
     OMZP::archlinux \
-    OMZP::copydir \
+    OMZP::copypath \
     OMZP::direnv \
     OMZP::extract \
     OMZP::npm \
