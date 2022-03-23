@@ -279,6 +279,7 @@ return packer.startup(function(use)
         config = function()
             require("Navigator").setup()
         end,
+        commit = "6bfcf7d",
     }
     ---- Language specific
     -- LaTeX
@@ -448,6 +449,7 @@ return packer.startup(function(use)
         "nvim-orgmode/orgmode",
         config = function()
             require("orgmode").setup {}
+            require("orgmode").setup_ts_grammar()
         end,
     }
 
