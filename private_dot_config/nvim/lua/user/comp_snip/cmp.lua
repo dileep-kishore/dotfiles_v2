@@ -90,6 +90,9 @@ cmp.setup {
         native_menu = false,
     },
 }
+if vim.o.ft == "clap_input" and vim.o.ft == "guihua" and vim.o.ft == "guihua_rust" then
+    cmp.setup.buffer { completion = { enable = false } }
+end
 
 ---- cmp-cmdline
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).

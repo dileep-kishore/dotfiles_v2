@@ -118,6 +118,7 @@ return packer.startup(function(use)
     use "williamboman/nvim-lsp-installer"
     use "tamago324/nlsp-settings.nvim"
     use "jose-elias-alvarez/null-ls.nvim"
+    use { "ray-x/navigator.lua", requires = { "ray-x/guihua.lua", run = "cd lua/fzy && make" } }
     use {
         "rmagatti/goto-preview", -- Preview goto definition in floating window
         after = "nvim-lspconfig",
@@ -330,12 +331,12 @@ return packer.startup(function(use)
     }
     -- Better folding
     use {
-        'anuvyklack/pretty-fold.nvim',
-       requires = 'anuvyklack/nvim-keymap-amend', -- only for preview
-       config = function()
-          require('pretty-fold').setup()
-          require('pretty-fold.preview').setup()
-       end,
+        "anuvyklack/pretty-fold.nvim",
+        requires = "anuvyklack/nvim-keymap-amend", -- only for preview
+        config = function()
+            require("pretty-fold").setup()
+            require("pretty-fold.preview").setup()
+        end,
     }
     use "tpope/vim-sleuth" -- Automatically adjust shiftwidth and expandtab
     -- Highlights
