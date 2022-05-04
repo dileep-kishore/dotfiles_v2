@@ -330,7 +330,12 @@ return packer.startup(function(use)
     }
     -- Better folding
     use {
-        "anuvyklack/pretty-fold.nvim",
+        'anuvyklack/pretty-fold.nvim',
+       requires = 'anuvyklack/nvim-keymap-amend', -- only for preview
+       config = function()
+          require('pretty-fold').setup()
+          require('pretty-fold.preview').setup()
+       end,
     }
     use "tpope/vim-sleuth" -- Automatically adjust shiftwidth and expandtab
     -- Highlights
