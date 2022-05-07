@@ -4,7 +4,7 @@
     </a>
     <br/>
     <sup>
-        <sub>Powered by <a href="https://www.chezmoi.io/">chezmoi</a> <img src="https://raw.githubusercontent.com/twpayne/chezmoi/master/logo-144px.svg"> </sub>
+        <sub>Powered by <a href="https://www.chezmoi.io/">chezmoi</a> <img src="https://raw.githubusercontent.com/twpayne/chezmoi/master/logo.svg"> </sub>
         <br/>
         <sub>
             <img src="https://forthebadge.com/images/badges/built-with-love.svg">
