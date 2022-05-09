@@ -20,7 +20,7 @@ function clone_pull() {
 clone_pull collision https://github.com/Elv13/collision
 clone_pull modules/smart_borders https://github.com/intrntbrn/smart_borders
 clone_pull modules/lain https://github.com/lcpz/lain
-clone_pull awesomewm-vim-tmux-navigatorhttps://github.com/intrntbrn/awesomewm-vim-tmux-navigator
+clone_pull awesomewm-vim-tmux-navigator https://github.com/intrntbrn/awesomewm-vim-tmux-navigator
 clone_pull modules/bling https://github.com/Nooo37/bling
 clone_pull modules/rubato https://github.com/andOrlando/rubato
 clone_pull awesome-wm-widgets https://github.com/streetturtle/awesome-wm-widgets
