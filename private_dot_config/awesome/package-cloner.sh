@@ -1,47 +1,30 @@
 #!/usr/bin/env bash
 
+CURRDIR=$PWD
 DOTFILES=$HOME/.dotfiles/private_dot_config/awesome
 AWESOMEDIR=$HOME/.config/awesome
 
-if [ ! -d $AWESOMEDIR/modules/collision ]; then
-    git clone https://github.com/Elv13/collision $AWESOMEDIR/collision
-    ln -s $AWESOMEDIR/collision $DOTFILES/collision
-fi
+mkdir -p $HOME/.config/awesome/modules
 
-if [ ! -d $AWESOMEDIR/modules/smart_borders ]; then
-    git clone https://github.com/intrntbrn/smart_borders $AWESOMEDIR/modules/smart_borders
-    ln -s $AWESOMEDIR/modules/smart_borders $DOTFILES/modules/smart_borders
-fi
+function clone_pull() {
+    if [ ! -d $AWESOMEDIR/$1 ]; then
+        git clone $2 $AWESOMEDIR/$1
+        ln -s $AWESOMEDIR/$1 $DOTFILES/$1
+    else
+        cd $AWESOMEDIR/$1
+        git pull -f
+        cd $CURRDIR
+    fi
+}
 
-if [ ! -d $AWESOMEDIR/modules/lain ]; then
-    git clone https://github.com/lcpz/lain $AWESOMEDIR/modules/lain
-    ln -s $AWESOMEDIR/modules/lain $DOTFILES/modules/lain
-fi
-
-if [ ! -d $AWESOMEDIR/awesomewm-vim-tmux-navigator ]; then
-    git clone https://github.com/intrntbrn/awesomewm-vim-tmux-navigator $AWESOMEDIR/awesomewm-vim-tmux-navigator
-    ln -s $AWESOMEDIR/awesomewm-vim-tmux-navigator $DOTFILES/awesomewm-vim-tmux-navigator
-fi
-
-if [ ! -d $AWESOMEDIR/modules/bling ]; then
-    git clone https://github.com/Nooo37/bling $AWESOMEDIR/modules/bling
-    ln -s $AWESOMEDIR/modules/bling $DOTFILES/modules/bling
-fi
-
-if [ ! -d $AWESOMEDIR/modules/rubato ]; then
-    git clone https://github.com/andOrlando/rubato $AWESOMEDIR/modules/rubato
-    ln -s $AWESOMEDIR/modules/rubato $DOTFILES/modules/rubato
-fi
-
-if [ ! -d $AWESOMEDIR/awesome-wm-widgets ]; then
-    git clone https://github.com/streetturtle/awesome-wm-widgets $AWESOMEDIR/awesome-wm-widgets
-    ln -s $AWESOMEDIR/awesome-wm-widgets $DOTFILES/awesome-wm-widgets
-fi
-
-if [ ! -d $AWESOMEDIR/awesome-buttons ]; then
-    git clone https://github.com/streetturtle/awesome-buttons $AWESOMEDIR/awesome-buttons
-    ln -s $AWESOMEDIR/awesome-buttons $DOTFILES/awesome-buttons
-fi
+clone_pull collision https://github.com/Elv13/collision
+clone_pull modules/smart_borders https://github.com/intrntbrn/smart_borders
+clone_pull modules/lain https://github.com/lcpz/lain
+clone_pull awesomewm-vim-tmux-navigatorhttps://github.com/intrntbrn/awesomewm-vim-tmux-navigator
+clone_pull modules/bling https://github.com/Nooo37/bling
+clone_pull modules/rubato https://github.com/andOrlando/rubato
+clone_pull awesome-wm-widgets https://github.com/streetturtle/awesome-wm-widgets
+clone_pull awesome-buttons https://github.com/streetturtle/awesome-buttons
 
 if [ ! -f $AWESOMEDIR/json.lua ]; then
     bash $DOTFILES/widgets/install-jsonlua.sh

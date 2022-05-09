@@ -69,9 +69,11 @@ sudo pacman -S --needed --noconfirm \
     ncdu \
     tldr \
     syncthing \
+    wakatime \
     barrier \
     aria2 \
     inkscape \
+    obsidian \
     libreoffice-fresh
 
 if [ ! -d $HOME/Downloads/paru ]; then
@@ -84,6 +86,7 @@ if [ ! -d $HOME/Downloads/paru ]; then
 fi
 
 bash ~/.config/awesome/package-cloner.sh
+bash ~/.config/xplr/package-cloner.sh
 
 sudo pacman -S --needed --noconfirm \
     neofetch \
@@ -105,10 +108,7 @@ if [ ! -d $HOME/npm-global/lib/node_modules/neovim ]; then
     mkdir ~/npm-global
     npm install -g neovim
 fi
-if [ ! -f "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim ]; then
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-           https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-fi
+
 if [ ! -d $HOME/.fzf ]; then
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
@@ -150,7 +150,6 @@ paru -S --useask --batchinstall --cleanafter --removemake \
     luacheck \
     nodejs-markdownlint-cli \
     bash-language-server \
-    wakatime-cli-bin \
     texlab \
     rust-analyzer \
     glow
@@ -162,11 +161,11 @@ fi
 
 # NOTE: Emacs installation is done outside of the script
 
-# install doom emacs
-if [ ! -f ~/.emacs.d/bin/doom ]; then
-    git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
-    ~/.emacs.d/bin/doom install
-fi
+# # install doom emacs
+# if [ ! -f ~/.emacs.d/bin/doom ]; then
+#     git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+#     ~/.emacs.d/bin/doom install
+# fi
 
 # install texlive stuff
 sudo pacman -S --needed --noconfirm \
