@@ -63,6 +63,7 @@ sudo pacman -S --needed --noconfirm \
     nodejs \
     npm \
     yarn \
+    ruby \
     rust \
     copyq \
     editorconfig-core-c \
@@ -95,6 +96,10 @@ sudo pacman -S --needed --noconfirm \
     ripgrep \
     neovim \
     tree-sitter \
+    clang \
+    python-black \
+    stylelint \
+    shfmt \
     python-pynvim \
     python-ueberzug \
     ffmpegthumbnailer \
