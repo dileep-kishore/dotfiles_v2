@@ -33,6 +33,8 @@ sudo pacman -S --needed --noconfirm \
     alsa-utils \
     pamixer \
     atuin \
+    ttf-cascadia-code \
+    otf-cascadia-code \
     ttf-font-awesome \
     otf-font-awesome \
     adapta-gtk-theme \
@@ -61,6 +63,7 @@ sudo pacman -S --needed --noconfirm \
     nodejs \
     npm \
     yarn \
+    ruby \
     rust \
     copyq \
     editorconfig-core-c \
@@ -93,6 +96,10 @@ sudo pacman -S --needed --noconfirm \
     ripgrep \
     neovim \
     tree-sitter \
+    clang \
+    python-black \
+    stylelint \
+    shfmt \
     python-pynvim \
     python-ueberzug \
     ffmpegthumbnailer \
@@ -120,7 +127,6 @@ fi
 
 paru -S --useask --batchinstall --cleanafter --removemake \
     picom-git \
-    mu \
     xsv \
     betterlockscreen \
     lightdm-webkit-theme-aether \
@@ -138,8 +144,6 @@ paru -S --useask --batchinstall --cleanafter --removemake \
     noto-fonts-emoji \
     otf-alegreya \
     ttf-alegreya \
-    otf-yanone-kaffeesatz \
-    ttf-yanone-kaffeesatz \
     activitywatch-bin \
     espanso \
     1password-cli \
