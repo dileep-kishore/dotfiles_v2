@@ -33,6 +33,8 @@ sudo pacman -S --needed --noconfirm \
     alsa-utils \
     pamixer \
     atuin \
+    ttf-cascadia-code \
+    otf-cascadia-code \
     ttf-font-awesome \
     otf-font-awesome \
     adapta-gtk-theme \
@@ -120,7 +122,6 @@ fi
 
 paru -S --useask --batchinstall --cleanafter --removemake \
     picom-git \
-    mu \
     xsv \
     betterlockscreen \
     lightdm-webkit-theme-aether \
@@ -138,8 +139,6 @@ paru -S --useask --batchinstall --cleanafter --removemake \
     noto-fonts-emoji \
     otf-alegreya \
     ttf-alegreya \
-    otf-yanone-kaffeesatz \
-    ttf-yanone-kaffeesatz \
     activitywatch-bin \
     espanso \
     1password-cli \

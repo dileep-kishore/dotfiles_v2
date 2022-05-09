@@ -80,12 +80,7 @@ end
 -- Generate taglist squares:
 -- theme.taglist_squares_sel = themes_path .. "icons/taglist/square_sel.png"
 -- theme.taglist_squares_unsel = themes_path .. "icons/taglist/square_unsel.png"
-theme.taglist_squares_sel = gears.surface.load_from_shape(
-    72,
-    72,
-    gears.shape.transform(gears.shape.isosceles_triangle):rotate_at(35, 35, math.pi / 2),
-    "#975562"
-)
+theme.taglist_squares_sel = gears.surface.load_from_shape(10, 50, gears.shape.rectangle, "#975562")
 -- theme.taglist_squares_unsel = gears.surface.load_from_shape(10, 50, gears.shape.circle, "#ffffff")
 theme.taglist_spacing = 5
 
