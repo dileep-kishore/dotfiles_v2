@@ -118,6 +118,7 @@ return packer.startup(function(use)
     use "williamboman/nvim-lsp-installer"
     use "tamago324/nlsp-settings.nvim"
     use "jose-elias-alvarez/null-ls.nvim"
+    use "RRethy/vim-illuminate"
     use { "ray-x/navigator.lua", requires = { "ray-x/guihua.lua", run = "cd lua/fzy && make" } }
     use {
         "rmagatti/goto-preview", -- Preview goto definition in floating window
@@ -250,9 +251,6 @@ return packer.startup(function(use)
     use "windwp/nvim-spectre"
     use {
         "kevinhwang91/nvim-hlslens",
-        config = function()
-            require("hlslens").setup()
-        end,
     }
     -- Scrollbar
     use "petertriho/nvim-scrollbar"
@@ -265,7 +263,7 @@ return packer.startup(function(use)
     }
     -- Marks
     use {
-        "chentau/marks.nvim",
+        "chentoast/marks.nvim",
         config = function()
             require("marks").setup {}
         end,

@@ -153,7 +153,6 @@ paru -S --useask --batchinstall --cleanafter --removemake \
     stylua \
     luacheck \
     nodejs-markdownlint-cli \
-    bash-language-server \
     texlab \
     rust-analyzer \
     glow

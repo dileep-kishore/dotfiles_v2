@@ -29,7 +29,6 @@ null_ls.setup {
             prefer_local = "node_modules/.bin",
         },
         formatting.stylelint,
-        -- formatting.styler,
         -- formatting.latexindent,
         formatting.markdownlint,
         formatting.rustfmt,
