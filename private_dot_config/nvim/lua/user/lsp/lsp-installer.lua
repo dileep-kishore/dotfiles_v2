@@ -25,21 +25,25 @@ lsp_installer.on_server_ready(function(server)
         local jsonls_opts = require "user.lsp.settings.jsonls"
         opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
         opts.on_attach = function(client, bufnr)
-            client.resolved_capabilities.document_formatting = false
-            client.resolved_capabilities.document_range_formatting = false
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
         end
     end
 
     if server.name == "sumneko_lua" then
         local sumneko_opts = require "user.lsp.settings.sumneko_lua"
         opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+        opts.on_attach = function(client, bufnr)
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+        end
     end
 
     if server.name == "tsserver" then
         local tsserver_opts = require "user.lsp.settings.tsserver"
         opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
         opts.on_attach = function(client, bufnr)
-            client.resolved_capabilities.document_formatting = false
+            client.server_capabilities.documentFormattingProvider = false
         end
     end
 
