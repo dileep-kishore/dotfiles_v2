@@ -45,6 +45,7 @@ sudo pacman -S --needed --noconfirm \
     zathura \
     sxiv \
     xplr \
+    atuin \
     renameutils \
     zathura-pdf-mupdf \
     featherpad \
@@ -76,6 +77,7 @@ sudo pacman -S --needed --noconfirm \
     barrier \
     aria2 \
     inkscape \
+    morgen-bin \
     obsidian \
     libreoffice-fresh
 
