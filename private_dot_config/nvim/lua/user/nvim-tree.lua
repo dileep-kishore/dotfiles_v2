@@ -1,5 +1,3 @@
-vim.g.nvim_tree_respect_buf_cwd = 1
-
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
     return
@@ -14,6 +12,7 @@ local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup {
     disable_netrw = true,
+    respect_buf_cwd = true,
     ignore_ft_on_setup = {
         "startify",
         "dashboard",
