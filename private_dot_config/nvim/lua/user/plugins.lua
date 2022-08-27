@@ -390,7 +390,7 @@ return packer.startup(function(use)
         end,
     }
     use {
-        "Pocco81/TrueZen.nvim",
+        "Pocco81/true-zen.nvim",
         config = function()
             require("true-zen").setup()
         end,
