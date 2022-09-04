@@ -297,6 +297,7 @@ return packer.startup(function(use)
     ---- Themes and eye candy
     use "folke/tokyonight.nvim"
     use "EdenEast/nightfox.nvim"
+    use "rebelot/kanagawa.nvim"
     use {
         "norcalli/nvim-colorizer.lua",
         config = function()
