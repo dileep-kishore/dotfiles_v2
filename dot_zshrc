@@ -166,9 +166,6 @@ zinit wait lucid for \
  blockf atpull'zinit creinstall -q .' \
     zsh-users/zsh-completions
 
-# Interactive `cd`
-zinit wait lucid for b4b4r07/enhancd
-
 # Learned command autocompletion
 zinit wait lucid for dim-an/cod
 
