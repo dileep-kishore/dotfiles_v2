@@ -100,7 +100,7 @@ function _M.create_taglist(s)
             shape = gears.shape.rectangle,
         },
         layout = {
-            spacing = 2,
+            spacing = 4,
             spacing_widget = {
                 color = beautiful.bg_normal,
                 shape = gears.shape.rectangle,
@@ -127,7 +127,7 @@ function _M.create_taglist(s)
                             id = "icon_role",
                             widget = wibox.widget.imagebox,
                         },
-                        margins = 2,
+                        margins = 4,
                         widget = wibox.container.margin,
                     },
                     layout = wibox.layout.align.horizontal,
@@ -471,6 +471,7 @@ function _M.create_wibox(s)
         }
     end
 end
+
 ----  NOTE: {{- else if (eq .chezmoi.hostname "dileep-xps") }}
 function _M.create_wibox(s)
     return awful.wibar {
@@ -554,6 +555,7 @@ function _M.create_wibox(s)
         },
     }
 end
+
 ---- {{- end }}
 
 return _M

@@ -27,11 +27,11 @@ theme.fg_focus = "#7E9CD8"
 theme.fg_urgent = "#E46876"
 theme.fg_minimize = "#ffffff"
 
-theme.useless_gap = dpi(5)
-theme.border_width = dpi(0)
-theme.border_normal = "#000000"
-theme.border_focus = "#ffffff"
-theme.border_marked = "#E46876"
+theme.useless_gap = dpi(4)
+theme.border_width = dpi(4)
+theme.border_normal = "#1F1F28"
+theme.border_focus = "#1F1F28"
+theme.border_marked = "#1F1F28"
 
 -- more colors
 theme.first = "#2B3328"
@@ -80,7 +80,7 @@ end
 -- Generate taglist squares:
 -- theme.taglist_squares_sel = themes_path .. "icons/taglist/square_sel.png"
 -- theme.taglist_squares_unsel = themes_path .. "icons/taglist/square_unsel.png"
-theme.taglist_squares_sel = gears.surface.load_from_shape(10, 50, gears.shape.rectangle, "#76946A")
+theme.taglist_squares_sel = gears.surface.load_from_shape(10, 50, gears.shape.rectangle, "#43242B")
 -- theme.taglist_squares_unsel = gears.surface.load_from_shape(10, 50, gears.shape.circle, "#ffffff")
 theme.taglist_spacing = 5
 

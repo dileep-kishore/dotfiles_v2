@@ -8,7 +8,7 @@ local _M = {}
 ---- Smart borders config
 smart_borders {
     layout = "ratio",
-    border_width = 6,
+    border_width = 4,
     show_button_tooltips = true,
     align_horizontal = "center",
     rounded_corner = 18,
