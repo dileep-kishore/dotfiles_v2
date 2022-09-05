@@ -80,3 +80,6 @@ matches:
 
     - trigger: ":immatplotlib"
       replace: "import matplotlib.pyplot as plt"
+
+    - trigger: ":micone"
+      replace: "MiCoNE"
