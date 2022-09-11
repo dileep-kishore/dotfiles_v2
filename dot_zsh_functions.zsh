@@ -72,3 +72,8 @@ function scrot_clip() { scrot -s '/tmp/%F_%T.png' -e 'xclip -selection clip -t i
 
 # Function for easy access to wacom config
 function my_wacom() { /home/dileep/.dotfiles/bin/wacom_config.sh "$1" }
+
+# xrandr function to run when docking laptop
+function my_xrandr() {
+    xrandr --output eDP-1 --primary --mode 1920x1200 --pos 0x0 --rotate normal --output DP-2-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-2-2 --mode 1920x1080 --pos 3857x0 --rotate normal
+}
