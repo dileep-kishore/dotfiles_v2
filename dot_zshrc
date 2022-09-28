@@ -220,7 +220,6 @@ zinit snippet /home/dileep/.zfunc/_poetry
 
 # lsd
 zinit wait lucid from"gh-r" as"null" for \
-    sbin"**/lsd"        Peltoche/lsd \
     sbin"**/zoxide" ajeetdsouza/zoxide
 
 # zoxide and delta

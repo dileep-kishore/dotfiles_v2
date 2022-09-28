@@ -32,6 +32,7 @@ sudo pacman -S --needed --noconfirm \
     libqalculate \
     alsa-utils \
     pamixer \
+    lsd \
     atuin \
     ttf-cascadia-code \
     otf-cascadia-code \
@@ -77,7 +78,6 @@ sudo pacman -S --needed --noconfirm \
     barrier \
     aria2 \
     inkscape \
-    morgen-bin \
     obsidian \
     libreoffice-fresh
 
@@ -135,6 +135,7 @@ paru -S --useask --batchinstall --cleanafter --removemake \
     orchis-theme-git \
     ttf-google-fonts-git \
     nnn-nerd \
+    morgen-bin \
     brave-bin \
     spotify \
     devour \
