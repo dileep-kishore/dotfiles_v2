@@ -24,6 +24,15 @@ sudo pacman -S --needed --noconfirm \
     lightdm-webkit2-greeter \
     nitrogen \
     rofi \
+    bat \
+    fd \
+    ripgrep \
+    exa \
+    sad \
+    sd \
+    yank \
+    zoxide \
+    git-delta \
     trayer \
     volumeicon \
     spotifyd \
@@ -45,6 +54,9 @@ sudo pacman -S --needed --noconfirm \
     feh \
     zathura \
     sxiv \
+    navi \
+    noti \
+    bit \
     xplr \
     atuin \
     renameutils \
@@ -130,6 +142,7 @@ fi
 paru -S --useask --batchinstall --cleanafter --removemake \
     picom-git \
     xsv \
+    oh-my-posh-bin \
     betterlockscreen \
     lightdm-webkit-theme-aether \
     orchis-theme-git \

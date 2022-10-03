@@ -47,7 +47,12 @@ export CRUCIAL="/media/crucial"
 
 # fzf configuration
 export FZF_BASE="$HOME/.fzf"
-export FZF_DEFAULT_OPTS="--height 40% --reverse --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+# catppuccin colors for fzf
+export FZF_DEFAULT_OPTS="\
+    --height 40% --reverse --preview 'bat --style=numbers --color=always --line-range :500 {}'\
+    --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+    --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+    --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
 # poetry path
 export PATH="$HOME/.poetry/bin:$PATH"
@@ -64,17 +69,6 @@ export NNN_FIFO=/tmp/nnn.fifo
 
 # zk notebook directory
 export ZK_NOTEBOOK_DIR="/home/dileep/Documents/Zettelkasten"
-
-################################################################################
-# Powerlevel10k
-################################################################################
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 
 ################################################################################
 # Zinit init                                                                   #
@@ -104,13 +98,8 @@ zinit light-mode for \
 ################################################################################
 # Prompt                                                                       #
 ################################################################################
-# Powerlevel10k prompt
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-
-# Starship prompt
-zinit lucid for \
-    as"command" from"gh-r" sbin"starship"  \
-    starship/starship
+# Starship prompt installed using pacman
+# oh-my-posh prompt installed using AUR
 
 ################################################################################
 # OMZ libs and plugins                                                         #
@@ -197,19 +186,6 @@ zinit ice atclone"dircolors -b LS_COLORS > clrs.zsh" \
     atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
 zinit light trapd00r/LS_COLORS
 
-# NOTE: fzf, bindings and completions installed manually using git
-
-# fd, bat and exa
-# Source: https://zdharma-continuum.org/zinit/wiki/GALLERY/
-zinit wait"2" lucid from"gh-r" as"null" for \
-     sbin"**/fd"        @sharkdp/fd \
-     sbin"**/bat"       @sharkdp/bat \
-     sbin"**/bin/exa"  ogham/exa \
-     sbin"noti"         variadico/noti \
-     sbin"**/sad"       ms-jpq/sad \
-     sbin"sd* -> sd"    chmln/sd \
-     sbin"navi"         denisidoro/navi
-
 zinit wait lucid as"completion" for \
     https://raw.githubusercontent.com/sharkdp/fd/master/contrib/completion/_fd \
     https://raw.githubusercontent.com/BurntSushi/ripgrep/master/complete/_rg \
@@ -217,22 +193,6 @@ zinit wait lucid as"completion" for \
 
 zinit ice as"completion"
 zinit snippet /home/dileep/.zfunc/_poetry
-
-# lsd
-zinit wait lucid from"gh-r" as"null" for \
-    sbin"**/zoxide" ajeetdsouza/zoxide
-
-# zoxide and delta
-zinit wait"2" lucid from"gh-r" as"null" for \
-    sbin"**/delta"          dandavison/delta
-
-# ripgrep
-zinit wait lucid from"gh-r" as"null" for \
-    sbin"**/rg"         BurntSushi/ripgrep
-
-# yank
-zinit ice as"program" wait lucid pick"yank" make
-zinit light mptre/yank
 
 # Useful git programs
 # Source: https://zdharma-continuum.org/zinit/wiki/For-Syntax/
@@ -243,9 +203,6 @@ zinit as"null" wait"2" lucid for \
     sbin  davidosomething/git-my \
     sbin  arzzen/git-quick-stats \
     make"PREFIX=$ZPFX" tj/git-extras
-
-zinit ice lucid wait"0" as"program" from"gh-r" pick"bit"
-zinit light "chriswalz/bit"
 
 zinit wait"1" as"program" lucid sbin"*cht.sh -> cht.sh" for "https://cht.sh/:cht.sh"
 
@@ -286,5 +243,5 @@ eval "$(navi widget zsh)"
 # # starship
 # eval "$(starship init zsh)"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# oh-my-posh
+eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/theme.json)"

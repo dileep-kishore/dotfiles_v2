@@ -1,5 +1,7 @@
 # starship prompt configuration
 
+"$schema" = 'https://starship.rs/config-schema.json'
+
 # Gruvbox colors (Source: https://github.com/morhetz/gruvbox)
 # Red: #cc241d
 # Green: #98971a
@@ -12,7 +14,7 @@
 # White: #fbf1c7
 
 format = """
-[┏](bold #fbf1c7)[🌸 ](bold #458588)\
+[┏](bold green)[🌸 ](bold #458588)\
 $username\
 $hostname\
 $shlvl\
@@ -71,9 +73,9 @@ add_newline = false
 disabled = true
 
 [character]
-success_symbol = "[┗](bold #fbf1c7)[ ](bold #98971a)"
-error_symbol = "[┗](bold #fbf1c7)[ ](bold #cc241d)"
-vicmd_symbol = "[┗](bold #fbf1c7)[ ](bold #98971a)"
+success_symbol = "[┗━](bold green)[](bold green)"
+error_symbol = "[┗━](bold red)[](bold red)"
+vicmd_symbol = "[┗━](bold green)[](bold green)"
 
 [cmd_duration]
 format = "[took](italic) ⌛[$duration]($style) "
