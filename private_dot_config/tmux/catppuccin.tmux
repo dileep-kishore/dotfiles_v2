@@ -73,7 +73,7 @@ setw window-status-style "fg=${thm_fg},bg=${thm_bg},none"
 # --------=== Statusline
 
 set status-left "#[bg=$thm_base,fg=$thm_blue,italics]#[fg=$thm_base,bg=$thm_blue,bold,italics]  #H #[bg=$thm_base,fg=$thm_blue,italics] #[bg=$thm_base,fg=white,italics,nobold]#(uptime -p | cut -f 1-2 -d',' | cut -c 3-)"
-set status-right "#[fg=white,bg=$thm_base,italics] %a   #[fg=$thm_pink,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_bg,bg=$thm_pink,nobold,nounderscore,noitalics] #W #{?client_prefix,#[fg=$thm_red],#[fg=$thm_green]}#{?client_prefix,#[bg=$thm_red],#[bg=$thm_green]}#[fg=$thm_bg] #S #[fg=$thm_green,bg=$thm_base]"
+set status-right "#[fg=white,bg=$thm_base,italics]  %a #[fg=$thm_pink,bg=$thm_bg,nobold,nounderscore,noitalics]#[fg=$thm_bg,bg=$thm_pink,nobold,nounderscore,noitalics] #W #{?client_prefix,#[fg=$thm_red],#[fg=$thm_green]}#{?client_prefix,#[bg=$thm_red],#[bg=$thm_green]}#[fg=$thm_bg] #S #[fg=$thm_green,bg=$thm_base]"
 
 # current_dir
 setw window-status-format "#[fg=$thm_bg,bg=$thm_blue] #I #[fg=$thm_fg,bg=$thm_gray] #{b:pane_current_path} "
