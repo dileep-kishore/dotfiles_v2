@@ -297,7 +297,7 @@ return packer.startup(function(use)
     ---- Themes and eye candy
     use "folke/tokyonight.nvim"
     use "EdenEast/nightfox.nvim"
-    use "rebelot/kanagawa.nvim"
+    use { "catppuccin/nvim", as = "catppuccin" }
     use {
         "norcalli/nvim-colorizer.lua",
         config = function()
@@ -335,11 +335,12 @@ return packer.startup(function(use)
             require("pretty-fold").setup()
         end,
     }
-    use { 'anuvyklack/fold-preview.nvim',
-        requires = 'anuvyklack/keymap-amend.nvim',
+    use {
+        "anuvyklack/fold-preview.nvim",
+        requires = "anuvyklack/keymap-amend.nvim",
         config = function()
-            require('fold-preview').setup()
-        end
+            require("fold-preview").setup()
+        end,
     }
     use "tpope/vim-sleuth" -- Automatically adjust shiftwidth and expandtab
     -- Highlights

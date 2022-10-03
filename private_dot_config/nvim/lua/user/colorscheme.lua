@@ -5,7 +5,14 @@ vim.g.tokyonight_style = "night"
 vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
 
 -- load the colorscheme
-vim.cmd [[colorscheme kanagawa]]
+vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+local status_ok, catppuccin = pcall(require, "catppuccin")
+if not status_ok then
+    return
+end
+
+catppuccin.setup()
+vim.cmd [[colorscheme catppuccin]]
 
 -- registers window
 vim.g.registers_window_border = "rounded"
