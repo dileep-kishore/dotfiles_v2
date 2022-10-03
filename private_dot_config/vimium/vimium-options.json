@@ -1,5 +1,5 @@
 {
-  "settingsVersion": "1.66",
+  "settingsVersion": "1.67",
   "exclusionRules": [
     {
       "pattern": "https?://mail.google.com/*",
@@ -11,6 +11,54 @@
     },
     {
       "pattern": "https:?//app.clickup.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://calendar.google.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://todoist.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://configure.zsa.io/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.keybr.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://en.key-test.ru/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://airtable.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://dileep-kishore.fibery.io/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://app.sunsama.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://app.gingkowriter.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://gingkoapp.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.overleaf.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.linkedin.com/*",
       "passKeys": ""
     }
   ],
@@ -30,5 +78,5 @@
   "grabBackFocus": true,
   "searchEngines": "w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\ng: https://www.google.com/search?q=%s Google\nl: https://www.google.com/search?q=%s&btnI I'm feeling lucky...\ny: https://www.youtube.com/results?search_query=%s Youtube\ngm: https://www.google.com/maps?q=%s Google maps\nb: https://www.bing.com/search?q=%s Bing\nd: https://duckduckgo.com/?q=%s DuckDuckGo\naz: https://www.amazon.com/s/?field-keywords=%s Amazon\nqw: https://www.qwant.com/?q=%s Qwant",
   "searchUrl": "https://searx.ninja/?preferences=eJxtVcmO2zAM_Zr6YkzR5dCTD0WLogUKzKDJ9CowMmOzlkSXkpNxv750vESZmYsDPT0uj6QYCwkbFsJYNRhQwBUOQjNAgxWGu8dd4diCmw4FDIkt-95hwqphbhwW5JVpeuGnsdrLgIXH1HJdPdzv9kWEI0YEsW31rkgteqw4WpBCMA4uRcPBBDybBIfqG7iIRc1k9JLdCaVi0ONblqa4WN3FNGoiPVNILRU1RTg4rA2GhoLmfwRhNmaR8ebDlzm05RrL6WMMJUUPFJryRDVyNGb-VRRsE3lQyqRnAsIIYMyR3OWEwmeqc-eTazphSTFH_54hpBzoSbTCBxiN8UMkq1DibuTEseUOwjXEiUEtI1sCV3qsCRT0_Aexyx0mFsGQ_l0NI2LdI8pryKavI9tBjNcsGmq0fBBvst1Ym11MIKmfepxrX4p1ZeG_AD6nvP_48dNTxpjLuQaHvis9ibAsTTkKeHB0ENwAxDLyMZ1BsKxJ0KrycbmdmCBjOcWLtx1Yc1trMUKo8SlnYGJ2NzYjtLeTszpZ86WgQoiHvDJHodAR2GxmlgnUkZ5O75-yqxY04-mzKHg2BFtXtNuJPMZ8WGcnmbNsqFaZW-dW4FmALe353Za9g7G8RL0Gt9bepVPGvUSf1GyaskJcawOZSZbahvnRo9fmlUkgRKf3Ny9pHo2NXQ81htcnfuNgGj0Hp8_-deJWzlwsnwjji5Gci1pguF0mQ4hqFdus6ouzF91Y8Js6LdiLNXOgdBhsh2npb54g9H3Wv_kml8c9BsGeV9J1A_Zu0KxjtalYgR26o_kRjiweEnGYHN-rG_PZWtRp-Xr_Q9ftWSih3vwmf-eoQ9Ny6nCcyN_3-4ddRrkYz9vbaPm7bYUfdEFG3Ti6yie7vYCqFPP466fStfQoimomFNSRiVbYTZp2lxU9ObHzH9FoIjp964XOL6qC__mGgCA=&q=%s",
-  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF785),\n  color-stop(100%,#FFC542));\nborder: 1px solid #E3BE23;\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\ncolor: black;\nfont-weight: bold;\nfont-size: 12px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}"
+  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF785),\n  color-stop(100%,#FFC542));\nborder: 1px solid #E3BE23;\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\ncolor: black;\nfont-weight: bold;\nfont-size: 12px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}\n\n#vimiumHintMarkerContainer div.internalVimiumHintMarker, #vimiumHintMarkerContainer div.vimiumHintMarker {\n  padding: 3px 4px;\n  background: #FAB387; /* peach */\n  border: 1;\n  border-color: #181825; /* mantle */\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);\n}\n\n#vimiumHintMarkerContainer div span {\n  color: #181825; /* mantle */\n  text-shadow: none;\n}\n\n#vimiumHintMarkerContainer div > .matchingCharacter {\n  opacity: 1.0;\n}\n\n#vimiumHintMarkerContainer div > .matchingCharacter ~ span {\n  color: #585B70; /* surface2 */\n}\n\n#vomnibar {\n  background: #1E1E2E; /* base */\n  border: 2px solid #B4BEFE; /* lavender */ \n  animation: show 200ms cubic-bezier(0, 0, 0.2, 1) forwards;\n}\n\n@keyframes show {\n  0% {\n    transform: translateY(50px);\n    opacity: 0;\n  }\n  100% {\n    transform: translateY(0);\n    opacity: 1;\n  }\n}\n\n#vomnibar input {\n  color: #CDD6F4; /* text */\n  font: -moz-window;\n  background: #1E1E2E; /* base */\n  border: none;\n  padding: 2;\n}\n\n#vomnibar .vomnibarSearchArea {\n  padding: 10px 30px;\n  border: none;\n  background: #1E1E2E; /* base */\n}\n\n#vomnibar ul {\n  padding: 0;\n  background: #1E1E2E; /* base */\n  border-top: 1px solid #313244; /* surface0 */\n}\n\n#vomnibar li {\n  padding: 10px;\n  border-bottom: 1px solid #313244; /* surface0 */\n}\n\n#vomnibar li .vomnibarTopHalf,\n#vomnibar li .vomnibarBottomHalf {\n  padding: 3px 0;\n}\n\n#vomnibar li .vomnibarSource {\n  color: #FAB387; /* peach */ \n}\n\n#vomnibar li em,\n#vomnibar li .vomnibarTitle {\n  color: #89B4FA; /* blue */\n  font-weight: bold;\n}\n\n#vomnibar li .vomnibarUrl {\n  color: #F5E0DC; /* rosewater */\n}\n\n#vomnibar li .vomnibarMatch {\n  color: #A6E3A1; /* green */\n  font-weight: bold;\n}\n\n#vomnibar li .vomnibarTitle .vomnibarMatch {\n  color: #89B4FA; /* blue */\n}\n\n#vomnibar li.vomnibarSelected {\n  background-color: #313244; /* surface0 */\n}\n\ndiv.vimiumHUD {\n  background: #1E1E2E; /* base */\n  border: none;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);\n}\n\ndiv.vimiumHUD span#hud-find-input,\ndiv.vimiumHUD .vimiumHUDSearchAreaInner {\n  color: #CDD6F4; /* text */\n}\n\ndiv.vimiumHUD .hud-find {\n  background-color: #1E1E2E; /* base */\n  border: none;\n}\n\ndiv.vimiumHUD .vimiumHUDSearchArea {\n  background-color: #1E1E2E; /* base */\n}"
 }

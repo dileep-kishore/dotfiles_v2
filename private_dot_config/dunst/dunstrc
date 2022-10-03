@@ -239,6 +239,9 @@
     mouse_middle_click = close_all
     mouse_right_click = close_current
 
+    frame_color = "#89B4FA"
+    separator_color= frame
+
 # Experimental features that may or may not work correctly. Do not expect them
 # to have a consistent behaviour across releases.
 [experimental]
@@ -274,23 +277,23 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#282c24"
-    foreground = "#abb2bf"
+    background = "#1E1E2E"
+    foreground = "#CDD6F4"
     timeout = 5
     # Icon for notifications with low urgency, uncomment to enable
     icon = /home/dileep/.config/dunst/normal.png
 
 [urgency_normal]
-    background = "#282c24"
-    foreground = "#abb2bf"
+    background = "#1E1E2E"
+    foreground = "#CDD6F4"
     timeout = 5
     # Icon for notifications with normal urgency, uncomment to enable
     icon = /home/dileep/.config/dunst/normal.png
 
 [urgency_critical]
-    background = "#2b2b2b"
-    foreground = "#abb2bf"
-    frame_color = "#e06c75"
+    background = "#1E1E2E"
+    foreground = "#CDD6F4"
+    frame_color = "#FAB387"
     timeout = 5
     # Icon for notifications with critical urgency, uncomment to enable
     icon = /home/dileep/.config/dunst/critical.png
