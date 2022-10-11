@@ -345,7 +345,16 @@ return packer.startup(function(use)
     use "tpope/vim-sleuth" -- Automatically adjust shiftwidth and expandtab
     -- Highlights
     -- Show registers
-    use "tversteeg/registers.nvim"
+    use {
+        "tversteeg/registers.nvim",
+        config = function()
+            require("registers").setup {
+                window = {
+                    border = "rounded",
+                },
+            }
+        end,
+    }
     -- Clipboard
     use {
         "AckslD/nvim-neoclip.lua", -- Clipboard manager inspired by clipmenu

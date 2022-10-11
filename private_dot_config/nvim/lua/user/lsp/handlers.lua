@@ -81,8 +81,8 @@ end
 M.on_attach = function(client, bufnr)
     lsp_keymaps(bufnr)
     lsp_highlight_document(client)
-    if client.resolved_capabilities.document_formatting then
-        vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
+    if client.server_capabilities.document_formatting then
+        vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.format()"
     end
 end
 

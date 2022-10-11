@@ -14,9 +14,6 @@ end
 catppuccin.setup()
 vim.cmd [[colorscheme catppuccin]]
 
--- registers window
-vim.g.registers_window_border = "rounded"
-
 -- scrollbar
 local status_ok, tokyonight = pcall(require, "tokyonight.colors")
 if not status_ok then
