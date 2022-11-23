@@ -16,7 +16,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
             selected = i == 1,
         })
     end
-    -- s.promptbox = widgets.create_promptbox()
+    --[[ s.promptbox = widgets.create_promptbox() ]]
     s.layoutbox = widgets.create_layoutbox(s)
     s.systray = wibox.widget.systray()
     s.systray.visible = false

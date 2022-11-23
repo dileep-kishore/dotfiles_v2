@@ -100,7 +100,7 @@ function _M.create_taglist(s)
             shape = gears.shape.rectangle,
         },
         layout = {
-            spacing = 4,
+            spacing = 0,
             spacing_widget = {
                 color = beautiful.bg_normal,
                 shape = gears.shape.rectangle,
@@ -127,13 +127,16 @@ function _M.create_taglist(s)
                             id = "icon_role",
                             widget = wibox.widget.imagebox,
                         },
-                        margins = 4,
+                        margins = 0,
                         widget = wibox.container.margin,
                     },
                     layout = wibox.layout.align.horizontal,
                 },
-                left = 10,
-                right = 10,
+                left = 2,
+                right = 2,
+                top = 2,
+                bottom = 2,
+                color = "#000",
                 widget = wibox.container.margin,
             },
             id = "background_role",
@@ -238,7 +241,7 @@ function _M.create_tasklist(s)
             shape = gears.shape.rectangle,
         },
         layout = {
-            spacing = 5,
+            spacing = 3,
             spacing_widget = {
                 {
                     forced_width = 3,
@@ -270,8 +273,11 @@ function _M.create_tasklist(s)
                     },
                     layout = wibox.layout.align.horizontal,
                 },
-                left = 10,
-                right = 10,
+                left = 2,
+                right = 2,
+                top = 2,
+                bottom = 2,
+                color = "#000",
                 widget = wibox.container.margin,
             },
             forced_width = dpi(200),
@@ -338,15 +344,15 @@ function _M.create_wibox(s)
                 expand = "none",
                 -- left widgets
                 {
+                    layout = wibox.layout.align.horizontal,
+                    s.taglist,
+                },
+                -- middle widgets
+                {
                     layout = wibox.layout.fixed.horizontal,
                     -- _M.launcher,
                     s.tasklist,
                     -- s.promptbox,
-                },
-                -- middle widgets
-                {
-                    layout = wibox.layout.align.horizontal,
-                    s.taglist,
                 },
                 -- right widgets
                 {
@@ -403,15 +409,15 @@ function _M.create_wibox(s)
                 expand = "none",
                 -- left widgets
                 {
+                    layout = wibox.layout.align.horizontal,
+                    s.taglist,
+                },
+                -- middle widgets
+                {
                     layout = wibox.layout.fixed.horizontal,
                     -- _M.launcher,
                     s.tasklist,
                     -- s.promptbox,
-                },
-                -- middle widgets
-                {
-                    layout = wibox.layout.align.horizontal,
-                    s.taglist,
                 },
                 -- right widgets
                 {
@@ -485,15 +491,15 @@ function _M.create_wibox(s)
             expand = "none",
             -- left widgets
             {
+                layout = wibox.layout.align.horizontal,
+                s.taglist,
+            },
+            -- middle widgets
+            {
                 layout = wibox.layout.fixed.horizontal,
                 -- _M.launcher,
                 s.tasklist,
                 -- s.promptbox,
-            },
-            -- middle widgets
-            {
-                layout = wibox.layout.align.horizontal,
-                s.taglist,
             },
             -- right widgets
             {

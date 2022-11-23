@@ -12,19 +12,19 @@ local themes_path = os.getenv "HOME" .. "/.config/awesome/theme/"
 
 local theme = {}
 
-theme.name = "kanagawa"
+theme.name = "catppuccin"
 theme.font = "Lato Medium 12"
 theme.title_font = "Lato Medium 14"
 
 theme.bg_normal = "#1F1F2800"
 theme.bg_focus = "#1F1F28"
-theme.bg_urgent = "#E46876"
+theme.bg_urgent = "#f38ba8"
 theme.bg_minimize = "#444444"
 theme.bg_systray = theme.bg_normal
 
 theme.fg_normal = "#ffffff"
-theme.fg_focus = "#7E9CD8"
-theme.fg_urgent = "#E46876"
+theme.fg_focus = "#cba6f7"
+theme.fg_urgent = "#f38ba8"
 theme.fg_minimize = "#ffffff"
 
 theme.useless_gap = dpi(4)
@@ -34,10 +34,10 @@ theme.border_focus = "#1F1F28"
 theme.border_marked = "#1F1F28"
 
 -- more colors
-theme.first = "#2B3328"
-theme.second = "#49443C"
-theme.third = "#43242B"
-theme.fourth = "#252535"
+theme.first = "#5b3e78"
+theme.second = "#344b78"
+theme.third = "#793342"
+theme.fourth = "#050200"
 
 -- There are other variable sets
 -- overriding the icons one when
@@ -53,17 +53,17 @@ theme.fourth = "#252535"
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Taglist
-theme.taglist_bg_empty = "#999ca8"
+theme.taglist_bg_empty = "#cdd6f4"
 theme.taglist_bg_occupied = theme.fg_focus
 theme.taglist_bg_urgent = theme.bg_urgent
-theme.taglist_bg_focus = "#957FB8"
+theme.taglist_bg_focus = "#89b4fa"
 
 -- Tasklist
-theme.tasklist_disable_icon = true
-theme.taslist_plain_task_name = true
+theme.tasklist_disable_icon = false
+theme.taslist_plain_task_name = false
 theme.tasklist_font = "Lato Medium 12"
-theme.tasklist_bg_normal = "#7E9CD8"
-theme.tasklist_bg_focus = "#957FB8"
+theme.tasklist_bg_normal = "#cba6f7"
+theme.tasklist_bg_focus = "#89b4fa"
 theme.tasklist_bg_urgent = theme.bg_urgent
 theme.tasklist_fg_focus = theme.border_normal
 theme.tasklist_fg_urgent = theme.border_normal
@@ -80,9 +80,9 @@ end
 -- Generate taglist squares:
 -- theme.taglist_squares_sel = themes_path .. "icons/taglist/square_sel.png"
 -- theme.taglist_squares_unsel = themes_path .. "icons/taglist/square_unsel.png"
-theme.taglist_squares_sel = gears.surface.load_from_shape(10, 50, gears.shape.rectangle, "#43242B")
--- theme.taglist_squares_unsel = gears.surface.load_from_shape(10, 50, gears.shape.circle, "#ffffff")
-theme.taglist_spacing = 5
+-- theme.taglist_squares_sel = gears.surface.load_from_shape(10, 50, gears.shape.rectangle, "#43242B")
+--[[ theme.taglist_squares_unsel = gears.surface.load_from_shape(10, 50, gears.shape.circle, "#ffffff") ]]
+theme.taglist_spacing = 2
 
 -- Variables set for theming notifications:
 -- notification_font
@@ -122,8 +122,8 @@ theme.layout_centered = themes_path .. "icons/layouts/centered.png"
 ---- for tabbar
 theme.tabbar_style = "modern"
 theme.tag_preview_client_border_width = 0
-theme.tag_preview_widget_border_color = "#957FB8" -- The border color of the widget
-theme.task_preview_widget_border_color = "#7E9CD8" -- The border color of the widget
+theme.tag_preview_widget_border_color = "#89b4fa" -- The border color of the widget
+theme.task_preview_widget_border_color = "#cba6f7" -- The border color of the widget
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus, theme.fg_focus)
