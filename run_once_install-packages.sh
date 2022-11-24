@@ -54,7 +54,6 @@ sudo pacman -S --needed --noconfirm \
     feh \
     zathura \
     sxiv \
-    navi \
     noti \
     bit \
     xplr \
@@ -148,6 +147,7 @@ paru -S --useask --batchinstall --cleanafter --removemake \
     orchis-theme-git \
     ttf-google-fonts-git \
     nnn-nerd \
+    navi \
     morgen-bin \
     brave-bin \
     spotify \

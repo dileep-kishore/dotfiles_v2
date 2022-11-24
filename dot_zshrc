@@ -175,10 +175,6 @@ zinit wait"2" lucid for MichaelAquilina/zsh-autoswitch-virtualenv
 # Programs                                                                     #
 ################################################################################
 # Automatically load env variables based on directory
-# Source: https://zdharma-continuum.org/zinit/wiki/Direnv-explanation/
-zinit as"program" make'!' atclone'./direnv hook zsh > zhook.zsh' \
-    atpull'%atclone' pick"direnv" src"zhook.zsh" for \
-        direnv/direnv
 
 # LS_COLORS
 zinit ice atclone"dircolors -b LS_COLORS > clrs.zsh" \
