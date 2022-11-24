@@ -115,7 +115,15 @@ return packer.startup(function(use)
 
     ---- LSP related
     use "neovim/nvim-lspconfig"
-    use "williamboman/nvim-lsp-installer"
+    use "williamboman/mason.nvim"
+    use {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        after = "mason.nvim",
+    }
+    use {
+        "williamboman/mason-lspconfig.nvim",
+        after = {"mason.nvim", "nvim-lspconfig"},
+    }
     use "tamago324/nlsp-settings.nvim"
     use "jose-elias-alvarez/null-ls.nvim"
     use "RRethy/vim-illuminate"
