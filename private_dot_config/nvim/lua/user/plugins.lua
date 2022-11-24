@@ -122,7 +122,7 @@ return packer.startup(function(use)
     }
     use {
         "williamboman/mason-lspconfig.nvim",
-        after = {"mason.nvim", "nvim-lspconfig"},
+        after = { "mason.nvim", "nvim-lspconfig" },
     }
     use "tamago324/nlsp-settings.nvim"
     use "jose-elias-alvarez/null-ls.nvim"
@@ -241,7 +241,12 @@ return packer.startup(function(use)
     }
 
     ---- Motions, windows and navigation
-    use "ggandor/lightspeed.nvim"
+    use {
+        "ggandor/leap.nvim",
+        config = function()
+            require("leap").add_default_mappings()
+        end,
+    }
     use "mfussenegger/nvim-ts-hint-textobject"
     use "edluffy/specs.nvim"
     use "tpope/vim-repeat"
