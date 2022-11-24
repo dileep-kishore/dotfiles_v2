@@ -230,6 +230,7 @@ style = "bold bg:#fab387 fg:#181825"
 display_private = true
 
 [character]
-success_symbol = "[┗━](bold #89b4fa)[](bold #89b4fa)"
-error_symbol = "[┗━](bold red)[](bold red)"
+format = "$symbol"
+success_symbol = "[┗━](bold #89b4fa)[ﱦ ](bold #89b4fa)"
+error_symbol = "[┗━](bold red)[ﱦ ](bold red)"
 vicmd_symbol = "[┗━](bold #89b4fa)[](bold #89b4fa)"
