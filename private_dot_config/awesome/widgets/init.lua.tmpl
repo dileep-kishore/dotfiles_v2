@@ -357,26 +357,51 @@ function _M.create_wibox(s)
                 -- right widgets
                 {
                     layout = wibox.layout.fixed.horizontal,
-                    wibox.container.background(
-                        wibox.container.margin(custom_widgets.toggl_output, 10, 10, 5, 5),
-                        beautiful.first,
-                        gears.shape.rectangle
-                    ),
-                    wibox.container.background(
-                        wibox.container.margin(
-                            wibox.layout.align.horizontal(custom_widgets.volume_widget, custom_widgets.spotify_widget),
-                            10,
-                            10,
-                            5,
-                            5
+                    spacing = 3,
+                    wibox.container.margin(
+                        wibox.container.background(
+                            wibox.container.margin(custom_widgets.toggl_output, 10, 10, 5, 5),
+                            beautiful.first,
+                            gears.shape.rectangle
                         ),
-                        beautiful.second,
-                        gears.shape.rectangle
+                        2,
+                        2,
+                        2,
+                        2,
+                        "#000"
                     ),
-                    wibox.container.background(
-                        wibox.container.margin(custom_widgets.mytextclock, 5, 5, 5, 5),
-                        beautiful.third,
-                        gears.shape.rectangle
+                    wibox.container.margin(
+                        wibox.container.background(
+                            wibox.container.margin(
+                                wibox.layout.align.horizontal(
+                                    custom_widgets.volume_widget,
+                                    custom_widgets.spotify_widget
+                                ),
+                                10,
+                                10,
+                                5,
+                                5
+                            ),
+                            beautiful.second,
+                            gears.shape.rectangle
+                        ),
+                        2,
+                        2,
+                        2,
+                        2,
+                        "#000"
+                    ),
+                    wibox.container.margin(
+                        wibox.container.background(
+                            wibox.container.margin(custom_widgets.mytextclock, 5, 5, 5, 5),
+                            beautiful.third,
+                            gears.shape.rectangle
+                        ),
+                        2,
+                        2,
+                        2,
+                        2,
+                        "#000"
                     ),
                     wibox.container.background(
                         wibox.container.margin(s.systray, 0, 0, 0, 0),
@@ -422,39 +447,61 @@ function _M.create_wibox(s)
                 -- right widgets
                 {
                     layout = wibox.layout.fixed.horizontal,
-                    wibox.container.background(
-                        wibox.container.margin(
-                            wibox.layout.align.horizontal(
-                                custom_widgets.net_speed_widget,
-                                custom_widgets.pacupdate_output
+                    spacing = 3,
+                    wibox.container.margin(
+                        wibox.container.background(
+                            wibox.container.margin(
+                                wibox.layout.align.horizontal(
+                                    custom_widgets.net_speed_widget,
+                                    custom_widgets.pacupdate_output
+                                ),
+                                10,
+                                10,
+                                5,
+                                5
                             ),
-                            10,
-                            10,
-                            5,
-                            5
+                            beautiful.first,
+                            gears.shape.rectangle
                         ),
-                        beautiful.first,
-                        gears.shape.rectangle
+                        2,
+                        2,
+                        2,
+                        2,
+                        "#000"
                     ),
-                    wibox.container.background(
-                        wibox.container.margin(
-                            wibox.layout.align.horizontal(
-                                custom_widgets.ram_widget,
-                                custom_widgets.cpu_widget,
-                                custom_widgets.fs_widget
+                    wibox.container.margin(
+                        wibox.container.background(
+                            wibox.container.margin(
+                                wibox.layout.align.horizontal(
+                                    custom_widgets.ram_widget,
+                                    custom_widgets.cpu_widget,
+                                    custom_widgets.fs_widget
+                                ),
+                                10,
+                                10,
+                                5,
+                                5
                             ),
-                            10,
-                            10,
-                            5,
-                            5
+                            beautiful.second,
+                            gears.shape.rectangle
                         ),
-                        beautiful.second,
-                        gears.shape.rectangle
+                        2,
+                        2,
+                        2,
+                        2,
+                        "#000"
                     ),
-                    wibox.container.background(
-                        wibox.container.margin(custom_widgets.weather_widget, 5, 5, 5, 5),
-                        beautiful.third,
-                        gears.shape.rectangle
+                    wibox.container.margin(
+                        wibox.container.background(
+                            wibox.container.margin(custom_widgets.weather_widget, 5, 5, 5, 5),
+                            beautiful.third,
+                            gears.shape.rectangle
+                        ),
+                        2,
+                        2,
+                        2,
+                        2,
+                        "#000"
                     ),
                     wibox.container.background(
                         wibox.container.margin(s.systray, 0, 0, 0, 0),
@@ -504,46 +551,75 @@ function _M.create_wibox(s)
             -- right widgets
             {
                 layout = wibox.layout.fixed.horizontal,
-                wibox.container.background(
-                    wibox.container.margin(
-                        wibox.layout.align.horizontal(custom_widgets.volume_widget, custom_widgets.spotify_widget),
-                        10,
-                        10,
-                        5,
-                        5
-                    ),
-                    beautiful.second,
-                    gears.shape.rectangle
-                ),
-                wibox.container.background(
-                    wibox.container.margin(
-                        wibox.layout.align.horizontal(
-                            custom_widgets.battery_widget,
-                            custom_widgets.ram_widget,
-                            custom_widgets.cpu_widget,
-                            custom_widgets.fs_widget
+                spacing = 3,
+                wibox.container.margin(
+                    wibox.container.background(
+                        wibox.container.margin(
+                            wibox.layout.align.horizontal(custom_widgets.volume_widget, custom_widgets.spotify_widget),
+                            10,
+                            10,
+                            5,
+                            5
                         ),
-                        10,
-                        10,
-                        5,
-                        5
+                        beautiful.second,
+                        gears.shape.rectangle
                     ),
-                    beautiful.second,
-                    gears.shape.rectangle
+                    2,
+                    2,
+                    2,
+                    2,
+                    "#000"
                 ),
-                wibox.container.background(
-                    wibox.container.margin(custom_widgets.weather_widget, 5, 5, 5, 5),
-                    beautiful.third,
-                    gears.shape.rectangle
+                wibox.container.margin(
+                    wibox.container.background(
+                        wibox.container.margin(
+                            wibox.layout.align.horizontal(
+                                custom_widgets.battery_widget,
+                                custom_widgets.ram_widget,
+                                custom_widgets.cpu_widget,
+                                custom_widgets.fs_widget
+                            ),
+                            10,
+                            10,
+                            5,
+                            5
+                        ),
+                        beautiful.second,
+                        gears.shape.rectangle
+                    ),
+                    2,
+                    2,
+                    2,
+                    2,
+                    "#000"
+                ),
+                wibox.container.margin(
+                    wibox.container.background(
+                        wibox.container.margin(custom_widgets.weather_widget, 5, 5, 5, 5),
+                        beautiful.third,
+                        gears.shape.rectangle
+                    ),
+                    2,
+                    2,
+                    2,
+                    2,
+                    "#000"
+                ),
+                wibox.container.margin(
+                    wibox.container.background(
+                        wibox.container.margin(custom_widgets.mytextclock, 5, 5, 5, 5),
+                        beautiful.third,
+                        gears.shape.rectangle
+                    ),
+                    2,
+                    2,
+                    2,
+                    2,
+                    "#000"
                 ),
                 wibox.container.background(
                     wibox.container.margin(s.systray, 0, 0, 0, 0),
                     beautiful.fourth,
-                    gears.shape.rectangle
-                ),
-                wibox.container.background(
-                    wibox.container.margin(custom_widgets.mytextclock, 5, 5, 5, 5),
-                    beautiful.third,
                     gears.shape.rectangle
                 ),
                 wibox.container.background(
