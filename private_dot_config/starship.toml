@@ -2,178 +2,234 @@
 
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Gruvbox colors (Source: https://github.com/morhetz/gruvbox)
-# Red: #cc241d
-# Green: #98971a
-# Yellow: #d79921
-# Blue: #458588
-# Purple: #b16286
-# Aqua: #689d6a
-# Gray: #a89984
-# Orange: #fe9019
-# White: #fbf1c7
+# Catpuccin colors (mocha)
+# thm_bg="#11111b"
+# thm_fg="#cdd6f4"
+# thm_cyan="#89dceb"
+# thm_black="#181825"
+# thm_gray="#45475a"
+# thm_magenta="#cba6f7"
+# thm_pink="#f5c2e7"
+# thm_red="#f38ba8"
+# thm_green="#a6e3a1"
+# thm_yellow="#f9e2af"
+# thm_blue="#89b4fa"
+# thm_orange="#fab387"
+# thm_black4="#585b70"
+# thm_base="#1e1e2e"
 
 format = """
-[┏](bold green)[🌸 ](bold #458588)\
+[┏](bold #89b4fa)\
+[  ](bold bg:#89b4fa fg:#181825)[](fg:#89b4fa)\
+$sudo\
 $username\
 $hostname\
-$shlvl\
-$kubernetes\
-$status\
 $directory\
 $git_branch\
 $git_commit\
 $git_state\
 $git_status\
 $hg_branch\
-$docker_context\
 $package\
-$cmake\
-$dart\
-$dotnet\
-$elixir\
-$elm\
-$erlang\
+$fill\
+$docker_context\
 $golang\
-$helm\
-$java\
+$haskell\
 $julia\
-$nim\
 $nodejs\
-$ocaml\
-$perl\
-$php\
-$purescript\
 $python\
-$ruby\
+$rlang\
+$lua\
 $rust\
-$swift\
-$terraform\
-$zig\
 $nix_shell\
 $conda\
 $memory_usage\
-$aws\
-$gcloud\
-$openstack\
-$env_var\
-$crystal\
-$custom\
 $cmd_duration\
-$lua\
 $jobs\
-$battery\
+$container\
+$shlvl\
+$status\
 $time\
 $line_break\
 $character"""
 
-add_newline = false
+add_newline = true
 
-[aws]
-disabled = true
+[fill]
+symbol = " "
+style = "light gray"
 
-[character]
-success_symbol = "[┗━](bold green)[](bold green)"
-error_symbol = "[┗━](bold red)[](bold red)"
-vicmd_symbol = "[┗━](bold green)[](bold green)"
+# right sep
+# "[](fg:#89dceb)"
+# left sep
+# "[](fg:#89dceb)"
 
-[cmd_duration]
-format = "[took](italic) ⌛[$duration]($style) "
-min_time = 5_000
-style = "bold #d79921"
+#### LEFT
 
-[conda]
-format = "[via](italic) [$symbol$environment]($style) "
-style = "bold #98971a"
+[sudo]
+format = "[](fg:#f38ba8)[$symbol]($style)[](fg:#f38ba8)"
+symbol = " "
+disabled = false
+style = "bg:#f38ba8 fg:#181825"
+
+[username]
+show_always = false
+format = "[](fg:#89dceb)[ $user]($style)"
+style_user = "bold bg:#89dceb fg:#181825"
+style_root = "bold bg:#f38ba8 fg:#181825"
+
+[hostname]
+format =  "[  ](bg:#89dceb fg:#181825)[$hostname]($style)[](fg:#89dceb)"
+style = "bg:#89dceb fg:#181825"
 
 [directory]
-format = "[$path]($style)[$read_only]($read_only_style) "
-style = "bold #689d6a"
-read_only_style = "bold #cc241d"
-truncation_symbol = "…/"
+format = "[](fg:#cba6f7)[$path]($style)[$read_only]($read_only_style)[](fg:#cba6f7)"
+style = "bold bg:#cba6f7 fg:#181825"
+read_only_style = "bold fg:#f38ba8 bg:#cba6f7"
+read_only = "  "
+home_symbol = " "
+truncation_symbol = " /"
 truncate_to_repo = true
 
-[env_var]
-format = "[with](italic) [$env_value]($style) "
-style = "bold dimmed #a89984"
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
 
 [git_branch]
-format = "[on](italic) [$symbol $branch]($style) "
-style = "bold #b16286"
-symbol = "🌱" # symbol = ""
+format = "[](fg:#a6e3a1)[$symbol$branch]($style)"
+style = "bold bg:#a6e3a1 fg:#181825"
+symbol = " "
 truncation_length = 25
 truncation_symbol = "…"
 
 [git_commit]
-format = "[\\($hash\\)]($style) [\\($tag\\)]($style) "
+format = '[](fg:#a6e3a1)[\($hash$tag\)]($style)'
+tag_disabled = false
+tag_symbol = " "
 only_detached = true
-style = "bold #fe9019"
+style = "bold bg:#a6e3a1 fg:#181825"
+
+[git_state]
+style = "bold bg:#a6e3a1 fg:#181825"
 
 [git_status]
-# format = '([$all_status$ahead_behind]($style) )'
-format = '([❮ $all_status$ahead_behind❯]($style) )'
-conflicted = "${count}: "
-ahead = "${count}: "
-behind = "${count}: "
-diverged = " "
-untracked = "${count}: "
-stashed = "${count}:率 "
-modified = "${count}: "
-staged = "${count}: "
-renamed = "${count}: "
-deleted = "${count}: "
-style = "bold #fe9019"
+format = '([\[$all_status$ahead_behind\]]($style))[](fg:#a6e3a1)'
+style = "bold bg:#a6e3a1 fg:#181825"
 
-[hostname]
-format =  "[$hostname]($style) [in](italic) "
-style = "bold #458588"
+[hg_branch]
+format = "[](fg:#a6e3a1)[$symbol$branch]($style)[](fg:#a6e3a1)"
+style = "bold bg:#a6e3a1 fg:#181825"
 
-[jobs]
-format = "[jobs](italic) [$symbol $number]($style) "
-number_threshold = 1
-symbol = "⚙ "
 
-[julia]
-format = "[via](italic) [$symbol$version]($style) "
-style = "bold #b16286"
+#### RIGHT
 
-[nodejs]
-format = "[via](italic) [$symbol$version]($style) "
-style = "bold #98971a"
-not_capable_style = "bold #cc241d"
-
-[package]
-format = "[at](italic) [$symbol$version]($style) "
-style = "bold #d79921"
-display_private = true
-
-[python]
-format = '[via](italic) [${symbol}${pyenv_prefix}${version} $virtualenv]($style) '
-style = "bold #d79921"
-
-[rust]
-format = "[via](italic) [$symbol$version]($style) "
-style = "bold #cc241d"
-
-[shlvl]
+[time]
+format = "[](fg:#89b4fa)[ $time ]($style)"
 disabled = false
-format = "[$symbol$shlvl]($style) "
-symbol = ""
-style = "bold dimmed #a89984"
-threshold = 3
+time_format = "%R"
+style = "bold bg:#89b4fa fg:#181825"
 
 [status]
 disabled = false
-format = "[$status$symbol]($style) "
-symbol = " "
-style = "bold #cc241d"
+format = "[](fg:#f38ba8)[$status$symbol]($style)[](fg:#f38ba8)"
+symbol = " "
+not_executable_symbol = " "
+style = "bold bg:#f38ba8 fg:#181825"
 
-[username]
-format = "[$user]($style) [at](italic) "
-style_user = "bold #458588"
-style_root = "bold #cc241d"
+[shlvl]
+disabled = false
+format = "[](fg:#cdd6f4)[$symbol$shlvl]($style)($style)[](fg:#cdd6f4)"
+symbol = " "
+style = "bold bg:#cdd6f4 fg:#181825"
+threshold = 2
 
-[terraform]
-disabled = true
+[jobs]
+format = "[](fg:#f9e2af)[$symbol$number]($style)[](fg:#f9e2af)"
+number_threshold = 2
+style = "bold bg:#f9e2af fg:#181825"
+symbol = " "
 
-# TODO: Add a custom command for toggl (https://starship.rs/config/#custom-commands)
+[cmd_duration]
+format = "[](fg:#f9e2af)[ $duration]($style)[](fg:#f9e2af)"
+min_time = 5_000
+style = "bold bg:#f9e2af fg:#181825"
+
+[memory_usage]
+format = "[](fg:#f38ba8)[$symbol$ram]($style)[](fg:#f38ba8)"
+threshold = 80
+symbol = " "
+disabled = false
+style = "bold bg:#f38ba8 fg:#181825"
+
+[conda]
+format = "[](fg:#89dceb)[$symbol$environment]($style)[](fg:#89dceb)"
+symbol = " "
+style = "bold bg:#89dceb fg:#181825"
+
+[nix_shell]
+format = '[](fg:#89dceb)[$symbol$state( \($name\))]($style)[](fg:#89dceb)'
+symbol = " "
+style = "bold bg:#89dceb fg:#181825"
+
+[rust]
+format = "[](fg:#f38ba8)[$symbol$version]($style)[](fg:#f38ba8)"
+symbol = " "
+style = "bold bg:#f38ba8 fg:#181825"
+
+[lua]
+format = "[](fg:#89b4fa)[$symbol$version]($style)[](fg:#89b4fa)"
+symbol = " "
+style = "bold bg:#89b4fa fg:#181825"
+
+[python]
+format = '[](fg:#f9e2af)[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\))]($style)[](fg:#f9e2af)'
+symbol = " "
+style = "bold bg:#f9e2af fg:#181825"
+
+[rlang]
+format = "[](fg:#89b4fa)[$symbol($version)]($style)[](fg:#89b4fa)"
+symbol = "ℛ "
+style = "bold bg:#89b4fa fg:#181825"
+
+[nodejs]
+format = "[](fg:#a6e3a1)[$symbol$version]($style)[](fg:#a6e3a1)"
+style = "bold bg:#a6e3a1 fg:#181825"
+not_capable_style = "bold bg:#f38ba8 fg:#181825"
+symbol = " "
+
+[julia]
+format = "[](fg:#cba6f7)[$symbol($version)]($style)[](fg:#cba6f7)"
+symbol = " "
+style = "bold bg:#cba6f7 fg:#181825"
+
+[haskell]
+format = "[](fg:#cba6f7)[$symbol($version)]($style)[](fg:#cba6f7)"
+symbol = " "
+style = "bold bg:#cba6f7 fg:#181825"
+
+[golang]
+format = "[](fg:#89dceb)[$symbol($version)]($style)[](fg:#89dceb)"
+symbol = " "
+style = "bold bg:#89dceb fg:#181825"
+
+[container]
+format = '[](fg:#cdd6f4)[$symbol \[$name\]]($style)[](fg:#cdd6f4)'
+style = "bold bg:#cdd6f4 fg:#181825"
+
+[docker_context]
+format = "[](fg:#89b4fa)[$symbol$context]($style)[](fg:#89b4fa)"
+symbol = " "
+style = "bold bg:#89b4fa fg:#181825"
+
+[package]
+format = "[](fg:#fab387)[$symbol$version]($style)[](fg:#fab387)"
+symbol = " "
+style = "bold bg:#fab387 fg:#181825"
+display_private = true
+
+[character]
+success_symbol = "[┗━](bold #89b4fa)[](bold #89b4fa)"
+error_symbol = "[┗━](bold red)[](bold red)"
+vicmd_symbol = "[┗━](bold #89b4fa)[](bold #89b4fa)"
