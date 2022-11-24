@@ -53,8 +53,8 @@ theme.fourth = "#050200"
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Taglist
-theme.taglist_bg_empty = "#cdd6f4"
-theme.taglist_bg_occupied = theme.fg_focus
+theme.taglist_bg_empty = "#cba6f7"
+theme.taglist_bg_occupied = "#b4befe"
 theme.taglist_bg_urgent = theme.bg_urgent
 theme.taglist_bg_focus = "#89b4fa"
 
