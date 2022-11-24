@@ -233,4 +233,4 @@ display_private = true
 format = "$symbol"
 success_symbol = "[┗━](bold #89b4fa)[ﱦ ](bold #89b4fa)"
 error_symbol = "[┗━](bold red)[ﱦ ](bold red)"
-vicmd_symbol = "[┗━](bold #89b4fa)[](bold #89b4fa)"
+vicmd_symbol = "[┗━](bold #89b4fa)[ ](bold #89b4fa)"
