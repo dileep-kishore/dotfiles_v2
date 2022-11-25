@@ -9,5 +9,5 @@ xrandr --output HDMI-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP
 # {{- else if (eq .chezmoi.hostname "dkishore-bu") }}
 xrandr --output DVI-D-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-0 --primary --mode 1920x1080 --pos 0x0 --rotate normal &
 # {{- end }}
-picom --experimental-backends &
+picom &
 redshift -l 42.35765:-71.12889 &
