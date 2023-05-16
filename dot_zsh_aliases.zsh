@@ -1,6 +1,9 @@
 # Zsh aliases
 # To be sourced in .zshrc
 
+# nvim -> lvim
+alias nvim="lvim"
+
 # Use bat with dracule theme
 alias bat="bat --theme Dracula"
 
@@ -71,6 +74,7 @@ alias has="curl -sL https://git.io/_has | bash -s"
 
 # Anaconda path export alias
 alias exportconda="export PATH=$HOME/anaconda3/bin:$PATH"
+alias exportforge="export PATH=$HOME/miniforge3/bin:$PATH"
 
 # Chezmoi aliases
 alias cz="chezmoi"

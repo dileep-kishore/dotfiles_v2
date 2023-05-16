@@ -27,7 +27,7 @@ unsetopt bgnice autoparamslash
 ################################################################################
 export PATH="/usr/local/bin:/usr/local/sbin/:/home/dileep/.local/bin:$PATH"
 export TERM=xterm-256color
-export EDITOR="nvim"
+export EDITOR="lvim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 export BROWSER=brave
